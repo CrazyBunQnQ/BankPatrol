@@ -5,9 +5,7 @@ import java.io.Serializable;
 import com.google.gson.Gson;
 
 /**
- * 银行类
- * @author 包俊杰
- *
+ * 银行
  */
 public class Bank implements Serializable {
 
@@ -32,11 +30,11 @@ public class Bank implements Serializable {
 	 * 银行 IP 地址
 	 */
 	private String ip;
-	
+
 	public Bank() {
-		
+
 	}
-	
+
 	public Bank(int id, String name, double longitude, double latitude, String ip) {
 		super();
 		this.id = id;
@@ -134,7 +132,7 @@ public class Bank implements Serializable {
 		return "Bank [id=" + id + ", name=" + name + ", longitude=" + longitude + ", latitude=" + latitude + ", ip="
 				+ ip + "]";
 	}
-	
+
 	public String toJson() {
 		return new Gson().toJson(this);
 	}
