@@ -1,0 +1,85 @@
+<!DOCTYPE HTML >
+<html>
+<head>
+
+<title>银行网点列表</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link type="text/css" rel="stylesheet" href="../../css/base.css">
+</head>
+
+<body>
+<div class="containner">
+	<div id="inner-hd">
+    	<div class="crumbs">
+            <a href="javascript:;" class="crumbs-label">系统管理&gt;&gt;银行网点列表</a>
+        </div>
+    </div>
+    <div id="inner-bd">
+        <div class="button-group">
+            <div class="button">
+              <img src="../../images/add.gif">
+            </div>
+         </div>
+         <table class="kv-table">
+         	<thead>
+            	 <tr>
+				    <td>银行ID</td>
+					<td>银行名称</td>
+					<td>银行位置经度</td>
+					<td>银行位置纬度</td>
+					<td>银行IP</td>
+					<td>操作</td>
+				</tr>
+
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>中国工商银行上地支行</td>
+                    <td>40</td>
+                    <td>130</td>
+                    <td>192.168.1.1</td>
+                    <td>
+                    	<div class="handle">
+							<span class="handle-icon fix"></span>
+                        	<span class="handle-icon del"></span>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>中国工商银行上地支行</td>
+                    <td>40</td>
+                    <td>130</td>
+                    <td>192.168.1.1</td>
+                    <td>
+                    	<div class="handle">
+						    <span class="handle-icon fix"></span>
+                        	<span class="handle-icon del"></span>     
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+	</div>
+</div>
+<div>
+ <p align="right">
+		<font color="black">共</font><font color="black">5</font>
+		<font color="black">项&nbsp;</font>
+		<font color="black">每页</font><font color="black">3</font><font color="black">项&nbsp;</font>
+		<font color="black">当前第</font><font color="black">1</font>
+		<font color="black">页&nbsp;</font>
+		<font color="black">共</font><font color="black">2</font>
+		<font color="black">页&nbsp; </font>
+		
+		
+		
+         
+         <a href="javascript:;">下一页</a>
+         <a href="javascript:;">尾  页</a>
+         
+           第<input id="pagebox" type="text" size="4">页<a onclick="goto2('../user/userList.do?curpage=');" href="javascript:;"> 跳转</a>
+		   </p></div>
+</body>
+</html>
