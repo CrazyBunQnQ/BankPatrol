@@ -14,9 +14,21 @@ import org.apache.logging.log4j.Logger;
 
 public class DBUtil {
 	private static final Logger LOGGER = LogManager.getLogger(DBUtil.class.getName());
+	/**
+	 * 数据库驱动
+	 */
 	private static String dbDriver;
+	/**
+	 * 数据库地址
+	 */
 	private static String dbUrl;
+	/**
+	 * 数据库用户名
+	 */
 	private static String dbUser;
+	/**
+	 * 数据库用户密码
+	 */
 	private static String dbPwd;
 	
 	static {
@@ -38,12 +50,35 @@ public class DBUtil {
 		}
 	}
 	
+	/**
+	 * 获取数据库连接
+	 * @return
+	 * @throws SQLException
+	 */
 	public static Connection getConnection() throws SQLException {
 		Connection conn = DriverManager.getConnection(dbUrl, dbUser, dbPwd);
 		LOGGER.info("数据库连接创建成功");
 		return conn;
 	}
 	
+	/**
+	 * 执行 DML 语句（INSERT, UPDATE 或 DELETE）
+	 * @param ps PreparedStatement 数据库语句
+	 * @return int 影响行数
+	 * @throws SQLException
+	 */
+	public static int closeStatement(PreparedStatement ps) throws SQLException {
+		int num = ps.executeUpdate();
+		ps.close();
+		return num;
+	}
+	
+	/**
+	 * 关闭数据库连接
+	 * @param conn 要关闭的连接
+	 * @param rs 要关闭的数据集
+	 * @throws SQLException
+	 */
 	public static void closeConnection(Connection conn, ResultSet rs) throws SQLException {
 		if (rs != null) {
 			rs.close();
@@ -55,6 +90,14 @@ public class DBUtil {
 		}
 	}
 	
+	/**
+	 * 关闭数据库连接
+	 * @param conn 要关闭的连接
+	 * @param rs 要关闭的数据集
+	 * @param st 要关闭的 Statement 数据库语句
+	 * @throws SQLException
+	 */
+	@Deprecated
 	public static void closeConnection(Connection conn, ResultSet rs, Statement st) throws SQLException {
 		if (rs != null) {
 			rs.close();
@@ -67,6 +110,13 @@ public class DBUtil {
 		}
 	}
 	
+	/**
+	 * 关闭数据库连接
+	 * @param conn 要关闭的数据库连接
+	 * @param rs 要关闭的数据集
+	 * @param ps 要关闭的 PreparedStatement 数据库语句
+	 * @throws SQLException
+	 */
 	public static void closeConnection(Connection conn, ResultSet rs, PreparedStatement ps) throws SQLException {
 		if (rs != null) {
 			rs.close();
