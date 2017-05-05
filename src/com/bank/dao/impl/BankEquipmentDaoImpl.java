@@ -17,9 +17,11 @@ public class BankEquipmentDaoImpl implements BankEquipmentDao {
 	private static final Logger LOGGER = LogManager.getLogger(BankEquipmentDaoImpl.class.getName());
 
 	@Override
-	public ResultSet queryBankEquipments(Connection conn, String bankID) throws SQLException {
-		PreparedStatement ps = conn.prepareStatement("SELECT * FROM bank_equipment WHERE Bank_id=?");
+	public ResultSet queryBankEquipments(Connection conn, String bankID, int page, int count) throws SQLException {
+		PreparedStatement ps = conn.prepareStatement("SELECT * FROM bank_equipment WHERE Bank_id=? LIMIT page, count");
 		ps.setString(1, bankID);
+		ps.setInt(2, page);
+		ps.setInt(3, count);
 		LOGGER.info("查询银行 " + bankID + " 的设备：" + ps.toString());
 		return ps.executeQuery();
 	}

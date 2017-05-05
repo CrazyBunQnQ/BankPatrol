@@ -13,6 +13,13 @@ public class Job implements Serializable {
 	 * 编号
 	 */
 	private Integer id;
+	/**
+	 * 岗位性质
+	 * 
+	 * 0：管理
+	 * 
+	 * 1：巡检组
+	 */
 	private Integer groupId;
 	/**
 	 * 名称
@@ -30,7 +37,7 @@ public class Job implements Serializable {
 	/**
 	 * 岗位
 	 * @param id 编号
-	 * @param groupId 
+	 * @param groupId 岗位性质
 	 * @param name 名称
 	 * @param description 描述
 	 */

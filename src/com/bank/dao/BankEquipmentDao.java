@@ -12,10 +12,12 @@ public interface BankEquipmentDao {
 	 * 查询某个银行中的所有设备
 	 * @param conn
 	 * @param bankID 银行 ID
+	 * @param page 当前页数（第一页为0）
+	 * @param count 每页显示数量
 	 * @return ResultSet 数据集
 	 * @throws SQLException
 	 */
-	ResultSet queryBankEquipments(Connection conn, String bankID) throws SQLException;
+	ResultSet queryBankEquipments(Connection conn, String bankID, int page, int count) throws SQLException;
 	
 	/**
 	 * 添加银行设备信息
