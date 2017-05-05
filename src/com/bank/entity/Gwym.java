@@ -5,7 +5,7 @@ import java.io.Serializable;
 import com.google.gson.Gson;
 
 /**
- * 岗位功能
+ * 岗位权限
  */
 public class Gwym implements Serializable {
 
@@ -15,7 +15,7 @@ public class Gwym implements Serializable {
 	 */
 	private Job job;
 	/**
-	 * 功能
+	 * 岗位的权限
 	 */
 	private Xtymb xtymb;
 
@@ -24,9 +24,9 @@ public class Gwym implements Serializable {
 	}
 
 	/**
-	 * 岗位功能
+	 * 岗位权限
 	 * @param job 岗位
-	 * @param xtymb 功能
+	 * @param xtymb 权限
 	 */
 	public Gwym(Job job, Xtymb xtymb) {
 		super();
