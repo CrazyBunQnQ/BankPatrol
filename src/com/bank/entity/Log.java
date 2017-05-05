@@ -14,7 +14,7 @@ public class Log implements Serializable {
 	/**
 	 * 编号
 	 */
-	private int id;
+	private Long id;
 	/**
 	 * 登录时间
 	 */
@@ -32,7 +32,14 @@ public class Log implements Serializable {
 
 	}
 
-	public Log(int id, Date checkIn, Date checkOut, User user) {
+	/**
+	 * 日志
+	 * @param id 编号
+	 * @param checkIn 登录时间
+	 * @param checkOut 退出时间
+	 * @param user 登录用户
+	 */
+	public Log(Long id, Date checkIn, Date checkOut, User user) {
 		super();
 		this.id = id;
 		this.checkIn = checkIn;
@@ -40,11 +47,11 @@ public class Log implements Serializable {
 		this.user = user;
 	}
 
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
@@ -78,7 +85,7 @@ public class Log implements Serializable {
 		int result = 1;
 		result = prime * result + ((checkIn == null) ? 0 : checkIn.hashCode());
 		result = prime * result + ((checkOut == null) ? 0 : checkOut.hashCode());
-		result = prime * result + id;
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((user == null) ? 0 : user.hashCode());
 		return result;
 	}
@@ -102,7 +109,10 @@ public class Log implements Serializable {
 				return false;
 		} else if (!checkOut.equals(other.checkOut))
 			return false;
-		if (id != other.id)
+		if (id == null) {
+			if (other.id != null)
+				return false;
+		} else if (!id.equals(other.id))
 			return false;
 		if (user == null) {
 			if (other.user != null)

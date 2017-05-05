@@ -23,6 +23,11 @@ public class Gwym implements Serializable {
 
 	}
 
+	/**
+	 * 岗位功能
+	 * @param job 岗位
+	 * @param xtymb 功能
+	 */
 	public Gwym(Job job, Xtymb xtymb) {
 		super();
 		this.job = job;

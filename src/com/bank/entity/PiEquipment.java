@@ -14,7 +14,7 @@ public class PiEquipment implements Serializable {
 	/**
 	 * 编号
 	 */
-	private int id;
+	private Long id;
 	/**
 	 * 登录用户
 	 */
@@ -64,7 +64,20 @@ public class PiEquipment implements Serializable {
 
 	}
 
-	public PiEquipment(int id, User user, Bank bank, PiGroup piGroup, RepairType repairType,
+	/**
+	 * 巡检记录
+	 * @param id 记录编号
+	 * @param user 登录用户
+	 * @param bank 银行
+	 * @param piGroup 巡检组
+	 * @param repairType 报修类型
+	 * @param bankEquipment 报修设备
+	 * @param piDate 巡检时间
+	 * @param evaluation 评价
+	 * @param piStatus 设备状态
+	 * @param status 是否确认
+	 */
+	public PiEquipment(Long id, User user, Bank bank, PiGroup piGroup, RepairType repairType,
 			BankEquipment bankEquipment, Date piDate, String evaluation, boolean piStatus, boolean status) {
 		super();
 		this.id = id;
@@ -79,11 +92,11 @@ public class PiEquipment implements Serializable {
 		this.status = status;
 	}
 
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
@@ -166,7 +179,7 @@ public class PiEquipment implements Serializable {
 		result = prime * result + ((bank == null) ? 0 : bank.hashCode());
 		result = prime * result + ((bankEquipment == null) ? 0 : bankEquipment.hashCode());
 		result = prime * result + ((evaluation == null) ? 0 : evaluation.hashCode());
-		result = prime * result + id;
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((piDate == null) ? 0 : piDate.hashCode());
 		result = prime * result + ((piGroup == null) ? 0 : piGroup.hashCode());
 		result = prime * result + (piStatus ? 1231 : 1237);
@@ -200,7 +213,10 @@ public class PiEquipment implements Serializable {
 				return false;
 		} else if (!evaluation.equals(other.evaluation))
 			return false;
-		if (id != other.id)
+		if (id == null) {
+			if (other.id != null)
+				return false;
+		} else if (!id.equals(other.id))
 			return false;
 		if (piDate == null) {
 			if (other.piDate != null)

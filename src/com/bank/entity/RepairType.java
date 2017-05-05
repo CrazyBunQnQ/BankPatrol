@@ -13,7 +13,7 @@ public class RepairType implements Serializable {
 	/**
 	 * 编号
 	 */
-	private int id;
+	private Integer id;
 	/**
 	 * 名称
 	 */
@@ -23,17 +23,22 @@ public class RepairType implements Serializable {
 
 	}
 
-	public RepairType(int id, String value) {
+	/**
+	 * 报修类型
+	 * @param id 编号
+	 * @param value 名称
+	 */
+	public RepairType(Integer id, String value) {
 		super();
 		this.id = id;
 		this.value = value;
 	}
 
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 

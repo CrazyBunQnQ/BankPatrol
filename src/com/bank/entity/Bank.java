@@ -5,7 +5,7 @@ import java.io.Serializable;
 import com.google.gson.Gson;
 
 /**
- * 银行
+ * 银行网点
  */
 public class Bank implements Serializable {
 
@@ -13,7 +13,7 @@ public class Bank implements Serializable {
 	/**
 	 * 银行编号
 	 */
-	private int id;
+	private String id;
 	/**
 	 * 银行名称
 	 */
@@ -23,7 +23,7 @@ public class Bank implements Serializable {
 	 */
 	private double longitude;
 	/**
-	 * 维度
+	 * 纬度
 	 */
 	private double latitude;
 	/**
@@ -35,7 +35,15 @@ public class Bank implements Serializable {
 
 	}
 
-	public Bank(int id, String name, double longitude, double latitude, String ip) {
+	/**
+	 * 银行网点构造器
+	 * @param id 银行编号
+	 * @param name 银行名称
+	 * @param longitude 银行经度
+	 * @param latitude 银行纬度
+	 * @param ip 银行 IP 地址
+	 */
+	public Bank(String id, String name, double longitude, double latitude, String ip) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -44,11 +52,11 @@ public class Bank implements Serializable {
 		this.ip = ip;
 	}
 
-	public int getId() {
+	public String getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 
@@ -88,7 +96,7 @@ public class Bank implements Serializable {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + id;
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((ip == null) ? 0 : ip.hashCode());
 		long temp;
 		temp = Double.doubleToLongBits(latitude);
@@ -108,7 +116,10 @@ public class Bank implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		Bank other = (Bank) obj;
-		if (id != other.id)
+		if (id == null) {
+			if (other.id != null)
+				return false;
+		} else if (!id.equals(other.id))
 			return false;
 		if (ip == null) {
 			if (other.ip != null)

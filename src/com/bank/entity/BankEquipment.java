@@ -14,7 +14,7 @@ public class BankEquipment implements Serializable {
 	/**
 	 * 流水 ID
 	 */
-	private int eachID;
+	private String eachID;
 	/**
 	 * 种类
 	 */
@@ -44,7 +44,17 @@ public class BankEquipment implements Serializable {
 
 	}
 
-	public BankEquipment(int eachID, EquipmentType type, Bank bank, double value, Date buyDate, int status,
+	/**
+	 * 银行设备构造器
+	 * @param eachID 设备流水 ID
+	 * @param type 设备类型
+	 * @param bank 设备所属银行
+	 * @param value 设备价值
+	 * @param buyDate 购买时间
+	 * @param status 状态
+	 * @param depreciationValue 设备折旧残值
+	 */
+	public BankEquipment(String eachID, EquipmentType type, Bank bank, double value, Date buyDate, int status,
 			double depreciationValue) {
 		super();
 		this.eachID = eachID;
@@ -56,11 +66,11 @@ public class BankEquipment implements Serializable {
 		this.depreciationValue = depreciationValue;
 	}
 
-	public int getEachID() {
+	public String getEachID() {
 		return eachID;
 	}
 
-	public void setEachID(int eachID) {
+	public void setEachID(String eachID) {
 		this.eachID = eachID;
 	}
 
@@ -121,7 +131,7 @@ public class BankEquipment implements Serializable {
 		long temp;
 		temp = Double.doubleToLongBits(depreciationValue);
 		result = prime * result + (int) (temp ^ (temp >>> 32));
-		result = prime * result + eachID;
+		result = prime * result + ((eachID == null) ? 0 : eachID.hashCode());
 		result = prime * result + status;
 		result = prime * result + ((type == null) ? 0 : type.hashCode());
 		temp = Double.doubleToLongBits(value);
@@ -150,7 +160,10 @@ public class BankEquipment implements Serializable {
 			return false;
 		if (Double.doubleToLongBits(depreciationValue) != Double.doubleToLongBits(other.depreciationValue))
 			return false;
-		if (eachID != other.eachID)
+		if (eachID == null) {
+			if (other.eachID != null)
+				return false;
+		} else if (!eachID.equals(other.eachID))
 			return false;
 		if (status != other.status)
 			return false;

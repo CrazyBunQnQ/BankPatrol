@@ -13,7 +13,7 @@ public class Xtymb implements Serializable {
 	/**
 	 * 编号
 	 */
-	private int id;
+	private Long id;
 	/**
 	 * 所属功能（模块）
 	 */
@@ -35,7 +35,15 @@ public class Xtymb implements Serializable {
 
 	}
 
-	public Xtymb(int id, Function function, String name, String url, String imgPath) {
+	/**
+	 * 子功能（子模块）
+	 * @param id 编号
+	 * @param function 所属功能（模块）
+	 * @param name 名称
+	 * @param url 请求路径
+	 * @param imgPath 图片路径
+	 */
+	public Xtymb(Long id, Function function, String name, String url, String imgPath) {
 		super();
 		this.id = id;
 		this.function = function;
@@ -44,11 +52,11 @@ public class Xtymb implements Serializable {
 		this.imgPath = imgPath;
 	}
 
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
@@ -89,7 +97,7 @@ public class Xtymb implements Serializable {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((function == null) ? 0 : function.hashCode());
-		result = prime * result + id;
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((imgPath == null) ? 0 : imgPath.hashCode());
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
 		result = prime * result + ((url == null) ? 0 : url.hashCode());
@@ -110,7 +118,10 @@ public class Xtymb implements Serializable {
 				return false;
 		} else if (!function.equals(other.function))
 			return false;
-		if (id != other.id)
+		if (id == null) {
+			if (other.id != null)
+				return false;
+		} else if (!id.equals(other.id))
 			return false;
 		if (imgPath == null) {
 			if (other.imgPath != null)

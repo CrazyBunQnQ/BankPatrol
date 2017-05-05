@@ -43,6 +43,15 @@ public class User implements Serializable {
 
 	}
 
+	/**
+	 * 用户
+	 * @param loginId 用户名（登录id）
+	 * @param job 岗位
+	 * @param department 所属部门
+	 * @param loginPwd 登录密码
+	 * @param name 真实姓名
+	 * @param status 是否启用
+	 */
 	public User(String loginId, Job job, Department department, String loginPwd, String name, boolean status) {
 		super();
 		this.loginId = loginId;

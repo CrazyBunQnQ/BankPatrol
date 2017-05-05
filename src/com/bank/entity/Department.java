@@ -13,7 +13,7 @@ public class Department implements Serializable {
 	/**
 	 * 编号
 	 */
-	private int id;
+	private Integer id;
 	/**
 	 * 名称
 	 */
@@ -23,17 +23,22 @@ public class Department implements Serializable {
 
 	}
 
-	public Department(int id, String name) {
+	/**
+	 * 部门构造器
+	 * @param id 部门 id
+	 * @param name 部门名称
+	 */
+	public Department(Integer id, String name) {
 		super();
 		this.id = id;
 		this.name = name;
 	}
 
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 

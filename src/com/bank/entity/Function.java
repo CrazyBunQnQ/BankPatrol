@@ -13,7 +13,7 @@ public class Function implements Serializable {
 	/**
 	 * 编号
 	 */
-	private int id;
+	private Integer id;
 	/**
 	 * 名称
 	 */
@@ -23,17 +23,22 @@ public class Function implements Serializable {
 
 	}
 
-	public Function(int id, String name) {
+	/**
+	 * 功能（模块）
+	 * @param id 编号
+	 * @param name 名称
+	 */
+	public Function(Integer id, String name) {
 		super();
 		this.id = id;
 		this.name = name;
 	}
 
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 

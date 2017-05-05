@@ -14,7 +14,7 @@ public class EquipmentMaintain implements Serializable {
 	/**
 	 * 编号
 	 */
-	private int id;
+	private Long id;
 	/**
 	 * 设备
 	 */
@@ -32,7 +32,14 @@ public class EquipmentMaintain implements Serializable {
 
 	}
 
-	public EquipmentMaintain(int id, BankEquipment bankEquipment, Date maintainDate, String result) {
+	/**
+	 * 设备维护记录
+	 * @param id 维护记录的编号
+	 * @param bankEquipment 维护的设备
+	 * @param maintainDate 维护日期
+	 * @param result 维护结果
+	 */
+	public EquipmentMaintain(Long id, BankEquipment bankEquipment, Date maintainDate, String result) {
 		super();
 		this.id = id;
 		this.bankEquipment = bankEquipment;
@@ -40,11 +47,11 @@ public class EquipmentMaintain implements Serializable {
 		this.result = result;
 	}
 
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
@@ -77,7 +84,7 @@ public class EquipmentMaintain implements Serializable {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((bankEquipment == null) ? 0 : bankEquipment.hashCode());
-		result = prime * result + id;
+		result = prime * result + (int) (id ^ (id >>> 32));
 		result = prime * result + ((maintainDate == null) ? 0 : maintainDate.hashCode());
 		result = prime * result + ((this.result == null) ? 0 : this.result.hashCode());
 		return result;

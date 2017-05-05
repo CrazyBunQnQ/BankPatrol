@@ -14,7 +14,7 @@ public class FaultRepair implements Serializable {
 	/**
 	 * 编号
 	 */
-	private int id;
+	private Long id;
 	/**
 	 * 巡检组
 	 */
@@ -24,7 +24,7 @@ public class FaultRepair implements Serializable {
 	 */
 	private BankEquipment bankEquipment;
 	/**
-	 * 保修类型
+	 * 报修类型
 	 */
 	private RepairType repairType;
 	/**
@@ -32,15 +32,15 @@ public class FaultRepair implements Serializable {
 	 */
 	private Bank bank;
 	/**
-	 * 保修用户
+	 * 报修用户
 	 */
 	private User user;
 	/**
-	 * 保修开始时间
+	 * 报修开始时间
 	 */
 	private Date biginTime;
 	/**
-	 * 保修状态
+	 * 报修状态
 	 */
 	private int repairStatus;
 	/**
@@ -48,7 +48,7 @@ public class FaultRepair implements Serializable {
 	 */
 	private int allocateStatus;
 	/**
-	 * 保修结束时间
+	 * 报修结束时间
 	 */
 	private Date endTime;
 	/**
@@ -60,7 +60,21 @@ public class FaultRepair implements Serializable {
 
 	}
 
-	public FaultRepair(int id, PiGroup piGroup, BankEquipment bankEquipment, RepairType repairType, Bank bank,
+	/**
+	 * 报修记录
+	 * @param id 报修记录的编号
+	 * @param piGroup 巡检组
+	 * @param bankEquipment 报修的设备
+	 * @param repairType 报修的类型
+	 * @param bank 报修的银行
+	 * @param user 报修用户
+	 * @param biginTime 报修开始时间
+	 * @param repairStatus 报修状态
+	 * @param allocateStatus 分配状态
+	 * @param endTime 报修结束时间
+	 * @param evaluation 评价
+	 */
+	public FaultRepair(Long id, PiGroup piGroup, BankEquipment bankEquipment, RepairType repairType, Bank bank,
 			User user, Date biginTime, int repairStatus, int allocateStatus, Date endTime, String evaluation) {
 		super();
 		this.id = id;
@@ -76,11 +90,11 @@ public class FaultRepair implements Serializable {
 		this.evaluation = evaluation;
 	}
 
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
@@ -174,7 +188,7 @@ public class FaultRepair implements Serializable {
 		result = prime * result + ((biginTime == null) ? 0 : biginTime.hashCode());
 		result = prime * result + ((endTime == null) ? 0 : endTime.hashCode());
 		result = prime * result + ((evaluation == null) ? 0 : evaluation.hashCode());
-		result = prime * result + id;
+		result = prime * result + (int) (id ^ (id >>> 32));
 		result = prime * result + ((piGroup == null) ? 0 : piGroup.hashCode());
 		result = prime * result + repairStatus;
 		result = prime * result + ((repairType == null) ? 0 : repairType.hashCode());

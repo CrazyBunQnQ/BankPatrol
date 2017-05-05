@@ -13,7 +13,7 @@ public class PiWorker implements Serializable {
 	/**
 	 * 编号
 	 */
-	private int id;
+	private Long id;
 	/**
 	 * 所属巡检组
 	 */
@@ -35,7 +35,15 @@ public class PiWorker implements Serializable {
 
 	}
 
-	public PiWorker(int id, PiGroup piGroup, String name, String tel1, String tel2) {
+	/**
+	 * 巡检工
+	 * @param id 编号
+	 * @param piGroup 所属巡检组
+	 * @param name 名称
+	 * @param tel1 电话1
+	 * @param tel2 电话2
+	 */
+	public PiWorker(Long id, PiGroup piGroup, String name, String tel1, String tel2) {
 		super();
 		this.id = id;
 		this.piGroup = piGroup;
@@ -44,11 +52,11 @@ public class PiWorker implements Serializable {
 		this.tel2 = tel2;
 	}
 
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
@@ -88,7 +96,7 @@ public class PiWorker implements Serializable {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + id;
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
 		result = prime * result + ((piGroup == null) ? 0 : piGroup.hashCode());
 		result = prime * result + ((tel1 == null) ? 0 : tel1.hashCode());
@@ -105,7 +113,10 @@ public class PiWorker implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		PiWorker other = (PiWorker) obj;
-		if (id != other.id)
+		if (id == null) {
+			if (other.id != null)
+				return false;
+		} else if (!id.equals(other.id))
 			return false;
 		if (name == null) {
 			if (other.name != null)
