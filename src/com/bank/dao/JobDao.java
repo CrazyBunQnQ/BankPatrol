@@ -35,4 +35,13 @@ public interface JobDao {
 	 * @throws SQLException
 	 */
 	int updateJob(Connection conn, Job job) throws SQLException;
+	
+	/**
+	 * 删除指定 id 的岗位
+	 * @param conn
+	 * @param jobId 要删除的岗位 id
+	 * @return int 影响行数
+	 * @throws SQLException
+	 */
+	int deleteJob(Connection conn, int jobId) throws SQLException;
 }

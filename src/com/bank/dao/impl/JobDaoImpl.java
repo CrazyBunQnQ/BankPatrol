@@ -45,4 +45,11 @@ public class JobDaoImpl implements JobDao {
 		return DBUtil.closeStatement(ps);
 	}
 
+	@Override
+	public int deleteJob(Connection conn, int jobId) throws SQLException {
+		PreparedStatement ps = conn.prepareStatement("DELETE FROM job WHERE Job_ID=?");
+		ps.setInt(1, jobId);
+		LOGGER.info("删除岗位 " + jobId + " ：" + ps.toString());
+		return DBUtil.closeStatement(ps);
+	}
 }
