@@ -2,6 +2,7 @@ package com.bank.entity;
 
 import java.io.Serializable;
 
+import com.bank.util.MD5Util;
 import com.google.gson.Gson;
 
 /**
@@ -61,7 +62,7 @@ public class User implements Serializable {
 		this.loginId = loginId;
 		this.job = job;
 		this.department = department;
-		this.loginPwd = loginPwd;
+		this.loginPwd = MD5Util.getMD5(loginPwd);
 		this.name = name;
 		this.status = status;
 		this.worker = worker;
@@ -96,7 +97,7 @@ public class User implements Serializable {
 	}
 
 	public void setLoginPwd(String loginPwd) {
-		this.loginPwd = loginPwd;
+		this.loginPwd = MD5Util.getMD5(loginPwd);
 	}
 
 	public String getName() {
@@ -122,7 +123,67 @@ public class User implements Serializable {
 	public void setWorker(PiWorker worker) {
 		this.worker = worker;
 	}
+	
+	/**
+	 * 获取用户的岗位 id
+	 * @return
+	 */
+	public int getJobId() {
+		return job.getId();
+	}
+	
+	/**
+	 * 设置用户的岗位 id
+	 * @param jobId
+	 */
+	public void setJobId(int jobId) {
+		this.job.setId(jobId);
+	}
+	
+	/**
+	 * 获取用户的岗位名称
+	 * @return
+	 */
+	public String getJobName() {
+		return job.getName();
+	}
+	
+	/**
+	 * 设置用户的岗位名称
+	 * @param jname
+	 */
+	public void setJobName(String jname) {
+		this.job.setName(jname);
+	}
 
+	/**
+	 * 获取用户所在部门的 id
+	 * @return
+	 */
+	public int getDepartmentId() {
+		return department.getId();
+	}
+
+	public void setDepartmentId(int did) {
+		this.department.setId(did);
+	}
+	
+	/**
+	 * 获取用户所在的部门名称
+	 * @return
+	 */
+	public String getDepartmentName() {
+		return department.getName();
+	}
+	
+	/**
+	 * 设置用户所在的部门名称
+	 * @param dname
+	 */
+	public void setDepartmentName(String dname) {
+		this.department.setName(dname);
+	}
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;

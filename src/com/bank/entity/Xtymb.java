@@ -91,6 +91,22 @@ public class Xtymb implements Serializable {
 	public void setImgPath(String imgPath) {
 		this.imgPath = imgPath;
 	}
+	
+	/**
+	 * 获取所属模块 id
+	 * @return
+	 */
+	public int getFunId() {
+		return function.getId();
+	}
+	
+	/**
+	 * 设置所属的模块 id
+	 * @param funId
+	 */
+	public void setFunId(int funId) {
+		this.function.setId(funId);
+	}
 
 	@Override
 	public int hashCode() {
