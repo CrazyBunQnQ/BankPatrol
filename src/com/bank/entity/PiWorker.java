@@ -19,10 +19,6 @@ public class PiWorker implements Serializable {
 	 */
 	private PiGroup piGroup;
 	/**
-	 * 姓名
-	 */
-	private String name;
-	/**
 	 * 电话1
 	 */
 	private String tel1;
@@ -39,15 +35,13 @@ public class PiWorker implements Serializable {
 	 * 巡检工
 	 * @param id 编号
 	 * @param piGroup 所属巡检组
-	 * @param name 名称
 	 * @param tel1 电话1
 	 * @param tel2 电话2
 	 */
-	public PiWorker(Long id, PiGroup piGroup, String name, String tel1, String tel2) {
+	public PiWorker(Long id, PiGroup piGroup, String tel1, String tel2) {
 		super();
 		this.id = id;
 		this.piGroup = piGroup;
-		this.name = name;
 		this.tel1 = tel1;
 		this.tel2 = tel2;
 	}
@@ -66,14 +60,6 @@ public class PiWorker implements Serializable {
 
 	public void setPiGroup(PiGroup piGroup) {
 		this.piGroup = piGroup;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
 	}
 
 	public String getTel1() {
@@ -97,7 +83,6 @@ public class PiWorker implements Serializable {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		result = prime * result + ((name == null) ? 0 : name.hashCode());
 		result = prime * result + ((piGroup == null) ? 0 : piGroup.hashCode());
 		result = prime * result + ((tel1 == null) ? 0 : tel1.hashCode());
 		result = prime * result + ((tel2 == null) ? 0 : tel2.hashCode());
@@ -117,11 +102,6 @@ public class PiWorker implements Serializable {
 			if (other.id != null)
 				return false;
 		} else if (!id.equals(other.id))
-			return false;
-		if (name == null) {
-			if (other.name != null)
-				return false;
-		} else if (!name.equals(other.name))
 			return false;
 		if (piGroup == null) {
 			if (other.piGroup != null)
@@ -143,8 +123,7 @@ public class PiWorker implements Serializable {
 
 	@Override
 	public String toString() {
-		return "PiWorker [id=" + id + ", piGroup=" + piGroup + ", name=" + name + ", tel1=" + tel1 + ", tel2=" + tel2
-				+ "]";
+		return "PiWorker [id=" + id + ", piGroup=" + piGroup + ", tel1=" + tel1 + ", tel2=" + tel2 + "]";
 	}
 
 	public String toJson() {

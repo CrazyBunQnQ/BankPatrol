@@ -14,14 +14,6 @@ public class Job implements Serializable {
 	 */
 	private Integer id;
 	/**
-	 * 岗位性质
-	 * 
-	 * 0：管理
-	 * 
-	 * 1：巡检组
-	 */
-	private Integer groupId;
-	/**
 	 * 名称
 	 */
 	private String name;
@@ -37,14 +29,12 @@ public class Job implements Serializable {
 	/**
 	 * 岗位
 	 * @param id 编号
-	 * @param groupId 岗位性质
 	 * @param name 名称
 	 * @param description 描述
 	 */
-	public Job(Integer id, Integer groupId, String name, String description) {
+	public Job(Integer id, String name, String description) {
 		super();
 		this.id = id;
-		this.groupId = groupId;
 		this.name = name;
 		this.description = description;
 	}
@@ -55,14 +45,6 @@ public class Job implements Serializable {
 
 	public void setId(Integer id) {
 		this.id = id;
-	}
-
-	public Integer getGroupId() {
-		return groupId;
-	}
-
-	public void setGroupId(Integer groupId) {
-		this.groupId = groupId;
 	}
 
 	public String getName() {
@@ -86,7 +68,6 @@ public class Job implements Serializable {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((description == null) ? 0 : description.hashCode());
-		result = prime * result + ((groupId == null) ? 0 : groupId.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
 		return result;
@@ -106,11 +87,6 @@ public class Job implements Serializable {
 				return false;
 		} else if (!description.equals(other.description))
 			return false;
-		if (groupId == null) {
-			if (other.groupId != null)
-				return false;
-		} else if (!groupId.equals(other.groupId))
-			return false;
 		if (id == null) {
 			if (other.id != null)
 				return false;
@@ -126,7 +102,7 @@ public class Job implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Job [id=" + id + ", groupId=" + groupId + ", name=" + name + ", description=" + description + "]";
+		return "Job [id=" + id + ", name=" + name + ", description=" + description + "]";
 	}
 
 	public String toJson() {

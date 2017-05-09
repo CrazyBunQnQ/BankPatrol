@@ -38,6 +38,10 @@ public class User implements Serializable {
 	 * false：禁用
 	 */
 	private boolean status;
+	/**
+	 * 巡检工
+	 */
+	private PiWorker worker;
 
 	public User() {
 
@@ -52,7 +56,7 @@ public class User implements Serializable {
 	 * @param name 真实姓名
 	 * @param status 是否启用
 	 */
-	public User(String loginId, Job job, Department department, String loginPwd, String name, boolean status) {
+	public User(String loginId, Job job, Department department, String loginPwd, String name, boolean status, PiWorker worker) {
 		super();
 		this.loginId = loginId;
 		this.job = job;
@@ -60,6 +64,7 @@ public class User implements Serializable {
 		this.loginPwd = loginPwd;
 		this.name = name;
 		this.status = status;
+		this.worker = worker;
 	}
 
 	public String getLoginId() {
@@ -109,6 +114,14 @@ public class User implements Serializable {
 	public void setStatus(boolean status) {
 		this.status = status;
 	}
+	
+	public PiWorker getWorker() {
+		return worker;
+	}
+
+	public void setWorker(PiWorker worker) {
+		this.worker = worker;
+	}
 
 	@Override
 	public int hashCode() {
@@ -120,6 +133,7 @@ public class User implements Serializable {
 		result = prime * result + ((loginPwd == null) ? 0 : loginPwd.hashCode());
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
 		result = prime * result + (status ? 1231 : 1237);
+		result = prime * result + ((worker == null) ? 0 : worker.hashCode());
 		return result;
 	}
 
@@ -159,13 +173,18 @@ public class User implements Serializable {
 			return false;
 		if (status != other.status)
 			return false;
+		if (worker == null) {
+			if (other.worker != null)
+				return false;
+		} else if (!worker.equals(other.worker))
+			return false;
 		return true;
 	}
 
 	@Override
 	public String toString() {
 		return "User [loginId=" + loginId + ", job=" + job + ", department=" + department + ", loginPwd=" + loginPwd
-				+ ", name=" + name + ", status=" + status + "]";
+				+ ", name=" + name + ", status=" + status + ", worker=" + worker + "]";
 	}
 
 	public String toJson() {
