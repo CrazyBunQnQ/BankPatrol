@@ -1,50 +1,94 @@
 package com.bank.dao.impl;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.bank.dao.BankDao;
 import com.bank.entity.Bank;
 import com.bank.util.DBUtil;
 
-public class BankDaoImpl implements BankDao {
-	private static final Logger LOGGER = LogManager.getLogger(BankDaoImpl.class.getName());
+public class BankDaoImpl extends BaseDaoImpl implements BankDao {
 
 	@Override
-	public ResultSet queryBanks(Connection conn, int page, int count) throws SQLException {
-		PreparedStatement ps = conn.prepareStatement("SELECT * FROM bank LIMIT ?, ?");
-		ps.setInt(1, page);
-		ps.setInt(2, count);
-		LOGGER.info("查询银行：" + ps.toString());
-		return ps.executeQuery();
+	public int queryBankesCount() {
+		int n = 0;
+		String sql = "SELECT COUNT(*) FROM bank";
+		try {
+			setConnAndPS(sql);
+			LOGGER.info("查询银行数量：" + ps.toString());
+			rs = ps.executeQuery();
+			if (rs.next()) {
+				n = rs.getInt(1);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBUtil.closeConnection(conn, rs, ps);
+		}
+		return n;
+	}
+	
+	@Override
+	public List<Bank> queryBanks(int page, int count){
+		List<Bank> list = new ArrayList<Bank>();
+		String sql = "SELECT * FROM bank LIMIT ?, ?";
+		try {
+			setConnAndPS(sql);
+			ps.setInt(1, page);
+			ps.setInt(2, count);
+			LOGGER.info("查询银行：" + ps.toString());
+			rs = ps.executeQuery();
+			while (rs.next()) {
+				list.add(new Bank(rs.getString(1), rs.getString(2), rs.getDouble(3), rs.getDouble(4), rs.getString(5)));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBUtil.closeConnection(conn, rs, ps);
+		}
+		return list;
 	}
 
 	@Override
-	public int insertBank(Connection conn, Bank bank) throws SQLException {
-		PreparedStatement ps = conn.prepareStatement("INSERT INTO bank VALUES(?, ?, ?, ?, ?)");
-		ps.setString(1, bank.getId());
-		ps.setString(2, bank.getName());
-		ps.setDouble(3, bank.getLongitude());
-		ps.setDouble(4, bank.getLatitude());
-		ps.setString(5, bank.getIp());
+	public int insertBank(Bank bank) {
+		int n = 0;
+		String sql = "INSERT INTO bank VALUES(?, ?, ?, ?, ?)";
+		try {
+			setConnAndPS(sql);
+			ps.setString(1, bank.getId());
+			ps.setString(2, bank.getName());
+			ps.setDouble(3, bank.getLongitude());
+			ps.setDouble(4, bank.getLatitude());
+			ps.setString(5, bank.getIp());
+			n = ps.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBUtil.closeConnection(conn, null, ps);
+		}
 		LOGGER.info("添加银行信息：" + ps.toString());
-		return DBUtil.closeStatement(ps);
+		return n;
 	}
 
 	@Override
-	public int updateBank(Connection conn, Bank bank) throws SQLException {
-		PreparedStatement ps = conn.prepareStatement("UPDATE bank SET Bank_Name=?, Bank_Longitude=?, Bank_Latitude=?, Bank_IP=? WHERE Bank_id=?");
-		ps.setString(1, bank.getName());
-		ps.setDouble(2, bank.getLongitude());
-		ps.setDouble(3, bank.getLatitude());
-		ps.setString(4, bank.getIp());
-		ps.setString(5, bank.getId());
+	public int updateBank(Bank bank){
+		int n = 0;
+		String sql = "UPDATE bank SET Bank_Name=?, Bank_Longitude=?, Bank_Latitude=?, Bank_IP=? WHERE Bank_id=?";
+		try {
+			setConnAndPS(sql);
+			ps.setString(1, bank.getName());
+			ps.setDouble(2, bank.getLongitude());
+			ps.setDouble(3, bank.getLatitude());
+			ps.setString(4, bank.getIp());
+			ps.setString(5, bank.getId());
+			n = ps.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBUtil.closeConnection(conn, null, ps);
+		}
 		LOGGER.info("添加银行信息：" + ps.toString());
-		return DBUtil.closeStatement(ps);
+		return n;
 	}
 }

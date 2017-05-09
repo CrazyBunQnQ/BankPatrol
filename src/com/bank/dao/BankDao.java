@@ -1,40 +1,42 @@
 package com.bank.dao;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
 
 import com.bank.entity.Bank;
 
 public interface BankDao {
+	
+	/**
+	 * 查询所有银行网点的数量
+	 * @return
+	 */
+	int queryBankesCount();
 
 	/**
 	 * 查询所有银行
-	 * @param conn
 	 * @param page 第几页
 	 * @param count 每页显示数量
-	 * @return ResultSet 数据集
+	 * @return List
 	 * @throws SQLException
 	 */
-	ResultSet queryBanks(Connection conn, int page, int count) throws SQLException;
+	List<Bank> queryBanks(int page, int count);
 	
 	/**
 	 * 添加银行网点
-	 * @param conn
 	 * @param bank
 	 * @return int 影响行数
 	 * @throws SQLException
 	 */
-	int insertBank(Connection conn, Bank bank) throws SQLException;
+	int insertBank(Bank bank);
 	
 	/**
 	 * 更新银行信息
-	 * @param conn
 	 * @param bank 新的银行信息（不包含 id）
 	 * @return int 影响行数
 	 * @throws SQLException
 	 */
-	int updateBank(Connection conn, Bank bank) throws SQLException;
+	int updateBank(Bank bank);
 	
 	
 }

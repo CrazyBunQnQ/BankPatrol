@@ -26,11 +26,10 @@ public class JobDaoImpl implements JobDao {
 
 	@Override
 	public int insertJob(Connection conn, Job job) throws SQLException {
-		PreparedStatement ps = conn.prepareStatement("INSERT INTO job VALUES (?, ?, ?, ?)");
+		PreparedStatement ps = conn.prepareStatement("INSERT INTO job VALUES (?, ?, ?)");
 		ps.setInt(1, job.getId());
-		ps.setInt(2, job.getGroupId());
-		ps.setString(3, job.getName());
-		ps.setString(4, job.getDescription());
+		ps.setString(2, job.getName());
+		ps.setString(3, job.getDescription());
 		LOGGER.info("增加岗位：" + ps.toString());
 		return DBUtil.closeStatement(ps);
 	}
