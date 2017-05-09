@@ -34,7 +34,7 @@ public class DBUtil {
 	static {
 		Properties properties = new Properties();
 		try {
-			properties.load(DBUtil.class.getClassLoader().getResourceAsStream("dbconfig.properties"));
+			properties.load(DBUtil.class.getClassLoader().getResourceAsStream("jdbc.properties"));
 			dbDriver = properties.getProperty("driver");
 			dbUrl = properties.getProperty("url");
 			dbUser = properties.getProperty("user");
@@ -67,6 +67,7 @@ public class DBUtil {
 	 * @return int 影响行数
 	 * @throws SQLException
 	 */
+	@Deprecated
 	public static int closeStatement(PreparedStatement ps) throws SQLException {
 		int num = ps.executeUpdate();
 		ps.close();
@@ -117,15 +118,19 @@ public class DBUtil {
 	 * @param ps 要关闭的 PreparedStatement 数据库语句
 	 * @throws SQLException
 	 */
-	public static void closeConnection(Connection conn, ResultSet rs, PreparedStatement ps) throws SQLException {
-		if (rs != null) {
-			rs.close();
-		}
-		if (ps != null) {
-			ps.close();
-		}
-		if (conn != null) {
-			conn.close();
+	public static void closeConnection(Connection conn, ResultSet rs, PreparedStatement ps) {
+		try {
+			if (rs != null) {
+				rs.close();
+			}
+			if (ps != null) {
+				ps.close();
+			}
+			if (conn != null) {
+				conn.close();
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
 		}
 	}
 }
