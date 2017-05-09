@@ -24,7 +24,7 @@ public class Function implements Serializable {
 	}
 
 	/**
-	 * 功能（模块）
+	 * 模块
 	 * @param id 编号
 	 * @param name 名称
 	 */

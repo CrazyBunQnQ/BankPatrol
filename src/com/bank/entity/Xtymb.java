@@ -5,7 +5,7 @@ import java.io.Serializable;
 import com.google.gson.Gson;
 
 /**
- * 子功能（子模块）
+ * 子功能
  */
 public class Xtymb implements Serializable {
 
@@ -15,7 +15,7 @@ public class Xtymb implements Serializable {
 	 */
 	private Long id;
 	/**
-	 * 所属功能（模块）
+	 * 所属模块
 	 */
 	private Function function;
 	/**
@@ -36,9 +36,9 @@ public class Xtymb implements Serializable {
 	}
 
 	/**
-	 * 子功能（子模块）
+	 * 子功能
 	 * @param id 编号
-	 * @param function 所属功能（模块）
+	 * @param function 所属模块
 	 * @param name 名称
 	 * @param url 请求路径
 	 * @param imgPath 图片路径

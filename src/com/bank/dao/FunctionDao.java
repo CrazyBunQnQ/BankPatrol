@@ -1,16 +1,14 @@
 package com.bank.dao;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.util.List;
+
+import com.bank.entity.Function;
 
 public interface FunctionDao {
 
 	/**
 	 * 查询功能列表
-	 * @param conn
 	 * @return 数据集
-	 * @throws SQLException
 	 */
-	ResultSet queryFunctions(Connection conn) throws SQLException;
+	List<Function> queryFunctions();
 }

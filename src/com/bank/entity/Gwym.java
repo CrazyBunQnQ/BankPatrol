@@ -50,6 +50,86 @@ public class Gwym implements Serializable {
 		this.xtymb = xtymb;
 	}
 
+	/**
+	 * 获取子功能 id
+	 * @return
+	 */
+	public Long getXtymbId() {
+		return xtymb.getId();
+	}
+	
+	/**
+	 * 设置子功能 id
+	 * @param xtymbId
+	 */
+	public void setXtymbId(long xtymbId) {
+		this.xtymb.setId(xtymbId);
+	}
+	
+	/**
+	 * 获取子功能名称
+	 * @return
+	 */
+	public String getXtymbName() {
+		return xtymb.getName();
+	}
+	
+	/**
+	 * 设置子功能名称
+	 * @param xtymbName
+	 */
+	public void setXtymbName(String xtymbName) {
+		this.xtymb.setName(xtymbName);
+	}
+	
+	/**
+	 * 获取模块 id
+	 * @return
+	 */
+	public int getFunId() {
+		return xtymb.getFunction().getId();
+	}
+	
+	/**
+	 * 设置模块 id
+	 * @param funId 子功能 id
+	 */
+	public void setFunId(int funId) {
+		this.xtymb.getFunction().setId(funId);
+	}
+	
+	/**
+	 * 获取模块名称
+	 * @return
+	 */
+	public String getFunName() {
+		return xtymb.getFunction().getName();
+	}
+	
+	/**
+	 * 设置模块名称
+	 * @param fName
+	 */
+	public void setFunName(String fName) {
+		this.xtymb.getFunction().setName(fName);
+	}
+	
+	/**
+	 * 获取岗位 id
+	 * @return
+	 */
+	public int getJobId() {
+		return job.getId();
+	}
+	
+	/**
+	 * 设置岗位 id
+	 * @param jobId
+	 */
+	public void setJobId(int jobId) {
+		this.job.setId(jobId);
+	}
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;

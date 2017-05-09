@@ -1,6 +1,5 @@
 package com.bank.dao;
 
-import java.sql.SQLException;
 import java.util.List;
 
 import com.bank.entity.BankEquipment;
@@ -20,7 +19,6 @@ public interface BankEquipmentDao {
 	 * @param page 当前页数（第一页为0）
 	 * @param count 每页显示数量
 	 * @return List
-	 * @throws SQLException
 	 */
 	List<BankEquipment> queryBankEquipments(String bankID, int page, int count);
 	
@@ -28,7 +26,6 @@ public interface BankEquipmentDao {
 	 * 添加银行设备信息
 	 * @param bankEquipment
 	 * @return int 影响行数
-	 * @throws SQLException
 	 */
 	int insertBankEquipment(BankEquipment bankEquipment);
 	
@@ -36,7 +33,6 @@ public interface BankEquipmentDao {
 	 * 更新银行设备信息
 	 * @param bankEquipment 银行设备（不包含 id）
 	 * @return int 影响行数
-	 * @throws SQLException
 	 */
 	int updateBankEquipment(BankEquipment bankEquipment);
 	
@@ -44,7 +40,6 @@ public interface BankEquipmentDao {
 	 * 按照设备流水 ID 删除设备信息
 	 * @param eachID 流水 ID
 	 * @return int 影响行数
-	 * @throws SQLException
 	 */
 	int deleteBankEquipment(String eachID);
 }

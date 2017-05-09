@@ -1,23 +1,31 @@
 package com.bank.dao.impl;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.bank.dao.FunctionDao;
+import com.bank.entity.Function;
+import com.bank.util.DBUtil;
 
-public class FunctionDaoImpl implements FunctionDao {
+public class FunctionDaoImpl extends BaseDaoImpl implements FunctionDao {
 
-	private static final Logger LOGGER = LogManager.getLogger(FunctionDaoImpl.class.getName());
-	
 	@Override
-	public ResultSet queryFunctions(Connection conn) throws SQLException {
-		PreparedStatement ps = conn.prepareStatement("SELECT * FROM functions");
-		LOGGER.info("查询所有功能：" + ps.toString());
-		return ps.executeQuery();
+	public List<Function> queryFunctions() {
+		List<Function> list = new ArrayList<Function>();
+		String sql = "SELECT * FROM functions";
+		try {
+			setConnAndPS(sql);
+			LOGGER.info("查询所有功能：" + ps.toString());
+			rs = ps.executeQuery();
+			while (rs.next()) {
+				list.add(new Function(rs.getInt(1), rs.getString(2)));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBUtil.closeConnection(conn, rs, ps);
+		}
+		return list;
 	}
 }

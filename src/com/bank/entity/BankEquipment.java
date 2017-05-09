@@ -121,6 +121,38 @@ public class BankEquipment implements Serializable {
 	public void setDepreciationValue(double depreciationValue) {
 		this.depreciationValue = depreciationValue;
 	}
+	
+	/**
+	 * 获取所属银行的 id
+	 * @return
+	 */
+	public String getBankId() {
+		return bank.getId();
+	}
+	
+	/**
+	 * 设置所属银行的 id
+	 * @param bankID
+	 */
+	public void setBankId(String bankID) {
+		this.bank.setId(bankID);
+	}
+	
+	/**
+	 * 获取设备种类 id
+	 * @return
+	 */
+	public String getTypeId() {
+		return type.getId();
+	}
+	
+	/**
+	 * 设置设备种类 id
+	 * @param typId
+	 */
+	public void setTypeId(String typId) {
+		this.type.setId(typId);
+	}
 
 	@Override
 	public int hashCode() {

@@ -6,9 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.bank.dao.BankEquipmentDao;
-import com.bank.entity.Bank;
 import com.bank.entity.BankEquipment;
-import com.bank.entity.EquipmentType;
 import com.bank.util.DBUtil;
 
 public class BankEquipmentDaoImpl extends BaseDaoImpl implements BankEquipmentDao {
@@ -31,7 +29,7 @@ public class BankEquipmentDaoImpl extends BaseDaoImpl implements BankEquipmentDa
 	@Override
 	public List<BankEquipment> queryBankEquipments(String bankID, int page, int count) {
 		List<BankEquipment> list = new ArrayList<BankEquipment>();
-		String sql = "SELECT * FROM bankequipment WHERE Bank_id=? LIMIT ?, ?";
+		String sql = "SELECT EquipmentEach_ID, Equipment_id, Equipment_Value, Equipment_BuyDate, Status, Depreciation_Value FROM bankequipment WHERE Bank_id=? LIMIT ?, ?";
 		try {
 			setConnAndPS(sql);
 			ps.setString(1, bankID);
@@ -40,15 +38,16 @@ public class BankEquipmentDaoImpl extends BaseDaoImpl implements BankEquipmentDa
 			LOGGER.info("查询银行 " + bankID + " 的设备：" + ps.toString());
 			rs = ps.executeQuery();
 			while (rs.next()) {
-				list.add(new BankEquipment(
-						rs.getString(1), 
-						new EquipmentType(rs.getString(2), ""), 
-						new Bank(rs.getString(3), "", 0, 0, ""), 
-						rs.getDouble(4), 
-						rs.getDate(5), 
-						rs.getInt(6), 
-						rs.getDouble(7))
-				);
+				BankEquipment be = new BankEquipment();
+				be.setEachID(rs.getString(1));
+				be.setTypeId(rs.getString(2));
+				be.setBankId(bankID);
+				be.setValue(rs.getDouble(3));
+				be.setBuyDate(rs.getDate(4));
+				be.setStatus(rs.getInt(5));
+				be.setDepreciationValue(rs.getDouble(6));
+				list.add(be);
+//				list.add(new BankEquipment(rs.getString(1), new EquipmentType(rs.getString(2), ""), new Bank(rs.getString(3), "", 0, 0, ""), rs.getDouble(4), rs.getDate(5), rs.getInt(6), rs.getDouble(7)));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();

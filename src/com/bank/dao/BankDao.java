@@ -1,6 +1,5 @@
 package com.bank.dao;
 
-import java.sql.SQLException;
 import java.util.List;
 
 import com.bank.entity.Bank;
@@ -18,7 +17,6 @@ public interface BankDao {
 	 * @param page 第几页
 	 * @param count 每页显示数量
 	 * @return List
-	 * @throws SQLException
 	 */
 	List<Bank> queryBanks(int page, int count);
 	
@@ -26,7 +24,6 @@ public interface BankDao {
 	 * 添加银行网点
 	 * @param bank
 	 * @return int 影响行数
-	 * @throws SQLException
 	 */
 	int insertBank(Bank bank);
 	
@@ -34,9 +31,6 @@ public interface BankDao {
 	 * 更新银行信息
 	 * @param bank 新的银行信息（不包含 id）
 	 * @return int 影响行数
-	 * @throws SQLException
 	 */
 	int updateBank(Bank bank);
-	
-	
 }
