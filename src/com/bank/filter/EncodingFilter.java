@@ -14,40 +14,28 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 /**
- * Servlet Filter implementation class EncodingFilter
+ * 用来统一字符编码的过滤器
  */
 @WebFilter("/EncodingFilter")
 public class EncodingFilter implements Filter {
 	private static final Logger LOGGER = LogManager.getLogger(EncodingFilter.class.getName());
 	private String charEncoding = null;
 
-    /**
-     * Default constructor. 
-     */
     public EncodingFilter() {
     }
 
-	/**
-	 * @see Filter#destroy()
-	 */
 	public void destroy() {
 	}
 
-	/**
-	 * @see Filter#doFilter(ServletRequest, ServletResponse, FilterChain)
-	 */
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
 		if (!charEncoding.equals(request.getCharacterEncoding())) {
 			request.setCharacterEncoding(charEncoding);
 		}
-//		response.setCharacterEncoding("text/html;charset=" + charEncoding);
+//		response.setContentType("text/html;charset=" + charEncoding);
 		response.setCharacterEncoding(charEncoding);
 		chain.doFilter(request, response);
 	}
 
-	/**
-	 * @see Filter#init(FilterConfig)
-	 */
 	public void init(FilterConfig fConfig) {
 		charEncoding = fConfig.getInitParameter("encoding");
 		if (charEncoding == null) {
@@ -55,5 +43,4 @@ public class EncodingFilter implements Filter {
 			charEncoding = "utf-8";
 		}
 	}
-
 }

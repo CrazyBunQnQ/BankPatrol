@@ -9,4 +9,42 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
+  <!-- Error Page Start -->
+  <error-page>
+  	<error-code>404</error-code>
+  	<location>404.jsp</location>
+  </error-page>
+  <!-- Error Page End -->
+  <!-- Listener Start -->
+  <!-- Listener End -->
+  <!-- Filter Start -->
+  <filter>
+ 	<filter-name>EncodingFilter</filter-name>
+ 	<filter-class>com.bank.filter.EncodingFilter</filter-class>
+ 	<init-param>
+		<param-name>encoding</param-name>
+		<param-value>UTF-8</param-value>
+	</init-param>
+  </filter>
+  <!-- Filter End -->
+  <!-- Servlet Start -->
+  <servlet>
+  	<servlet-name>BankServlet</servlet-name>
+  	<servlet-class>com.bank.servlet.BankServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>BankServlet</servlet-name>
+  	<url-pattern>/bank</url-pattern>
+  </servlet-mapping>
+  <!-- Servlet End -->
+  
+  
+  <!-- Mapping Start -->
+  <!-- Filter Mapping Start -->
+  <filter-mapping>
+    <filter-name>EncodingFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+  
+  <!-- Mapping End -->
 </web-app>
