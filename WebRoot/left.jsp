@@ -28,7 +28,7 @@
 					<li class="current">
 						<a href="${pageContext.request.contextPath }/${x.url }" target="mainfre"> 
 							<img src="images/square1.png"> 
-							<span class="sider-nav-title">${x.ymmc}</span> 
+							<span class="sider-nav-title">${x.name}</span> 
 						</a>
 					</li>
 				</c:forEach>

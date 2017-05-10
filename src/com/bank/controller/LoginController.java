@@ -39,6 +39,7 @@ public class LoginController {
 
 		if (user != null) {
 			if (user.isStatus()) {
+				request.getSession().setAttribute("flag", "login_success");
 				request.getSession().setAttribute("user", user);
 				// 登录同时记录日志记录（日志模块需要完成的功能）
 				// Log log = new Log();
@@ -49,6 +50,7 @@ public class LoginController {
 
 				response.sendRedirect("../login/initdata.do");// 调用初始化数据
 			} else {
+				request.getSession().setAttribute("flag", "login_error");
 				request.setAttribute("err", "账号被禁用，请联系管理员");
 				request.getRequestDispatcher("/login.jsp").forward(request, response);
 			}
