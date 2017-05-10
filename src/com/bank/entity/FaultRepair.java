@@ -57,7 +57,13 @@ public class FaultRepair implements Serializable {
 	private String evaluation;
 
 	public FaultRepair() {
-
+		piGroup = new PiGroup();
+		bankEquipment = new BankEquipment();
+		repairType = new RepairType();
+		bank = new Bank();
+		user = new User();
+//		biginTime = new Date();
+//		endTime = new Date();
 	}
 
 	/**

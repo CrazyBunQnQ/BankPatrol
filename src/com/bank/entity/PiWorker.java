@@ -28,7 +28,7 @@ public class PiWorker implements Serializable {
 	private String tel2;
 
 	public PiWorker() {
-
+		piGroup = new PiGroup();
 	}
 
 	/**

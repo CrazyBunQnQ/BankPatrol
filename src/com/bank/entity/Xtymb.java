@@ -32,7 +32,7 @@ public class Xtymb implements Serializable {
 	private String imgPath;
 
 	public Xtymb() {
-
+		function = new Function();
 	}
 
 	/**

@@ -29,7 +29,8 @@ public class Log implements Serializable {
 	private User user;
 
 	public Log() {
-
+//		checkIn = new Date();
+//		checkOut = new Date();
 	}
 
 	/**

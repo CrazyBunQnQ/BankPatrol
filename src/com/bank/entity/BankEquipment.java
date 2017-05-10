@@ -41,7 +41,9 @@ public class BankEquipment implements Serializable {
 	private double depreciationValue;
 
 	public BankEquipment() {
-
+		type = new EquipmentType();
+		bank = new Bank();
+//		buyDate = new Date();
 	}
 
 	/**

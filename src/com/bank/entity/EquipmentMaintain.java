@@ -29,7 +29,8 @@ public class EquipmentMaintain implements Serializable {
 	private String result;
 
 	public EquipmentMaintain() {
-
+		bankEquipment = new BankEquipment();
+//		maintainDate = new Date();
 	}
 
 	/**

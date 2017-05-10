@@ -61,7 +61,12 @@ public class PiEquipment implements Serializable {
 	private boolean status;
 
 	public PiEquipment() {
-
+		user = new User();
+		bank = new Bank();
+		piGroup = new PiGroup();
+		repairType = new RepairType();
+		bankEquipment = new BankEquipment();
+//		piDate = new Date();
 	}
 
 	/**

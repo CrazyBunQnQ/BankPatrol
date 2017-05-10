@@ -45,7 +45,9 @@ public class User implements Serializable {
 	private PiWorker worker;
 
 	public User() {
-
+		job = new Job();
+		department = new Department();
+		worker = new PiWorker();
 	}
 
 	/**

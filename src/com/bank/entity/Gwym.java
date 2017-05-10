@@ -20,7 +20,8 @@ public class Gwym implements Serializable {
 	private Xtymb xtymb;
 
 	public Gwym() {
-
+		job = new Job();
+		xtymb = new Xtymb();
 	}
 
 	/**
