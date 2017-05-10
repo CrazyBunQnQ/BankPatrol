@@ -16,9 +16,9 @@
         <meta http-equiv="description" content="This is my page">
         <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/css/base.css">
     	<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/css/platform.css">
-    	<script type="text/javascript" src="${pageContext.request.contextPath }/js/jquery-3.2.1.js"></script>
+    	<script type="text/javascript" src="${pageContext.request.contextPath }/js/common.js"></script>
+    	<script type="text/javascript" src="${pageContext.request.contextPath }/js/jquery.js"></script>
 		<script type="text/javascript" src="${pageContext.request.contextPath }/js/lib/layer/layer.js"></script>
-		<script type="text/javascript" src="${pageContext.request.contextPath }/js/common.js"></script>
 		<script type="text/javascript" src="${pageContext.request.contextPath }/js/menu.js"></script>
 		<script type="text/javascript" src="${pageContext.request.contextPath }/js/main.js"></script>
     </head>
