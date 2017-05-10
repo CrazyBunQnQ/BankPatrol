@@ -31,6 +31,23 @@ public class UserServiceImpl implements UserService{
 	}
 	
 	@Override
+	public PageInfo<User> userList(String curpageStr, User u) {
+		PageInfo<User> data = new PageInfo<User>();
+		int curPage = 1;
+		if (curpageStr != null && !"".equals(curpageStr)) {
+			curPage = Integer.parseInt(curpageStr);
+		}
+		data.setCurPage(curPage);
+		List<User> list = userDao.queryUsers(data.getFrom(), data.getPageSize(), u);
+		// 查询总条数
+		int num = 0;
+		num = userDao.queryUsersCount(u);
+		data.setTotalRecord(num);
+		data.setPagedata(list);
+		return data;
+	}
+	
+	@Override
 	public void deleteUser(String userId) {
 		// 调用Dao
 		userDao.deleteUser(userId);
@@ -47,8 +64,8 @@ public class UserServiceImpl implements UserService{
 	}
 
 	@Override
-	public void addUser(User user) {
-          userDao.userAdd(user);		
+	public boolean addUser(User user) {
+          return userDao.userAdd(user)>0;		
 	}
     
 	@Override

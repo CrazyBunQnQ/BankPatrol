@@ -49,6 +49,16 @@ public class DispatcherServlet extends HttpServlet {
 			UserController uc = new UserController();
 			if (ary[1].equals("userList")) {
 				uc.userList(request, response);
+			} else if (ary[1].equals("userDelete")) {
+				uc.userDelete(request, response);
+			} else if (ary[1].equals("toAdd")) {
+				uc.toUserAdd(request, response);
+			} else if (ary[1].equals("userAdd")) {
+				uc.userAdd(request, response);
+			} else if (ary[1].equals("userUpdate")) {
+				uc.userUpdate(request, response);
+			} else if (ary[1].equals("toUserUpte")) {
+				uc.toUserUpte(request, response);
 			}
 		} else if (ary[0].equals("dept")) {// 部门模块
 		} else if (ary[0].equals("bank")) {// 银行模块

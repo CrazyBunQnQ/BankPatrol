@@ -35,14 +35,14 @@
 	    			<td>确认密码</td><td><input type="password"  value="${user.loginPassword }" name="loginPassword" name="checkpwd" class="input"></td>
 	    		</tr>
 	    		<tr bgcolor="#FFFFFF">
-	    			<td>用户中文名称</td><td><input type="text" value="${user.userName }" name="userName"></td>
+	    			<td>用户中文名称</td><td><input type="text" value="${user.name }" name="userName"></td>
 	    		</tr>
 	    		<tr bgcolor="#FFFFFF">
 	    			<td>用户所属部门</td>
 	    			<td> 
                            <select name='dept'>
 	    				    <c:forEach items="${d}" var="d1">
-	    				 	<option value="${d1.departmentId }" <c:if test="${d1.departmentId==user.departmentId }" > selected </c:if> > ${d1.departmentName }</option>
+	    				 	<option value="${d1.id }" <c:if test="${d1.id==user.department.id }" > selected </c:if> > ${d1.departmentName }</option>
 	    				 	</c:forEach>
 	    				 </select>
 	    				  
@@ -53,7 +53,7 @@
 	    			<td>
 	    			 	<select name='job'>
 	    				    <c:forEach items="${j}" var="j1">
-	    				 	<option value="${j1.jobId }" <c:if test="${j1.jobId==user.jobId }" > selected </c:if> > ${j1.name}</option>
+	    				 	<option value="${j1.id }" <c:if test="${j1.id==user.job.id }" > selected </c:if> > ${j1.name}</option>
 	    				 	</c:forEach>
 	    				 </select>
 	    				

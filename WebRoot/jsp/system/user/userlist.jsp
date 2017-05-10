@@ -50,7 +50,7 @@
             </div>
          </div>
          <div id="find" style="display: none">
-   			 <form action="javascript:;" >
+   			 <form action="../user/userList.do" >
     		  <table>
       			 <tr>
       				<td>用户登陆ID：</td> 
@@ -80,10 +80,10 @@
                <c:forEach items="${data.pageData}" var="user" >
                <tr>
                      <td >${user.loginId } </td>
-					 <td >${user.userName } </td>
+					 <td >${user.name } </td>
 					 <td >${user.departmentName } </td>
 					 <td >${user.jobName } </td>
-					 <td >${user.userStatus==1?'启用':'禁用' } </td>
+					 <td >${user.status?'启用':'禁用' } </td>
 					 <td >
 					   <div class="handle">
 					   <a href="../user/toUserUpte.do?loginId=${user.loginId }" >
@@ -121,7 +121,7 @@
          <a href="../user/userList.do?curpage=1 ">首  页</a>
         </c:if>
         <c:if test="${data.curPage!=data.totalPage }" >
-         <a href="../user/userList.do?curpage=${data.curPage+1 }">下一页</a>
+         <a href="../user/userList.do?curpage=${data.curPage+1 }&loginId=${log}&userName=${un}">下一页</a>
          <a href="../user/userList.do?curpage=${data.totalPage }">尾  页</a>
         </c:if> 
            第<input id="pagebox" type="text" size="4">页<a onclick="goto2('../user/userList.do?curpage=');" href="javascript:;"> 跳转</a>

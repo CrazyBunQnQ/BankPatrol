@@ -41,6 +41,42 @@ public class UserDaoImpl extends BaseDaoImpl implements UserDao {
 	}
 
 	@Override
+	public List<User> queryUsers(int from, int pageSize, User u) {
+		StringBuilder sql = new StringBuilder(
+				"select Login_ID,User_Name,Department_Name,Name ,User_Status from users u join department d "
+						+ " on u.Department_ID = d.Department_id " + " join job j on u.Job_ID = j.Job_ID  where 1=1 ");
+		if (u.getLoginId() != null) {
+			sql.append(" and Login_ID like '%" + u.getLoginId() + "%'");
+		}
+		if (u.getName() != null) {
+			sql.append(" and User_Name like '%" + u.getName() + "%'");
+		}
+		sql.append(" limit ?,? ");
+		List<User> list = new ArrayList<User>();
+		try {
+			setConnAndPS(sql.toString());
+			ps.setInt(1, from);
+			ps.setInt(2, pageSize);
+			LOGGER.info("用户模糊查询：" + ps.toString());
+			rs = ps.executeQuery();
+			while (rs.next()) {
+				User user = new User();
+				user.setLoginId(rs.getString("Login_ID"));
+				user.setName(rs.getString("User_Name"));
+				user.setDepartmentName(rs.getString("Department_Name"));
+				user.setJobName(rs.getString("Name"));
+				user.setStatus("1".equals(rs.getString("User_Status")));
+				list.add(user);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			DBUtil.closeConnection(conn, rs, ps);
+		}
+		return list;
+	}
+	
+	@Override
 	public int queryUsersCount() {
 		int n = 0;
 		String sql = "select count(*) from users";
@@ -56,6 +92,30 @@ public class UserDaoImpl extends BaseDaoImpl implements UserDao {
 			DBUtil.closeConnection(conn, null, ps);
 		}
 		return n;
+	}
+
+	@Override
+	public int queryUsersCount(User u) {
+		int count = 0;
+		StringBuilder sql = new StringBuilder("select count(*) from users where 1=1 ");
+		if (u.getLoginId() != null) {
+			sql.append(" and Login_ID like '%" + u.getLoginId() + "%'");
+		}
+		if (u.getName() != null) {
+			sql.append(" and User_Name like '%" + u.getName() + "%'");
+		}
+		try {
+			setConnAndPS(sql.toString());
+			rs = ps.executeQuery();
+			if (rs.next()) {
+				count = rs.getInt(1);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			DBUtil.closeConnection(conn, rs, ps);
+		}
+		return count;
 	}
 
 	@Override
@@ -129,9 +189,12 @@ public class UserDaoImpl extends BaseDaoImpl implements UserDao {
 			ps.setString(4, user.getLoginPwd());
 			ps.setString(5, user.getName());
 			ps.setString(6, user.isStatus() ? "1" : "0");
+			LOGGER.info("添加用户：" + ps.toString());
 			n = ps.executeUpdate();
 		} catch (Exception e) {
-			e.printStackTrace();
+//			e.printStackTrace();
+			LOGGER.warn("该用户名已存在");
+			n = -1;
 		} finally {
 			DBUtil.closeConnection(conn, null, ps);
 		}

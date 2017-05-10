@@ -10,11 +10,19 @@ import com.bank.entity.User;
 public interface UserService {
 
 	/**
-	 * 根据指定的页码查询数据
+	 * 根据指定的页码查询用户数据
 	 * @param curpage 当前页
 	 * @return
 	 */
 	PageInfo<User> userList(String curpage);
+	
+	/**
+	 * 用户模糊查询
+	 * @param curpage 当前页
+	 * @param u 用户
+	 * @return
+	 */
+	PageInfo<User> userList(String curpage, User u);
 
 	/**
 	 * 删除指定 id 的用户
@@ -37,8 +45,9 @@ public interface UserService {
 	/**
 	 * 添加用户
 	 * @param user
+	 * @return 是否成功
 	 */
-	void addUser(User user);
+	boolean addUser(User user);
 
 	/**
 	 * 携带用户信息跳转到修改页面

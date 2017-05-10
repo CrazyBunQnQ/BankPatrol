@@ -74,7 +74,7 @@ public class LoginController {
 	 */
 	public void logout(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		HttpSession session = request.getSession();
-		Long logId = (Long) session.getAttribute("logId");
+		Integer logId = (Integer) session.getAttribute("logId");
 
 		if (logId != null) {
 			// 退出同时更新登出时间（日志模块相关）

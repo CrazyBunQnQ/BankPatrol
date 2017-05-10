@@ -16,17 +16,45 @@ import com.bank.service.impl.UserServiceImpl;
 
 public class UserController {
     UserService us = new UserServiceImpl();
+//	public void userList(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+//		//接当前的页码信息
+//		String curpage = request.getParameter("curpage"); 
+//		//调
+//		PageInfo<User> data = us.userList(curpage);
+//		//存  把查出的数据放入request
+//		request.setAttribute("data", data);
+//		//转
+//		request.getRequestDispatcher("/jsp/system/user/userlist.jsp").forward(request, response);
+//	}
+	
+	/**
+     * 显示列表页(支持查询)
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException
+     */
 	public void userList(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//接当前的页码信息
+		//1、接当前的页码信息
 		String curpage = request.getParameter("curpage"); 
+		//接收文本框的值 
+		String loginId = request.getParameter("loginId");
+		String userName = request.getParameter("userName");
+		//2.根据接收的值 进行查询
+		User u = new User();
+		u.setLoginId(loginId);
+		u.setName(userName);
+		//存
+		request.setAttribute("log", loginId);
+		request.setAttribute("un", userName);
 		//调
-		PageInfo<User> data = us.userList(curpage);
+		PageInfo<User> data = us.userList(curpage,u);
 		//存  把查出的数据放入request
 		request.setAttribute("data", data);
 		//转
 		request.getRequestDispatcher("/jsp/system/user/userlist.jsp").forward(request, response);
-		
 	}
+	
 	public void userDelete(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		// 接收Id
 		String userId = request.getParameter("userId");
@@ -36,6 +64,7 @@ public class UserController {
 		response.sendRedirect("userList.do");
 		
 	}
+	
 	public void toUserAdd(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//接 不接
 		//查询部门下拉列表
@@ -51,10 +80,11 @@ public class UserController {
 	    request.getRequestDispatcher("/jsp/system/user/usernew.jsp").forward(request, response);	
 		
 	}
+	
 	public void userAdd(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		//接 
 		String loginId = request.getParameter("loginId");
-		String pwd = request.getParameter("loginPassword");
+		String pwd = request.getParameter("checkpwd");
 		String userName = request.getParameter("userName");
 		String dept = request.getParameter("dept");
 		String job = request.getParameter("job");
@@ -68,9 +98,12 @@ public class UserController {
 		user.setName(userName);
 		user.setStatus("1".equals(userStatus));
 		//调用service       
-		us.addUser(user);
-		//转
-		response.sendRedirect("userList.do");
+		if (us.addUser(user)) {
+			// 转
+			response.sendRedirect("userList.do");
+		} else {
+			//TODO 用户名重复
+		}
 	}
 	
 	/**

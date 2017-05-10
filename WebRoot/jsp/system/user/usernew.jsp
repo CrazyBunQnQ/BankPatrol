@@ -42,7 +42,7 @@
 	    			<td>
 	    				 <select name='dept'>
 	    				    <c:forEach items="${ d }" var="d1">
-	    				 	<option value="${d1.departmentId }">${d1.departmentName }</option>
+	    				 	<option value="${d1.id }">${d1.name }</option>
 	    				 	</c:forEach>
 	    				 </select>
 	    			</td>
@@ -52,7 +52,7 @@
 	    			<td>
 	    				<select name='job'>
 	    				    <c:forEach items="${ j }" var="j1">
-	    				 	<option value="${j1.jobId }">${j1.name }</option>
+	    				 	<option value="${j1.id }">${j1.name }</option>
 	    				 	</c:forEach>
 	    				 </select>
 	    			</td>

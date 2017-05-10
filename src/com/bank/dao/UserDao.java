@@ -19,11 +19,27 @@ public interface UserDao {
 	List<User> queryUsers(int from, int pageSize);
 
 	/**
+	 * 查询列表信息（支持分页）
+	 * @param from 当前页
+	 * @param pageSize 每页显示数量
+	 * @param u 用户信息
+	 * @return list
+	 */
+	List<User> queryUsers(int from, int pageSize, User u);
+	
+	/**
 	 * 查询用户数量
 	 * @return
 	 */
 	int queryUsersCount();
 
+	/**
+	 * 查询总条数（支持分页）
+	 * @param u 用户
+	 * @return
+	 */
+	int queryUsersCount(User u);
+	
 	/**
 	 * 删除指定 id 的用户
 	 * @param userId 用户 id
