@@ -14,6 +14,7 @@ import com.bank.entity.User;
 import com.bank.entity.Xtymb;
 import com.bank.service.LoginService;
 import com.bank.service.impl.LoginServiceImpl;
+import com.bank.util.MD5Util;
 
 
 /**
@@ -33,7 +34,7 @@ public class LoginController {
 	 */
 	public void login(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 		String loginId = request.getParameter("loginId");
-		String loginPassword = request.getParameter("loginPassword");
+		String loginPassword = MD5Util.getMD5(request.getParameter("loginPassword"));
 		User user = userService.findUser(loginId, loginPassword);
 
 		if (user != null) {
