@@ -102,4 +102,11 @@ public interface UserDao {
 	 * @return
 	 */
 	List<Xtymb> findXtymbList(int jobId, int funcId);
+
+	/**
+	 * 查询数据库中是否已包含给定的用户名
+	 * @param uname 查询的用户名
+	 * @return
+	 */
+	boolean hasUser(String uname);
 }

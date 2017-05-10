@@ -1,5 +1,6 @@
 package com.bank.dao.impl;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -321,5 +322,23 @@ public class UserDaoImpl extends BaseDaoImpl implements UserDao {
 			DBUtil.closeConnection(conn, rs, ps);
 		}
 		return list;
+	}
+
+	@Override
+	public boolean hasUser(String uname) {
+		boolean result = true;
+		String sql = "SELECT Login_ID FROM users WHERE Login_ID=?";
+		try {
+			setConnAndPS(sql);
+			ps.setString(1, uname);
+			LOGGER.info("是否存在用户 " + uname + "：" + ps.toString());
+			rs = ps.executeQuery();
+			result = rs.next();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBUtil.closeConnection(conn, rs, ps);
+		}
+		return result;
 	}
 }

@@ -46,7 +46,7 @@ function searchSuggest(v1,v2)
 	{
 		var str = document.getElementById(inputid).value;
 		
-		searchReq.open("POST", '../xtgl/checkUserName.do', true);
+		searchReq.open("POST", '../user/checkUserName.do', true);
 		searchReq.setRequestHeader("Content-Type","application/x-www-form-urlencoded;charset=utf-8");
 		searchReq.onreadystatechange = handleSearchSuggest; 
 		
@@ -63,7 +63,7 @@ function handleSearchSuggest()
 	if(searchReq.readyState == 4)
 	{
 		var msg = document.getElementById(divid)
-		var str = searchReq.responseText;//ͨ��responseText���������ݣ�������ݣ�
+		var str = searchReq.responseText;
 		repText = str;
 		if (parseInt(str) > 0) {
 			msg.innerHTML = "<font color=red>用户ID已经存在了，请重新输入！</font>";

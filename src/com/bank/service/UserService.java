@@ -61,4 +61,11 @@ public interface UserService {
 	 * @param user
 	 */
 	void updateUser(User user);
+
+	/**
+	 * 查询是否已存在该用户名
+	 * @param uname
+	 * @return
+	 */
+	boolean hasUser(String uname);
 }

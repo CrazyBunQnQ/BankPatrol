@@ -53,6 +53,8 @@ public class DispatcherServlet extends HttpServlet {
 				uc.userDelete(request, response);
 			} else if (ary[1].equals("toAdd")) {
 				uc.toUserAdd(request, response);
+			} else if (ary[1].equals("checkUserName")) {
+				uc.checkUName(request, response);
 			} else if (ary[1].equals("userAdd")) {
 				uc.userAdd(request, response);
 			} else if (ary[1].equals("userUpdate")) {

@@ -150,4 +150,22 @@ public class UserController {
 		// zhuan
 		response.sendRedirect("userList.do");
 	}
+
+	/**
+	 * 检查用户名是否存在
+	 * @param request
+	 * @param response
+	 */
+	public void checkUName(HttpServletRequest request, HttpServletResponse response) {
+		String uname = request.getParameter("users.loginId");
+		try {
+			if (us.hasUser(uname)) {
+				response.getWriter().write("1");
+			} else {
+				response.getWriter().write("0");
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
 }

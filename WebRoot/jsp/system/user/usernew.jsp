@@ -24,7 +24,7 @@
 	    	<table width="60%" border="0" align="center" cellpadding="2" cellspacing="1" bgcolor="#E4E4E4">
 	    	
 	    		<tr bgcolor="#FFFFFF">
-	    			<td width="30%">用户登陆ID</td><td><input type="text" name="loginId" class="input" onblur="searchSuggest('users.loginId','title');">(只能是字母和数字长度不能大于10)
+	    			<td width="30%">用户登陆ID</td><td><input type="text" id="loginId" name="loginId" class="input" onblur="searchSuggest(this.id,'msg');"><font id="msg">(只能是字母和数字长度不能大于10)</font>
 	    			   <span id="title"></span>
 	    			</td>
 	    		</tr>
