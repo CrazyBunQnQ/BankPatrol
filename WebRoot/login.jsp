@@ -4,8 +4,8 @@
 <head>
 <meta charset="utf-8">
 <title>登录页面</title>
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/css/style.css"/>
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/css/font-awesome.min.css"/>
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/css/style.css" />
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/css/font-awesome.min.css" />
 <script type="text/javascript" src="${pageContext.request.contextPath }/js/login.js"></script>
 </head>
 
