@@ -50,7 +50,7 @@
 		<div id="pf-ft"></div>
     </div>
 	
-	<script type="text/javascript" src="${pageContext.request.contextPath }/js/jquery.js"></script>
+	<script type="text/javascript" src="${pageContext.request.contextPath }/js/jquery-3.2.1.js"></script>
 	<script type="text/javascript" src="${pageContext.request.contextPath }/js/lib/layer/layer.js"></script>
 	<script type="text/javascript" src="${pageContext.request.contextPath }/js/common.js"></script>
 	<script type="text/javascript" src="${pageContext.request.contextPath }/js/menu.js"></script>
