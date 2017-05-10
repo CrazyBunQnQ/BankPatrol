@@ -46,12 +46,12 @@ public class PermissionFilter implements Filter {
 			} else if (flag != null && flag.equals("login_error")) {
 				req.setAttribute("msg", "登录失败，请重新登陆！！！<br/>");
 				req.setAttribute("return_uri", servletPath);
-				RequestDispatcher rd = req.getRequestDispatcher("/Bank/login.jsp");
+				RequestDispatcher rd = req.getRequestDispatcher("/login.jsp");
 				rd.forward(req, resp);
 			} else {
 				req.setAttribute("msg", "您尚未登录！！！");
 				req.setAttribute("return_uri", servletPath);
-				RequestDispatcher rd = req.getRequestDispatcher("/Bank/login.jsp");
+				RequestDispatcher rd = req.getRequestDispatcher("/login.jsp");
 				rd.forward(req, resp);
 			}
 		}
