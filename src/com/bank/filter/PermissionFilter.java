@@ -32,12 +32,9 @@ public class PermissionFilter implements Filter {
 		String flag = (String) session.getAttribute("flag");
 
 		if (servletPath != null && ("/Bank/login.jsp".equals(servletPath) 
-//				|| servletPath.equals("/Bank/register.jsp") 
-//				|| "/Register".equals(servletPath) 
-//				|| "/CheckLogin".equals(servletPath) 
+				|| "/404.jsp".equals(servletPath) 
+				|| "/500.jsp".equals(servletPath) 
 				|| "/Logout".equals(servletPath) 
-//				|| "/Search".equals(servletPath) 
-//				|| "/PhotoEditor".equals(servletPath) 
 				|| (servletPath.length()> 12 && "/Bank/images".equals(servletPath.substring(0, 12)))
 				|| (servletPath.length()> 9 && "/Bank/css".equals(servletPath.substring(0, 9)))
 				|| (servletPath.length()> 8 && "/Bank/js".equals(servletPath.substring(0, 8)))
@@ -60,9 +57,6 @@ public class PermissionFilter implements Filter {
 		}
 	}
 
-	/**
-	 * @see Filter#destroy()
-	 */
 	public void destroy() {
 	}
 }
