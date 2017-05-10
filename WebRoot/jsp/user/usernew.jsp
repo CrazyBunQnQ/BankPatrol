@@ -1,7 +1,10 @@
+<%@ page language="java" import="java.util.*" pageEncoding="utf-8" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE HTML >
 <html>
   <head>
-    <title>修改用户</title>
+
+    <title>用户新增</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
@@ -14,51 +17,51 @@
   
   <body>
 
-	<span class="sys_list_yh">系统管理&gt;&gt;用户管理&gt;&gt;修改用户</span>
+	<span class="sys_list_yh">系统管理&gt;&gt;用户管理&gt;&gt;用户新增</span>
 
 	<br>
-  		<form action="javascript:;" method="post" onsubmit="return checkdata();">
+  		<form action="../user/userAdd.do" method="post" onsubmit="return checkdata();">
 	    	<table width="60%" border="0" align="center" cellpadding="2" cellspacing="1" bgcolor="#E4E4E4">
 	    	
 	    		<tr bgcolor="#FFFFFF">
-	    			<td width="30%">用户登陆ID</td><td><input type="text" name="users.loginId" class="input" value='admin' onblur="searchSuggest('users.loginId','title');">(只能是字母和数字长度不能大于10)
+	    			<td width="30%">用户登陆ID</td><td><input type="text" name="loginId" class="input" onblur="searchSuggest('users.loginId','title');">(只能是字母和数字长度不能大于10)
 	    			   <span id="title"></span>
 	    			</td>
 	    		</tr>
 	    		<tr bgcolor="#FFFFFF">
-	    			<td>用户登陆密码</td><td><input type="password" name="users.loginPassword" class="input" value='1'></td>
+	    			<td>用户登陆密码</td><td><input type="password"  class="input"></td>
 	    		</tr>
 	    		<tr bgcolor="#FFFFFF">
-	    			<td>确认密码</td><td><input type="password" name="checkpwd" value='1' class="input"></td>
+	    			<td>确认密码</td><td><input type="password"  name="checkpwd" class="input"></td>
 	    		</tr>
 	    		<tr bgcolor="#FFFFFF">
-	    			<td>用户中文名称</td><td><input type="text" name="users.userName" value='张三'></td>
+	    			<td>用户中文名称</td><td><input type="text" name="userName"></td>
 	    		</tr>
 	    		<tr bgcolor="#FFFFFF">
 	    			<td>用户所属部门</td>
 	    			<td>
-	    				 <select >
-	    				
-	    				 	<option value="">财务部</option>
-	    				 	<option value="">开发部</option>
-	    				
+	    				 <select name='dept'>
+	    				    <c:forEach items="${ d }" var="d1">
+	    				 	<option value="${d1.departmentId }">${d1.departmentName }</option>
+	    				 	</c:forEach>
 	    				 </select>
 	    			</td>
 	    		</tr>
 	    		<tr bgcolor="#FFFFFF">
 	    			<td>用户所在岗位</td>
 	    			<td>
-	    				 <select>
-	    				 	<option value="">开发工程师</option>
-	    				 	<option value="">财务总监</option>
+	    				<select name='job'>
+	    				    <c:forEach items="${ j }" var="j1">
+	    				 	<option value="${j1.jobId }">${j1.name }</option>
+	    				 	</c:forEach>
 	    				 </select>
 	    			</td>
 	    		</tr>
 	    		<tr bgcolor="#FFFFFF">
 	    			<td>用户状态</td>
 	    			<td>
-	    				<input type="radio" name="users.userStatus" value="1" checked>启用
-	    				<input type="radio" name="users.userStatus" value="0">禁用
+	    				<input type="radio" name="userStatus" value="1" checked>启用
+	    				<input type="radio" name="userStatus" value="0" >禁用
 	    			</td>
 	    		</tr>
 	    		<tr bgcolor="#FFFFFF">
