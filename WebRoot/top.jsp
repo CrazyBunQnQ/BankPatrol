@@ -15,9 +15,14 @@
         <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
         <meta http-equiv="description" content="This is my page">
         <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/css/base.css">
-       <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/css/platform.css">
-     </head>
-     <body>
+    	<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/css/platform.css">
+    	<script type="text/javascript" src="${pageContext.request.contextPath }/js/jquery.js"></script>
+		<script type="text/javascript" src="${pageContext.request.contextPath }/js/lib/layer/layer.js"></script>
+		<script type="text/javascript" src="${pageContext.request.contextPath }/js/common.js"></script>
+		<script type="text/javascript" src="${pageContext.request.contextPath }/js/menu.js"></script>
+		<script type="text/javascript" src="${pageContext.request.contextPath }/js/main.js"></script>
+    </head>
+    <body>
         <div id="pf-hd">
             <!-- Log -->
             <div class="pf-logo">
@@ -60,10 +65,5 @@
             <div class="pf-user-quit" ><a href="${pageContext.request.contextPath }/login/logout.do" target="_top">退出</a></div>
       </div>
   </div>
-  <script type="text/javascript" src="${pageContext.request.contextPath }/js/jquery.js"></script>
-  <script type="text/javascript" src="${pageContext.request.contextPath }/js/lib/layer/layer.js"></script>
-  <script type="text/javascript" src="${pageContext.request.contextPath }/js/common.js"></script>
-  <script type="text/javascript" src="${pageContext.request.contextPath }/js/menu.js"></script>
-  <script type="text/javascript" src="${pageContext.request.contextPath }/js/main.js"></script>
 </body>
 </html>
