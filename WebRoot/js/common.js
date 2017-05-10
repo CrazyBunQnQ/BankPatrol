@@ -1,4 +1,19 @@
-layer && layer.config({
-    extend: ['skin/osa/style.css'], //加载新皮肤
-    skin: 'layer-ext-osa' //一旦设定，所有弹层风格都采用此主题。
-});
+/**
+ * @author wjjin
+ */
+
+if (typeof(geekeesjs) == "undefined")
+			_geekees = geekeesjs = {};
+
+function $() {
+	var elements = new Array();
+	for (var i = 0; i < arguments.length; i++) {
+		var element = arguments[i];
+		if (typeof element == 'string')
+			element = document.getElementById(element);
+		if (arguments.length == 1)
+			return element;
+		elements.push(element);
+	}
+	return elements;
+}
