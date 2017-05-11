@@ -1,27 +1,35 @@
 package com.bank.service.impl;
 
-import java.sql.SQLException;
 import java.util.List;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
+import com.bank.dao.BankDao;
 import com.bank.dao.impl.BankDaoImpl;
-import com.bank.dao.impl.GwymDaoImpl;
 import com.bank.entity.Bank;
+import com.bank.entity.PageInfo;
 import com.bank.service.BankService;
-import com.google.gson.Gson;
 
-public class BankServiceImpl implements BankService{
-	
-	private static final Logger LOGGER = LogManager.getLogger(GwymDaoImpl.class.getName());
-	BankDaoImpl bdi = new BankDaoImpl();
-	
+public class BankServiceImpl implements BankService {
+
+	BankDao bdi = new BankDaoImpl();
+
 	@Override
-	public String getBanks(int page, int count) throws SQLException {
-		List<Bank> banks = bdi.queryBanks(page, count);
-		String data = new Gson().toJson(banks);
-		LOGGER.info("银行网点第 " + (page + 1) + " 页的 " + count + " 个网点数据：" + data);
+	public PageInfo<Bank> getBanks(int page) {
+		PageInfo<Bank> data = new PageInfo<Bank>();
+		data.setCurPage(page);
+		List<Bank> banks = bdi.queryBanks(page, data.getPageSize());
+		int num = bdi.queryBankesCount();
+		data.setTotalRecord(num);
+		data.setPagedata(banks);
 		return data;
+	}
+
+	@Override
+	public boolean insertBank(Bank bank) {
+		return bdi.insertBank(bank) > 0;
+	}
+
+	@Override
+	public int checkBankId(String id) {
+		return bdi.hasBank(id)?1:0;
 	}
 }

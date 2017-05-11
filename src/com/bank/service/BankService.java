@@ -2,6 +2,9 @@ package com.bank.service;
 
 import java.sql.SQLException;
 
+import com.bank.entity.Bank;
+import com.bank.entity.PageInfo;
+
 public interface BankService {
 
 	/**
@@ -9,10 +12,22 @@ public interface BankService {
 	 * 
 	 * @param page
 	 *            当前页
-	 * @param count
-	 *            每页显示的数量
-	 * @return JSON 字符串
+	 * @return
 	 * @throws SQLException
 	 */
-	String getBanks(int page, int count) throws SQLException;
+	PageInfo<Bank> getBanks(int page) throws SQLException;
+
+	/**
+	 * 添加银行
+	 * @param bank
+	 * @return 是否成功
+	 */
+	boolean insertBank(Bank bank);
+
+	/**
+	 * 检查指定银行 id 是否已存在
+	 * @param id
+	 * @return 1：已存在；0：不存在
+	 */
+	int checkBankId(String id);
 }
