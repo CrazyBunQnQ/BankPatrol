@@ -17,7 +17,7 @@
 			<tr>
 				<td bgcolor="#F2F2F2" align="center" width="30%">银行编号</td>
 				<td>
-					<input type="text" name="bankId" onblur="checkBankId('bankId');" id="bankId"<% if (bank!=null) { %> value="${bank.id }"<% } %> placeholder="(不能使用汉字且长度小于10位)"> <span id="show"></span>
+					<input type="text" name="bankId" onblur="checkBankId('bankId');" id="bankId"<% if (bank!=null) { %> value="${bank.id }"<% } %> placeholder="(字母或数字且长度小于10)"> <span id="show"></span>
 				</td>
 			</tr>
 			<tr>

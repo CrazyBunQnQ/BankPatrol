@@ -77,7 +77,7 @@ public class BankController {
 	 * @throws SQLException 
 	 */
 	public void queryBanks(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-		int page = Integer.parseInt(request.getParameter("page") == null ? "0" : request.getParameter("page"));
+		int page = Integer.parseInt(request.getParameter("curpage") == null ? "0" : request.getParameter("curpage"));
 		PageInfo<Bank> data = bankService.getBanks(page);
 		request.setAttribute("data", data);
 		request.getRequestDispatcher("/jsp/system/bank/bankList.jsp").forward(request, response);
