@@ -9,16 +9,17 @@
 <meta http-equiv="cache-control" content="no-cache">
 <meta http-equiv="expires" content="0">
 <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
-<meta http-equiv="description" content="This is my page">
-<link href="${pageContext.request.contextPath }/css/main.css" rel="stylesheet" type="text/css" />
 <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/css/base.css">
-<script type="text/javascript" src="${pageContext.request.contextPath }/js/jump.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath }/js/jquery-3.2.1.js"></script>
+<!-- script type="text/javascript" src="${pageContext.request.contextPath }/js/jquery-3.2.1.js"></script-->
 
 <script type="text/javascript">
 	function openfind() {
-		//document.all('find').style.display = "";
-		$("#p").toggleClass("display: none");
+		//$("#find").toggleClass("display: none");
+		if (document.all('find').style.display == "none") {
+			document.all('find').style.display = "";
+		} else {
+			document.all('find').style.display = "none";
+		}
 	}
 
 	function goPage(u) {
@@ -29,9 +30,8 @@
 			v = 1;
 		} else if (v > i) {
 			v = i;
-		} else {
-			location.href = url + v;
 		}
+		location.href = url + v;
 	}
 </script>
 </head>
