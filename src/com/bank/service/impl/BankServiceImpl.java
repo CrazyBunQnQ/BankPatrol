@@ -30,6 +30,16 @@ public class BankServiceImpl implements BankService {
 
 	@Override
 	public int checkBankId(String id) {
-		return bdi.hasBank(id)?1:0;
+		return bdi.hasBank(id) ? 1 : 0;
+	}
+
+	@Override
+	public Bank getBank(String id) {
+		return bdi.queryBank(id);
+	}
+
+	@Override
+	public boolean updateBank(Bank bank) {
+		return bdi.updateBank(bank) > 0;
 	}
 }

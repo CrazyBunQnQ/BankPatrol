@@ -19,6 +19,7 @@ public interface BankService {
 
 	/**
 	 * 添加银行
+	 * 
 	 * @param bank
 	 * @return 是否成功
 	 */
@@ -26,8 +27,25 @@ public interface BankService {
 
 	/**
 	 * 检查指定银行 id 是否已存在
+	 * 
 	 * @param id
 	 * @return 1：已存在；0：不存在
 	 */
 	int checkBankId(String id);
+
+	/**
+	 * 根据 id 获取指定银行的信息
+	 * 
+	 * @param id
+	 * @return
+	 */
+	Bank getBank(String id);
+
+	/**
+	 * 更新指定 id 的银行信息
+	 * 
+	 * @param bank
+	 * @return
+	 */
+	boolean updateBank(Bank bank);
 }

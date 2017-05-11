@@ -40,4 +40,11 @@ public interface BankDao {
 	 * @return
 	 */
 	boolean hasBank(String id);
+
+	/**
+	 * 按照指定 id 查找银行
+	 * @param id
+	 * @return
+	 */
+	Bank queryBank(String id);
 }

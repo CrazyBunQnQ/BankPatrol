@@ -75,9 +75,11 @@ public class DispatcherServlet extends HttpServlet {
 			} else if ("bankAdd".equals(ary[1])) {
 				bc.insertBank(request, response);
 			} else if ("toUpdate".equals(ary[1])) {
-//				bc.toUpdate(request, response);
+				bc.toUpdate(request, response);
+			} else if ("bankUpdate".equals(ary[1])) {
+				bc.updateBank(request, response);
 			} else if ("delete".equals(ary[1])) {
-//				bc.deleteBank(request, response);
+				// bc.deleteBank(request, response);
 			}
 		} else if (ary[0].equals("log")) {// 日志模块
 			if(ary[1].equals("")) {
