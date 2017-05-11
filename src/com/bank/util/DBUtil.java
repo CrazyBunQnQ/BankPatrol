@@ -40,7 +40,6 @@ public class DBUtil {
 			dbUser = properties.getProperty("user");
 			dbPwd = properties.getProperty("pwd");
 			Class.forName(dbDriver);
-			LOGGER.info("数据库连接成功");
 		} catch (IOException e) {
 			LOGGER.error("数据库连接创建失败：I/O 流错误");
 			e.printStackTrace();
@@ -57,7 +56,6 @@ public class DBUtil {
 	 */
 	public static Connection getConnection() throws SQLException {
 		Connection conn = DriverManager.getConnection(dbUrl, dbUser, dbPwd);
-		LOGGER.info("数据库连接创建成功");
 		return conn;
 	}
 	
@@ -83,11 +81,9 @@ public class DBUtil {
 	public static void closeConnection(Connection conn, ResultSet rs) throws SQLException {
 		if (rs != null) {
 			rs.close();
-			LOGGER.info("数据库结果集关闭成功");
 		}
 		if (conn != null) {
 			conn.close();
-			LOGGER.info("数据库连接关闭成功");
 		}
 	}
 	

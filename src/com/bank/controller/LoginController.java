@@ -96,13 +96,13 @@ public class LoginController {
 		User user = (User) request.getSession().getAttribute("user");
 		if (user != null) {// 登录状态
 			// 2.根据用户的岗位id获得用户能操作的模块
-			List<Function> list = userService.findFunctionsByJobId(user.getJobId());
-			request.getSession().setAttribute("functions", list);
+			List<Function> funList = userService.findFunctionsByJobId(user.getJobId());
 			// 3.根据用户，根据模块id(funcId)获得左侧列表:子模块列表
-			List<Xtymb> list2 = userService.leftList(user, list.get(0).getId());
-			String funName = list.get(0).getName();
+			List<Xtymb> xtymbList = userService.leftList(user, funList.get(0).getId());
+			String funName = funList.get(0).getName();
+			request.getSession().setAttribute("functions", funList);
 			request.getSession().setAttribute("funName", funName);
-			request.getSession().setAttribute("leftList", list2);
+			request.getSession().setAttribute("leftList", xtymbList);
 			request.getRequestDispatcher("/main.jsp").forward(request, response);
 		} else {// 未登录
 			request.getRequestDispatcher("/login.jsp").forward(request, response);
