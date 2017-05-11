@@ -11,14 +11,14 @@
 <meta http-equiv="expires" content="0">
 <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 <meta http-equiv="description" content="This is my page">
-<link href="../css/main.css" rel="stylesheet" type="text/css" />
-<script type="text/javascript" src="../js/checkUserName.js"></script>
+<link href="${pageContext.request.contextPath }/css/main.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="${pageContext.request.contextPath }/js/checkUserName.js"></script>
 </head>
 
 <body>
 	<span class="sys_list_yh">系统管理&gt;&gt;用户管理&gt;&gt;用户新增</span>
 	<br>
-	<form action="../user/userAdd.do" method="post" onsubmit="return checkdata();">
+	<form action="${pageContext.request.contextPath }/user/userAdd.do" method="post" onsubmit="return checkdata();">
 		<table width="60%" border="0" align="center" cellpadding="2" cellspacing="1" bgcolor="#E4E4E4">
 			<tr bgcolor="#FFFFFF">
 				<td width="30%">用户登陆ID</td>
