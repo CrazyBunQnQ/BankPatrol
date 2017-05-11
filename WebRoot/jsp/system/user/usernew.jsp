@@ -29,11 +29,11 @@
 			</tr>
 			<tr bgcolor="#FFFFFF">
 				<td>用户登陆密码</td>
-				<td><input type="password" class="input"></td>
+				<td><input type="password" id="pwd" class="input"></td>
 			</tr>
 			<tr bgcolor="#FFFFFF">
 				<td>确认密码</td>
-				<td><input type="password" name="checkpwd" class="input"></td>
+				<td><input type="password" id="checkpwd" name="checkpwd" class="input"></td>
 			</tr>
 			<tr bgcolor="#FFFFFF">
 				<td>用户中文名称</td>

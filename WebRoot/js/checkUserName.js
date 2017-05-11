@@ -75,9 +75,9 @@ function handleSearchSuggest()
 }
 
 function checkdata(){
-	var loginId = document.all('users.loginId');
-	var loginPassword = document.all('users.loginPassword');
-	var checkpwd = document.all("checkpwd");//得到确认密码
+	var loginId = document.getElementById('loginId');
+	var loginPassword = document.getElementById('pwd');
+	var checkpwd = document.getElementById("checkpwd");//得到确认密码
 	
 	var Exp = /^\w+$/;
 	if (loginId.value.length < 1 ||loginId.value.length > 10 || !Exp.test(loginId.value)) {
