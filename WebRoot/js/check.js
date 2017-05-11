@@ -1,31 +1,31 @@
 //create client object 
 function createAjaxObject() {
 	var httprequest;
-	if (window.XMLHttpRequest) { //Mozilla, Safari etc
+	if (window.XMLHttpRequest) { // Mozilla, Safari etc
 		httprequest = new XMLHttpRequest();
-	} else if (window.ActiveXObject) { //IE
+	} else if (window.ActiveXObject) { // IE
 		try {
 			httprequest = new ActiveXObject("Msxml2.XMLHTTP");
 		} catch (e) {
 			httprequest = new ActiveXObject("Microsoft.XMLHTTP");
 		}
 	} else {
-		alert("Your Browser Sucks!\nIt's about time to upgrade don't you think?"); //其他浏览器
+		alert("Your Browser Sucks!\nIt's about time to upgrade don't you think?"); // 其他浏览器
 	}
 	return httprequest;
 }
 
-var xmlHttpRequest = createAjaxObject(); //创建XMLHttpRequest对象，并赋给全局变量
+var xmlHttpRequest = createAjaxObject(); // 创建XMLHttpRequest对象，并赋给全局变量
 
-//效验岗位新增页面数据
+// 效验岗位新增页面数据
 function checkJobName(name) {
 	var id = document.getElementById("div1");
 	var jobName = document.getElementById("jobName");
 	if (jobName.value != "") {
 		if (xmlHttpRequest.readyState == 0 || xmlHttpRequest.readyState == 4) {
-			xmlHttpRequest.open("POST", "../../job/checkJobName.do", true); //true异步访问
+			xmlHttpRequest.open("POST", "../../job/checkJobName.do", true); // true异步访问
 			xmlHttpRequest.setRequestHeader("Content-Type",
-					"application/x-www-form-urlencoded;charset=utf-8");//处理ajax请求乱码
+					"application/x-www-form-urlencoded;charset=utf-8");// 处理ajax请求乱码
 			xmlHttpRequest.onreadystatechange = function() {
 				if (xmlHttpRequest.readyState == 4) {
 					var res = xmlHttpRequest.responseText;
@@ -78,11 +78,12 @@ function checkBankId(name) {
 	t.value = newValue;
 	if (t.value != "") {
 		if (xmlHttpRequest.readyState == 0 || xmlHttpRequest.readyState == 4) {
-			xmlHttpRequest.open("POST", "./checkBankId.do", true); //true异步访问
+			xmlHttpRequest.open("POST", "./checkBankId.do", true); // true异步访问
 			xmlHttpRequest.setRequestHeader("Content-Type",
 					"application/x-www-form-urlencoded;charset=utf-8");
 			xmlHttpRequest.onreadystatechange = function() {
-				if (xmlHttpRequest.readyState == 4 && xmlHttpRequest.status == 200) {
+				if (xmlHttpRequest.readyState == 4
+						&& xmlHttpRequest.status == 200) {
 					var res = xmlHttpRequest.responseText;
 					var id = document.getElementById("show");
 					if (res == 0) {
@@ -118,7 +119,7 @@ function checkBankEquId(name) {
 	t.value = newValue;
 	if (t.value != "") {
 		if (xmlHttpRequest.readyState == 0 || xmlHttpRequest.readyState == 4) {
-			xmlHttpRequest.open("POST", "./checkBankEquId.do", true); //true异步访问
+			xmlHttpRequest.open("POST", "./checkBankEquId.do", true); // true异步访问
 			xmlHttpRequest.setRequestHeader("Content-Type",
 					"application/x-www-form-urlencoded;charset=utf-8");
 			xmlHttpRequest.onreadystatechange = function() {
@@ -147,7 +148,7 @@ function checkDeptname(name) {
 	var t = document.getElementById(name);
 	if (t.value != "") {
 		if (xmlHttpRequest.readyState == 0 || xmlHttpRequest.readyState == 4) {
-			xmlHttpRequest.open("POST", "../../dept/checkDeptname.do", true); //true异步访问
+			xmlHttpRequest.open("POST", "../../dept/checkDeptname.do", true); // true异步访问
 			xmlHttpRequest.setRequestHeader("Content-Type",
 					"application/x-www-form-urlencoded;charset=utf-8");
 			xmlHttpRequest.onreadystatechange = function() {
@@ -174,11 +175,11 @@ function checkDeptname(name) {
 	}
 }
 
-function checkall() //选中或不选当前页面的所有信息
+function checkall() // 选中或不选当前页面的所有信息
 {
 	var ids = document.getElementsByName("ymbhs");
 	var selState = document.getElementsByName("allbox")[0];
-	//alert(selState.checked);全选、撤销的脚本
+	// alert(selState.checked);全选、撤销的脚本
 	for (var i = 1; i <= ids.length;) {
 		var id = ids[i - 1];
 		id.checked = selState.checked;
@@ -187,7 +188,7 @@ function checkall() //选中或不选当前页面的所有信息
 }
 
 /**
- *去除2边的空格
+ * 去除2边的空格
  */
 String.prototype.Trim = function() {
 	return this.replace(/\s*/g, "");// 此方法为去除全部的空格！
@@ -201,7 +202,7 @@ function checkEquipmentId(name) {
 	t.value = t.value.Trim();
 	if (t.value != "") {
 		if (xmlHttpRequest.readyState == 0 || xmlHttpRequest.readyState == 4) {
-			xmlHttpRequest.open("POST", "./checkEquipmentId.do", true); //true异步访问
+			xmlHttpRequest.open("POST", "./checkEquipmentId.do", true); // true异步访问
 			xmlHttpRequest.setRequestHeader("Content-Type",
 					"application/x-www-form-urlencoded;charset=utf-8");
 			xmlHttpRequest.onreadystatechange = function() {
@@ -250,7 +251,7 @@ function checkEquipmentName(name) {
 	}
 }
 /**
- *问题类型名称是否存在
+ * 问题类型名称是否存在
  */
 function checkFaultRepaitTypeName(name) {
 	var t = document.getElementById(name);
