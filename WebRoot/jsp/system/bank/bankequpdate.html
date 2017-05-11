@@ -1,0 +1,64 @@
+<!DOCTYPE HTML >
+<html>
+  <head>
+    <title>修改银行设备明细</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<link rel="stylesheet" type="text/css" href="../css/main.css">
+  </head>
+  
+  <body>
+			<span class="sys_list_yh">系统管理&gt;&gt;银行设备明细列表&gt;&gt;修改银行设备明细</span>
+     <form action="" method="post">
+        <table align="center" border="1" width="60%">
+           <tr>
+	             <td bgcolor="#F2F2F2" align="center" width="30%">设备流水ID</td>
+	             <td><input type="text" name="equipmentEachId" value="0030405" readonly></td>
+          </tr>
+           <tr>
+	             <td bgcolor="#F2F2F2" align="center" width="30%">所属种类名</td>
+	             <td>
+	             <!-- 设备种类准备数据 -->
+	             <input type="hidden" name="equipmentId" value="">
+	             <input type="text" name="equipmentName" value="哈" readonly>
+	             </td>
+           </tr>
+           <tr>
+             <td bgcolor="#F2F2F2" align="center" width="30%">所在银行</td>
+       		 <td>
+		        <!-- 银行网点准备数据 -->
+		         <input type="text" name="bankName" value="中国工商银行上地支行" readonly>
+		         <input type="hidden" name="bankId"  value="" >
+       		 </td>
+           </tr>
+           <tr>
+             <td bgcolor="#F2F2F2" align="center" width="30%">购入价值</td><td><input type="text" name="equipmentValue" value="12.9" readonly></td>
+          </tr>
+            <tr>
+             <td bgcolor="#F2F2F2" align="center" width="30%">购入时间</td>
+        <td>
+      
+         <input name="equipmentBuyDate" value="2017-09-09"  readonly>
+      
+        </td></tr>
+            <tr>
+             <td bgcolor="#F2F2F2" align="center" width="30%">设备状态</td>
+        <td>
+          <select name="status">
+          	<option value="0" >设备正常</option>
+          	<option value="1" selected>报检设备</option>
+          	<option value="2">停用设备</option>
+          </select>
+         </td>
+           </tr>
+            <tr>
+             <td bgcolor="#F2F2F2" align="center" width="30%">设备折旧残值</td><td><input type="text" name="depreciationValue" value="12.7"></td>
+       </tr>
+      
+        </table>
+        <p align="center">
+           <input type="submit" value="提交">
+           <input type="button" value="取消" onclick="history.back();">
+        </p>
+     </form>
+  </body>
+</html>
