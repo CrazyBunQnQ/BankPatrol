@@ -17,7 +17,11 @@
      <meta http-equiv="description" content="This is my page">
      <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/css/base.css">
      <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/css/platform.css">
-
+	 <script type="text/javascript" src="${pageContext.request.contextPath }/js/common.js"></script>
+	 <script type="text/javascript" src="${pageContext.request.contextPath }/js/jquery-3.2.1.js"></script>
+	 <script type="text/javascript" src="${pageContext.request.contextPath }/js/lib/layer/layer.js"></script>
+	 <script type="text/javascript" src="${pageContext.request.contextPath }/js/menu.js"></script>
+	 <script type="text/javascript" src="${pageContext.request.contextPath }/js/main.js"></script>
  </head>
 
  <body>
@@ -34,9 +38,9 @@
 		<div id="pf-bd">
 		    <!-- 左侧列表 -->
 			<div id="pf-sider" >
-				<h2 class="pf-model-name">
+				<!-- h2 class="pf-model-name">
 					<span class="pf-sider-icon"></span> <span class="pf-name">系统管理</span>
-				</h2>
+				</h2 -->
                 
 				<!-- 左侧 -->
 				<iframe src="left.jsp" frameborder="0"  height="100%" width="100%" scrolling="auto" name="msghtml" ></iframe>
@@ -49,13 +53,5 @@
 	  	<!-- 底边部分 -->
 		<div id="pf-ft"></div>
     </div>
-	
-	<script type="text/javascript" src="${pageContext.request.contextPath }/js/jquery-3.2.1.js"></script>
-	<script type="text/javascript" src="${pageContext.request.contextPath }/js/lib/layer/layer.js"></script>
-	<script type="text/javascript" src="${pageContext.request.contextPath }/js/common.js"></script>
-	<script type="text/javascript" src="${pageContext.request.contextPath }/js/menu.js"></script>
-	<script type="text/javascript" src="${pageContext.request.contextPath }/js/main.js"></script>
-
-
   </body>
 </html>

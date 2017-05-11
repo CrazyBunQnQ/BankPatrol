@@ -24,6 +24,9 @@
 <body>
 	
 			<ul class="sider-nav">
+				<h2 style="padding: 0 20px; height: 42px; line-height: 42px; color: #fff;">
+					<span class="pf-sider-icon"></span> <span class="pf-name">${funName}</span>
+				</h2>
 				<c:forEach items="${leftList }" var="x">
 					<li class="current">
 						<a href="${pageContext.request.contextPath }/${x.url }" target="mainfre"> 

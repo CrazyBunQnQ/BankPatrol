@@ -9,7 +9,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.bank.entity.Function;
 import com.bank.entity.User;
 import com.bank.entity.Xtymb;
 import com.bank.service.LoginService;
@@ -48,7 +47,7 @@ public class LoginController {
 				// long logId= logService.saveLog(log);//添加日志
 				// request.getSession().setAttribute("logId",logId);
 
-				response.sendRedirect("../login/initdata.do");// 调用初始化数据
+				response.sendRedirect("../login/leftList.do?funcId=0");// 调用初始化数据
 			} else {
 				request.getSession().setAttribute("flag", "login_error");
 				request.setAttribute("err", "账号被禁用，请联系管理员");
@@ -85,30 +84,6 @@ public class LoginController {
 	}
 
 	/**
-	 * 获得用户能操作的模块(大模块)
-	 * @param request
-	 * @param response
-	 * @throws IOException
-	 * @throws ServletException
-	 */
-	public void initdata(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// 1.从session中获得用户
-		User user = (User) request.getSession().getAttribute("user");
-		if (user != null) {// 登录状态
-			// 2.根据用户的岗位id获得用户能操作的模块
-			List<Function> list = userService.findFunctionsByJobId(user.getJobId());
-			System.out.println("list:" + list);
-			request.getSession().setAttribute("functions", list);
-			// 3.根据用户，根据模块id(funcId)获得左侧列表:子模块列表
-			List<Xtymb> list2 = userService.leftList(user, list.get(0).getId());
-			request.getSession().setAttribute("leftList", list2);
-			request.getRequestDispatcher("/main.jsp").forward(request, response);
-		} else {// 未登录
-			request.getRequestDispatcher("/login.jsp").forward(request, response);
-		}
-	}
-
-	/**
 	 * 获得左侧列表(根据用户，根据模块id:funcId 获得左侧列表)
 	 * @param request
 	 * @param response
@@ -120,8 +95,10 @@ public class LoginController {
 		int funcId = Integer.parseInt(request.getParameter("funcId"));
 		// 2.从session中获得用户
 		User user = (User) request.getSession().getAttribute("user");
+		String funName = userService.findFunctionsByJobId(user.getJobId()).get(funcId-1).getName();
 		// 3.根据用户，根据模块id(funcId)获得左侧列表:子模块列表
 		List<Xtymb> list = userService.leftList(user, funcId);
+		request.getSession().setAttribute("funName", funName);
 		request.getSession().setAttribute("leftList", list);
 		request.getRequestDispatcher("/left.jsp").forward(request, response);
 	}

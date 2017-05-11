@@ -13,10 +13,12 @@
 	<link href="${pageContext.request.contextPath }/css/main.css" rel="stylesheet" type="text/css" />
     <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/css/base.css">
     <script type="text/javascript" src="${pageContext.request.contextPath }/js/jump.js"></script>   
+    <script type="text/javascript" src="${pageContext.request.contextPath }/js/jquery-3.2.1.js"></script>
     
     <script type="text/javascript">
     	function openfind() {
-    		document.all('find').style.display = "";
+    		//document.all('find').style.display = "";
+    		$("#p").toggleClass("display: none");
     	}
     	
     	function goto2(u) {
@@ -98,9 +100,6 @@
                      </td>
 			    </tr>
 			</c:forEach>
-			
-
-			  
            </tbody> 
                 
 	</table>

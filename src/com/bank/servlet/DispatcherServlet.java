@@ -40,8 +40,6 @@ public class DispatcherServlet extends HttpServlet {
 				loginController.login(request, response);
 			} else if (ary[1].equals("logout")) {
 				loginController.logout(request, response);
-			} else if (ary[1].equals("initdata")) {
-				loginController.initdata(request, response);
 			} else if (ary[1].equals("leftList")) {
 				loginController.leftList(request, response);
 			}
@@ -63,12 +61,16 @@ public class DispatcherServlet extends HttpServlet {
 				uc.toUserUpte(request, response);
 			}
 		} else if (ary[0].equals("dept")) {// 部门模块
+			
 		} else if (ary[0].equals("bank")) {// 银行模块
 			BankController bc = new BankController();
 			if (ary[1].equals("bankList")) {
 				bc.bankList(request, response);
 			}
 		} else if (ary[0].equals("log")) {// 日志模块
+			if(ary[1].equals("")) {
+				
+			}
 			// LogController logController=new LogController();
 		} else {// 以上多条else if 都不满足时，跳转到404.jsp错误页面
 			request.getRequestDispatcher("/404.jsp").forward(request, response);
