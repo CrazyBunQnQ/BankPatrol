@@ -40,6 +40,8 @@ public class DispatcherServlet extends HttpServlet {
 				loginController.login(request, response);
 			} else if (ary[1].equals("logout")) {
 				loginController.logout(request, response);
+			} else if (ary[1].equals("initdata")) {
+				loginController.initdata(request, response);
 			} else if (ary[1].equals("leftList")) {
 				loginController.leftList(request, response);
 			}

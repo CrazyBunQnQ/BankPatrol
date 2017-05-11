@@ -38,10 +38,6 @@
 		<div id="pf-bd">
 		    <!-- 左侧列表 -->
 			<div id="pf-sider" >
-				<!-- h2 class="pf-model-name">
-					<span class="pf-sider-icon"></span> <span class="pf-name">系统管理</span>
-				</h2 -->
-                
 				<!-- 左侧 -->
 				<iframe src="left.jsp" frameborder="0"  height="100%" width="100%" scrolling="auto" name="msghtml" ></iframe>
 			</div>

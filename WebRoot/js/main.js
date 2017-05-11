@@ -3,8 +3,8 @@ var mainPlatform = {
 	init: function(){
 
 		this.bindEvent();
-		//this.render(menu['home']);
-		this.render(menu);
+		this.render(menu['system']);
+		//this.render(menu);
 	},
 
 	bindEvent: function(){
