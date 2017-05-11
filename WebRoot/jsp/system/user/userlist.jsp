@@ -16,22 +16,24 @@
 <script type="text/javascript" src="${pageContext.request.contextPath }/js/jquery-3.2.1.js"></script>
 
 <script type="text/javascript">
-    	function openfind() {
-    		//document.all('find').style.display = "";
-    		$("#p").toggleClass("display: none");
-    	}
-    	
-    	function goto2(u) {
-		    var url = u;
-		    var v = document.getElementById("pagebox").value-0;
-		    var i="${data.totalPage}"-0;
-		    if(v<1||v>i){
-		     alert("傻啊！！！");
-		    }else{
-			location.href = url+v;
-		  }
-     }
-    </script>
+	function openfind() {
+		//document.all('find').style.display = "";
+		$("#p").toggleClass("display: none");
+	}
+
+	function goPage(u) {
+		var url = u;
+		var v = document.getElementById("pagebox").value - 0;
+		var i = "${data.totalPage}" - 0;
+		if (v < 1) {
+			v = 1;
+		} else if (v > i) {
+			v = i;
+		} else {
+			location.href = url + v;
+		}
+	}
+</script>
 </head>
 
 <body>
@@ -117,7 +119,7 @@
 			<a href="../user/userList.do?curpage=${data.totalPage }">尾 页</a>
 		</c:if>
 		第<input id="pagebox" type="text" size="4">页
-		<a onclick="goto2('../user/userList.do?curpage=');" href="javascript:;">跳转</a>
+		<a onclick="goPage('../user/userList.do?curpage=');" href="javascript:;">跳转</a>
 	</p>
 </body>
 </html>
