@@ -29,10 +29,10 @@
 	    			</td>
 	    		</tr>
 	    		<tr bgcolor="#FFFFFF">
-	    			<td>用户登陆密码</td><td><input type="password" name="loginPassword"  value="${user.loginPassword }" name="loginPassword" class="input"></td>
+	    			<td>用户登陆密码</td><td><input type="password" name="loginPassword"  value="${user.loginPwd }" name="loginPassword" class="input"></td>
 	    		</tr>
 	    		<tr bgcolor="#FFFFFF">
-	    			<td>确认密码</td><td><input type="password"  value="${user.loginPassword }" name="loginPassword" name="checkpwd" class="input"></td>
+	    			<td>确认密码</td><td><input type="password"  value="${user.loginPwd }" name="loginPassword" name="checkpwd" class="input"></td>
 	    		</tr>
 	    		<tr bgcolor="#FFFFFF">
 	    			<td>用户中文名称</td><td><input type="text" value="${user.name }" name="userName"></td>
@@ -42,7 +42,7 @@
 	    			<td> 
                            <select name='dept'>
 	    				    <c:forEach items="${d}" var="d1">
-	    				 	<option value="${d1.id }" <c:if test="${d1.id==user.department.id }" > selected </c:if> > ${d1.departmentName }</option>
+	    				 	<option value="${d1.id }" <c:if test="${d1.id==user.department.id }" > selected </c:if> > ${d1.name }</option>
 	    				 	</c:forEach>
 	    				 </select>
 	    				  
@@ -68,7 +68,7 @@
 	    		</tr>
 	    		<tr bgcolor="#FFFFFF">
 	    			<td colspan="2" align="center">
-	    			   <input type="submit" value="新增">
+	    			   <input type="submit" value="更改">
 	    			   <input type="button" value="取消" onclick="history.back();">
 	    			</td>
 	    		</tr>
