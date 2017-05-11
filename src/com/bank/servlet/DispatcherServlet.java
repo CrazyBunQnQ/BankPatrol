@@ -66,8 +66,18 @@ public class DispatcherServlet extends HttpServlet {
 			
 		} else if (ary[0].equals("bank")) {// 银行模块
 			BankController bc = new BankController();
-			if (ary[1].equals("bankList")) {
-				bc.bankList(request, response);
+			if ("bankList".equals(ary[1])) {
+				bc.queryBanks(request, response);
+			} else if ("toAdd".equals(ary[1])) {
+				bc.toAddBank(request, response);
+			} else if ("checkBankId".equals(ary[1])) {
+				bc.checkBankId(request, response);
+			} else if ("bankAdd".equals(ary[1])) {
+				bc.insertBank(request, response);
+			} else if ("toUpdate".equals(ary[1])) {
+//				bc.toUpdate(request, response);
+			} else if ("delete".equals(ary[1])) {
+//				bc.deleteBank(request, response);
 			}
 		} else if (ary[0].equals("log")) {// 日志模块
 			if(ary[1].equals("")) {
