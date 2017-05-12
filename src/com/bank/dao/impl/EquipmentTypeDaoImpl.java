@@ -13,7 +13,6 @@ public class EquipmentTypeDaoImpl extends BaseDaoImpl implements EquipmentTypeDa
 
 	@Override
 	public boolean addEquipmentType(EquipmentType EquipmentType) {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
@@ -50,5 +49,4 @@ public class EquipmentTypeDaoImpl extends BaseDaoImpl implements EquipmentTypeDa
 		}
 		return list;
 	}
-
 }

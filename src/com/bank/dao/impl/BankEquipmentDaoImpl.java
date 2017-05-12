@@ -11,7 +11,7 @@ import com.bank.entity.EquipmentType;
 import com.bank.util.DBUtil;
 
 public class BankEquipmentDaoImpl extends BaseDaoImpl implements BankEquipmentDao {
-	
+
 	@Override
 	public int queryBankEquipmentsCount(String bankID) {
 		int n = 0;
@@ -53,7 +53,6 @@ public class BankEquipmentDaoImpl extends BaseDaoImpl implements BankEquipmentDa
 				be.setStatus(rs.getInt(5));
 				be.setDepreciationValue(rs.getDouble(6));
 				list.add(be);
-//				list.add(new BankEquipment(rs.getString(1), new EquipmentType(rs.getString(2), ""), new Bank(rs.getString(3), "", 0, 0, ""), rs.getDouble(4), rs.getDate(5), rs.getInt(6), rs.getDouble(7)));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -89,13 +88,7 @@ public class BankEquipmentDaoImpl extends BaseDaoImpl implements BankEquipmentDa
 	@Override
 	public int updateBankEquipment(BankEquipment BankEquipment) {
 		int n = 0;
-		String sql = "UPDATE bankequipment SET"
-				+ " Equipment_id=?,"
-				+ " Equipment_Value=?,"
-				+ " Equipment_BuyDate=?,"
-				+ " Status=?,"
-				+ "	Depreciation_Value=?"
-				+ " WHERE EquipmentEach_ID=? AND Bank_id=?";
+		String sql = "UPDATE bankequipment SET" + " Equipment_id=?," + " Equipment_Value=?," + " Equipment_BuyDate=?," + " Status=?," + "	Depreciation_Value=?" + " WHERE EquipmentEach_ID=? AND Bank_id=?";
 		try {
 			setConnAndPS(sql);
 			ps.setString(1, BankEquipment.getType().getId());

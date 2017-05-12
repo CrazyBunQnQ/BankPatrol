@@ -7,7 +7,6 @@ import java.util.Date;
 import java.util.List;
 
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -15,13 +14,13 @@ import com.bank.entity.Bank;
 import com.bank.entity.BankEquipment;
 import com.bank.entity.EquipmentType;
 import com.bank.entity.PageInfo;
+import com.bank.service.BankService;
 import com.bank.service.impl.BankServiceImpl;
 import com.bank.util.DateUtils;
 
-@WebServlet("/BankServlet")
 public class BankController {
        
-	private BankServiceImpl bankService = new BankServiceImpl();
+	private BankService bankService = new BankServiceImpl();
 
 	/**
 	 * 跳转到添加银行页面
@@ -164,6 +163,13 @@ public class BankController {
 		out.write(i + "");
 	}
 
+	/**
+	 * 添加设备
+	 * @param request
+	 * @param response
+	 * @throws ServletException
+	 * @throws IOException
+	 */
 	public void insertEquipment(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String equipmentId = request.getParameter("equipmentEachId");
 		String typeId = request.getParameter("equipmentId");
@@ -192,7 +198,13 @@ public class BankController {
 		}
 	}
 	
-
+	/**
+	 * 跳转到更新设备界面
+	 * @param request
+	 * @param response
+	 * @throws ServletException
+	 * @throws IOException
+	 */
 	public void toUpdateEquipment(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String eqId = request.getParameter("eqId");
 		BankEquipment be = bankService.getEquipment(eqId);
@@ -202,6 +214,13 @@ public class BankController {
 		request.getRequestDispatcher("/jsp/system/bank/bankequpdate.jsp").forward(request, response);
 	}
 
+	/**
+	 * 更新设备
+	 * @param request
+	 * @param response
+	 * @throws IOException
+	 * @throws ServletException
+	 */
 	public void updateEquipment(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 		String equipmentId = request.getParameter("equipmentEachId");
 		String typeId = request.getParameter("equipmentId");

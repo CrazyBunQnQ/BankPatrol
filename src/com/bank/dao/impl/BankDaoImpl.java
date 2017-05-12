@@ -30,7 +30,7 @@ public class BankDaoImpl extends BaseDaoImpl implements BankDao {
 	}
 	
 	@Override
-	public List<Bank> queryBanks(int page, int count){
+	public List<Bank> queryBanks(int page, int count) {
 		List<Bank> list = new ArrayList<Bank>();
 		String sql = "SELECT * FROM bank LIMIT ?, ?";
 		try {
@@ -72,7 +72,7 @@ public class BankDaoImpl extends BaseDaoImpl implements BankDao {
 	}
 
 	@Override
-	public int updateBank(Bank bank){
+	public int updateBank(Bank bank) {
 		int n = 0;
 		String sql = "UPDATE bank SET Bank_Name=?, Bank_Longitude=?, Bank_Latitude=?, Bank_IP=? WHERE Bank_id=?";
 		try {

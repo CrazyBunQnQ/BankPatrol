@@ -19,8 +19,9 @@ public class GwymDaoImpl extends BaseDaoImpl implements GwymDao {
 			ps.setInt(1, jobId);
 			ps.setInt(2, page);
 			ps.setInt(3, count);
+			LOGGER.info("查询指定岗位的权限：" + ps.toString());
 			rs = ps.executeQuery();
-			while(rs.next()) {
+			while (rs.next()) {
 				Gwym gwym = new Gwym();
 				gwym.setJobId(jobId);
 				gwym.setXtymbId(rs.getLong(1));
@@ -33,7 +34,6 @@ public class GwymDaoImpl extends BaseDaoImpl implements GwymDao {
 		} finally {
 			DBUtil.closeConnection(conn, rs, ps);
 		}
-		LOGGER.info("查询指定岗位的权限：" + ps.toString());
 		return list;
 	}
 
@@ -64,7 +64,7 @@ public class GwymDaoImpl extends BaseDaoImpl implements GwymDao {
 		}
 		return list;
 	}
-	
+
 	public List<Gwym> queryAllGwyms(int funId, int page, int count) {
 		List<Gwym> list = new ArrayList<Gwym>();
 		String sql = "SELECT ymbh, ymmc FROM xtymb WHERE Func_ID=? ORDER BY ymbh LIMIT ?, ?";
@@ -75,7 +75,7 @@ public class GwymDaoImpl extends BaseDaoImpl implements GwymDao {
 			ps.setInt(3, count);
 			LOGGER.info("查询指定模块的权限：" + ps.toString());
 			rs = ps.executeQuery();
-			while(rs.next()) {
+			while (rs.next()) {
 				Gwym gwym = new Gwym();
 				gwym.setFunId(funId);
 				gwym.setXtymbId(rs.getLong(1));
@@ -93,7 +93,6 @@ public class GwymDaoImpl extends BaseDaoImpl implements GwymDao {
 	@Override
 	public int insertGwyms(int jobId, int[] ymbh) {
 		int result = 0;
-		// TODO 将 sql 变成参数传进来
 		StringBuffer sql = new StringBuffer();
 		int n = ymbh.length;
 		for (int i = 0; i < n; i++) {
@@ -118,7 +117,6 @@ public class GwymDaoImpl extends BaseDaoImpl implements GwymDao {
 	@Override
 	public int deleteGwyms(int jobId, int[] ymbh) {
 		int result = 0;
-		// TODO 将 sql 变成参数传进来
 		StringBuffer sql = new StringBuffer();
 		int n = ymbh.length;
 		for (int i = 0; i < n; i++) {

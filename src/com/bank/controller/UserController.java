@@ -15,81 +15,92 @@ import com.bank.service.UserService;
 import com.bank.service.impl.UserServiceImpl;
 
 public class UserController {
-    UserService us = new UserServiceImpl();
-//	public void userList(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//		//接当前的页码信息
-//		String curpage = request.getParameter("curpage"); 
-//		//调
-//		PageInfo<User> data = us.userList(curpage);
-//		//存  把查出的数据放入request
-//		request.setAttribute("data", data);
-//		//转
-//		request.getRequestDispatcher("/jsp/system/user/userlist.jsp").forward(request, response);
-//	}
-	
+	UserService us = new UserServiceImpl();
+
 	/**
-     * 显示列表页(支持查询)
-     * @param request
-     * @param response
-     * @throws ServletException
-     * @throws IOException
-     */
+	 * 显示列表页(支持查询)
+	 * 
+	 * @param request
+	 * @param response
+	 * @throws ServletException
+	 * @throws IOException
+	 */
 	public void userList(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//1、接当前的页码信息
-		String curpage = request.getParameter("curpage"); 
-		//接收文本框的值 
+		// 1、接当前的页码信息
+		String curpage = request.getParameter("curpage");
+		// 接收文本框的值
 		String loginId = request.getParameter("loginId");
 		String userName = request.getParameter("userName");
-		//2.根据接收的值 进行查询
+		// 2.根据接收的值 进行查询
 		User u = new User();
 		u.setLoginId(loginId);
 		u.setName(userName);
-		//存
+		// 存
 		request.setAttribute("log", loginId);
 		request.setAttribute("un", userName);
-		//调
-		PageInfo<User> data = us.userList(curpage,u);
-		//存  把查出的数据放入request
+		// 调
+		PageInfo<User> data = us.userList(curpage, u);
+		// 存 把查出的数据放入request
 		request.setAttribute("data", data);
-		//转
+		// 转
 		request.getRequestDispatcher("/jsp/system/user/userlist.jsp").forward(request, response);
 	}
-	
+
+	/**
+	 * 删除用户
+	 * 
+	 * @param request
+	 * @param response
+	 * @throws IOException
+	 */
 	public void userDelete(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		// 接收Id
 		String userId = request.getParameter("userId");
-		//调Service层
+		// 调Service层
 		us.deleteUser(userId);
-		//转到显示页面
+		// 转到显示页面
 		response.sendRedirect("userList.do");
-		
 	}
-	
+
+	/**
+	 * 跳转到更新用户界面
+	 * 
+	 * @param request
+	 * @param response
+	 * @throws ServletException
+	 * @throws IOException
+	 */
 	public void toUserAdd(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//接 不接
-		//查询部门下拉列表
+		// 接 不接
+		// 查询部门下拉列表
 		List<Department> list1 = us.findAllDeprtments();
-		//查询岗位下拉列表
+		// 查询岗位下拉列表
 		List<Job> list2 = us.findAllJobs();
-		//把查出来的部门放入request
+		// 把查出来的部门放入request
 		request.setAttribute("d", list1);
-		//把查出来的岗位放入request
+		// 把查出来的岗位放入request
 		request.setAttribute("j", list2);
-	
-	    //转 到时新增页面
-	    request.getRequestDispatcher("/jsp/system/user/usernew.jsp").forward(request, response);	
-		
+		// 转 到时新增页面
+		request.getRequestDispatcher("/jsp/system/user/usernew.jsp").forward(request, response);
+
 	}
-	
+
+	/**
+	 * 添加用户
+	 * 
+	 * @param request
+	 * @param response
+	 * @throws IOException
+	 */
 	public void userAdd(HttpServletRequest request, HttpServletResponse response) throws IOException {
-		//接 
+		// 接
 		String loginId = request.getParameter("loginId");
 		String pwd = request.getParameter("checkpwd");
 		String userName = request.getParameter("userName");
 		String dept = request.getParameter("dept");
 		String job = request.getParameter("job");
 		String userStatus = request.getParameter("userStatus");
-		//封装 
+		// 封装
 		User user = new User();
 		user.setLoginId(loginId);
 		user.setJobId(Integer.parseInt(job));
@@ -97,38 +108,44 @@ public class UserController {
 		user.setLoginPwd(pwd);
 		user.setName(userName);
 		user.setStatus("1".equals(userStatus));
-		//调用service       
+		// 调用service
 		if (us.addUser(user)) {
 			// 转
 			response.sendRedirect("userList.do");
 		} else {
-			//TODO 用户名重复
+			// TODO 用户名重复
 		}
 	}
-	
+
 	/**
 	 * 去修改页面
+	 * 
 	 * @param request
 	 * @param response
-	 * @throws IOException 
-	 * @throws ServletException 
+	 * @throws IOException
+	 * @throws ServletException
 	 */
 	public void toUserUpte(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String loginId = request.getParameter("loginId");
-		
-		//调用Service 
+		// 调用Service
 		User user = us.toUpdateUser(loginId);
-		//放入 request
+		// 放入 request
 		request.setAttribute("user", user);
-		
 		List<Department> d = us.findAllDeprtments();
 		List<Job> j = us.findAllJobs();
-		
 		request.setAttribute("d", d);
 		request.setAttribute("j", j);
-		//转页
-		request.getRequestDispatcher("/jsp/system/user/userupdate.jsp").forward(request, response);	
+		// 转页
+		request.getRequestDispatcher("/jsp/system/user/userupdate.jsp").forward(request, response);
 	}
+
+	/**
+	 * 更新用户
+	 * 
+	 * @param request
+	 * @param response
+	 * @throws IOException
+	 */
 	public void userUpdate(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		// 接
 		String loginId = request.getParameter("loginId");
@@ -153,6 +170,7 @@ public class UserController {
 
 	/**
 	 * 检查用户名是否存在
+	 * 
 	 * @param request
 	 * @param response
 	 */

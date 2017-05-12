@@ -18,7 +18,7 @@ public interface BankService {
 	 * @return PageInfo 包括当前页内容和总页数等
 	 * @throws SQLException
 	 */
-	PageInfo<Bank> getBanks(int page) throws SQLException;
+	PageInfo<Bank> getBanks(int page);
 
 	/**
 	 * 添加银行
