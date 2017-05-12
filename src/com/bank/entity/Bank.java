@@ -21,11 +21,11 @@ public class Bank implements Serializable {
 	/**
 	 * 经度
 	 */
-	private double longitude;
+	private Double longitude;
 	/**
 	 * 纬度
 	 */
-	private double latitude;
+	private Double latitude;
 	/**
 	 * 银行 IP 地址
 	 */
@@ -43,7 +43,7 @@ public class Bank implements Serializable {
 	 * @param latitude 银行纬度
 	 * @param ip 银行 IP 地址
 	 */
-	public Bank(String id, String name, double longitude, double latitude, String ip) {
+	public Bank(String id, String name, Double longitude, Double latitude, String ip) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -68,20 +68,20 @@ public class Bank implements Serializable {
 		this.name = name;
 	}
 
-	public double getLongitude() {
+	public Double getLongitude() {
 		return longitude;
 	}
 
-	public void setLongitude(double longitude) {
-		this.longitude = longitude;
+	public void setLongitude(Double longitude) {
+		this.longitude = longitude == null ? 0 : longitude;
 	}
 
-	public double getLatitude() {
+	public Double getLatitude() {
 		return latitude;
 	}
 
-	public void setLatitude(double latitude) {
-		this.latitude = latitude;
+	public void setLatitude(Double latitude) {
+		this.latitude = latitude == null ? 0 : latitude;
 	}
 
 	public String getIp() {
@@ -140,8 +140,7 @@ public class Bank implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Bank [id=" + id + ", name=" + name + ", longitude=" + longitude + ", latitude=" + latitude + ", ip="
-				+ ip + "]";
+		return "Bank [id=" + id + ", name=" + name + ", longitude=" + longitude + ", latitude=" + latitude + ", ip=" + ip + "]";
 	}
 
 	public String toJson() {

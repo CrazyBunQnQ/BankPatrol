@@ -43,8 +43,8 @@ public class BankController {
 	public void insertBank(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String id = request.getParameter("bankId");
 		String name = request.getParameter("bankName");
-		double longitude = request.getParameter("bankLongitude") == null ? 0: Double.parseDouble(request.getParameter("bankLongitude"));
-		double latitude = request.getParameter("bankLatitude") == null ? 0: Double.parseDouble(request.getParameter("bankLatitude"));
+		Double longitude = Double.parseDouble(request.getParameter("bankLongitude"));
+		Double latitude = Double.parseDouble(request.getParameter("bankLatitude"));
 		String ip = request.getParameter("bankIp");
 		Bank bank = new Bank(id, name, longitude, latitude, ip);
 		if (bankService.insertBank(bank)) {
@@ -80,8 +80,8 @@ public class BankController {
 	public void updateBank(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String id = request.getParameter("bankId");
 		String name = request.getParameter("bankName");
-		double longitude = request.getParameter("bankLongitude") == null ? 0: Double.parseDouble(request.getParameter("bankLongitude"));
-		double latitude = request.getParameter("bankLatitude") == null ? 0: Double.parseDouble(request.getParameter("bankLatitude"));
+		Double longitude = Double.parseDouble(request.getParameter("bankLongitude"));
+		Double latitude = Double.parseDouble(request.getParameter("bankLatitude"));
 		String ip = request.getParameter("bankIp");
 		Bank bank = new Bank(id, name, longitude, latitude, ip);
 		if (bankService.updateBank(bank)) {

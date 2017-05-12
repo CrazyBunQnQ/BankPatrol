@@ -30,7 +30,7 @@ public class RepairType implements Serializable {
 	 */
 	public RepairType(Integer id, String value) {
 		super();
-		this.id = id;
+		this.id = id == null ? 0 : id;
 		this.value = value;
 	}
 
@@ -39,7 +39,7 @@ public class RepairType implements Serializable {
 	}
 
 	public void setId(Integer id) {
-		this.id = id;
+		this.id = id == null ? 0 : id;
 	}
 
 	public String getValue() {

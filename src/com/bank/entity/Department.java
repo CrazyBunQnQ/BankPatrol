@@ -39,7 +39,7 @@ public class Department implements Serializable {
 	}
 
 	public void setId(Integer id) {
-		this.id = id;
+		this.id = id == null ? 0 : id;
 	}
 
 	public String getName() {

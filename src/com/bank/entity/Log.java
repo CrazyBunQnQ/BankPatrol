@@ -42,7 +42,7 @@ public class Log implements Serializable {
 	 */
 	public Log(Long id, Date checkIn, Date checkOut, User user) {
 		super();
-		this.id = id;
+		this.id = id == null ? 0 : id;
 		this.checkIn = checkIn;
 		this.checkOut = checkOut;
 		this.user = user;
@@ -53,7 +53,7 @@ public class Log implements Serializable {
 	}
 
 	public void setId(Long id) {
-		this.id = id;
+		this.id = id == null ? 0 : id;
 	}
 
 	public Date getCheckIn() {

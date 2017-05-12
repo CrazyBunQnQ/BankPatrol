@@ -42,11 +42,11 @@ public class FaultRepair implements Serializable {
 	/**
 	 * 报修状态
 	 */
-	private int repairStatus;
+	private Integer repairStatus;
 	/**
 	 * 分配状态
 	 */
-	private int allocateStatus;
+	private Integer allocateStatus;
 	/**
 	 * 报修结束时间
 	 */
@@ -80,18 +80,17 @@ public class FaultRepair implements Serializable {
 	 * @param endTime 报修结束时间
 	 * @param evaluation 评价
 	 */
-	public FaultRepair(Long id, PiGroup piGroup, BankEquipment bankEquipment, RepairType repairType, Bank bank,
-			User user, Date biginTime, int repairStatus, int allocateStatus, Date endTime, String evaluation) {
+	public FaultRepair(Long id, PiGroup piGroup, BankEquipment bankEquipment, RepairType repairType, Bank bank, User user, Date biginTime, Integer repairStatus, Integer allocateStatus, Date endTime, String evaluation) {
 		super();
-		this.id = id;
+		this.id = id == null ? 0 : id;
 		this.piGroup = piGroup;
 		this.bankEquipment = bankEquipment;
 		this.repairType = repairType;
 		this.bank = bank;
 		this.user = user;
 		this.biginTime = biginTime;
-		this.repairStatus = repairStatus;
-		this.allocateStatus = allocateStatus;
+		this.repairStatus = repairStatus == null ? 0 : repairStatus;
+		this.allocateStatus = allocateStatus == null ? 0 : allocateStatus;
 		this.endTime = endTime;
 		this.evaluation = evaluation;
 	}
@@ -101,7 +100,7 @@ public class FaultRepair implements Serializable {
 	}
 
 	public void setId(Long id) {
-		this.id = id;
+		this.id = id == null ? 0 : id;
 	}
 
 	public PiGroup getPiGroup() {
@@ -152,20 +151,20 @@ public class FaultRepair implements Serializable {
 		this.biginTime = biginTime;
 	}
 
-	public int getRepairStatus() {
+	public Integer getRepairStatus() {
 		return repairStatus;
 	}
 
-	public void setRepairStatus(int repairStatus) {
-		this.repairStatus = repairStatus;
+	public void setRepairStatus(Integer repairStatus) {
+		this.repairStatus = repairStatus == null ? 0 : repairStatus;
 	}
 
-	public int getAllocateStatus() {
+	public Integer getAllocateStatus() {
 		return allocateStatus;
 	}
 
-	public void setAllocateStatus(int allocateStatus) {
-		this.allocateStatus = allocateStatus;
+	public void setAllocateStatus(Integer allocateStatus) {
+		this.allocateStatus = allocateStatus == null ? 0 : allocateStatus;
 	}
 
 	public Date getEndTime() {
@@ -262,10 +261,7 @@ public class FaultRepair implements Serializable {
 
 	@Override
 	public String toString() {
-		return "FaultRepair [id=" + id + ", piGroup=" + piGroup + ", bankEquipment=" + bankEquipment + ", repairType="
-				+ repairType + ", equipmentType=" + ", bank=" + bank + ", user=" + user + ", biginTime=" + biginTime
-				+ ", repairStatus=" + repairStatus + ", allocateStatus=" + allocateStatus + ", endTime=" + endTime
-				+ ", evaluation=" + evaluation + "]";
+		return "FaultRepair [id=" + id + ", piGroup=" + piGroup + ", bankEquipment=" + bankEquipment + ", repairType=" + repairType + ", equipmentType=" + ", bank=" + bank + ", user=" + user + ", biginTime=" + biginTime + ", repairStatus=" + repairStatus + ", allocateStatus=" + allocateStatus + ", endTime=" + endTime + ", evaluation=" + evaluation + "]";
 	}
 
 	public String toJson() {

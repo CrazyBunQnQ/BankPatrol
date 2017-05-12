@@ -74,6 +74,4 @@ public class PageInfo<T> implements Serializable{
 	public void setFrom(int from) {
 		this.from = from;
 	}
-
-	
 }

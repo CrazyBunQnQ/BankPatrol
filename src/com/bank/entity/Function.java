@@ -30,7 +30,7 @@ public class Function implements Serializable {
 	 */
 	public Function(Integer id, String name) {
 		super();
-		this.id = id;
+		this.id = id == null ? 0 : id;
 		this.name = name;
 	}
 
@@ -39,7 +39,7 @@ public class Function implements Serializable {
 	}
 
 	public void setId(Integer id) {
-		this.id = id;
+		this.id = id == null ? 0 : id;
 	}
 
 	public String getName() {

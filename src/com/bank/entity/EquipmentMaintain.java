@@ -42,7 +42,7 @@ public class EquipmentMaintain implements Serializable {
 	 */
 	public EquipmentMaintain(Long id, BankEquipment bankEquipment, Date maintainDate, String result) {
 		super();
-		this.id = id;
+		this.id = id == null ? 0 : id;
 		this.bankEquipment = bankEquipment;
 		this.maintainDate = maintainDate;
 		this.result = result;
@@ -53,7 +53,7 @@ public class EquipmentMaintain implements Serializable {
 	}
 
 	public void setId(Long id) {
-		this.id = id;
+		this.id = id == null ? 0 : id;
 	}
 
 	public BankEquipment getBankEquipment() {
@@ -122,8 +122,7 @@ public class EquipmentMaintain implements Serializable {
 
 	@Override
 	public String toString() {
-		return "EquipmentMaintain [id=" + id + ", bankEquipment=" + bankEquipment + ", maintainDate=" + maintainDate
-				+ ", result=" + result + "]";
+		return "EquipmentMaintain [id=" + id + ", bankEquipment=" + bankEquipment + ", maintainDate=" + maintainDate + ", result=" + result + "]";
 	}
 
 	public String toJson() {
