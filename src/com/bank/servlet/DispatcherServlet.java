@@ -32,8 +32,7 @@ public class DispatcherServlet extends HttpServlet {
 			request.getRequestDispatcher("/404.jsp").forward(request, response);
 			return;
 		}
-		
-		
+
 		if (ary[0].equals("login")) {// 登录,登出,用户模块
 			LoginController loginController = new LoginController();
 			if (ary[1].equals("login")) {
@@ -63,7 +62,7 @@ public class DispatcherServlet extends HttpServlet {
 				uc.toUserUpte(request, response);
 			}
 		} else if (ary[0].equals("dept")) {// 部门模块
-			
+
 		} else if (ary[0].equals("bank")) {// 银行模块
 			BankController bc = new BankController();
 			if ("bankList".equals(ary[1])) {
@@ -79,7 +78,7 @@ public class DispatcherServlet extends HttpServlet {
 			} else if ("bankUpdate".equals(ary[1])) {
 				bc.updateBank(request, response);
 			} else if ("EquipmentsList".equals(ary[1])) {
-				 bc.queryEquipments(request, response);
+				bc.queryEquipments(request, response);
 			} else if ("toAddEquipment".equals(ary[1])) {
 				bc.toAddEquipment(request, response);
 			} else if ("checkBankEquId".equals(ary[1])) {
@@ -94,8 +93,8 @@ public class DispatcherServlet extends HttpServlet {
 				bc.deleteEquipment(request, response);
 			}
 		} else if (ary[0].equals("log")) {// 日志模块
-			if(ary[1].equals("")) {
-				
+			if (ary[1].equals("")) {
+
 			}
 			// LogController logController=new LogController();
 		} else {// 以上多条else if 都不满足时，跳转到404.jsp错误页面
