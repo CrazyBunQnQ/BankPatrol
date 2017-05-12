@@ -161,7 +161,7 @@ public class XunjianDaoImpl extends BaseDaoImpl implements XunjianDao {
 	public boolean updatePIEquipment(PiEquipment piEquipment) {
 		boolean flag = false;
 		try{
-			String sql= "UPDATE piequipmenttable set (login_id, bank_id, group_id, equipment_id, pitype_id, EquipmentEach_ID, PI_Date, PI_Evaluation, PI_Status, Status) values(?,?,?,?,?,?,?,?,?,?) where id = ?";
+			String sql= "UPDATE piequipmenttable set login_id=?, bank_id=?, group_id=?, equipment_id=?, pitype_id=?, EquipmentEach_ID=?, PI_Date=?, PI_Evaluation=?, PI_Status=?, Status=? where id = ?";
 			setConnAndPS(sql);
 			//给占位符赋值
 			ps.setString(1, piEquipment.getUser().getLoginId());
