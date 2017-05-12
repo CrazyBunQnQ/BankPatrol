@@ -182,7 +182,7 @@ public class BankController {
 		be.setStatus(status);
 		be.setDepreciationValue(depreciationValue);
 		if (bankService.insertEquipment(be)) {
-			response.sendRedirect("EquipmentsList.do?" + bankId);
+			response.sendRedirect("EquipmentsList.do?bankId=" + bankId);
 		} else {
 			request.setAttribute("msg", "添加银行设备失败");
 			request.setAttribute("equipment", be);
