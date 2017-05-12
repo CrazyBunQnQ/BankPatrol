@@ -67,12 +67,12 @@
 			</font>
 	
 			<c:if test="${data.curPage!=1 }">
-				<a href="../bank/bankList.do?curpage=${data.curPage-1 }">上一页</a>
-				<a href="../bank/bankList.do?curpage=1 ">首 页</a>
+				<a href="../bank/EquipmentsList.do?curpage=${data.curPage-1 }">上一页</a>
+				<a href="../bank/EquipmentsList.do?curpage=1 ">首 页</a>
 			</c:if>
 			<c:if test="${data.curPage!=data.totalPage }">
-				<a href="../bank/bankList.do?curpage=${data.curPage+1 }&loginId=${log}&userName=${un}">下一页</a>
-				<a href="../bank/bankList.do?curpage=${data.totalPage }">尾 页</a>
+				<a href="../bank/EquipmentsList.do?curpage=${data.curPage+1 }&loginId=${log}&userName=${un}">下一页</a>
+				<a href="../bank/EquipmentList.do?curpage=${data.totalPage }">尾 页</a>
 			</c:if>
 			第<input id="pagebox" type="text" size="4">页
 			<a onclick="jump('../bank/EquipmentsList.do?curpage=','${data.totalPage }');" href="javascript:;">跳转</a>
