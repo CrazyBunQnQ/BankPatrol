@@ -43,4 +43,10 @@ public interface EquipmentTypeDao {
 	 */
 	public boolean updateEquipmentType(EquipmentType EquipmentType);
 	
+
+	/**
+	 * 查询所有的设备种类
+	 * @return
+	 */
+	List<EquipmentType> queryTyps();
 }

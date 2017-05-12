@@ -66,8 +66,30 @@ public class DispatcherServlet extends HttpServlet {
 			
 		} else if (ary[0].equals("bank")) {// 银行模块
 			BankController bc = new BankController();
-			if (ary[1].equals("bankList")) {
-				bc.bankList(request, response);
+			if ("bankList".equals(ary[1])) {
+				bc.queryBanks(request, response);
+			} else if ("toAdd".equals(ary[1])) {
+				bc.toAddBank(request, response);
+			} else if ("checkBankId".equals(ary[1])) {
+				bc.checkBankId(request, response);
+			} else if ("bankAdd".equals(ary[1])) {
+				bc.insertBank(request, response);
+			} else if ("toUpdate".equals(ary[1])) {
+				bc.toUpdate(request, response);
+			} else if ("bankUpdate".equals(ary[1])) {
+				bc.updateBank(request, response);
+			} else if ("EquipmentsList".equals(ary[1])) {
+				 bc.queryEquipments(request, response);
+			} else if ("toAddEquipment".equals(ary[1])) {
+				bc.toAddEquipment(request, response);
+			} else if ("AddEquipment".equals(ary[1])) {
+//				bc.insertEquipment(request, response);
+			} else if ("toUpdateEquipment".equals(ary[1])) {
+//				bc.toUpdateEquipment(request, response);
+			} else if ("UpdateEquipment".equals(ary[1])) {
+//				bc.updateEquipment(request, response);
+			} else if ("AddEquipment".equals(ary[1])) {
+//				bc.deleteEquipment(request, response);
 			}
 		} else if (ary[0].equals("log")) {// 日志模块
 			if(ary[1].equals("")) {

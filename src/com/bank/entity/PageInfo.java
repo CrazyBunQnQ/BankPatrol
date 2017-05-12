@@ -23,7 +23,7 @@ public class PageInfo<T> implements Serializable{
 	
 	public PageInfo() {
 	}
-
+	
 	public int getCurPage() {
 		return curPage;
 	}

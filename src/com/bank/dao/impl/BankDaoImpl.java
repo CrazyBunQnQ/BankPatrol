@@ -61,13 +61,13 @@ public class BankDaoImpl extends BaseDaoImpl implements BankDao {
 			ps.setDouble(3, bank.getLongitude());
 			ps.setDouble(4, bank.getLatitude());
 			ps.setString(5, bank.getIp());
+			LOGGER.info("添加银行信息：" + ps.toString());
 			n = ps.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
 			DBUtil.closeConnection(conn, null, ps);
 		}
-		LOGGER.info("添加银行信息：" + ps.toString());
 		return n;
 	}
 
@@ -82,13 +82,51 @@ public class BankDaoImpl extends BaseDaoImpl implements BankDao {
 			ps.setDouble(3, bank.getLatitude());
 			ps.setString(4, bank.getIp());
 			ps.setString(5, bank.getId());
+			LOGGER.info("更新银行信息：" + ps.toString());
 			n = ps.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
 			DBUtil.closeConnection(conn, null, ps);
 		}
-		LOGGER.info("添加银行信息：" + ps.toString());
 		return n;
+	}
+
+	@Override
+	public boolean hasBank(String id) {
+		boolean result = true;
+		String sql = "SELECT Bank_id FROM bank WHERE Bank_id=?";
+		try {
+			setConnAndPS(sql);
+			ps.setString(1, id);
+			LOGGER.info("查询银行是否存在：" + ps.toString());
+			rs = ps.executeQuery();
+			result = rs.next();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBUtil.closeConnection(conn, rs, ps);
+		}
+		return result;
+	}
+
+	@Override
+	public Bank queryBank(String id) {
+		Bank bank = null;
+		String sql = "SELECT Bank_Name, Bank_Longitude, Bank_Latitude, Bank_IP FROM bank WHERE Bank_id=?";
+		try {
+			setConnAndPS(sql);
+			ps.setString(1, id);
+			LOGGER.info("查询指定银行信息：" + ps.toString());
+			rs = ps.executeQuery();
+			if (rs.next()) {
+				bank = new Bank(id, rs.getString(1), rs.getDouble(2), rs.getDouble(3), rs.getString(4));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBUtil.closeConnection(conn, rs, ps);
+		}
+		return bank;
 	}
 }

@@ -33,4 +33,18 @@ public interface BankDao {
 	 * @return int 影响行数
 	 */
 	int updateBank(Bank bank);
+
+	/**
+	 * 查询指定银行 id 是否已存在
+	 * @param id
+	 * @return
+	 */
+	boolean hasBank(String id);
+
+	/**
+	 * 按照指定 id 查找银行
+	 * @param id
+	 * @return
+	 */
+	Bank queryBank(String id);
 }
