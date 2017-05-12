@@ -3,6 +3,7 @@ package com.bank.entity;
 import java.io.Serializable;
 import java.util.Date;
 
+import com.bank.util.DateUtils;
 import com.google.gson.Gson;
 
 /**
@@ -111,7 +112,32 @@ public class BankEquipment implements Serializable {
 	public int getStatus() {
 		return status;
 	}
+	
+	/**
+	 * 获取设备状态
+	 * @return 
+	 */
+	public String getStatusStr() {
+		switch (status) {
+		case 0:
+			return "设备正常";
+		case 1:
+			return "报检正常";
+		}
+		return "停用设备";
+	}
 
+	/**
+	 * 设置设备状态
+	 * 
+	 * 0：设备正常
+	 * 
+	 * 1：报检设备
+	 * 
+	 * 2：停用设备
+	 * 
+	 * @param status
+	 */
 	public void setStatus(int status) {
 		this.status = status;
 	}
@@ -156,6 +182,14 @@ public class BankEquipment implements Serializable {
 		this.type.setId(typId);
 	}
 
+	/**
+	 * 获取购买时间
+	 * @return
+	 */
+	public String getBuyDateStr() {
+		return DateUtils.dateToStr("yyyy-MM-dd", buyDate);
+	}
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;

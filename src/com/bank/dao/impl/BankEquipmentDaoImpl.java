@@ -14,14 +14,19 @@ public class BankEquipmentDaoImpl extends BaseDaoImpl implements BankEquipmentDa
 	@Override
 	public int queryBankEquipmentsCount(String bankID) {
 		int n = 0;
-		String sql = "SELECT COUNT(*) FROM bankequipment";
+		String sql = "SELECT COUNT(*) FROM bankequipment WHERE Bank_id=?";
 		try {
 			setConnAndPS(sql);
-			n = ps.executeUpdate();
+			ps.setString(1, bankID);
+			LOGGER.info("查询银行 " + bankID + " 的设备数量：" + ps.toString());
+			rs = ps.executeQuery();
+			if (rs.next()) {
+				n = rs.getInt(1);
+			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
-			DBUtil.closeConnection(conn, null, ps);
+			DBUtil.closeConnection(conn, rs, ps);
 		}
 		return n;
 	}

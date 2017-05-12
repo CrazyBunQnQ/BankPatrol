@@ -5,7 +5,7 @@
 <head>
 <title>新增银行网点</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link rel="stylesheet" type="text/css" href="../css/main.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/css/main.css">
 <script type="text/javascript" src="${pageContext.request.contextPath }/js/check.js"></script>
 </head>
 
