@@ -115,7 +115,7 @@ public class XunjianDaoImpl extends BaseDaoImpl implements XunjianDao {
 		String sql = "select id, login_id, bank_id, group_id, equipment_id, pitype_id, EquipmentEach_ID, PI_Date, PI_Evaluation, PI_Status, Status from PiEquipment where date = ?"; 
 		//给占位符赋值
 		try {
-			//ps.setDate(1, date);
+			ps.setDate(1, new java.sql.Date(date.getTime()));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}finally{
@@ -159,8 +159,32 @@ public class XunjianDaoImpl extends BaseDaoImpl implements XunjianDao {
 	@Override
 	//修改设备巡检信息
 	public boolean updatePIEquipment(PiEquipment piEquipment) {
-		// TODO Auto-generated method stub
-		return false;
+		boolean flag = false;
+		try{
+			String sql= "UPDATE piequipmenttable set login_id=?, bank_id=?, group_id=?, equipment_id=?, pitype_id=?, EquipmentEach_ID=?, PI_Date=?, PI_Evaluation=?, PI_Status=?, Status=? where id = ?";
+			setConnAndPS(sql);
+			//给占位符赋值
+			ps.setString(1, piEquipment.getUser().getLoginId());
+			ps.setString(2, piEquipment.getBank().getId());
+			ps.setLong(3, piEquipment.getPiGroup().getId());
+			ps.setString(4, piEquipment.getBankEquipment().getType().getId());
+			ps.setInt(5, piEquipment.getRepairType().getId());
+			ps.setString(6, piEquipment.getBankEquipment().getEachID());
+			ps.setDate(7, new java.sql.Date(piEquipment.getPiDate().getTime()));
+			ps.setString(8, piEquipment.getEvaluation());
+			ps.setBoolean(9, piEquipment.isPiStatus());
+			ps.setBoolean(10, piEquipment.isStatus());
+			ps.setLong(11, piEquipment.getId());
+			LOGGER.info("修改巡检信息：" + ps.toString());
+			int a = ps.executeUpdate();
+			if(a>0){
+				flag = true;
+			}
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally{
+			DBUtil.closeConnection(conn, rs, ps);
+		}
+		return flag;
 	}
-
 }
