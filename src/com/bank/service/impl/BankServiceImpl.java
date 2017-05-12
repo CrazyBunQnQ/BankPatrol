@@ -24,7 +24,7 @@ public class BankServiceImpl implements BankService {
 	public PageInfo<Bank> getBanks(int page) {
 		PageInfo<Bank> data = new PageInfo<Bank>();
 		data.setCurPage(page);
-		List<Bank> banks = bdi.queryBanks(page, data.getPageSize());
+		List<Bank> banks = bdi.queryBanks(data.getFrom(), data.getPageSize());
 		int count = bdi.queryBankesCount();
 		data.setTotalRecord(count);
 		data.setPagedata(banks);
@@ -55,7 +55,7 @@ public class BankServiceImpl implements BankService {
 	public PageInfo<BankEquipment> getEquipments(String bankId, int page) {
 		PageInfo<BankEquipment> data = new PageInfo<BankEquipment>();
 		data.setCurPage(page);
-		List<BankEquipment> equipments = bedi.queryBankEquipments(bankId, page, data.getPageSize());
+		List<BankEquipment> equipments = bedi.queryBankEquipments(bankId, data.getFrom(), data.getPageSize());
 		int count = bedi.queryBankEquipmentsCount(bankId);
 		data.setPagedata(equipments);
 		data.setTotalPage(count);
