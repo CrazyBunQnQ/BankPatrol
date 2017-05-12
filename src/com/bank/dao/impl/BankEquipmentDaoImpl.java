@@ -131,4 +131,22 @@ public class BankEquipmentDaoImpl extends BaseDaoImpl implements BankEquipmentDa
 		}
 		return n;
 	}
+
+	@Override
+	public boolean hasEquipmentId(String id) {
+		boolean result = true;
+		String sql = "SELECT EquipmentEach_ID FROM bankequipment WHERE EquipmentEach_ID=?";
+		try {
+			setConnAndPS(sql);
+			ps.setString(1, id);
+			LOGGER.info("查询银行设备 " + id + "是否存在：" + ps.toString());
+			rs = ps.executeQuery();
+			result = rs.next();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBUtil.closeConnection(conn, rs, ps);
+		}
+		return result;
+	}
 }

@@ -129,8 +129,8 @@ function checkBankEquId(name) {
 					if (res == 0) {
 						id.innerHTML = "<font color='green'>设备明细编号可以使用</font>";
 					} else if (res == 1) {
-						id.innerHTML = "<font color='red'>" + name
-								+ "</font>已经存在";
+						id.innerHTML = "<font color='red'>银行 " + newValue
+								+ "</font> 已经存在";
 						t.focus();
 						t.value = "";
 					}

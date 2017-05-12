@@ -66,4 +66,8 @@ public class BankServiceImpl implements BankService {
 	public List<EquipmentType> getEquipmentTypes() {
 		return etdi.queryTyps();
 	}
+
+	public int checkEquipmentId(String id) {
+		return bedi.hasEquipmentId(id) ? 1 : 0;
+	}
 }

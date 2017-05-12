@@ -132,6 +132,7 @@ public class BankController {
 		int page = Integer.parseInt(request.getParameter("curpage") == null ? "0" : request.getParameter("curpage"));
 		PageInfo<BankEquipment> data = bankService.getEquipments(bankId, page);
 		request.setAttribute("data", data);
+		request.setAttribute("bankId", bankId);
 		request.getRequestDispatcher("/jsp/system/bank/bankEquipment.jsp").forward(request, response);
 	}
 
@@ -147,6 +148,20 @@ public class BankController {
 		Bank bank = bankService.getBank(bankId);
 		List<EquipmentType> typeList = bankService.getEquipmentTypes();
 		request.setAttribute("bank", bank);
+		request.setAttribute("typs", typeList);
 		request.getRequestDispatcher("/jsp/system/bank/bankequnew.jsp").forward(request, response);
+	}
+
+	/**
+	 * 检查设备 id 是否存在，存在输出 1，不存在输出 0
+	 * @param request
+	 * @param response
+	 * @throws IOException
+	 */
+	public void checkEquipmentId(HttpServletRequest request, HttpServletResponse response) throws IOException {
+		String id = request.getParameter("id");
+		int i = bankService.checkEquipmentId(id);
+		PrintWriter out = response.getWriter();
+		out.write(i + "");
 	}
 }

@@ -19,7 +19,7 @@
 		<div id="inner-bd">
 			<div class="button-group">
 				<div class="button">
-					<img src="${pageContext.request.contextPath }/images/add.gif" onclick="location.href='../bank/toAddEquipment.do'">
+					<img src="${pageContext.request.contextPath }/images/add.gif" onclick="location.href='../bank/toAddEquipment.do?bankId=${bankId }'">
 				</div>
 			</div>
 			<table class="kv-table">
@@ -40,7 +40,7 @@
 					<c:forEach items="${data.pageData }" var="equipment">
 						<tr>
 							<td>${equipment.eachID }</td>
-							<td>${equipment.getBankId() }</td>
+							<td>${BankId }</td>
 							<td>${equipment.getTypeId() }</td>
 							<td>${equipment.value }</td>
 							<td>${equipment.getBuyDateStr() }</td>

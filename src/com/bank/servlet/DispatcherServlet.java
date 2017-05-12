@@ -82,6 +82,8 @@ public class DispatcherServlet extends HttpServlet {
 				 bc.queryEquipments(request, response);
 			} else if ("toAddEquipment".equals(ary[1])) {
 				bc.toAddEquipment(request, response);
+			} else if ("checkBankEquId".equals(ary[1])) {
+				bc.checkEquipmentId(request, response);
 			} else if ("AddEquipment".equals(ary[1])) {
 //				bc.insertEquipment(request, response);
 			} else if ("toUpdateEquipment".equals(ary[1])) {

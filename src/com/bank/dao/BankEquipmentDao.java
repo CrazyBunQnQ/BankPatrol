@@ -42,4 +42,11 @@ public interface BankEquipmentDao {
 	 * @return int 影响行数
 	 */
 	int deleteBankEquipment(String eachID);
+
+	/**
+	 * 根据设备流水 id 查询设备是否已存在 
+	 * @param id 流水 id
+	 * @return
+	 */
+	boolean hasEquipmentId(String id);
 }

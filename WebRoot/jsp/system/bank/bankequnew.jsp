@@ -1,6 +1,7 @@
 <%@page import="com.bank.entity.Bank"%>
 <%@page import="com.bank.entity.BankEquipment"%>
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -13,8 +14,10 @@
 
 <body>
 	<span class="sys_list_yh">系统管理&gt;&gt;银行设备明细列表&gt;&gt;新增银行设备明细</span>
-	<% Bank bank = (Bank)request.getAttribute("bank"); %>
-	<% BankEquipment equi = (BankEquipment)request.getAttribute("equipment"); %>
+	<%
+		Bank bank = (Bank)request.getAttribute("bank");
+		BankEquipment equi = (BankEquipment)request.getAttribute("equipment");
+	%>
 	<form action="${pageContext.request.contextPath }/bank/AddEquipment.do" method="post">
 		<table align="center" border="1" width="60%">
 			<tr>
@@ -26,16 +29,19 @@
 			</tr>
 			<tr>
 				<td bgcolor="#F2F2F2" align="center" width="30%">所属种类名</td>
-				<td><select name="equipmentId">
-						<option value="javascript:;">打印机</option>
-						<option value="javascript:;">ATM</option>
-				</select>
+				<td>
+					<select name="equipmentId">
+						<c:forEach items="${typs }" var="type">
+							<option value="${type.id }">${type.name }</option>
+						</c:forEach>
+					</select>
+				</td>
 			</tr>
 			<tr>
 				<td bgcolor="#F2F2F2" align="center" width="30%">所在银行</td>
 				<td>
-					<input type="hidden" name="bankId" value="">
-					<input type="text" name="bankName" value="" readonly>
+					<input type="hidden" name="bankId" value="${bank.id }">
+					<input type="text" name="bankName" value="${bank.name }" readonly>
 				</td>
 			</tr>
 			<tr>
