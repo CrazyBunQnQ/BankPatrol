@@ -51,7 +51,7 @@
 			</tr>
 			<tr>
 				<td bgcolor="#F2F2F2" align="center" width="30%">购入时间</td>
-				<td><input type="text" name="equipmentBuyDate"<% if (equi!=null) { %> value="${equi.getBuyDateStr() }"<% } %> onClick="WdatePicker();"/></td>
+				<td><input type="text" name="equipmentBuyDate"<% if (equi!=null) { %> value="${equi.getBuyDateStr() }"<% } %> onClick="WdatePicker();" readonly/></td>
 			</tr>
 			<tr>
 				<td bgcolor="#F2F2F2" align="center" width="30%">设备状态</td>
