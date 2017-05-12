@@ -10,6 +10,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/css/main.css">
 <script type="text/javascript" src="${pageContext.request.contextPath }/js/check.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath }/js/lib/My97DatePicker/WdatePicker.js"></script>
 </head>
 
 <body>
@@ -50,7 +51,7 @@
 			</tr>
 			<tr>
 				<td bgcolor="#F2F2F2" align="center" width="30%">购入时间</td>
-				<td><input type="text" name="equipmentBuyDate"<% if (equi!=null) { %> value="${equi.getBuyDateStr() }"<% } %> /></td>
+				<td><input type="text" name="equipmentBuyDate"<% if (equi!=null) { %> value="${equi.getBuyDateStr() }"<% } %> onClick="WdatePicker();"/></td>
 			</tr>
 			<tr>
 				<td bgcolor="#F2F2F2" align="center" width="30%">设备状态</td>

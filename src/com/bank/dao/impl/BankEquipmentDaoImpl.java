@@ -149,4 +149,27 @@ public class BankEquipmentDaoImpl extends BaseDaoImpl implements BankEquipmentDa
 		}
 		return result;
 	}
+
+	@Override
+	public int insertBank(BankEquipment be) {
+		int n = 0;
+		String sql = "INSERT INTO bankequipment VALUES (?, ?, ?, ?, ?, ?, ?)";
+		try {
+			setConnAndPS(sql);
+			ps.setString(1, be.getEachID());
+			ps.setString(2, be.getTypeId());
+			ps.setString(3, be.getBankId());
+			ps.setDouble(4, be.getValue());
+			ps.setDate(5, new Date(be.getBuyDate().getTime()));
+			ps.setInt(6, be.getStatus());
+			ps.setDouble(7, be.getDepreciationValue());
+			LOGGER.info("在 " + be.getBankName() + " 下添加设备：" + ps.toString());
+			n = ps.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBUtil.closeConnection(conn, null, ps);
+		}
+		return n;
+	}
 }

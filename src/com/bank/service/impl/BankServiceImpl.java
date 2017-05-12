@@ -70,4 +70,9 @@ public class BankServiceImpl implements BankService {
 	public int checkEquipmentId(String id) {
 		return bedi.hasEquipmentId(id) ? 1 : 0;
 	}
+
+	@Override
+	public boolean insertEquipment(BankEquipment be) {
+		return bedi.insertBank(be) > 0;
+	}
 }

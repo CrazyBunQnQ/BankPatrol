@@ -3,6 +3,7 @@ package com.bank.controller;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -15,6 +16,7 @@ import com.bank.entity.BankEquipment;
 import com.bank.entity.EquipmentType;
 import com.bank.entity.PageInfo;
 import com.bank.service.impl.BankServiceImpl;
+import com.bank.util.DateUtils;
 
 @WebServlet("/BankServlet")
 public class BankController {
@@ -145,11 +147,7 @@ public class BankController {
 	 */
 	public void toAddEquipment(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String bankId = request.getParameter("bankId");
-		Bank bank = bankService.getBank(bankId);
-		List<EquipmentType> typeList = bankService.getEquipmentTypes();
-		request.setAttribute("bank", bank);
-		request.setAttribute("typs", typeList);
-		request.getRequestDispatcher("/jsp/system/bank/bankequnew.jsp").forward(request, response);
+		goAddEquipmentJsp(bankId, request, response);
 	}
 
 	/**
@@ -163,5 +161,40 @@ public class BankController {
 		int i = bankService.checkEquipmentId(id);
 		PrintWriter out = response.getWriter();
 		out.write(i + "");
+	}
+
+	public void insertEquipment(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String equipmentId = request.getParameter("equipmentEachId");
+		String typeId = request.getParameter("equipmentId");
+		String bankId = request.getParameter("bankId");
+		String bankName = request.getParameter("bankName");
+		Double value = Double.parseDouble(request.getParameter("equipmentValue"));
+		Date buyDate = DateUtils.strToDate("yyyy-MM-dd", request.getParameter("equipmentBuyDate"));
+		Integer status = Integer.parseInt(request.getParameter("status"));
+		Double depreciationValue = Double.parseDouble(request.getParameter("depreciationValue"));
+		BankEquipment be = new BankEquipment();
+		be.setEachID(equipmentId);
+		be.setTypeId(typeId);
+		be.setBankId(bankId);
+		be.setBankName(bankName);
+		be.setValue(value);
+		be.setBuyDate(buyDate);
+		be.setStatus(status);
+		be.setDepreciationValue(depreciationValue);
+		if (bankService.insertEquipment(be)) {
+			response.sendRedirect("EquipmentsList.do?" + bankId);
+		} else {
+			request.setAttribute("msg", "添加银行设备失败");
+			request.setAttribute("equipment", be);
+			goAddEquipmentJsp(bankId, request, response);
+		}
+	}
+	
+	private void goAddEquipmentJsp(String bankId, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		Bank bank = bankService.getBank(bankId);
+		List<EquipmentType> typeList = bankService.getEquipmentTypes();
+		request.setAttribute("typs", typeList);
+		request.setAttribute("bank", bank);
+		request.getRequestDispatcher("/jsp/system/bank/bankequnew.jsp").forward(request, response);
 	}
 }

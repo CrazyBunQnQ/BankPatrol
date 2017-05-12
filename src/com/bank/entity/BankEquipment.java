@@ -167,6 +167,22 @@ public class BankEquipment implements Serializable {
 	}
 	
 	/**
+	 * 获取所属银行的名称
+	 * @return
+	 */
+	public String getBankName() {
+		return bank.getName();
+	}
+	
+	/**
+	 * 设置所属银行的名称
+	 * @param bankName
+	 */
+	public void setBankName(String bankName) {
+		this.bank.setName(bankName);
+	}
+	
+	/**
 	 * 获取设备种类 id
 	 * @return
 	 */
@@ -254,4 +270,5 @@ public class BankEquipment implements Serializable {
 	public String toJson() {
 		return new Gson().toJson(this);
 	}
+
 }

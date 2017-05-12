@@ -72,4 +72,11 @@ public interface BankService {
 	 * @return
 	 */
 	List<EquipmentType> getEquipmentTypes();
+
+	/**
+	 * 给指定 id 的银行添加设备
+	 * @param be
+	 * @return
+	 */
+	boolean insertEquipment(BankEquipment be);
 }

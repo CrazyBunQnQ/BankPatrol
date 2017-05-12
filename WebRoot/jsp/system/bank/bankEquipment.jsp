@@ -40,7 +40,7 @@
 					<c:forEach items="${data.pageData }" var="equipment">
 						<tr>
 							<td>${equipment.eachID }</td>
-							<td>${BankId }</td>
+							<td>${bankId }</td>
 							<td>${equipment.getTypeId() }</td>
 							<td>${equipment.value }</td>
 							<td>${equipment.getBuyDateStr() }</td>
