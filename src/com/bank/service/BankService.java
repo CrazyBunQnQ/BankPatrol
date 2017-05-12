@@ -79,4 +79,32 @@ public interface BankService {
 	 * @return
 	 */
 	boolean insertEquipment(BankEquipment be);
+
+	/**
+	 * 检查设备流水 id 是否已存在
+	 * @param id 设备流水 id
+	 * @return
+	 */
+	int checkEquipmentId(String id);
+
+	/**
+	 * 更新指定流水 id 和银行 id 的设备
+	 * @param be
+	 * @return
+	 */
+	boolean updateEquipment(BankEquipment be);
+
+	/**
+	 * 获取指定 id 的设备信息
+	 * @param eqId 设备流水 id
+	 * @return
+	 */
+	BankEquipment getEquipment(String eqId);
+
+	/**
+	 * 删除指定 id 的设备信息
+	 * @param eqId 设备流水 id
+	 * @return
+	 */
+	boolean deleteEquipment(String eqId);
 }

@@ -147,7 +147,8 @@ public class BankController {
 	 */
 	public void toAddEquipment(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String bankId = request.getParameter("bankId");
-		goAddEquipmentJsp(bankId, request, response);
+		goAddOrUpdate(bankId, request, response);
+		request.getRequestDispatcher("/jsp/system/bank/bankequnew.jsp").forward(request, response);
 	}
 
 	/**
@@ -186,15 +187,73 @@ public class BankController {
 		} else {
 			request.setAttribute("msg", "添加银行设备失败");
 			request.setAttribute("equipment", be);
-			goAddEquipmentJsp(bankId, request, response);
+			goAddOrUpdate(bankId, request, response);
+			request.getRequestDispatcher("/jsp/system/bank/bankequnew.jsp").forward(request, response);
 		}
 	}
 	
-	private void goAddEquipmentJsp(String bankId, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+	public void toUpdateEquipment(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String eqId = request.getParameter("eqId");
+		BankEquipment be = bankService.getEquipment(eqId);
+		List<EquipmentType> typeList = bankService.getEquipmentTypes();
+		request.setAttribute("typs", typeList);
+		request.setAttribute("equi", be);
+		request.getRequestDispatcher("/jsp/system/bank/bankequpdate.jsp").forward(request, response);
+	}
+
+	public void updateEquipment(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+		String equipmentId = request.getParameter("equipmentEachId");
+		String typeId = request.getParameter("equipmentId");
+		String bankId = request.getParameter("bankId");
+		Double value = Double.parseDouble(request.getParameter("equipmentValue"));
+		Date buyDate = DateUtils.strToDate("yyyy-MM-dd", request.getParameter("equipmentBuyDate"));
+		Integer status = Integer.parseInt(request.getParameter("status"));
+		Double depreciationValue = Double.parseDouble(request.getParameter("depreciationValue"));
+		BankEquipment be = new BankEquipment();
+		be.setEachID(equipmentId);
+		be.setTypeId(typeId);
+		be.setBankId(bankId);
+		be.setValue(value);
+		be.setBuyDate(buyDate);
+		be.setStatus(status);
+		be.setDepreciationValue(depreciationValue);
+		if (bankService.updateEquipment(be)) {
+			response.sendRedirect("EquipmentsList.do?bankId=" + bankId);
+		} else {
+			request.setAttribute("msg", "修改银行设备信息失败");
+			request.setAttribute("equipment", be);
+			goAddOrUpdate(bankId, request, response);
+			request.getRequestDispatcher("/jsp/system/bank/bankequpdate.jsp").forward(request, response);
+		}
+	}
+
+	/**
+	 * 删除指定流水 id 的银行设备，并跳转到指定银行 id 下的所有银行设备
+	 * @param request
+	 * @param response
+	 * @throws IOException
+	 */
+	public void deleteEquipment(HttpServletRequest request, HttpServletResponse response) throws IOException {
+		String eqId = request.getParameter("eqId");
+		String bankId = request.getParameter("bankId");
+		if (bankService.deleteEquipment(eqId)) {
+			response.sendRedirect("EquipmentsList.do?bankId=" + bankId);
+		} else {
+			//TODO 删除失败提示
+		}
+	}
+	
+	/**
+	 * 跳转到增加或修改设备页面
+	 * @param bankId 银行 id
+	 * @param request
+	 * @param response
+	 */
+	private void goAddOrUpdate(String bankId, HttpServletRequest request, HttpServletResponse response){
 		Bank bank = bankService.getBank(bankId);
 		List<EquipmentType> typeList = bankService.getEquipmentTypes();
 		request.setAttribute("typs", typeList);
 		request.setAttribute("bank", bank);
-		request.getRequestDispatcher("/jsp/system/bank/bankequnew.jsp").forward(request, response);
 	}
 }

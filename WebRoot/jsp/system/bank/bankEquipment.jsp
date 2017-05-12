@@ -47,8 +47,10 @@
 							<td>${equipment.getStatusStr() }</td>
 							<td>${equipment.depreciationValue }</td>
 							<td>
-								<div class="handle"><span class="handle-icon fix"></span></div>
-								<div class="handle"><span class="handle-icon del"></span></div>
+								<div class="handle">
+									<a href="../bank/toUpdateEquipment.do?eqId=${equipment.eachID }&bankId=${bankId }"><span class="handle-icon fix"></span></a>
+									<a href="../bank/deleteEquipment.do?eqId=${equipment.eachID }"><span class="handle-icon del"></span></a>
+								</div>
 							</td>
 						</tr>
 					</c:forEach>
@@ -67,15 +69,15 @@
 			</font>
 	
 			<c:if test="${data.curPage!=1 }">
-				<a href="../bank/EquipmentsList.do?curpage=${data.curPage-1 }">上一页</a>
-				<a href="../bank/EquipmentsList.do?curpage=1 ">首 页</a>
+				<a href="../bank/EquipmentsList.do?curpage=${data.curPage-1 }&bankId=${bankId }">上一页</a>
+				<a href="../bank/EquipmentsList.do?curpage=1&bankId=${bankId }">首 页</a>
 			</c:if>
 			<c:if test="${data.curPage!=data.totalPage }">
-				<a href="../bank/EquipmentsList.do?curpage=${data.curPage+1 }&loginId=${log}&userName=${un}">下一页</a>
-				<a href="../bank/EquipmentList.do?curpage=${data.totalPage }">尾 页</a>
+				<a href="../bank/EquipmentsList.do?curpage=${data.curPage+1 }&bankId=${bankId }">下一页</a>
+				<a href="../bank/EquipmentList.do?curpage=${data.totalPage }&bankId=${bankId }">尾 页</a>
 			</c:if>
 			第<input id="pagebox" type="text" size="4">页
-			<a onclick="jump('../bank/EquipmentsList.do?curpage=','${data.totalPage }');" href="javascript:;">跳转</a>
+			<a onclick="jump('../bank/EquipmentsList.do?bankId=${bankId }&curpage=','${data.totalPage }');" href="javascript:;">跳转</a>
 		</p>
 	</div>
 </body>

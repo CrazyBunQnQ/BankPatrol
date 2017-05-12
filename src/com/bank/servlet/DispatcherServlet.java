@@ -87,11 +87,11 @@ public class DispatcherServlet extends HttpServlet {
 			} else if ("AddEquipment".equals(ary[1])) {
 				bc.insertEquipment(request, response);
 			} else if ("toUpdateEquipment".equals(ary[1])) {
-//				bc.toUpdateEquipment(request, response);
+				bc.toUpdateEquipment(request, response);
 			} else if ("UpdateEquipment".equals(ary[1])) {
-//				bc.updateEquipment(request, response);
-			} else if ("AddEquipment".equals(ary[1])) {
-//				bc.deleteEquipment(request, response);
+				bc.updateEquipment(request, response);
+			} else if ("deleteEquipment".equals(ary[1])) {
+				bc.deleteEquipment(request, response);
 			}
 		} else if (ary[0].equals("log")) {// 日志模块
 			if(ary[1].equals("")) {

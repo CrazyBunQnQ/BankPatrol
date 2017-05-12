@@ -70,4 +70,11 @@ public interface BankEquipmentDao {
 	 * @return int 影响行数
 	 */
 	int insertBank(BankEquipment be);
+
+	/**
+	 * 查询指定流水 id 的设备信息
+	 * @param eqId
+	 * @return
+	 */
+	BankEquipment queryBankEquipment(String eqId);
 }

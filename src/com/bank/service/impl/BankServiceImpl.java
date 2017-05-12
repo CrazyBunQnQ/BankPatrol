@@ -67,6 +67,7 @@ public class BankServiceImpl implements BankService {
 		return etdi.queryTyps();
 	}
 
+	@Override
 	public int checkEquipmentId(String id) {
 		return bedi.hasEquipmentId(id) ? 1 : 0;
 	}
@@ -74,5 +75,20 @@ public class BankServiceImpl implements BankService {
 	@Override
 	public boolean insertEquipment(BankEquipment be) {
 		return bedi.insertBank(be) > 0;
+	}
+
+	@Override
+	public boolean updateEquipment(BankEquipment be) {
+		return bedi.updateBankEquipment(be) > 0;
+	}
+
+	@Override
+	public BankEquipment getEquipment(String eqId) {
+		return bedi.queryBankEquipment(eqId);
+	}
+
+	@Override
+	public boolean deleteEquipment(String eqId) {
+		return bedi.deleteBankEquipment(eqId) > 0;
 	}
 }

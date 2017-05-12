@@ -7,6 +7,7 @@ import java.util.List;
 
 import com.bank.dao.BankEquipmentDao;
 import com.bank.entity.BankEquipment;
+import com.bank.entity.EquipmentType;
 import com.bank.util.DBUtil;
 
 public class BankEquipmentDaoImpl extends BaseDaoImpl implements BankEquipmentDao {
@@ -90,21 +91,20 @@ public class BankEquipmentDaoImpl extends BaseDaoImpl implements BankEquipmentDa
 		int n = 0;
 		String sql = "UPDATE bankequipment SET"
 				+ " Equipment_id=?,"
-				+ " Bank_id=?,"
 				+ " Equipment_Value=?,"
 				+ " Equipment_BuyDate=?,"
 				+ " Status=?,"
 				+ "	Depreciation_Value=?"
-				+ " WHERE EquipmentEach_ID=?";
+				+ " WHERE EquipmentEach_ID=? AND Bank_id=?";
 		try {
 			setConnAndPS(sql);
 			ps.setString(1, BankEquipment.getType().getId());
-			ps.setString(2, BankEquipment.getBank().getId());
-			ps.setDouble(3, BankEquipment.getValue());
-			ps.setDate(4, new Date(BankEquipment.getBuyDate().getTime()));
-			ps.setInt(5, BankEquipment.getStatus());
-			ps.setDouble(6, BankEquipment.getDepreciationValue());
-			ps.setString(7, BankEquipment.getEachID());
+			ps.setDouble(2, BankEquipment.getValue());
+			ps.setDate(3, new Date(BankEquipment.getBuyDate().getTime()));
+			ps.setInt(4, BankEquipment.getStatus());
+			ps.setDouble(5, BankEquipment.getDepreciationValue());
+			ps.setString(6, BankEquipment.getEachID());
+			ps.setString(7, BankEquipment.getBank().getId());
 			LOGGER.info("更新银行设备 " + BankEquipment.getEachID() + "：" + ps.toString());
 			n = ps.executeUpdate();
 		} catch (SQLException e) {
@@ -171,5 +171,33 @@ public class BankEquipmentDaoImpl extends BaseDaoImpl implements BankEquipmentDa
 			DBUtil.closeConnection(conn, null, ps);
 		}
 		return n;
+	}
+
+	@Override
+	public BankEquipment queryBankEquipment(String eqId) {
+		BankEquipment be = new BankEquipment();
+		String sql = "SELECT bankequipment.EquipmentEach_ID, bankequipment.Equipment_id, equipmenttype.Equipment_Name, bankequipment.Bank_id, bank.Bank_Name, bankequipment.Equipment_Value, bankequipment.Equipment_BuyDate, bankequipment.Status, bankequipment.Depreciation_Value FROM bankequipment, equipmenttype, bank WHERE equipmenttype.Equipment_id=bankequipment.Equipment_id AND bank.Bank_id=bankequipment.Bank_id AND bankequipment.EquipmentEach_ID=?";
+		try {
+			setConnAndPS(sql);
+			ps.setString(1, eqId);
+			LOGGER.info("获取流水 id 为 " + eqId + " 的设备：" + ps.toString());
+			rs = ps.executeQuery();
+			if (rs.next()) {
+				be.setEachID(rs.getString(1));
+				be.setTypeId(rs.getString(2));
+				be.setType(new EquipmentType(rs.getString(2), rs.getString(3)));
+				be.setBankId(rs.getString(4));
+				be.setBankName(rs.getString(5));
+				be.setValue(rs.getDouble(6));
+				be.setBuyDate(rs.getDate(7));
+				be.setStatus(rs.getInt(8));
+				be.setDepreciationValue(rs.getDouble(9));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBUtil.closeConnection(conn, rs, ps);
+		}
+		return be;
 	}
 }

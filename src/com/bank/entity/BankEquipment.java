@@ -122,7 +122,7 @@ public class BankEquipment implements Serializable {
 		case 0:
 			return "设备正常";
 		case 1:
-			return "报检正常";
+			return "报检设备";
 		}
 		return "停用设备";
 	}
