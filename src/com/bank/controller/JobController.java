@@ -26,4 +26,8 @@ public class JobController {
 		request.setAttribute("data", data);
 		request.getRequestDispatcher("/jsp/system/job/joblist.jsp").forward(request, response);
 	}
+
+	public void toAddJob(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.getRequestDispatcher("/jsp/system/job/jobnew.jsp").forward(request, response);
+	}
 }

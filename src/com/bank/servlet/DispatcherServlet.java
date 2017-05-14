@@ -66,6 +66,8 @@ public class DispatcherServlet extends HttpServlet {
 			 JobController jobController = new JobController();
 			if ("jobList".equals(ary[1])) {
 				jobController.queryGws(request, response);
+			} else if ("toAdd".equals(ary[1])) {
+				jobController.toAddJob(request, response);
 			}
 		} else if (ary[0].equals("bank")) {// 银行模块
 			BankController bankController = new BankController();
