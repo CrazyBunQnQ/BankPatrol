@@ -98,10 +98,6 @@ function checkBankId(name) {
 			};
 			xmlHttpRequest.send("id=" + t.value.Trim());
 		}
-	} else {
-		alert("银行IP不能为空");
-		t.focus();
-		return false;
 	}
 }
 /**
