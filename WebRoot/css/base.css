@@ -84,6 +84,10 @@ body, button, input, select, textarea {
 	padding: 0 20px
 }
 
+#inner-bd p {
+	margin-top: 10px
+}
+
 .button {
 	*float: left;
 	display: inline-block;
