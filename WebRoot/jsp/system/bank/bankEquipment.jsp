@@ -68,7 +68,7 @@
 					<a href="../bank/EquipmentsList.do?curpage=1 ">首 页</a>&nbsp;&nbsp;
 				</c:if>
 				<c:if test="${data.curPage!=data.totalPage }">
-					<a href="../bank/EquipmentsList.do?curpage=${data.curPage+1 }&loginId=${log}&userName=${un}">下一页</a>&nbsp;&nbsp;
+					<a href="../bank/EquipmentsList.do?curpage=${data.curPage+1 }">下一页</a>&nbsp;&nbsp;
 					<a href="../bank/EquipmentsList.do?curpage=${data.totalPage }">尾 页</a>&nbsp;&nbsp;
 				</c:if>
 				第&nbsp;<input id="pagebox" type="text" size="4">&nbsp;页&nbsp;
