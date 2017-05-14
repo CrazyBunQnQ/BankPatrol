@@ -11,13 +11,15 @@ public interface EquipmentTypeService {
 	 * @return
 	 */
 	PageInfo<EquipmentType> getEtypes(int page);
-
+	
 	/**
 	 * 模糊查询指定页的设备种类信息和分页信息
 	 * @param page
-	 * @param eTypeName
+	 * @param eTypeName 模糊查询设备名称
+	 * @param eTypeId 模糊查询设备类型 id
 	 * @return
 	 */
-	PageInfo<EquipmentType> getEtypes(int page, String eTypeName);
+	PageInfo<EquipmentType> getEtypes(int page, String eTypeName,  String eTypeId);
+
 
 }

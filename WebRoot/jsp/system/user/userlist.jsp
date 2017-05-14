@@ -33,16 +33,17 @@
 				</div>
 			</div>
 			
-			<div id="find" style="display: none">
+			<div id="find" ${hiddenFind }>
 				<form action="../user/userList.do">
 					<table>
 						<tr>
 							<td>用户登陆ID：</td>
-							<td><input name="loginId" type="text" value=""></td>
-							<td>用户中文名：</td>
-							<td><input name="userName" type="text" value=""></td>
+							<td><input name="loginId" type="text" value="${loginId }"></td>
+							<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;用户中文名：</td>
+							<td><input name="userName" type="text" value="${userName }">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
 							<td>
 								<input type="image" src="${pageContext.request.contextPath }/images/search1.gif" class="input_button9" title="搜索"></input>
+								<input id="hiddenFind" name="hiddenFind" type="text" value="hidden" hidden="true">
 							</td>
 						</tr>
 					</table>
@@ -82,21 +83,21 @@
 			</table>
 			
 			<p align="right">
-				<font color="black">共&nbsp;</font><font color="black">${data.totalRecord}</font><font color="black">项&nbsp;&nbsp;</font>
+				<font color="black">共&nbsp;</font><font color="black">${data.totalRecord}</font><font color="black">&nbsp;项&nbsp;&nbsp;</font>
 				<font color="black">每页&nbsp;</font><font color="black">${data.pageSize }</font><font color="black">&nbsp;项&nbsp;&nbsp;</font>
 				<font color="black">当前第&nbsp;</font><font color="black">${data.curPage }</font><font color="black">&nbsp;页&nbsp;&nbsp;</font>
 				<font color="black">共&nbsp;</font><font color="black">${data.totalPage }</font><font color="black">&nbsp;页&nbsp;&nbsp;</font>
 		
 				<c:if test="${data.curPage!=1 }">
-					<a href="../user/userList.do?curpage=${data.curPage-1 }">上一页</a>&nbsp;&nbsp;
-					<a href="../user/userList.do?curpage=1 ">首 页</a>&nbsp;&nbsp;
+					<a href="../user/userList.do?loginId=${loginId }&userName=${userName }&hiddenFind=${hiddenFind }&curpage=${data.curPage-1 }">上一页</a>&nbsp;&nbsp;
+					<a href="../user/userList.do?loginId=${loginId }&userName=${userName }&hiddenFind=${hiddenFind }&curpage=1 ">首 页</a>&nbsp;&nbsp;
 				</c:if>
 				<c:if test="${data.curPage!=data.totalPage }">
-					<a href="../user/userList.do?curpage=${data.curPage+1 }&loginId=${log}&userName=${un}">下一页</a>&nbsp;&nbsp;
-					<a href="../user/userList.do?curpage=${data.totalPage }">尾 页</a>&nbsp;&nbsp;
+					<a href="../user/userList.do?loginId=${loginId }&userName=${userName }&hiddenFind=${hiddenFind }&curpage=${data.curPage+1 }">下一页</a>&nbsp;&nbsp;
+					<a href="../user/userList.do?loginId=${loginId }&userName=${userName }&hiddenFind=${hiddenFind }&curpage=${data.totalPage }">尾 页</a>&nbsp;&nbsp;
 				</c:if>
 				第&nbsp;<input id="pagebox" type="text" size="4">&nbsp;页&nbsp;
-				<a onclick="jump('../user/userList.do?curpage=','${data.totalPage }');" href="javascript:;">跳转</a>
+				<a onclick="jump('../user/userList.do?loginId=${loginId }&userName=${userName }&hiddenFind=${hiddenFind }&curpage=','${data.totalPage }');" href="javascript:;">跳转</a>
 			</p>
 		</div>
 	</div>

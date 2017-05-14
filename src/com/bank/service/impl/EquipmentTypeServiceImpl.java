@@ -12,15 +12,15 @@ public class EquipmentTypeServiceImpl implements EquipmentTypeService {
 
 	@Override
 	public PageInfo<EquipmentType> getEtypes(int page) {
-		return getEtypes(page, "");
+		return getEtypes(page, "", "");
 	}
 	
 	@Override
-	public PageInfo<EquipmentType> getEtypes(int page, String eTypeName) {
+	public PageInfo<EquipmentType> getEtypes(int page, String eTypeName, String eTypeId) {
 		PageInfo<EquipmentType> data = new PageInfo<EquipmentType>();
 		data.setCurPage(page);
-		List<EquipmentType> list = etdi.queryEquipmentTypes(data.getFrom(), data.getPageSize(), eTypeName);
-		int count = etdi.queryEquipmentsCount();
+		List<EquipmentType> list = etdi.queryTypes(data.getFrom(), data.getPageSize(), eTypeId, eTypeName);
+		int count = etdi.queryEquipmentsCount(eTypeId, eTypeName);
 		data.setPagedata(list);
 		data.setTotalRecord(count);
 		return data;

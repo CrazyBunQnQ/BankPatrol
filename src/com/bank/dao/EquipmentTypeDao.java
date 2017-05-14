@@ -27,13 +27,20 @@ public interface EquipmentTypeDao {
 	public boolean deleteEquipmentType(int id);
 	
 	/**
-	 * 分页查询银行设备种类
-	 * @param page 当前页
-	 * @param count 每页显示的数量
-	 * @param eName
+	 * 查询所有设备种类的数量（支持模糊查询）
 	 * @return
 	 */
-	public List<EquipmentType> queryEquipmentTypes(int page, int count, String eName);
+	int queryEquipmentsCount(String eTypeId, String eTypeName);
+	
+	/**
+	 * 分页查询银行设备种类（可模糊查询）
+	 * @param page 当前页
+	 * @param count 每页显示的数量
+	 * @param eTypeId 种类 id 模糊查询
+	 * @param eTypeName 种类名称模糊查询
+	 * @return
+	 */
+	public List<EquipmentType> queryTypes(int page, int count, String eTypeId, String eTypeName);
 	
 	/**
 	 * 修改银行设备种类
@@ -48,10 +55,4 @@ public interface EquipmentTypeDao {
 	 * @return
 	 */
 	List<EquipmentType> queryTyps();
-
-	/**
-	 * 查询所有设备种类的数量
-	 * @return
-	 */
-	int queryEquipmentsCount();
 }

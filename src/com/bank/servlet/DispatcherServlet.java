@@ -91,7 +91,7 @@ public class DispatcherServlet extends HttpServlet {
 			} else if ("deleteEquipment".equals(ary[1])) {
 				bc.deleteEquipment(request, response);
 			}
-		} else if (ary[0].equals("equipmentType")) {// 设备种类模块
+		} else if (ary[0].equals("etype")) {// 设备种类模块
 			EquipmentTypeController etc = new EquipmentTypeController();
 			if ("equipmentTypeList".equals(ary[1])) {
 				etc.queryETypes(request, response);

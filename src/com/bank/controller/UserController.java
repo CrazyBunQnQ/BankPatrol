@@ -28,20 +28,21 @@ public class UserController {
 	public void userList(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// 1、接当前的页码信息
 		String curpage = request.getParameter("curpage");
+		String hiddenFind = request.getParameter("hiddenFind") == null ? "hidden" : request.getParameter("hiddenFind");
 		// 接收文本框的值
-		String loginId = request.getParameter("loginId");
-		String userName = request.getParameter("userName");
+		String loginId = request.getParameter("loginId") == null ? "" : request.getParameter("loginId");
+		String userName = request.getParameter("userName") == null ? "" : request.getParameter("userName");
 		// 2.根据接收的值 进行查询
 		User u = new User();
 		u.setLoginId(loginId);
 		u.setName(userName);
-		// 存
-		request.setAttribute("log", loginId);
-		request.setAttribute("un", userName);
-		// 调
 		PageInfo<User> data = us.userList(curpage, u);
 		// 存 把查出的数据放入request
+		request.setAttribute("hiddenFind", hiddenFind);
+		request.setAttribute("loginId", loginId);
+		request.setAttribute("userName", userName);
 		request.setAttribute("data", data);
+		// 调
 		// 转
 		request.getRequestDispatcher("/jsp/system/user/userlist.jsp").forward(request, response);
 	}

@@ -21,9 +21,15 @@ public class EquipmentTypeController {
 	 * @throws ServletException 
 	 */
 	public void queryETypes(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int page = Integer.parseInt(request.getParameter("curpage") == null? "0": request.getParameter("curpage"));
-		PageInfo<EquipmentType> data = eTypeService.getEtypes(page);
+		int page = Integer.parseInt(request.getParameter("curpage") == null ? "0" : request.getParameter("curpage"));
+		String hiddenFind = request.getParameter("hiddenFind") == null ? "hidden" : request.getParameter("hiddenFind");
+		String eTypeName = request.getParameter("eTypeName") == null ? "" : request.getParameter("eTypeName");
+		String eTypeId = request.getParameter("eTypeId") == null ? "" : request.getParameter("eTypeId");
+		PageInfo<EquipmentType> data = eTypeService.getEtypes(page, eTypeName, eTypeId);
+		request.setAttribute("hiddenFind", hiddenFind);
 		request.setAttribute("data", data);
+		request.setAttribute("eTypeName", eTypeName);
+		request.setAttribute("eTypeId", eTypeId);
 		request.getRequestDispatcher("/jsp/system/etype/equipmentType.jsp").forward(request, response);
 	}
 

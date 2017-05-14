@@ -20,14 +20,40 @@ public class EquipmentTypeDaoImpl extends BaseDaoImpl implements EquipmentTypeDa
 	public boolean deleteEquipmentType(int id) {
 		return false;
 	}
+	
+	@Override
+	public int queryEquipmentsCount(String eTypeId, String eTypeName) {
+		int count = 0;
+		StringBuffer sql = new StringBuffer("SELECT COUNT(Equipment_id) FROM equipmenttype WHERE 1=1");
+		if (!"".equals(eTypeId)) {
+			sql.append(" AND Equipment_id LIKE '%" + eTypeId + "%'");
+		}
+		if (!"".equals(eTypeName)) {
+			sql.append(" AND Equipment_Name LIKE '%" + eTypeName + "%'");
+		}
+		try {
+			setConnAndPS(sql.toString());
+			LOGGER.info("查询所有设备种类的数量：" + ps.toString());
+			rs = ps.executeQuery();
+			count = rs.next() ? rs.getInt(1) : 0;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBUtil.closeConnection(conn, rs, ps);
+		}
+		return count;
+	}
 
 	@Override
-	public List<EquipmentType> queryEquipmentTypes(int page, int count, String eName) {
+	public List<EquipmentType> queryTypes(int page, int count, String eTypeId, String eTypeName) {
 		List<EquipmentType> list = new ArrayList<EquipmentType>();
-		StringBuffer sql = new StringBuffer("SELECT * FROM equipmenttype");
+		StringBuffer sql = new StringBuffer("SELECT * FROM equipmenttype WHERE 1=1");
 		BankEquipmentDao bedi = new BankEquipmentDaoImpl();
-		if (!"".equals(eName)) {
-			sql.append(" WHERE Equipment_Name LIKE '%" + eName + "%'");
+		if (!"".equals(eTypeId)) {
+			sql.append(" AND Equipment_id LIKE '%" + eTypeId + "%'");
+		}
+		if (!"".equals(eTypeName)) {
+			sql.append(" AND Equipment_Name LIKE '%" + eTypeName + "%'");
 		}
 		sql.append(" LIMIT ?, ?");
 		try {
@@ -70,22 +96,5 @@ public class EquipmentTypeDaoImpl extends BaseDaoImpl implements EquipmentTypeDa
 			DBUtil.closeConnection(conn, rs, ps);
 		}
 		return list;
-	}
-
-	@Override
-	public int queryEquipmentsCount() {
-		int count = 0;
-		String sql = "SELECT COUNT(Equipment_id) FROM equipmenttype";
-		try {
-			setConnAndPS(sql);
-			LOGGER.info("查询所有设备种类的数量：" + ps.toString());
-			rs = ps.executeQuery();
-			count = rs.next() ? rs.getInt(1) : 0;
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			DBUtil.closeConnection(conn, rs, ps);
-		}
-		return count;
 	}
 }
