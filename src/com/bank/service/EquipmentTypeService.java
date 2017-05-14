@@ -35,5 +35,18 @@ public interface EquipmentTypeService {
 	 */
 	int checkEquipmentName(String typeName);
 
+	/**
+	 * 更新指定 id 的设备种类
+	 * @param eType
+	 * @return
+	 */
+	boolean updateEType(EquipmentType eType);
+
+	/**
+	 * 删除指定 id 设备种类
+	 * @param id
+	 * @return
+	 */
+	boolean deleteEType(String id);
 
 }

@@ -22,7 +22,10 @@
 
 			<tr>
 				<td bgcolor="#F2F2F2" align="center" width="30%">设备名称</td>
-				<td><input type="text" name="eTypeName" onchange="checkEquipmentName('eTypeName')" id="eTypeName" value="${eType.name }"> <span id="show1"></span></td>
+				<td>
+					<input type="text" name="eTypeName" onchange="checkEquipmentName('eTypeName')" id="eTypeName" value="${eType.name }">
+					<span id="show1"></span>
+				</td>
 			</tr>
 		</table>
 		<p align="center">

@@ -39,4 +39,14 @@ public class EquipmentTypeServiceImpl implements EquipmentTypeService {
 	public boolean insertEType(EquipmentType eType) {
 		return etdi.insertEquipmentType(eType) > 0;
 	}
+
+	@Override
+	public boolean updateEType(EquipmentType eType) {
+		return etdi.updateEquipmentType(eType) > 0;
+	}
+
+	@Override
+	public boolean deleteEType(String id) {
+		return etdi.deleteEquipmentType(id) > 0;
+	}
 }

@@ -104,7 +104,11 @@ public class DispatcherServlet extends HttpServlet {
 			} else if ("addEType".equals(ary[1])) {
 				etc.addEType(request, response);
 			} else if ("toUpdate".equals(ary[1])) {
-				
+				etc.toUpdateType(request, response);
+			} else if ("updateEType".equals(ary[1])) {
+				etc.updateType(request, response);
+			} else if ("deleteType".equals(ary[1])) {
+				etc.deleteType(request, response);
 			}
 		} else if (ary[0].equals("log")) {// 日志模块
 			// LogController logController=new LogController();

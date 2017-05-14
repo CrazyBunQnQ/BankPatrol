@@ -100,8 +100,21 @@ public class EquipmentTypeDaoImpl extends BaseDaoImpl implements EquipmentTypeDa
 	}
 
 	@Override
-	public boolean updateEquipmentType(EquipmentType EquipmentType) {
-		return false;
+	public int updateEquipmentType(EquipmentType eType) {
+		int n = 0; 
+		String sql = "UPDATE equipmenttype SET Equipment_Name=? WHERE Equipment_id=?";
+		try {
+			setConnAndPS(sql);
+			ps.setString(1, eType.getName());
+			ps.setString(2, eType.getId());
+			LOGGER.info("更新设备种类：" + ps.toString());
+			n = ps.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBUtil.closeConnection(conn, null, ps);
+		}
+		return n;
 	}
 
 	@Override

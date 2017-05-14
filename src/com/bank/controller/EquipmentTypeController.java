@@ -93,5 +93,56 @@ public class EquipmentTypeController {
 			request.getRequestDispatcher("/jsp/system/etype/equipmentTypenew.jsp").forward(request, response);
 		}
 	}
+	
+	/**
+	 * 跳转到更新设备种类界面
+	 * @param request
+	 * @param response
+	 * @throws IOException 
+	 * @throws ServletException 
+	 */
+	public void toUpdateType(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String id = request.getParameter("eTypeId");
+		String name = request.getParameter("eTypeName");
+		EquipmentType eType = new EquipmentType(id, name);
+		request.setAttribute("eType", eType);
+		request.getRequestDispatcher("/jsp/system/etype/equipmentTypeupdate.jsp").forward(request, response);
+	}
 
+	/**
+	 * 更新设备种类
+	 * @param request
+	 * @param response
+	 * @throws IOException 
+	 * @throws ServletException 
+	 */
+	public void updateType(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String id = request.getParameter("eTypeId");
+		String name = request.getParameter("eTypeName");
+		EquipmentType eType = new EquipmentType(id, name);
+		if (eTypeService.updateEType(eType)) {
+			response.sendRedirect("equipmentTypeList.do");
+		} else {
+			request.setAttribute("msg", "更新设备种类失败");
+			request.setAttribute("eType", eType);
+			request.getRequestDispatcher("/jsp/system/etype/equipmentTypeupdate.jsp").forward(request, response);
+		}
+	}
+
+	/**
+	 * 删除设备种类
+	 * @param request
+	 * @param response
+	 * @throws IOException 
+	 * @throws ServletException 
+	 */
+	public void deleteType(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String id = request.getParameter("eTypeId");
+		if (eTypeService.deleteEType(id)) {
+			response.sendRedirect("equipmentTypeList.do");
+		} else {
+			request.setAttribute("msg", "更新设备种类失败");
+			request.getRequestDispatcher("/jsp/system/etype/equipmentTypeList.do").forward(request, response);
+		}
+	}
 }

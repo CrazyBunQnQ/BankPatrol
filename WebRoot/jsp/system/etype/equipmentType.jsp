@@ -60,9 +60,9 @@
 							<td>${type.name }</td>
 							<td>
 								<div class="handle">
-									<a href="../etype/toUpdate.do?loginId=${user.loginId }"><span class="handle-icon fix"></span></a>
+									<a href="../etype/toUpdate.do?eTypeId=${type.id }&eTypeName=${type.name }"><span class="handle-icon fix"></span></a>
 									<c:if test="${!type.hasEq }">
-										<span class="handle-icon del"></span>
+										<a href="../etype/deleteType.do?eTypeId=${type.id }"><span class="handle-icon del"></span></a>
 									</c:if>
 								</div>
 							</td>

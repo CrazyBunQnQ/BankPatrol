@@ -45,9 +45,9 @@ public interface EquipmentTypeDao {
 	/**
 	 * 修改银行设备种类
 	 * @param et
-	 * @return
+	 * @return 影响行数
 	 */
-	public boolean updateEquipmentType(EquipmentType EquipmentType);
+	public int updateEquipmentType(EquipmentType EquipmentType);
 	
 
 	/**
