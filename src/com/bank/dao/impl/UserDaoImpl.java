@@ -81,9 +81,7 @@ public class UserDaoImpl extends BaseDaoImpl implements UserDao {
 		try {
 			setConnAndPS(sql);
 			rs = ps.executeQuery();
-			if (rs.next()) {
-				n = rs.getInt(1);
-			}
+			n = rs.next() ? rs.getInt(1) : 0;
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -105,9 +103,7 @@ public class UserDaoImpl extends BaseDaoImpl implements UserDao {
 		try {
 			setConnAndPS(sql.toString());
 			rs = ps.executeQuery();
-			if (rs.next()) {
-				count = rs.getInt(1);
-			}
+			count = rs.next() ? rs.getInt(1) : 0;
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -247,7 +243,7 @@ public class UserDaoImpl extends BaseDaoImpl implements UserDao {
 
 	@Override
 	public User findUser(String loginId, String loginPwd) {
-		User user = null;
+		User user = new User();
 		String sql = "select Job_ID,Department_id,User_Name,User_Status from users where Login_ID=? and Login_Password=?";
 		try {
 			setConnAndPS(sql);
@@ -255,7 +251,6 @@ public class UserDaoImpl extends BaseDaoImpl implements UserDao {
 			ps.setString(2, loginPwd);
 			rs = ps.executeQuery();
 			if (rs.next()) {
-				user = new User();
 				user.setLoginId(loginId);
 				// user.setLoginPwd(loginPwd);
 				user.setJobId(rs.getInt("Job_ID"));

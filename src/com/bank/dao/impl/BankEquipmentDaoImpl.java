@@ -15,7 +15,7 @@ public class BankEquipmentDaoImpl extends BaseDaoImpl implements BankEquipmentDa
 	@Override
 	public int queryEquipmentsCount(String bankID) {
 		int n = 0;
-		String sql = "SELECT COUNT(*) FROM bankequipment WHERE Bank_id=?";
+		String sql = "SELECT COUNT(EquipmentEach_ID) FROM bankequipment WHERE Bank_id=?";
 		try {
 			setConnAndPS(sql);
 			ps.setString(1, bankID);

@@ -75,7 +75,7 @@ public class EquipmentTypeDaoImpl extends BaseDaoImpl implements EquipmentTypeDa
 	@Override
 	public int queryEquipmentsCount() {
 		int count = 0;
-		String sql = "SELECT COUNT(*) FROM equipmenttype";
+		String sql = "SELECT COUNT(Equipment_id) FROM equipmenttype";
 		try {
 			setConnAndPS(sql);
 			LOGGER.info("查询所有设备种类的数量：" + ps.toString());
