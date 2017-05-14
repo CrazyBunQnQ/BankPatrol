@@ -1,3 +1,4 @@
+<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
 <!DOCTYPE HTML >
 <html>
 <head>
@@ -12,7 +13,8 @@
 
 <link rel="stylesheet" type="text/css" href="../css/main.css">
 <script type="text/javascript" src="../js/check.js">
-  </script>
+	
+</script>
 <style>
 #bodyStyle {
 	overflow: auto;
@@ -41,77 +43,34 @@
 				<td bgcolor="#F2F2F2" align="center" width="15%">选择</td>
 				<td bgcolor="#F2F2F2" align="center" width="15%">页面名称</td>
 			</tr>
-
 			<tr bgcolor="#F2F2F2">
-
-
 				<td><input type="checkbox" value="7" checked name="ymbhs"></td>
 				<td>网点查看报修信息</td>
-
-
-
 			</tr>
-
 			<tr bgcolor="#F2F2F2">
-
-
 				<td><input type="checkbox" value="8" checked name="ymbhs"></td>
 				<td>巡检中心查看报修信息</td>
-
-
-
 			</tr>
-
 			<tr bgcolor="#F2F2F2">
-
-
 				<td><input type="checkbox" value="13" checked name="ymbhs"></td>
 				<td>网点设备报修</td>
-
-
-
 			</tr>
-
 			<tr bgcolor="#F2F2F2">
-
-
 				<td><input type="checkbox" value="14" checked name="ymbhs"></td>
 				<td>值班员报修</td>
-
-
-
 			</tr>
-
 			<tr bgcolor="#F2F2F2">
-
-
 				<td><input type="checkbox" value="16" checked name="ymbhs"></td>
 				<td>网点对报修确认</td>
-
-
-
 			</tr>
-
 			<tr bgcolor="#F2F2F2">
-
-
 				<td><input type="checkbox" value="17" checked name="ymbhs"></td>
 				<td>巡检中心分配小组</td>
-
-
-
 			</tr>
-
 			<tr bgcolor="#F2F2F2">
-
-
 				<td><input type="checkbox" value="18" checked name="ymbhs"></td>
 				<td>维修工确认维修</td>
-
-
-
 			</tr>
-
 		</table>
 		<br>
 		<center>
