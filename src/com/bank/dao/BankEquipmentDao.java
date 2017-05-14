@@ -13,7 +13,7 @@ public interface BankEquipmentDao {
 	 *            银行 ID
 	 * @return
 	 */
-	int queryBankEquipmentsCount(String bankID);
+	int queryEquipmentsCount(String bankID);
 
 	/**
 	 * 查询某个银行中的所有设备
@@ -77,4 +77,11 @@ public interface BankEquipmentDao {
 	 * @return
 	 */
 	BankEquipment queryBankEquipment(String eqId);
+
+	/**
+	 * 查询是否有某种类型的设备
+	 * @param typeId 设备种类 id
+	 * @return
+	 */
+	boolean hasEquipmentsByType(String typeId);
 }
