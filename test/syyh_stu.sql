@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.4.15.10
--- https://www.phpmyadmin.net
+-- version 4.5.1
+-- http://www.phpmyadmin.net
 --
--- Host: localhost
--- Generation Time: 2017-05-12 10:11:06
--- 服务器版本： 5.5.53
--- PHP Version: 5.4.44
+-- Host: 127.0.0.1
+-- Generation Time: 2017-05-14 16:52:30
+-- 服务器版本： 10.1.16-MariaDB
+-- PHP Version: 5.6.24
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -26,7 +26,7 @@ SET time_zone = "+00:00";
 -- 表的结构 `bank`
 --
 
-CREATE TABLE IF NOT EXISTS `bank` (
+CREATE TABLE `bank` (
   `Bank_id` varchar(10) NOT NULL,
   `Bank_Name` varchar(40) DEFAULT NULL,
   `Bank_Longitude` decimal(15,10) DEFAULT NULL,
@@ -39,10 +39,23 @@ CREATE TABLE IF NOT EXISTS `bank` (
 --
 
 INSERT INTO `bank` (`Bank_id`, `Bank_Name`, `Bank_Longitude`, `Bank_Latitude`, `Bank_IP`) VALUES
-('00001', '我是第一银行', '122.0000000000', '40.0000000000', '111.111.111.111'),
-('00002', 'Very Two Bank', '43.1564800000', '-122.1564600000', '112.52.13.164'),
+('00001', 'XX银行XXX支行', '120.0000000000', '40.0000000000', '111.111.111.111'),
+('00002', '超级零零二银行', '37.7870700000', '-122.4944930000', '123.23.14.95'),
+('00003', '我是第三银行', '37.7874870000', '-122.1548640000', '123.215.147.23'),
+('00004', '四四四银行', '12.1564560000', '21.1654900000', '123.164.154.44'),
+('00005', '呜呜呜银行', '21.1654600000', '-123.5465400000', '123.15.156.52'),
+('00006', '凯西银行', '-122.4760195900', '37.7244047000', '5646465'),
+('00007', '化石翼龙银行', '-122.4243394000', '37.7758735000', '546546'),
+('00008', '吉利蛋银行', '-122.4209171000', '37.7915260000', '123456'),
+('00009', '迷你龙银行', '-122.5074650000', '37.7453927000', '13246549'),
+('00010', '伊布银行', '-122.4371310000', '37.7712796000', '1231234'),
+('00011', '鬼斯银行', '-122.4591836000', '37.7856790000', '2134551'),
+('00012', '胖丁银行', '-122.4407079000', '37.7432146000', '123123'),
 ('00013', '天龙银行地龙支行', '123.2000000000', '78.1000000000', '123.123.123.123'),
-('00022', '超级超级二银行', '22.2222220000', '-122.2222220000', '222.222.222.222');
+('00014', '化石盔银行', '-122.4297298000', '37.7851818000', '1234124'),
+('00015', '乘龙银行', '-122.5124988000', '37.7740354000', '12323'),
+('00016', '大舌头银行', '-122.4058221000', '37.8023949000', '123123123'),
+('00017', '腕力银行', '-122.4130288000', '37.7943426000', '132165');
 
 -- --------------------------------------------------------
 
@@ -50,7 +63,7 @@ INSERT INTO `bank` (`Bank_id`, `Bank_Name`, `Bank_Longitude`, `Bank_Latitude`, `
 -- 表的结构 `bankequipment`
 --
 
-CREATE TABLE IF NOT EXISTS `bankequipment` (
+CREATE TABLE `bankequipment` (
   `EquipmentEach_ID` varchar(10) NOT NULL,
   `Equipment_id` varchar(10) DEFAULT NULL,
   `Bank_id` varchar(10) DEFAULT NULL,
@@ -65,11 +78,9 @@ CREATE TABLE IF NOT EXISTS `bankequipment` (
 --
 
 INSERT INTO `bankequipment` (`EquipmentEach_ID`, `Equipment_id`, `Bank_id`, `Equipment_Value`, `Equipment_BuyDate`, `Status`, `Depreciation_Value`) VALUES
-('00001', '001', '00001', '5000.00', '2015-08-27', '1', '3000.00'),
-('00002', '002', '00001', '10000.00', '2017-05-17', '0', '6000.00'),
-('00003', '001', '00001', '6000.00', '2017-05-07', '0', '5000.00'),
-('00004', '002', '00001', '12000.00', '2017-05-16', '0', '10000.00'),
-('00005', '001', '00001', '3000.00', '2017-05-02', '0', '2214.16');
+('00001', '001', '00001', '5000.00', '2015-08-04', '0', '3000.00'),
+('00002', '001', '00001', '13216.00', '2017-05-16', '0', '1635.00'),
+('asdff45646', '002', '00001', '5000.00', '2017-05-16', '0', '3111.00');
 
 -- --------------------------------------------------------
 
@@ -77,10 +88,10 @@ INSERT INTO `bankequipment` (`EquipmentEach_ID`, `Equipment_id`, `Bank_id`, `Equ
 -- 表的结构 `department`
 --
 
-CREATE TABLE IF NOT EXISTS `department` (
+CREATE TABLE `department` (
   `Department_id` bigint(20) NOT NULL,
   `Department_Name` varchar(40) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- 转存表中的数据 `department`
@@ -107,7 +118,7 @@ INSERT INTO `department` (`Department_id`, `Department_Name`) VALUES
 -- 表的结构 `equipmentmaintain`
 --
 
-CREATE TABLE IF NOT EXISTS `equipmentmaintain` (
+CREATE TABLE `equipmentmaintain` (
   `Maintain_ID` bigint(20) NOT NULL,
   `EquipmentEach_ID` varchar(10) DEFAULT NULL,
   `Maintain_Date` date DEFAULT NULL,
@@ -120,7 +131,7 @@ CREATE TABLE IF NOT EXISTS `equipmentmaintain` (
 -- 表的结构 `equipmenttype`
 --
 
-CREATE TABLE IF NOT EXISTS `equipmenttype` (
+CREATE TABLE `equipmenttype` (
   `Equipment_id` varchar(10) NOT NULL,
   `Equipment_Name` varchar(40) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -132,8 +143,8 @@ CREATE TABLE IF NOT EXISTS `equipmenttype` (
 INSERT INTO `equipmenttype` (`Equipment_id`, `Equipment_Name`) VALUES
 ('001', '打印机'),
 ('002', 'ATM'),
-('004', 'tretetu'),
-('123', 'ssss');
+('003', '复印件'),
+('004', '复印机');
 
 -- --------------------------------------------------------
 
@@ -141,10 +152,10 @@ INSERT INTO `equipmenttype` (`Equipment_id`, `Equipment_Name`) VALUES
 -- 表的结构 `faultrepairtype`
 --
 
-CREATE TABLE IF NOT EXISTS `faultrepairtype` (
+CREATE TABLE `faultrepairtype` (
   `Pitype_ID` bigint(20) NOT NULL,
   `PITYPE_Value` varchar(40) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- 转存表中的数据 `faultrepairtype`
@@ -161,7 +172,7 @@ INSERT INTO `faultrepairtype` (`Pitype_ID`, `PITYPE_Value`) VALUES
 -- 表的结构 `fault_repair`
 --
 
-CREATE TABLE IF NOT EXISTS `fault_repair` (
+CREATE TABLE `fault_repair` (
   `Repair_ID` bigint(20) NOT NULL,
   `Group_ID` bigint(20) DEFAULT NULL,
   `EquipmentEach_ID` varchar(10) DEFAULT NULL,
@@ -182,7 +193,7 @@ CREATE TABLE IF NOT EXISTS `fault_repair` (
 -- 表的结构 `functions`
 --
 
-CREATE TABLE IF NOT EXISTS `functions` (
+CREATE TABLE `functions` (
   `Func_ID` bigint(20) NOT NULL,
   `Func_Name` varchar(40) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -202,7 +213,7 @@ INSERT INTO `functions` (`Func_ID`, `Func_Name`) VALUES
 -- 表的结构 `globals`
 --
 
-CREATE TABLE IF NOT EXISTS `globals` (
+CREATE TABLE `globals` (
   `Global_id` bigint(20) NOT NULL,
   `Key_1` varchar(10) DEFAULT NULL,
   `Value_1` varchar(30) DEFAULT NULL,
@@ -219,7 +230,7 @@ CREATE TABLE IF NOT EXISTS `globals` (
 -- 表的结构 `gwym`
 --
 
-CREATE TABLE IF NOT EXISTS `gwym` (
+CREATE TABLE `gwym` (
   `Job_ID` bigint(20) NOT NULL,
   `ymbh` bigint(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -233,37 +244,37 @@ INSERT INTO `gwym` (`Job_ID`, `ymbh`) VALUES
 (1, 2),
 (1, 3),
 (1, 4),
-(2, 4),
 (1, 5),
 (1, 6),
-(2, 6),
 (1, 7),
-(3, 7),
 (1, 8),
-(2, 8),
 (1, 9),
 (1, 10),
-(2, 10),
 (1, 11),
-(2, 11),
 (1, 12),
-(3, 12),
 (1, 13),
-(3, 13),
 (1, 14),
 (1, 15),
-(2, 15),
-(3, 15),
-(4, 15),
 (1, 16),
-(3, 16),
 (1, 17),
-(2, 17),
 (1, 18),
-(4, 18),
 (1, 19),
+(2, 4),
+(2, 6),
+(2, 8),
+(2, 10),
+(2, 11),
+(2, 15),
+(2, 17),
 (2, 19),
+(3, 7),
+(3, 12),
+(3, 13),
+(3, 15),
+(3, 16),
 (3, 19),
+(4, 15),
+(4, 18),
 (4, 19);
 
 -- --------------------------------------------------------
@@ -272,11 +283,11 @@ INSERT INTO `gwym` (`Job_ID`, `ymbh`) VALUES
 -- 表的结构 `job`
 --
 
-CREATE TABLE IF NOT EXISTS `job` (
+CREATE TABLE `job` (
   `Job_ID` bigint(20) NOT NULL,
   `Name` varchar(40) DEFAULT NULL,
   `Description` varchar(100) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- 转存表中的数据 `job`
@@ -294,12 +305,12 @@ INSERT INTO `job` (`Job_ID`, `Name`, `Description`) VALUES
 -- 表的结构 `logs`
 --
 
-CREATE TABLE IF NOT EXISTS `logs` (
+CREATE TABLE `logs` (
   `log_ID` bigint(20) NOT NULL,
   `Checkin_time` datetime DEFAULT NULL,
   `Checkout_time` datetime DEFAULT NULL,
   `Users_ID` varchar(10) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=183 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- 转存表中的数据 `logs`
@@ -367,7 +378,7 @@ INSERT INTO `logs` (`log_ID`, `Checkin_time`, `Checkout_time`, `Users_ID`) VALUE
 -- 表的结构 `piequipmenttable`
 --
 
-CREATE TABLE IF NOT EXISTS `piequipmenttable` (
+CREATE TABLE `piequipmenttable` (
   `ID` bigint(20) NOT NULL,
   `Login_ID` varchar(10) DEFAULT NULL,
   `Bank_ID` varchar(10) DEFAULT NULL,
@@ -387,10 +398,10 @@ CREATE TABLE IF NOT EXISTS `piequipmenttable` (
 -- 表的结构 `pigroup`
 --
 
-CREATE TABLE IF NOT EXISTS `pigroup` (
+CREATE TABLE `pigroup` (
   `Group_ID` bigint(20) NOT NULL,
   `Group_Name` varchar(40) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- 转存表中的数据 `pigroup`
@@ -418,12 +429,12 @@ INSERT INTO `pigroup` (`Group_ID`, `Group_Name`) VALUES
 -- 表的结构 `piworker`
 --
 
-CREATE TABLE IF NOT EXISTS `piworker` (
+CREATE TABLE `piworker` (
   `Worker_ID` bigint(20) NOT NULL,
   `Group_ID` bigint(20) DEFAULT NULL,
   `Worker_Tel1` varchar(40) DEFAULT NULL,
   `Worker_Tel2` varchar(20) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- 转存表中的数据 `piworker`
@@ -439,7 +450,7 @@ INSERT INTO `piworker` (`Worker_ID`, `Group_ID`, `Worker_Tel1`, `Worker_Tel2`) V
 -- 表的结构 `users`
 --
 
-CREATE TABLE IF NOT EXISTS `users` (
+CREATE TABLE `users` (
   `Login_ID` varchar(10) NOT NULL,
   `Job_ID` bigint(20) DEFAULT NULL,
   `Department_ID` bigint(20) DEFAULT NULL,
@@ -454,15 +465,14 @@ CREATE TABLE IF NOT EXISTS `users` (
 --
 
 INSERT INTO `users` (`Login_ID`, `Job_ID`, `Department_ID`, `Login_Password`, `User_Name`, `User_Status`, `Worker_ID`) VALUES
-('admin', 1, 1, 'E10ADC3949BA59ABBE56E057F20F883E', '老大', '1', NULL),
-('asfasdf', 1, 2, 'E10ADC3949BA59ABBE56E057F20F883E', '哈哈哈', '1', NULL),
-('baozi', 1, 1, 'E10ADC3949BA59ABBE56E057F20F883E', '包子', '1', NULL),
-('dsfasg', 1, 1, 'E10ADC3949BA59ABBE56E057F20F883E', '啦啦', '0', NULL),
-('sfaf', 1, 1, 'E10ADC3949BA59ABBE56E057F20F883E', '沙发沙发', '1', NULL),
+('admin', 1, 1, 'E10ADC3949BA59ABBE56E057F20F883E', 'admin', '1', NULL),
 ('test', 2, 17, 'E10ADC3949BA59ABBE56E057F20F883E', '测试', '1', NULL),
+('test1', 1, 1, 'E10ADC3949BA59ABBE56E057F20F883E', '测试1', '1', NULL),
 ('test2', 3, 17, 'E10ADC3949BA59ABBE56E057F20F883E', '测试2', '1', NULL),
 ('test3', 2, 17, 'E10ADC3949BA59ABBE56E057F20F883E', '测试3', '1', NULL),
-('xiaohao', 1, 1, 'E10ADC3949BA59ABBE56E057F20F883E', '小豪', '1', NULL),
+('test4', 1, 1, 'E10ADC3949BA59ABBE56E057F20F883E', '测试4', '1', NULL),
+('test5', 1, 1, 'E10ADC3949BA59ABBE56E057F20F883E', '测试5', '1', NULL),
+('test6', 1, 1, 'E10ADC3949BA59ABBE56E057F20F883E', '测试6', '1', NULL),
 ('xj1', 4, 17, 'E10ADC3949BA59ABBE56E057F20F883E', '巡检工1', '1', 1),
 ('xj2', 4, 17, 'E10ADC3949BA59ABBE56E057F20F883E', '巡检工2', '1', 2);
 
@@ -472,7 +482,7 @@ INSERT INTO `users` (`Login_ID`, `Job_ID`, `Department_ID`, `Login_Password`, `U
 -- 表的结构 `xtymb`
 --
 
-CREATE TABLE IF NOT EXISTS `xtymb` (
+CREATE TABLE `xtymb` (
   `ymbh` bigint(20) NOT NULL,
   `Func_ID` bigint(20) DEFAULT NULL,
   `ymmc` varchar(20) DEFAULT NULL,
@@ -488,7 +498,7 @@ INSERT INTO `xtymb` (`ymbh`, `Func_ID`, `ymmc`, `URL`, `IMG`) VALUES
 (1, 1, '用户管理', 'user/userList.do', NULL),
 (2, 1, '部门管理', 'dept/deptList.do', NULL),
 (3, 1, '日志管理', 'log/logList.do', NULL),
-(4, 1, '银行设备种类管理', 'equipmentType/equipmentTypeList.do', NULL),
+(4, 1, '银行设备种类管理', 'etype/equipmentTypeList.do', NULL),
 (5, 1, '全局变量管理', '../xtgl/globalsList.do', NULL),
 (6, 1, '银行网点管理', 'bank/bankList.do', NULL),
 (7, 2, '网点查看报修信息', '../sbbx/sbbx!listw.do', NULL),
@@ -641,44 +651,44 @@ ALTER TABLE `xtymb`
   ADD KEY `FK6D19352345A7B32` (`Func_ID`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- 在导出的表使用AUTO_INCREMENT
 --
 
 --
--- AUTO_INCREMENT for table `department`
+-- 使用表AUTO_INCREMENT `department`
 --
 ALTER TABLE `department`
-  MODIFY `Department_id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=18;
+  MODIFY `Department_id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 --
--- AUTO_INCREMENT for table `faultrepairtype`
+-- 使用表AUTO_INCREMENT `faultrepairtype`
 --
 ALTER TABLE `faultrepairtype`
-  MODIFY `Pitype_ID` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=17;
+  MODIFY `Pitype_ID` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 --
--- AUTO_INCREMENT for table `fault_repair`
+-- 使用表AUTO_INCREMENT `fault_repair`
 --
 ALTER TABLE `fault_repair`
   MODIFY `Repair_ID` bigint(20) NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT for table `job`
+-- 使用表AUTO_INCREMENT `job`
 --
 ALTER TABLE `job`
-  MODIFY `Job_ID` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
+  MODIFY `Job_ID` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
--- AUTO_INCREMENT for table `logs`
+-- 使用表AUTO_INCREMENT `logs`
 --
 ALTER TABLE `logs`
-  MODIFY `log_ID` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=183;
+  MODIFY `log_ID` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=183;
 --
--- AUTO_INCREMENT for table `pigroup`
+-- 使用表AUTO_INCREMENT `pigroup`
 --
 ALTER TABLE `pigroup`
-  MODIFY `Group_ID` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=15;
+  MODIFY `Group_ID` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 --
--- AUTO_INCREMENT for table `piworker`
+-- 使用表AUTO_INCREMENT `piworker`
 --
 ALTER TABLE `piworker`
-  MODIFY `Worker_ID` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+  MODIFY `Worker_ID` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- 限制导出的表
 --
