@@ -60,7 +60,7 @@
 							<td>${type.name }</td>
 							<td>
 								<div class="handle">
-									<span class="handle-icon fix"></span>
+									<a href="../etype/toUpdate.do?loginId=${user.loginId }"><span class="handle-icon fix"></span></a>
 									<c:if test="${!type.hasEq }">
 										<span class="handle-icon del"></span>
 									</c:if>

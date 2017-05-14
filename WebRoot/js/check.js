@@ -23,7 +23,7 @@ function checkJobName(name) {
 	var jobName = document.getElementById("jobName");
 	if (jobName.value != "") {
 		if (xmlHttpRequest.readyState == 0 || xmlHttpRequest.readyState == 4) {
-			xmlHttpRequest.open("POST", "../../job/checkJobName.do", true); // true异步访问
+			xmlHttpRequest.open("POST", "../job/checkJobName.do", true); // true异步访问
 			xmlHttpRequest.setRequestHeader("Content-Type",
 					"application/x-www-form-urlencoded;charset=utf-8");// 处理ajax请求乱码
 			xmlHttpRequest.onreadystatechange = function() {
@@ -148,7 +148,7 @@ function checkDeptname(name) {
 	var t = document.getElementById(name);
 	if (t.value != "") {
 		if (xmlHttpRequest.readyState == 0 || xmlHttpRequest.readyState == 4) {
-			xmlHttpRequest.open("POST", "../../dept/checkDeptname.do", true); // true异步访问
+			xmlHttpRequest.open("POST", "./checkDeptname.do", true); // true异步访问
 			xmlHttpRequest.setRequestHeader("Content-Type",
 					"application/x-www-form-urlencoded;charset=utf-8");
 			xmlHttpRequest.onreadystatechange = function() {
@@ -197,12 +197,12 @@ String.prototype.Trim = function() {
 /**
  * 银行设备种类ID是否存在
  */
-function checkEquipmentId(name) {
+function checkEquipmentTypeId(name) {
 	var t = document.getElementById(name);
 	t.value = t.value.Trim();
 	if (t.value != "") {
 		if (xmlHttpRequest.readyState == 0 || xmlHttpRequest.readyState == 4) {
-			xmlHttpRequest.open("POST", "./checkEquipmentId.do", true); // true异步访问
+			xmlHttpRequest.open("POST", "./checkETypeId.do", true); // true异步访问
 			xmlHttpRequest.setRequestHeader("Content-Type",
 					"application/x-www-form-urlencoded;charset=utf-8");
 			xmlHttpRequest.onreadystatechange = function() {
@@ -231,7 +231,7 @@ function checkEquipmentName(name) {
 	t.value = t.value.Trim();
 	if (t.value != "") {
 		if (xmlHttpRequest.readyState == 0 || xmlHttpRequest.readyState == 4) {
-			xmlHttpRequest.open("POST", "./checkEquipmentName.do?", true);
+			xmlHttpRequest.open("POST", "./checkETypeName.do?", true);
 			xmlHttpRequest.setRequestHeader("Content-Type",
 					"application/x-www-form-urlencoded;charset=utf-8");
 			xmlHttpRequest.onreadystatechange = function() {
@@ -295,6 +295,7 @@ function checkdata() {
 	}
 	return true;
 }
+
 function checkdataRepairType() {
 	var eId = document.getElementById("PitypeValue");
 	var id = document.getElementById("show");

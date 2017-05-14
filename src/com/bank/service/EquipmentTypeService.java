@@ -21,5 +21,19 @@ public interface EquipmentTypeService {
 	 */
 	PageInfo<EquipmentType> getEtypes(int page, String eTypeName,  String eTypeId);
 
+	/**
+	 * 检查设备种类 id 是否已存在
+	 * @param typeId 种类 id
+	 * @return
+	 */
+	int checkEquipmentId(String typeId);
+
+	/**
+	 * 检查设备种类名称是否已存在
+	 * @param typeName
+	 * @return
+	 */
+	int checkEquipmentName(String typeName);
+
 
 }

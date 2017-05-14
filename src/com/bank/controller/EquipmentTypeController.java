@@ -1,6 +1,7 @@
 package com.bank.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -31,6 +32,66 @@ public class EquipmentTypeController {
 		request.setAttribute("eTypeName", eTypeName);
 		request.setAttribute("eTypeId", eTypeId);
 		request.getRequestDispatcher("/jsp/system/etype/equipmentType.jsp").forward(request, response);
+	}
+
+	/**
+	 * 跳转到添加设备种类页面
+	 * @param request
+	 * @param response
+	 * @throws ServletException
+	 * @throws IOException
+	 */
+	public void toAddType(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		EquipmentType eType = new EquipmentType("", "");
+		request.setAttribute("eType", eType);
+		request.getRequestDispatcher("/jsp/system/etype/equipmentTypenew.jsp").forward(request, response);
+	}
+
+	/**
+	 * 检查设备种类 id 是否存在，存在输出 1，不存在输出 0
+	 * @param request
+	 * @param response
+	 * @throws IOException 
+	 */
+	public void checkETypeId(HttpServletRequest request, HttpServletResponse response) throws IOException {
+		String typeId = request.getParameter("id");
+		int i = eTypeService.checkEquipmentId(typeId);
+		PrintWriter out = response.getWriter();
+		out.write(i + "");
+	}
+
+	/**
+	 * 检查设备种类名称是否存在，存在输出 1，不存在输出 0
+	 * 
+	 * @param request
+	 * @param response
+	 * @throws IOException 
+	 */
+	public void checkETypeName(HttpServletRequest request, HttpServletResponse response) throws IOException {
+		String typeName = request.getParameter("name");
+		int i = eTypeService.checkEquipmentName(typeName);
+		PrintWriter out = response.getWriter();
+		out.write(i + "");
+	}
+
+	/**
+	 * 增加设备种类
+	 * @param request
+	 * @param response
+	 * @throws IOException 
+	 * @throws ServletException 
+	 */
+	public void addEType(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+		String id = request.getParameter("eTypeId");
+		String name = request.getParameter("eTypeName");
+		EquipmentType eType = new EquipmentType(id, name);
+		if (eTypeService.insertEType(eType)) {
+			response.sendRedirect("equipmentTypeList.do");
+		} else {
+			request.setAttribute("msg", "添加设备种类失败");
+			request.setAttribute("eType", eType);
+			request.getRequestDispatcher("/jsp/system/etype/equipmentTypenew.jsp").forward(request, response);
+		}
 	}
 
 }

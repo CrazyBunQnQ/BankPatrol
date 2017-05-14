@@ -25,4 +25,18 @@ public class EquipmentTypeServiceImpl implements EquipmentTypeService {
 		data.setTotalRecord(count);
 		return data;
 	}
+
+	@Override
+	public int checkEquipmentId(String typeId) {
+		return etdi.hasType(typeId) ? 1 : 0;
+	}
+
+	@Override
+	public int checkEquipmentName(String typeName) {
+		return etdi.hasTypeName(typeName) ? 1 : 0;
+	}
+
+	public boolean insertEType(EquipmentType eType) {
+		return etdi.insertEquipmentType(eType) > 0;
+	}
 }

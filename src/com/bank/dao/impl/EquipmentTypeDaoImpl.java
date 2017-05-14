@@ -12,13 +12,38 @@ import com.bank.util.DBUtil;
 public class EquipmentTypeDaoImpl extends BaseDaoImpl implements EquipmentTypeDao {
 
 	@Override
-	public boolean addEquipmentType(EquipmentType EquipmentType) {
-		return false;
+	public int insertEquipmentType(EquipmentType eType) {
+		int n = 0;
+		String sql = "INSERT INTO equipmenttype VALUES(?, ?)";
+		try {
+			setConnAndPS(sql);
+			ps.setString(1, eType.getId());
+			ps.setString(2, eType.getName());
+			LOGGER.info("添加设备种类：" + ps.toString());
+			n = ps.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBUtil.closeConnection(conn, null, ps);
+		}
+		return n;
 	}
 
 	@Override
-	public boolean deleteEquipmentType(int id) {
-		return false;
+	public int deleteEquipmentType(String id) {
+		int n = 0;
+		String sql = "DELETE FROM equipmenttype WHERE Equipment_id=?";
+		try {
+			setConnAndPS(sql);
+			ps.setString(1, id);
+			LOGGER.info("删除设备种类：" + ps.toString());
+			n = ps.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBUtil.closeConnection(conn, null, ps);
+		}
+		return n;
 	}
 	
 	@Override
@@ -96,5 +121,41 @@ public class EquipmentTypeDaoImpl extends BaseDaoImpl implements EquipmentTypeDa
 			DBUtil.closeConnection(conn, rs, ps);
 		}
 		return list;
+	}
+
+	@Override
+	public boolean hasType(String typeId) {
+		boolean result = true;
+		String sql = "SELECT Equipment_id FROM equipmenttype WHERE Equipment_id=?";
+		try {
+			setConnAndPS(sql);
+			ps.setString(1, typeId);
+			LOGGER.info("是否存在种类 id 为 " + typeId + " 的设备：" + ps.toString());
+			rs = ps.executeQuery();
+			result = rs.next();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBUtil.closeConnection(conn, rs, ps);
+		}
+		return result;
+	}
+
+	@Override
+	public boolean hasTypeName(String typeName) {
+		boolean result = true;
+		String sql = "SELECT Equipment_id FROM equipmenttype WHERE Equipment_Name=?";
+		try {
+			setConnAndPS(sql);
+			ps.setString(1, typeName);
+			LOGGER.info("是否存在" + typeName + "类型的设备：" + ps.toString());
+			rs = ps.executeQuery();
+			result = rs.next();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBUtil.closeConnection(conn, rs, ps);
+		}
+		return result;
 	}
 }

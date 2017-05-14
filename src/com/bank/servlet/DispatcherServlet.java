@@ -96,6 +96,14 @@ public class DispatcherServlet extends HttpServlet {
 			if ("equipmentTypeList".equals(ary[1])) {
 				etc.queryETypes(request, response);
 			} else if ("toAdd".equals(ary[1])) {
+				etc.toAddType(request, response);
+			} else if ("checkETypeId".equals(ary[1])) {
+				etc.checkETypeId(request, response);
+			} else if ("checkETypeName".equals(ary[1])) {
+				etc.checkETypeName(request, response);
+			} else if ("addEType".equals(ary[1])) {
+				etc.addEType(request, response);
+			} else if ("toUpdate".equals(ary[1])) {
 				
 			}
 		} else if (ary[0].equals("log")) {// 日志模块
