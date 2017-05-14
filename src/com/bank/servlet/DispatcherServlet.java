@@ -12,6 +12,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import com.bank.controller.BankController;
+import com.bank.controller.EquipmentTypeController;
 import com.bank.controller.LoginController;
 import com.bank.controller.UserController;
 
@@ -22,12 +23,10 @@ public class DispatcherServlet extends HttpServlet {
 
 	public void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String uri = request.getRequestURI();
-		LOGGER.info("uri: " + uri);
 		String path = uri.substring(uri.indexOf("/", 1) + 1, uri.lastIndexOf("."));
-		LOGGER.info("DispatcherServlet-->path:" + path);// user/userList
 
 		String[] ary = path.split("/");
-		LOGGER.info("DispatcherServlet-->ary:" + Arrays.toString(ary));
+		LOGGER.info("\r\nuri: " + uri + "\r\npath: " + Arrays.toString(ary));
 		if (ary.length != 2) {
 			request.getRequestDispatcher("/404.jsp").forward(request, response);
 			return;
@@ -92,11 +91,18 @@ public class DispatcherServlet extends HttpServlet {
 			} else if ("deleteEquipment".equals(ary[1])) {
 				bc.deleteEquipment(request, response);
 			}
+		} else if (ary[0].equals("equipmentType")) {// 设备种类模块
+			EquipmentTypeController etc = new EquipmentTypeController();
+			if ("equipmentTypeList".equals(ary[1])) {
+				etc.queryETypes(request, response);
+			} else if ("toAdd".equals(ary[1])) {
+				
+			}
 		} else if (ary[0].equals("log")) {// 日志模块
+			// LogController logController=new LogController();
 			if (ary[1].equals("")) {
 
 			}
-			// LogController logController=new LogController();
 		} else {// 以上多条else if 都不满足时，跳转到404.jsp错误页面
 			request.getRequestDispatcher("/404.jsp").forward(request, response);
 			return;

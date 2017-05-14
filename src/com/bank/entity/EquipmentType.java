@@ -18,20 +18,35 @@ public class EquipmentType implements Serializable {
 	 * 种类名称
 	 */
 	private String name;
+	/**
+	 * 是否已存在该种类的设备
+	 */
+	private boolean hasEq;
 
 	public EquipmentType() {
 
+	}
+	
+	/**
+	 * 设备种类(默认该种类不包含设备)
+	 * @param id 种类
+	 * @param name 名称
+	 */
+	public EquipmentType(String id, String name) {
+		this(id, name, false);
 	}
 
 	/**
 	 * 设备种类
 	 * @param id 种类编号
 	 * @param name 种类名称
+	 * @param hasEq 是否存在该种类的设备
 	 */
-	public EquipmentType(String id, String name) {
+	public EquipmentType(String id, String name, boolean hasEq) {
 		super();
 		this.id = id;
 		this.name = name;
+		this.hasEq = hasEq;
 	}
 
 	public String getId() {
@@ -48,6 +63,14 @@ public class EquipmentType implements Serializable {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+	
+	public boolean isHasEq() {
+		return hasEq;
+	}
+
+	public void setHasEq(boolean hasEq) {
+		this.hasEq = hasEq;
 	}
 
 	@Override

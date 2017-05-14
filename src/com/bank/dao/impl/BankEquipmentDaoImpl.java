@@ -13,7 +13,7 @@ import com.bank.util.DBUtil;
 public class BankEquipmentDaoImpl extends BaseDaoImpl implements BankEquipmentDao {
 
 	@Override
-	public int queryBankEquipmentsCount(String bankID) {
+	public int queryEquipmentsCount(String bankID) {
 		int n = 0;
 		String sql = "SELECT COUNT(*) FROM bankequipment WHERE Bank_id=?";
 		try {
@@ -21,9 +21,7 @@ public class BankEquipmentDaoImpl extends BaseDaoImpl implements BankEquipmentDa
 			ps.setString(1, bankID);
 			LOGGER.info("查询银行 " + bankID + " 的设备数量：" + ps.toString());
 			rs = ps.executeQuery();
-			if (rs.next()) {
-				n = rs.getInt(1);
-			}
+			n = rs.next() ? rs.getInt(1) : 0;
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
@@ -31,7 +29,7 @@ public class BankEquipmentDaoImpl extends BaseDaoImpl implements BankEquipmentDa
 		}
 		return n;
 	}
-
+	
 	@Override
 	public List<BankEquipment> queryBankEquipments(String bankID, int page, int count) {
 		List<BankEquipment> list = new ArrayList<BankEquipment>();
@@ -192,5 +190,21 @@ public class BankEquipmentDaoImpl extends BaseDaoImpl implements BankEquipmentDa
 			DBUtil.closeConnection(conn, rs, ps);
 		}
 		return be;
+	}
+	
+	@Override
+	public boolean hasEquipmentsByType(String typeId) {
+		boolean result = false;
+		String sql = "SELECT Equipment_id FROM bankequipment WHERE Equipment_id=?";
+		try {
+			setConnAndPS(sql);
+			ps.setString(1, typeId);
+			LOGGER.info("是否存在种类 id 为 " + typeId + " 的设备：" + ps.toString());
+			rs = ps.executeQuery();
+			result = rs.next();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} DBUtil.closeConnection(conn, rs, ps);
+		return result;
 	}
 }

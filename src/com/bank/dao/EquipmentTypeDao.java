@@ -2,7 +2,6 @@ package com.bank.dao;
 
 import java.util.List;
 
-import com.bank.entity.Department;
 import com.bank.entity.EquipmentType;
 
 /**
@@ -29,12 +28,12 @@ public interface EquipmentTypeDao {
 	
 	/**
 	 * 分页查询银行设备种类
-	 * @param pageSize
-	 * @param pageNum
-	 * @param Equipment_Name
+	 * @param page 当前页
+	 * @param count 每页显示的数量
+	 * @param eName
 	 * @return
 	 */
-	public List<Department> queryEquipmentType(int pageSize, int pageNum, String Equipment_Name);
+	public List<EquipmentType> queryEquipmentTypes(int page, int count, String eName);
 	
 	/**
 	 * 修改银行设备种类
@@ -49,4 +48,10 @@ public interface EquipmentTypeDao {
 	 * @return
 	 */
 	List<EquipmentType> queryTyps();
+
+	/**
+	 * 查询所有设备种类的数量
+	 * @return
+	 */
+	int queryEquipmentsCount();
 }

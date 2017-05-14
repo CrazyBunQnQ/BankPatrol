@@ -56,7 +56,7 @@ public class BankServiceImpl implements BankService {
 		PageInfo<BankEquipment> data = new PageInfo<BankEquipment>();
 		data.setCurPage(page);
 		List<BankEquipment> equipments = bedi.queryBankEquipments(bankId, data.getFrom(), data.getPageSize());
-		int count = bedi.queryBankEquipmentsCount(bankId);
+		int count = bedi.queryEquipmentsCount(bankId);
 		data.setPagedata(equipments);
 		data.setTotalRecord(count);
 		return data;

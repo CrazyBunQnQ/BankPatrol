@@ -4,8 +4,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.bank.dao.BankEquipmentDao;
 import com.bank.dao.EquipmentTypeDao;
-import com.bank.entity.Department;
 import com.bank.entity.EquipmentType;
 import com.bank.util.DBUtil;
 
@@ -22,8 +22,30 @@ public class EquipmentTypeDaoImpl extends BaseDaoImpl implements EquipmentTypeDa
 	}
 
 	@Override
-	public List<Department> queryEquipmentType(int pageSize, int pageNum, String Equipment_Name) {
-		return null;
+	public List<EquipmentType> queryEquipmentTypes(int page, int count, String eName) {
+		List<EquipmentType> list = new ArrayList<EquipmentType>();
+		StringBuffer sql = new StringBuffer("SELECT * FROM equipmenttype");
+		BankEquipmentDao bedi = new BankEquipmentDaoImpl();
+		if (!"".equals(eName)) {
+			sql.append(" WHERE Equipment_Name LIKE '%" + eName + "%'");
+		}
+		sql.append(" LIMIT ?, ?");
+		try {
+			setConnAndPS(sql.toString());
+			ps.setInt(1, page);
+			ps.setInt(2, count);
+			LOGGER.info("查询设备种类列表：" + ps.toString());
+			rs = ps.executeQuery();
+			while (rs.next()) {
+				String typeId = rs.getString(1);
+				list.add(new EquipmentType(typeId, rs.getString(2), bedi.hasEquipmentsByType(typeId)));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBUtil.closeConnection(conn, rs, ps);
+		}
+		return list;
 	}
 
 	@Override
@@ -48,5 +70,22 @@ public class EquipmentTypeDaoImpl extends BaseDaoImpl implements EquipmentTypeDa
 			DBUtil.closeConnection(conn, rs, ps);
 		}
 		return list;
+	}
+
+	@Override
+	public int queryEquipmentsCount() {
+		int count = 0;
+		String sql = "SELECT COUNT(*) FROM equipmenttype";
+		try {
+			setConnAndPS(sql);
+			LOGGER.info("查询所有设备种类的数量：" + ps.toString());
+			rs = ps.executeQuery();
+			count = rs.next() ? rs.getInt(1) : 0;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBUtil.closeConnection(conn, rs, ps);
+		}
+		return count;
 	}
 }
