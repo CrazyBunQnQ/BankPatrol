@@ -9,10 +9,11 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.bank.entity.EquipmentType;
 import com.bank.entity.PageInfo;
+import com.bank.service.EquipmentTypeService;
 import com.bank.service.impl.EquipmentTypeServiceImpl;
 
 public class EquipmentTypeController {
-	private EquipmentTypeServiceImpl eTypeService = new EquipmentTypeServiceImpl();
+	private EquipmentTypeService eTypeService = new EquipmentTypeServiceImpl();
 
 	/**
 	 * 分页查询所有的设备种类

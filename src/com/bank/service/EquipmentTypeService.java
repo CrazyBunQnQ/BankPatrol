@@ -49,4 +49,11 @@ public interface EquipmentTypeService {
 	 */
 	boolean deleteEType(String id);
 
+	/**
+	 * 添加设备种类
+	 * @param eType
+	 * @return
+	 */
+	boolean insertEType(EquipmentType eType);
+
 }

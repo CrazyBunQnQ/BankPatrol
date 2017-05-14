@@ -36,6 +36,7 @@ public class EquipmentTypeServiceImpl implements EquipmentTypeService {
 		return etdi.hasTypeName(typeName) ? 1 : 0;
 	}
 
+	@Override
 	public boolean insertEType(EquipmentType eType) {
 		return etdi.insertEquipmentType(eType) > 0;
 	}
