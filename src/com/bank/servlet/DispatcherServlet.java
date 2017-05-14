@@ -13,6 +13,7 @@ import org.apache.logging.log4j.Logger;
 
 import com.bank.controller.BankController;
 import com.bank.controller.EquipmentTypeController;
+import com.bank.controller.JobController;
 import com.bank.controller.LoginController;
 import com.bank.controller.UserController;
 
@@ -61,35 +62,39 @@ public class DispatcherServlet extends HttpServlet {
 				uc.toUserUpte(request, response);
 			}
 		} else if (ary[0].equals("dept")) {// 部门模块
-
+		} else if (ary[0].equals("job")) {// 部门模块
+			 JobController jobController = new JobController();
+			if ("jobList".equals(ary[1])) {
+				jobController.queryGws(request, response);
+			}
 		} else if (ary[0].equals("bank")) {// 银行模块
-			BankController bc = new BankController();
+			BankController bankController = new BankController();
 			if ("bankList".equals(ary[1])) {
-				bc.queryBanks(request, response);
+				bankController.queryBanks(request, response);
 			} else if ("toAdd".equals(ary[1])) {
-				bc.toAddBank(request, response);
+				bankController.toAddBank(request, response);
 			} else if ("checkBankId".equals(ary[1])) {
-				bc.checkBankId(request, response);
+				bankController.checkBankId(request, response);
 			} else if ("bankAdd".equals(ary[1])) {
-				bc.insertBank(request, response);
+				bankController.insertBank(request, response);
 			} else if ("toUpdate".equals(ary[1])) {
-				bc.toUpdate(request, response);
+				bankController.toUpdate(request, response);
 			} else if ("bankUpdate".equals(ary[1])) {
-				bc.updateBank(request, response);
+				bankController.updateBank(request, response);
 			} else if ("EquipmentsList".equals(ary[1])) {
-				bc.queryEquipments(request, response);
+				bankController.queryEquipments(request, response);
 			} else if ("toAddEquipment".equals(ary[1])) {
-				bc.toAddEquipment(request, response);
+				bankController.toAddEquipment(request, response);
 			} else if ("checkBankEquId".equals(ary[1])) {
-				bc.checkEquipmentId(request, response);
+				bankController.checkEquipmentId(request, response);
 			} else if ("AddEquipment".equals(ary[1])) {
-				bc.insertEquipment(request, response);
+				bankController.insertEquipment(request, response);
 			} else if ("toUpdateEquipment".equals(ary[1])) {
-				bc.toUpdateEquipment(request, response);
+				bankController.toUpdateEquipment(request, response);
 			} else if ("UpdateEquipment".equals(ary[1])) {
-				bc.updateEquipment(request, response);
+				bankController.updateEquipment(request, response);
 			} else if ("deleteEquipment".equals(ary[1])) {
-				bc.deleteEquipment(request, response);
+				bankController.deleteEquipment(request, response);
 			}
 		} else if (ary[0].equals("etype")) {// 设备种类模块
 			EquipmentTypeController etc = new EquipmentTypeController();

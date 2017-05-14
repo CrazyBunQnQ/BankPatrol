@@ -11,6 +11,23 @@ import com.bank.util.DBUtil;
 public class JobDaoImpl extends BaseDaoImpl implements JobDao {
 
 	@Override
+	public int queryJobsCount() {
+		int n = 0;
+		String sql = "SELECT COUNT(Job_ID) FROM job";
+		try {
+			setConnAndPS(sql);
+			LOGGER.info("查询岗位的数量");
+			rs = ps.executeQuery();
+			n = rs.next() ? rs.getInt(1) : 0;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBUtil.closeConnection(conn, rs, ps);
+		}
+		return n;
+	}
+	
+	@Override
 	public List<Job> queryJobs(int page, int count) {
 		List<Job> list = new ArrayList<Job>();
 		String sql = "SELECT Job_ID, Name, Description FROM job LIMIT ?, ?";
@@ -85,4 +102,5 @@ public class JobDaoImpl extends BaseDaoImpl implements JobDao {
 		}
 		return n;
 	}
+
 }
