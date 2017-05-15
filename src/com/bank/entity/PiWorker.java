@@ -26,6 +26,16 @@ public class PiWorker implements Serializable {
 	 * 电话2
 	 */
 	private String tel2;
+	
+	private String workerName;
+
+	public String getWorkerName() {
+		return workerName;
+	}
+
+	public void setWorkerName(String workerName) {
+		this.workerName = workerName;
+	}
 
 	public PiWorker() {
 		piGroup = new PiGroup();

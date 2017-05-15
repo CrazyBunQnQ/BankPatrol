@@ -35,7 +35,7 @@ public interface PiWorkerDao {
 	 * @param tel2
 	 * @return
 	 */
-	public List<PiWorker> queryPiWorker(int pageSize, int pageNum, PiGroup piGroup, String tel1, String tel2);
+	public List<PiWorker> queryPiWorker(int pageSize, int pageNum, String name);
 	
 	/**
 	 * 修改巡检工
@@ -43,4 +43,18 @@ public interface PiWorkerDao {
 	 * @return
 	 */
 	public boolean updatePiWorker(PiWorker pw);
+	
+	/**
+	 * 查询巡检工条数
+	 * @param name
+	 * @return
+	 */
+	public int countPiWorker(String name);
+	
+	/**
+	 * 判断用户是否存在
+	 * @param id
+	 * @return
+	 */
+	public boolean hasUser(long id);
 }

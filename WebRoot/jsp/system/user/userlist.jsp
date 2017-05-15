@@ -40,7 +40,7 @@
 							<td>用户中文名：</td>
 							<td><input name="userName" type="text" value=""></td>
 							<td>
-								<input type="image" src="${pageContext.request.contextPath }/images/search1.gif" class="input_button9" title="搜索"></input>
+								<input type="image" src="${pageContext.request.contextPath }/images/search1.gif" class="input_button9" title="搜索"/>
 							</td>
 						</tr>
 					</table>

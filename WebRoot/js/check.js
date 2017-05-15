@@ -148,18 +148,18 @@ function checkDeptname(name) {
 	var t = document.getElementById(name);
 	if (t.value != "") {
 		if (xmlHttpRequest.readyState == 0 || xmlHttpRequest.readyState == 4) {
-			xmlHttpRequest.open("POST", "../../dept/checkDeptname.do", true); // true异步访问
+			xmlHttpRequest.open("POST", "../dept/checkDeptname.do", true); // true异步访问
 			xmlHttpRequest.setRequestHeader("Content-Type",
 					"application/x-www-form-urlencoded;charset=utf-8");
 			xmlHttpRequest.onreadystatechange = function() {
 				if (xmlHttpRequest.readyState == 4) {
 					var res = xmlHttpRequest.responseText;
 					var id = document.getElementById("show");
-					if (res == 0) {
+					if (res == 1) {
 						id.innerHTML = "<font color='green'>部门名称可以使用</font>";
 						return true;
-					} else if (res == 1) {
-						id.innerHTML = "<font color='red'>" + name
+					} else if (res == 0) {
+						id.innerHTML = "<font color='red'>" + t.value
 								+ "</font>已经存在";
 						t.focus();
 						t.value = "";
@@ -168,6 +168,37 @@ function checkDeptname(name) {
 				}
 			};
 			xmlHttpRequest.send('name=' + t.value);
+		}
+	} else {
+		alert("部门名称ID不能为空");
+		return false;
+	}
+}
+//验证巡检工id是否存在
+function checkPiWorkerId(id) {
+	var t = document.getElementById(id);
+	if (t.value != "") {
+		if (xmlHttpRequest.readyState == 0 || xmlHttpRequest.readyState == 4) {
+			xmlHttpRequest.open("POST", "../piwoker/checkPiWorkerId.do", true); // true异步访问
+			xmlHttpRequest.setRequestHeader("Content-Type",
+					"application/x-www-form-urlencoded;charset=utf-8");
+			xmlHttpRequest.onreadystatechange = function() {
+				if (xmlHttpRequest.readyState == 4) {
+					var res = xmlHttpRequest.responseText;
+					var id = document.getElementById("show");
+					if (res == 1) {
+						id.innerHTML = "<font color='green'>巡检工id可以使用</font>";
+						return true;
+					} else if (res == 0) {
+						id.innerHTML =  
+								"巡检工id<font color='red'>" + t.value + "</font>不存在";
+						t.focus();
+						t.value = "";
+						return false;
+					}
+				}
+			};
+			xmlHttpRequest.send('id=' + t.value);
 		}
 	} else {
 		alert("部门名称ID不能为空");
