@@ -31,26 +31,26 @@
 				<table class="kv-table">
 					<tr bgcolor="#F2F2F2">
 						<td width="30%">用户登陆ID</td>
-						<td>
+						<td align="left" style="padding-left: 100px">
 							<input type="text" id="loginId" name="loginId" class="input" onblur="searchSuggest(this.id,'msg');">
 							<font id="msg">(只能是字母和数字长度不能大于10)</font><span id="title"></span>
 						</td>
 					</tr>
 					<tr bgcolor="#F2F2F2">
 						<td>用户登陆密码</td>
-						<td><input type="password" id="pwd" class="input"></td>
+						<td align="left" style="padding-left: 100px"><input type="password" id="pwd" class="input"></td>
 					</tr>
 					<tr bgcolor="#F2F2F2">
 						<td>确认密码</td>
-						<td><input type="password" id="checkpwd" name="checkpwd" class="input"></td>
+						<td align="left" style="padding-left: 100px"><input type="password" id="checkpwd" name="checkpwd" class="input"></td>
 					</tr>
 					<tr bgcolor="#F2F2F2">
 						<td>用户中文名称</td>
-						<td><input type="text" name="userName"></td>
+						<td align="left" style="padding-left: 100px"><input type="text" name="userName"></td>
 					</tr>
 					<tr bgcolor="#F2F2F2">
 						<td>用户所属部门</td>
-						<td>
+						<td align="left" style="padding-left: 100px">
 							<select name='dept'>
 								<c:forEach items="${ d }" var="d1">
 									<option value="${d1.id }">${d1.name }</option>
@@ -60,7 +60,7 @@
 					</tr>
 					<tr bgcolor="#F2F2F2">
 						<td>用户所在岗位</td>
-						<td>
+						<td align="left" style="padding-left: 100px">
 							<select name='job'>
 								<c:forEach items="${ j }" var="j1">
 									<option value="${j1.id }">${j1.name }</option>
@@ -70,7 +70,7 @@
 					</tr>
 					<tr bgcolor="#F2F2F2">
 						<td>用户状态</td>
-						<td>
+						<td align="left" style="padding-left: 100px">
 							<input type="radio" name="userStatus" value="1" checked>启用
 							<input type="radio" name="userStatus" value="0">禁用
 						</td>

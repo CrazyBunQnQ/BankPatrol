@@ -35,14 +35,14 @@
 
 					<tr bgcolor="#F2F2F2">
 						<td align="center">岗位名称：</td>
-						<td>
+						<td align="left" style="padding-left: 100px">
 							<input name="jobName" id="jobName" onblur="checkJobName(this.value);" value="${job.name }">
 							<span align="left" id="div1"></span>
 						</td>
 					</tr>
 					<tr bgcolor="#F2F2F2">
 						<td align="center">岗位描述：</td>
-						<td><textarea name="description" cols="30" rows="3">${job.description }</textarea></td>
+						<td align="left" style="padding-left: 100px"><textarea name="description" cols="30" rows="3">${job.description }</textarea></td>
 					</tr>
 				</table>
 				<br>

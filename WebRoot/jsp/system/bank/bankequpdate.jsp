@@ -29,11 +29,11 @@
 				<table class="kv-table">
 					<tr>
 						<td bgcolor="#F2F2F2" align="center" width="30%">设备流水ID</td>
-						<td><input type="text" name="equipmentEachId" value="${equi.eachID }" readonly></td>
+						<td align="left" style="padding-left: 100px"><input type="text" name="equipmentEachId" value="${equi.eachID }" readonly></td>
 					</tr>
 					<tr>
 						<td bgcolor="#F2F2F2" align="center" width="30%">所属种类名</td>
-						<td>
+						<td align="left" style="padding-left: 100px">
 							<select name="equipmentId">
 								<c:forEach items="${typs }" var="type">
 									<option value="${type.id }">${type.name }</option>
@@ -43,25 +43,25 @@
 					</tr>
 					<tr>
 						<td bgcolor="#F2F2F2" align="center" width="30%">所在银行</td>
-						<td>
+						<td align="left" style="padding-left: 100px">
 							<input type="text" name="bankName" value="${equi.bank.name }" readonly>
 							<input type="hidden" name="bankId" value="${equi.bank.id }">
 						</td>
 					</tr>
 					<tr>
 						<td bgcolor="#F2F2F2" align="center" width="30%">购入价值</td>
-						<td><input type="text" name="equipmentValue" value="${equi.value }"
+						<td align="left" style="padding-left: 100px"><input type="text" name="equipmentValue" value="${equi.value }"
 							readonly></td>
 					</tr>
 					<tr>
 						<td bgcolor="#F2F2F2" align="center" width="30%">购入时间</td>
-						<td><input name="equipmentBuyDate" value="${equi.getBuyDateStr() }" onClick="WdatePicker();" readonly>
+						<td align="left" style="padding-left: 100px"><input name="equipmentBuyDate" value="${equi.getBuyDateStr() }" onClick="WdatePicker();" readonly>
 		
 						</td>
 					</tr>
 					<tr>
 						<td bgcolor="#F2F2F2" align="center" width="30%">设备状态</td>
-						<td><select name="status">
+						<td align="left" style="padding-left: 100px"><select name="status">
 								<option value="0"<% if (equi!=null && equi.getStatus()==0) { %> selected<% } %>>设备正常</option>
 								<option value="1"<% if (equi!=null && equi.getStatus()==1) { %> selected<% } %>>报检设备</option>
 								<option value="2"<% if (equi!=null && equi.getStatus()==2) { %> selected<% } %>>停用设备</option>
@@ -69,7 +69,7 @@
 					</tr>
 					<tr>
 						<td bgcolor="#F2F2F2" align="center" width="30%">设备折旧残值</td>
-						<td><input type="text" name="depreciationValue" value="${equi.depreciationValue }"></td>
+						<td align="left" style="padding-left: 100px"><input type="text" name="depreciationValue" value="${equi.depreciationValue }"></td>
 					</tr>
 				</table>
 				<p align="center">

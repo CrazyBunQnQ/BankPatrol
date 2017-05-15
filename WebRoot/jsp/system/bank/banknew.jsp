@@ -26,31 +26,31 @@
 				<table class="kv-table">
 					<tr>
 						<td bgcolor="#F2F2F2" align="center" width="30%">银行编号</td>
-						<td>
+						<td align="left" style="padding-left: 100px">
 							<input type="text" name="bankId" onblur="checkBankId('bankId');" id="bankId"<% if (bank!=null) { %> value="${bank.id }"<% } %> placeholder="(字母或数字且长度小于10)"> <span id="show"></span>
 						</td>
 					</tr>
 					<tr>
 						<td bgcolor="#F2F2F2" align="center" width="30%">银行名称</td>
-						<td>
+						<td align="left" style="padding-left: 100px">
 							<input type="text" name="bankName"<% if (bank!=null) { %> value="${bank.name }"<% } %>>
 						</td>
 					</tr>
 					<tr>
 						<td bgcolor="#F2F2F2" align="center" width="30%">银行位置经度</td>
-						<td>
+						<td align="left" style="padding-left: 100px">
 							<input type="text" name="bankLongitude"<% if (bank!=null) { %> value="${bank.longitude }"<% } %>>
 						</td>
 					</tr>
 					<tr>
 						<td bgcolor="#F2F2F2" align="center" width="30%">银行位置纬度</td>
-						<td>
+						<td align="left" style="padding-left: 100px">
 							<input type="text" name="bankLatitude"<% if (bank!=null) { %> value="${bank.latitude }"<% } %>>
 						</td>
 					</tr>
 					<tr>
 						<td bgcolor="#F2F2F2" align="center" width="30%">银行IP</td>
-						<td>
+						<td align="left" style="padding-left: 100px">
 							<input type="text" name="bankIp"<% if (bank!=null) { %> value="${bank.ip }"<% } %> placeholder="(Ip格式:xxx.xxx.xxx.xxx)">
 						</td>
 					</tr>
