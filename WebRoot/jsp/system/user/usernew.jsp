@@ -19,7 +19,11 @@
 	<div class="containner">
 		<div id="inner-hd">
 			<div class="crumbs">
-				<span class="crumbs-label">系统管理&gt;&gt;用户管理&gt;&gt;用户新增</span>
+				<span class="crumbs-label">
+					<a href="${pageContext.request.contextPath }/center.jsp">系统管理</a>&gt;&gt;
+					<a href="${pageContext.request.contextPath }/user/userList.do">用户管理</a>&gt;&gt;
+					用户新增
+				</span>
 			</div>
 		</div>
 		<div id="inner-bd">
