@@ -25,7 +25,6 @@ public class LogDaoImpl extends BaseDaoImpl implements LogDao {
 				flag = false;
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}finally{
 			DBUtil.closeConnection(conn, rs, ps);
@@ -55,7 +54,7 @@ public class LogDaoImpl extends BaseDaoImpl implements LogDao {
 	}
 
 	@Override
-	public boolean clearLog() {
+	public boolean clearLogs() {
 		boolean flag = false;
 		String sql = "delete from logs";
 		try {
@@ -74,11 +73,17 @@ public class LogDaoImpl extends BaseDaoImpl implements LogDao {
 
 	@Override
 	public List<Log> getAllLogs() {
-
+		return null;
+	}
+	
+	@Override
+	public List<Log> queryLogs(int pageSize, int pageNum) {
 		List<Log> logs = new ArrayList<Log>();
-		String sql = "select log_id, checkin_time, checkout_time, users_id from logs";
+		String sql = "select log_id, checkin_time, checkout_time, users_id from logs limit ?,?";
 		try {
 			setConnAndPS(sql);
+			ps.setInt(1, (pageNum-1)*pageSize);
+			ps.setInt(2, pageSize);
 			rs = ps.executeQuery();
 			while(rs.next()){
 				Log log = new Log();
@@ -96,6 +101,22 @@ public class LogDaoImpl extends BaseDaoImpl implements LogDao {
 		return logs;
 	}
 
-
+	@Override
+	public int countLogs() {
+		int count = 0;
+		String sql = "select count(log_ID) from logs";
+		try {
+			setConnAndPS(sql);
+			rs = ps.executeQuery();
+			if(rs.next()){
+				count = rs.getInt("count(log_ID)");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally{
+			DBUtil.closeConnection(conn, rs, ps);
+		}
+		return count;
+	}
 
 }

@@ -15,6 +15,7 @@ import com.bank.controller.BankController;
 import com.bank.controller.DepartmentController;
 import com.bank.controller.EquipmentTypeController;
 import com.bank.controller.JobController;
+import com.bank.controller.LogController;
 import com.bank.controller.LoginController;
 import com.bank.controller.PiGroupController;
 import com.bank.controller.PiWorkerController;
@@ -172,12 +173,16 @@ public class DispatcherServlet extends HttpServlet {
 			}else if(ary[1].equals("toAdd")){
 				pc.toAdd(request, response);
 			}
-			// LogController logController=new LogController();
-		} else if (ary[0].equals("log")) {// 日志模块
-			// LogController logController=new LogController();
-			if (ary[1].equals("")) {
+		}else if (ary[0].equals("log")) {// 日志模块
+			 LogController logController = new LogController();
+			if ("logList".equals(ary[1])) {
+				logController.queryLogs(request, response);
+			} else if ("clearLogs".equals(ary[1])) {
+				logController.clearLogs();
+			}else if ("exportLogs".equals(ary[1])) {
+				logController.exportLogs();
 			}
-		} else {// 以上多条else if 都不满足时，跳转到404.jsp错误页面
+		}else {// 以上多条else if 都不满足时，跳转到404.jsp错误页面
 			request.getRequestDispatcher("/404.jsp").forward(request, response);
 			return;
 		}
