@@ -1,5 +1,6 @@
 package com.bank.service;
 
+import com.bank.entity.Gwym;
 import com.bank.entity.Job;
 import com.bank.entity.PageInfo;
 
@@ -18,5 +19,27 @@ public interface JobService {
 	 * @return
 	 */
 	int hasJob(String name);
+
+	/**
+	 * 判断添加岗位是否成功
+	 * @param job 岗位
+	 * @return
+	 */
+	boolean addJob(Job job);
+
+	/**
+	 * 判断更新岗位是否成功
+	 * @param job 岗位
+	 * @return
+	 */
+	boolean updateJob(Job job);
+
+	/**
+	 * 获取制定权限的可操作页面和所属模块
+	 * @param jobId 查询的岗位 id
+	 * @param page 当前页
+	 * @return
+	 */
+	PageInfo<Gwym> getGws(int jobId, int page);
 
 }

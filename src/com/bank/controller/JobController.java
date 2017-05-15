@@ -7,6 +7,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.bank.entity.Gwym;
 import com.bank.entity.Job;
 import com.bank.entity.PageInfo;
 import com.bank.service.impl.JobServiceImpl;
@@ -111,5 +112,21 @@ public class JobController {
 			request.setAttribute("job", job);
 			request.getRequestDispatcher("/jsp/system/job/jobupdate.jsp").forward(request, response);
 		}
+	}
+
+	/**
+	 * 显示指定岗位的所有权限
+	 * @param request
+	 * @param response
+	 * @throws IOException 
+	 * @throws ServletException 
+	 */
+	public void queryXtyms(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		int page = Integer.parseInt(request.getParameter("curpage") == null ? "0" : request.getParameter("curpage"));
+		int jobId = Integer.parseInt(request.getParameter("jobId")==null?"0":request.getParameter("jobId"));
+		PageInfo<Gwym> data = jobService.getGws(jobId, page);
+		request.setAttribute("data", data);
+		request.setAttribute("jobId", jobId);
+		request.getRequestDispatcher("/jsp/system/job/xtymlist.jsp").forward(request, response);
 	}
 }

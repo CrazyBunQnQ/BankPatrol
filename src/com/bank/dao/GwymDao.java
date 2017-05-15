@@ -26,6 +26,13 @@ public interface GwymDao {
 	List<Gwym> queryGwyms(int jobId, int funId, int page, int count);
 	
 	/**
+	 * 获取指定岗位的权限数量
+	 * @param jobId 岗位 id
+	 * @return
+	 */
+	int queryGwymsCount(int jobId);
+	
+	/**
 	 * 按照指定操作模块查询该模块所有的操作页面编号和名称
 	 * @param funId 模块 id
 	 * @param page 当前页
@@ -49,4 +56,5 @@ public interface GwymDao {
 	 * @return int 影响行数
 	 */
 	int deleteGwyms(int jobId, int[] ymbh);
+
 }

@@ -64,6 +64,24 @@ public class GwymDaoImpl extends BaseDaoImpl implements GwymDao {
 		}
 		return list;
 	}
+	
+	@Override
+	public int queryGwymsCount(int jobId) {
+		int n = 0;
+		String sql = "SELECT COUNT(xtymb.ymbh) FROM gwym, job, xtymb, functions WHERE job.Job_ID=? AND job.Job_ID=gwym.Job_ID AND xtymb.ymbh=gwym.ymbh AND functions.Func_ID=xtymb.Func_ID";
+		try {
+			setConnAndPS(sql);
+			ps.setInt(1, jobId);
+			LOGGER.info("查询某岗位的权限数量：" + ps.toString());
+			rs = ps.executeQuery();
+			n = rs.next() ? rs.getInt(1) : 0;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBUtil.closeConnection(conn, rs, ps);
+		}
+		return n;
+	}
 
 	public List<Gwym> queryAllGwyms(int funId, int page, int count) {
 		List<Gwym> list = new ArrayList<Gwym>();
@@ -137,4 +155,5 @@ public class GwymDaoImpl extends BaseDaoImpl implements GwymDao {
 		}
 		return result;
 	}
+
 }
