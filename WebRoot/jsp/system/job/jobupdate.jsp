@@ -17,7 +17,11 @@
 	<div class="containner">
 		<div id="inner-hd">
 			<div class="crumbs">
-				<span class="crumbs-label">系统管理&gt;&gt;岗位管理&gt;&gt;修改岗位信息</span>
+				<span class="crumbs-label">
+					<a href="${pageContext.request.contextPath }/center.jsp">系统管理</a>&gt;&gt;
+					<a href="${pageContext.request.contextPath }/job/jobList.do">岗位管理</a>&gt;&gt;
+					修改岗位信息
+				</span>
 			</div>
 		</div>
 		<div id="inner-bd">
