@@ -8,17 +8,23 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/css/base.css">
 <script type="text/javascript" src="${pageContext.request.contextPath }/js/lib/My97DatePicker/WdatePicker.js"></script>
+
+<% BankEquipment equi = (BankEquipment)request.getAttribute("equi"); %>
+
 </head>
 
 <body>
 	<div class="containner">
 		<div id="inner-hd">
 			<div class="crumbs">
-				<span class="crumbs-label">系统管理&gt;&gt;银行设备明细列表&gt;&gt;修改银行设备明细</span>
+				<span class="crumbs-label">
+					<a href="${pageContext.request.contextPath }/center.jsp">系统管理</a>&gt;&gt;
+					<a href="${pageContext.request.contextPath }/bank/EquipmentsList.do?bankId=${equi.bank.id }">银行设备明细列表</a>&gt;&gt;
+					修改银行设备明细
+				</span>
 			</div>
 		</div>
 		<div id="inner-bd">
-			<% BankEquipment equi = (BankEquipment)request.getAttribute("equi"); %>
 			<form action="${pageContext.request.contextPath }/bank/UpdateEquipment.do" method="post">
 				<table class="kv-table">
 					<tr>
