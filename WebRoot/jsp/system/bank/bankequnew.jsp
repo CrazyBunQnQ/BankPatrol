@@ -11,19 +11,25 @@
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/css/base.css">
 <script type="text/javascript" src="${pageContext.request.contextPath }/js/check.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath }/js/lib/My97DatePicker/WdatePicker.js"></script>
+
+<%
+	Bank bank = (Bank)request.getAttribute("bank");
+	BankEquipment equi = (BankEquipment)request.getAttribute("equipment");
+%>
+
 </head>
 
 <body>
 	<div class="containner">
 		<div id="inner-hd">
 			<div class="crumbs">
-				<span class="crumbs-label">系统管理&gt;&gt;银行设备明细列表&gt;&gt;新增银行设备明细</span>
+				<span class="crumbs-label">
+					<a href="${pageContext.request.contextPath }/center.jsp">系统管理</a>&gt;&gt;
+					<a href="${pageContext.request.contextPath }/bank/EquipmentsList.do?bankId=${bank.id }">银行设备明细列表</a>&gt;&gt;
+					<a href="${pageContext.request.contextPath }/bank/toAddEquipment.do?bankId=${bank.id }">新增银行设备明细</a>
+				</span>
 			</div>
 		</div>
-		<%
-			Bank bank = (Bank)request.getAttribute("bank");
-			BankEquipment equi = (BankEquipment)request.getAttribute("equipment");
-		%>
 		<div id="inner-bd">
 			<form action="${pageContext.request.contextPath }/bank/AddEquipment.do" method="post">
 				<table class="kv-table">
