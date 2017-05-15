@@ -13,8 +13,10 @@
 	<div class="containner">
 		<div id="inner-hd">
 			<div class="crumbs">
-				<a href="${pageContext.request.contextPath }/center.jsp" class="crumbs-label">系统管理&gt;&gt;</a>
-				<a href="${pageContext.request.contextPath }/bank/EquipmentsList.do?bankId=${bankId }" class="crumbs-label">银行设备明细列表</a>
+				<span class="crumbs-label">
+					<a href="${pageContext.request.contextPath }/center.jsp">系统管理</a>&gt;&gt;
+					<a href="${pageContext.request.contextPath }/bank/EquipmentsList.do?bankId=${bankId }">银行设备明细列表</a>
+				</span>
 			</div>
 		</div>
 		<div id="inner-bd">
