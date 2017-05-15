@@ -81,10 +81,6 @@ public class DispatcherServlet extends HttpServlet {
 			}else if (ary[1].equals("deptUpdate")) {
 				deptc.deptUpdate(request, response);
 			}
-		} else if (ary[0].equals("bank")) {// 银行模块
-			BankController bc = new BankController();
-			if ("bankList".equals(ary[1])) {
-				bc.queryBanks(request, response);
 		} else if (ary[0].equals("job")) {// 部门模块
 			 JobController jobController = new JobController();
 			if ("jobList".equals(ary[1])) {
@@ -169,6 +165,5 @@ public class DispatcherServlet extends HttpServlet {
 			request.getRequestDispatcher("/404.jsp").forward(request, response);
 			return;
 		}
-	}
 	}
 }
