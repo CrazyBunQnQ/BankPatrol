@@ -26,7 +26,7 @@
 				<span class="crumbs-label">
 					<a href="${pageContext.request.contextPath }/center.jsp">系统管理</a>&gt;&gt;
 					<a href="${pageContext.request.contextPath }/bank/EquipmentsList.do?bankId=${bank.id }">银行设备明细列表</a>&gt;&gt;
-					<a href="${pageContext.request.contextPath }/bank/toAddEquipment.do?bankId=${bank.id }">新增银行设备明细</a>
+					新增银行设备明细
 				</span>
 			</div>
 		</div>
