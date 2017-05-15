@@ -130,7 +130,7 @@ public class User implements Serializable {
 	 * 获取用户的岗位 id
 	 * @return
 	 */
-	public int getJobId() {
+	public Integer getJobId() {
 		return job.getId();
 	}
 	
@@ -138,8 +138,8 @@ public class User implements Serializable {
 	 * 设置用户的岗位 id
 	 * @param jobId
 	 */
-	public void setJobId(int jobId) {
-		this.job.setId(jobId);
+	public void setJobId(Integer jobId) {
+		this.job.setId(jobId == null ? 0 : jobId);
 	}
 	
 	/**
@@ -162,12 +162,12 @@ public class User implements Serializable {
 	 * 获取用户所在部门的 id
 	 * @return
 	 */
-	public int getDepartmentId() {
+	public Integer getDepartmentId() {
 		return department.getId();
 	}
 
-	public void setDepartmentId(int did) {
-		this.department.setId(did);
+	public void setDepartmentId(Integer did) {
+		this.department.setId(did == null ? 0 : did);
 	}
 	
 	/**
@@ -246,8 +246,7 @@ public class User implements Serializable {
 
 	@Override
 	public String toString() {
-		return "User [loginId=" + loginId + ", job=" + job + ", department=" + department + ", loginPwd=" + loginPwd
-				+ ", name=" + name + ", status=" + status + ", worker=" + worker + "]";
+		return "User [loginId=" + loginId + ", job=" + job + ", department=" + department + ", loginPwd=" + loginPwd + ", name=" + name + ", status=" + status + ", worker=" + worker + "]";
 	}
 
 	public String toJson() {

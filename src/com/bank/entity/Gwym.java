@@ -87,7 +87,7 @@ public class Gwym implements Serializable {
 	 * 获取模块 id
 	 * @return
 	 */
-	public int getFunId() {
+	public Integer getFunId() {
 		return xtymb.getFunction().getId();
 	}
 	
@@ -95,8 +95,8 @@ public class Gwym implements Serializable {
 	 * 设置模块 id
 	 * @param funId 子功能 id
 	 */
-	public void setFunId(int funId) {
-		this.xtymb.getFunction().setId(funId);
+	public void setFunId(Integer funId) {
+		this.xtymb.getFunction().setId(funId == null ? 0 : funId);
 	}
 	
 	/**
@@ -119,7 +119,7 @@ public class Gwym implements Serializable {
 	 * 获取岗位 id
 	 * @return
 	 */
-	public int getJobId() {
+	public Integer getJobId() {
 		return job.getId();
 	}
 	
@@ -127,8 +127,8 @@ public class Gwym implements Serializable {
 	 * 设置岗位 id
 	 * @param jobId
 	 */
-	public void setJobId(int jobId) {
-		this.job.setId(jobId);
+	public void setJobId(Integer jobId) {
+		this.job.setId(jobId == null ? 0 : jobId);
 	}
 	
 	@Override

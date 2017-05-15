@@ -10,13 +10,19 @@ import org.apache.logging.log4j.Logger;
 
 import com.bank.util.DBUtil;
 
+/**
+ * DAO 层公用属性和方法
+ * 
+ * @author CrazyBunQnQ
+ *
+ */
 public class BaseDaoImpl {
-	
+
 	protected static final Logger LOGGER = LogManager.getLogger(BaseDaoImpl.class.getName());
-	protected Connection conn = null; 
+	protected Connection conn = null;
 	protected PreparedStatement ps = null;
 	protected ResultSet rs = null;
-	
+
 	protected void setConnAndPS(String sql) throws SQLException {
 		conn = DBUtil.getConnection();
 		ps = conn.prepareStatement(sql);

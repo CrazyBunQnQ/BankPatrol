@@ -30,7 +30,7 @@ public class PiGroup implements Serializable {
 	 */
 	public PiGroup(Long id, String name) {
 		super();
-		this.id = id;
+		this.id = id == null ? 0 : id;
 		this.name = name;
 	}
 
@@ -39,7 +39,7 @@ public class PiGroup implements Serializable {
 	}
 
 	public void setId(Long id) {
-		this.id = id;
+		this.id = id == null ? 0 : id;
 	}
 
 	public String getName() {

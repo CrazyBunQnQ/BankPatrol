@@ -12,10 +12,13 @@ function jump(u,i) {
 
 function openfind() {
 	//$("#find").toggleClass("display: none");
-	if (document.all('find').style.display == "none") {
-		document.all('find').style.display = "";
+	var hidden = document.getElementById('find').hidden + "";
+	if (hidden == "true") {
+		document.getElementById('find').hidden = "";
+		document.getElementById('hiddenFind').value = "";
 	} else {
-		document.all('find').style.display = "none";
+		document.getElementById('find').hidden = "true";
+		document.getElementById('hiddenFind').value = "hidden";
 	}
 }
 

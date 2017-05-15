@@ -85,7 +85,7 @@ public class PiEquipment implements Serializable {
 	public PiEquipment(Long id, User user, Bank bank, PiGroup piGroup, RepairType repairType,
 			BankEquipment bankEquipment, Date piDate, String evaluation, boolean piStatus, boolean status) {
 		super();
-		this.id = id;
+		this.id = id == null ? 0 : id;
 		this.user = user;
 		this.bank = bank;
 		this.piGroup = piGroup;
@@ -102,7 +102,7 @@ public class PiEquipment implements Serializable {
 	}
 
 	public void setId(Long id) {
-		this.id = id;
+		this.id = id == null ? 0 : id;
 	}
 
 	public User getUser() {
@@ -252,9 +252,7 @@ public class PiEquipment implements Serializable {
 
 	@Override
 	public String toString() {
-		return "PiEquipment [id=" + id + ", user=" + user + ", bank=" + bank + ", piGroup=" + piGroup + ", repairType="
-				+ repairType + ", bankEquipment=" + bankEquipment + ", piDate=" + piDate + ", evaluation=" + evaluation
-				+ ", piStatus=" + piStatus + ", status=" + status + "]";
+		return "PiEquipment [id=" + id + ", user=" + user + ", bank=" + bank + ", piGroup=" + piGroup + ", repairType=" + repairType + ", bankEquipment=" + bankEquipment + ", piDate=" + piDate + ", evaluation=" + evaluation + ", piStatus=" + piStatus + ", status=" + status + "]";
 	}
 
 	public String toJson() {

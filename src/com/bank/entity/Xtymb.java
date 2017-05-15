@@ -45,7 +45,7 @@ public class Xtymb implements Serializable {
 	 */
 	public Xtymb(Long id, Function function, String name, String url, String imgPath) {
 		super();
-		this.id = id;
+		this.id = id == null ? 0 : id;
 		this.function = function;
 		this.name = name;
 		this.url = url;
@@ -57,7 +57,7 @@ public class Xtymb implements Serializable {
 	}
 
 	public void setId(Long id) {
-		this.id = id;
+		this.id = id == null ? 0 : id;
 	}
 
 	public Function getFunction() {
@@ -96,7 +96,7 @@ public class Xtymb implements Serializable {
 	 * 获取所属模块 id
 	 * @return
 	 */
-	public int getFunId() {
+	public Integer getFunId() {
 		return function.getId();
 	}
 	
@@ -104,8 +104,8 @@ public class Xtymb implements Serializable {
 	 * 设置所属的模块 id
 	 * @param funId
 	 */
-	public void setFunId(int funId) {
-		this.function.setId(funId);
+	public void setFunId(Integer funId) {
+		this.function.setId(funId == null ? 0 : funId);
 	}
 
 	@Override
@@ -159,8 +159,7 @@ public class Xtymb implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Xtymb [id=" + id + ", function=" + function + ", name=" + name + ", url=" + url + ", imgPath=" + imgPath
-				+ "]";
+		return "Xtymb [id=" + id + ", function=" + function + ", name=" + name + ", url=" + url + ", imgPath=" + imgPath + "]";
 	}
 
 	public String toJson() {

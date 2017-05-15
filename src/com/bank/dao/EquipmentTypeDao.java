@@ -2,7 +2,6 @@ package com.bank.dao;
 
 import java.util.List;
 
-import com.bank.entity.Department;
 import com.bank.entity.EquipmentType;
 
 /**
@@ -16,32 +15,39 @@ public interface EquipmentTypeDao {
 	/**
 	 * 添加银行设备种类
 	 * @param et
-	 * @return
+	 * @return 影响行数
 	 */
-	public boolean addEquipmentType(EquipmentType EquipmentType);
+	public int insertEquipmentType(EquipmentType EquipmentType);
 	
 	/**
 	 * 根据id删除银行设备种类
-	 * @param id
-	 * @return
+	 * @param id 设备种类 id
+	 * @return 影响行数
 	 */
-	public boolean deleteEquipmentType(int id);
+	public int deleteEquipmentType(String id);
 	
 	/**
-	 * 分页查询银行设备种类
-	 * @param pageSize
-	 * @param pageNum
-	 * @param Equipment_Name
+	 * 查询所有设备种类的数量（支持模糊查询）
 	 * @return
 	 */
-	public List<Department> queryEquipmentType(int pageSize, int pageNum, String Equipment_Name);
+	int queryEquipmentsCount(String eTypeId, String eTypeName);
+	
+	/**
+	 * 分页查询银行设备种类（可模糊查询）
+	 * @param page 当前页
+	 * @param count 每页显示的数量
+	 * @param eTypeId 种类 id 模糊查询
+	 * @param eTypeName 种类名称模糊查询
+	 * @return
+	 */
+	public List<EquipmentType> queryTypes(int page, int count, String eTypeId, String eTypeName);
 	
 	/**
 	 * 修改银行设备种类
 	 * @param et
-	 * @return
+	 * @return 影响行数
 	 */
-	public boolean updateEquipmentType(EquipmentType EquipmentType);
+	public int updateEquipmentType(EquipmentType EquipmentType);
 	
 
 	/**
@@ -49,4 +55,18 @@ public interface EquipmentTypeDao {
 	 * @return
 	 */
 	List<EquipmentType> queryTyps();
+
+	/**
+	 * 查询是否存在指定设备种类 id 的种类
+	 * @param typeId 设备种类 id
+	 * @return
+	 */
+	boolean hasType(String typeId);
+
+	/**
+	 * 查询是否存在某种类型的设备
+	 * @param typeName 种类名称
+	 * @return
+	 */
+	boolean hasTypeName(String typeName);
 }

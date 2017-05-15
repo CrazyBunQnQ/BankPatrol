@@ -7,6 +7,12 @@ import com.bank.entity.Job;
 public interface JobDao {
 
 	/**
+	 * 查询岗位的数量
+	 * @return
+	 */
+	int queryJobsCount();
+	
+	/**
 	 * 查询岗位
 	 * @param page 当前页（第一页为0）
 	 * @param count 每页显示数量
@@ -34,4 +40,5 @@ public interface JobDao {
 	 * @return int 影响行数
 	 */
 	int deleteJob(int jobId);
+
 }

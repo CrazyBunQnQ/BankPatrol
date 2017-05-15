@@ -13,7 +13,7 @@ public class BankDaoImpl extends BaseDaoImpl implements BankDao {
 	@Override
 	public int queryBankesCount() {
 		int n = 0;
-		String sql = "SELECT COUNT(*) FROM bank";
+		String sql = "SELECT COUNT(Bank_id) FROM bank";
 		try {
 			setConnAndPS(sql);
 			LOGGER.info("查询银行数量：" + ps.toString());
@@ -30,7 +30,7 @@ public class BankDaoImpl extends BaseDaoImpl implements BankDao {
 	}
 	
 	@Override
-	public List<Bank> queryBanks(int page, int count){
+	public List<Bank> queryBanks(int page, int count) {
 		List<Bank> list = new ArrayList<Bank>();
 		String sql = "SELECT * FROM bank LIMIT ?, ?";
 		try {
@@ -72,7 +72,7 @@ public class BankDaoImpl extends BaseDaoImpl implements BankDao {
 	}
 
 	@Override
-	public int updateBank(Bank bank){
+	public int updateBank(Bank bank) {
 		int n = 0;
 		String sql = "UPDATE bank SET Bank_Name=?, Bank_Longitude=?, Bank_Latitude=?, Bank_IP=? WHERE Bank_id=?";
 		try {
@@ -119,9 +119,7 @@ public class BankDaoImpl extends BaseDaoImpl implements BankDao {
 			ps.setString(1, id);
 			LOGGER.info("查询指定银行信息：" + ps.toString());
 			rs = ps.executeQuery();
-			if (rs.next()) {
-				bank = new Bank(id, rs.getString(1), rs.getDouble(2), rs.getDouble(3), rs.getString(4));
-			}
+			bank = rs.next() ? new Bank(id, rs.getString(1), rs.getDouble(2), rs.getDouble(3), rs.getString(4)) : null;
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {

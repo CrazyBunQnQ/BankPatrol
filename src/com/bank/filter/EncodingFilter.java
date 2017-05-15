@@ -21,8 +21,8 @@ public class EncodingFilter implements Filter {
 	private static final Logger LOGGER = LogManager.getLogger(EncodingFilter.class.getName());
 	private String charEncoding = null;
 
-    public EncodingFilter() {
-    }
+	public EncodingFilter() {
+	}
 
 	public void destroy() {
 	}
@@ -31,7 +31,7 @@ public class EncodingFilter implements Filter {
 		if (!charEncoding.equals(request.getCharacterEncoding())) {
 			request.setCharacterEncoding(charEncoding);
 		}
-//		response.setContentType("text/html;charset=" + charEncoding);
+		// response.setContentType("text/html;charset=" + charEncoding);
 		response.setCharacterEncoding(charEncoding);
 		chain.doFilter(request, response);
 	}

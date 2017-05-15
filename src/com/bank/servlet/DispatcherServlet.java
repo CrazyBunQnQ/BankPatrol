@@ -13,6 +13,8 @@ import org.apache.logging.log4j.Logger;
 
 import com.bank.controller.BankController;
 import com.bank.controller.DepartmentController;
+import com.bank.controller.EquipmentTypeController;
+import com.bank.controller.JobController;
 import com.bank.controller.LoginController;
 import com.bank.controller.PiGroupController;
 import com.bank.controller.PiWorkerController;
@@ -25,18 +27,15 @@ public class DispatcherServlet extends HttpServlet {
 
 	public void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String uri = request.getRequestURI();
-		LOGGER.info("uri: " + uri);
 		String path = uri.substring(uri.indexOf("/", 1) + 1, uri.lastIndexOf("."));
-		LOGGER.info("DispatcherServlet-->path:" + path);// user/userList
 
 		String[] ary = path.split("/");
-		LOGGER.info("DispatcherServlet-->ary:" + Arrays.toString(ary));
+		LOGGER.info("\r\nuri: " + uri + "\r\npath: " + Arrays.toString(ary));
 		if (ary.length != 2) {
 			request.getRequestDispatcher("/404.jsp").forward(request, response);
 			return;
 		}
-		
-		
+
 		if (ary[0].equals("login")) {// 登录,登出,用户模块
 			LoginController loginController = new LoginController();
 			if (ary[1].equals("login")) {
@@ -66,7 +65,6 @@ public class DispatcherServlet extends HttpServlet {
 				uc.toUserUpte(request, response);
 			}
 		} else if (ary[0].equals("dept")) {// 部门模块
-			
 			DepartmentController deptc = new DepartmentController();
 			if (ary[1].equals("deptList")) {
 				deptc.deptList(request, response);
@@ -83,35 +81,64 @@ public class DispatcherServlet extends HttpServlet {
 			}else if (ary[1].equals("deptUpdate")) {
 				deptc.deptUpdate(request, response);
 			}
-			
-			
-			
 		} else if (ary[0].equals("bank")) {// 银行模块
 			BankController bc = new BankController();
 			if ("bankList".equals(ary[1])) {
 				bc.queryBanks(request, response);
+		} else if (ary[0].equals("job")) {// 部门模块
+			 JobController jobController = new JobController();
+			if ("jobList".equals(ary[1])) {
+				jobController.queryGws(request, response);
 			} else if ("toAdd".equals(ary[1])) {
-				bc.toAddBank(request, response);
+				jobController.toAddJob(request, response);
+			}
+		} else if (ary[0].equals("bank")) {// 银行模块
+			BankController bankController = new BankController();
+			if ("bankList".equals(ary[1])) {
+				bankController.queryBanks(request, response);
+			} else if ("toAdd".equals(ary[1])) {
+				bankController.toAddBank(request, response);
 			} else if ("checkBankId".equals(ary[1])) {
-				bc.checkBankId(request, response);
+				bankController.checkBankId(request, response);
 			} else if ("bankAdd".equals(ary[1])) {
-				bc.insertBank(request, response);
+				bankController.insertBank(request, response);
 			} else if ("toUpdate".equals(ary[1])) {
-				bc.toUpdate(request, response);
+				bankController.toUpdate(request, response);
 			} else if ("bankUpdate".equals(ary[1])) {
-				bc.updateBank(request, response);
+				bankController.updateBank(request, response);
 			} else if ("EquipmentsList".equals(ary[1])) {
-				 bc.queryEquipments(request, response);
+				bankController.queryEquipments(request, response);
 			} else if ("toAddEquipment".equals(ary[1])) {
-				bc.toAddEquipment(request, response);
+				bankController.toAddEquipment(request, response);
+			} else if ("checkBankEquId".equals(ary[1])) {
+				bankController.checkEquipmentId(request, response);
 			} else if ("AddEquipment".equals(ary[1])) {
-//				bc.insertEquipment(request, response);
+				bankController.insertEquipment(request, response);
 			} else if ("toUpdateEquipment".equals(ary[1])) {
-//				bc.toUpdateEquipment(request, response);
+				bankController.toUpdateEquipment(request, response);
 			} else if ("UpdateEquipment".equals(ary[1])) {
-//				bc.updateEquipment(request, response);
-			} else if ("AddEquipment".equals(ary[1])) {
-//				bc.deleteEquipment(request, response);
+				bankController.updateEquipment(request, response);
+			} else if ("deleteEquipment".equals(ary[1])) {
+				bankController.deleteEquipment(request, response);
+			}
+		} else if (ary[0].equals("etype")) {// 设备种类模块
+			EquipmentTypeController etc = new EquipmentTypeController();
+			if ("equipmentTypeList".equals(ary[1])) {
+				etc.queryETypes(request, response);
+			} else if ("toAdd".equals(ary[1])) {
+				etc.toAddType(request, response);
+			} else if ("checkETypeId".equals(ary[1])) {
+				etc.checkETypeId(request, response);
+			} else if ("checkETypeName".equals(ary[1])) {
+				etc.checkETypeName(request, response);
+			} else if ("addEType".equals(ary[1])) {
+				etc.addEType(request, response);
+			} else if ("toUpdate".equals(ary[1])) {
+				etc.toUpdateType(request, response);
+			} else if ("updateEType".equals(ary[1])) {
+				etc.updateType(request, response);
+			} else if ("deleteType".equals(ary[1])) {
+				etc.deleteType(request, response);
 			}
 		} else if (ary[0].equals("piwoker")) {// 巡检工模块
 			PiWorkerController pc = new PiWorkerController();
@@ -135,13 +162,13 @@ public class DispatcherServlet extends HttpServlet {
 			}
 			// LogController logController=new LogController();
 		} else if (ary[0].equals("log")) {// 日志模块
-			if(ary[1].equals("")) {
-				
-			}
 			// LogController logController=new LogController();
-		}else {// 以上多条else if 都不满足时，跳转到404.jsp错误页面
+			if (ary[1].equals("")) {
+			}
+		} else {// 以上多条else if 都不满足时，跳转到404.jsp错误页面
 			request.getRequestDispatcher("/404.jsp").forward(request, response);
 			return;
 		}
+	}
 	}
 }

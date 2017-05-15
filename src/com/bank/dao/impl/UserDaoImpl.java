@@ -17,8 +17,7 @@ public class UserDaoImpl extends BaseDaoImpl implements UserDao {
 	@Override
 	public List<User> queryUsers(int page, int count) {
 		List<User> list = new ArrayList<User>();
-		String sql = "select Login_ID,User_Name,Department_Name,Name ,User_Status from users u join department d "
-				+ " on u.Department_ID = d.Department_id " + " join job j on u.Job_ID = j.Job_ID limit ?,? ";
+		String sql = "select Login_ID,User_Name,Department_Name,Name ,User_Status from users u join department d on u.Department_ID = d.Department_id join job j on u.Job_ID = j.Job_ID limit ?,? ";
 		try {
 			setConnAndPS(sql);
 			ps.setInt(1, page);
@@ -43,9 +42,7 @@ public class UserDaoImpl extends BaseDaoImpl implements UserDao {
 
 	@Override
 	public List<User> queryUsers(int from, int pageSize, User u) {
-		StringBuilder sql = new StringBuilder(
-				"select Login_ID,User_Name,Department_Name,Name ,User_Status from users u join department d "
-						+ " on u.Department_ID = d.Department_id " + " join job j on u.Job_ID = j.Job_ID  where 1=1 ");
+		StringBuilder sql = new StringBuilder("select Login_ID,User_Name,Department_Name,Name ,User_Status from users u join department d on u.Department_ID = d.Department_id join job j on u.Job_ID = j.Job_ID  where 1=1 ");
 		if (u.getLoginId() != null) {
 			sql.append(" and Login_ID like '%" + u.getLoginId() + "%'");
 		}
@@ -76,7 +73,7 @@ public class UserDaoImpl extends BaseDaoImpl implements UserDao {
 		}
 		return list;
 	}
-	
+
 	@Override
 	public int queryUsersCount() {
 		int n = 0;
@@ -84,9 +81,7 @@ public class UserDaoImpl extends BaseDaoImpl implements UserDao {
 		try {
 			setConnAndPS(sql);
 			rs = ps.executeQuery();
-			if (rs.next()) {
-				n = rs.getInt(1);
-			}
+			n = rs.next() ? rs.getInt(1) : 0;
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -108,9 +103,7 @@ public class UserDaoImpl extends BaseDaoImpl implements UserDao {
 		try {
 			setConnAndPS(sql.toString());
 			rs = ps.executeQuery();
-			if (rs.next()) {
-				count = rs.getInt(1);
-			}
+			count = rs.next() ? rs.getInt(1) : 0;
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -180,8 +173,7 @@ public class UserDaoImpl extends BaseDaoImpl implements UserDao {
 	@Override
 	public int userAdd(User user) {
 		int n = 0;
-		String sql = "   INSERT INTO users(Login_ID,Job_ID,Department_ID,Login_Password,User_Name,User_Status) "
-				+ " VALUES(?,?,?,?,?,?)";
+		String sql = "INSERT INTO users(Login_ID,Job_ID,Department_ID,Login_Password,User_Name,User_Status) VALUES(?,?,?,?,?,?)";
 		try {
 			setConnAndPS(sql);
 			ps.setString(1, user.getLoginId());
@@ -193,7 +185,6 @@ public class UserDaoImpl extends BaseDaoImpl implements UserDao {
 			LOGGER.info("添加用户：" + ps.toString());
 			n = ps.executeUpdate();
 		} catch (Exception e) {
-//			e.printStackTrace();
 			LOGGER.warn("该用户名已存在");
 			n = -1;
 		} finally {
@@ -205,7 +196,7 @@ public class UserDaoImpl extends BaseDaoImpl implements UserDao {
 	@Override
 	public User queryUser(String loginId) {
 		User u = new User();
-		String sql = " select Login_ID,User_Name,Department_Name,Name ,Login_Password ,User_Status,d.Department_id , u. Job_ID from users u join department d on u.Department_ID = d.Department_id " + " join job j on u.Job_ID = j.Job_ID where u.Login_ID = ? ";
+		String sql = " select Login_ID,User_Name,Department_Name,Name ,Login_Password ,User_Status,d.Department_id , u. Job_ID from users u join department d on u.Department_ID = d.Department_id join job j on u.Job_ID = j.Job_ID where u.Login_ID = ? ";
 		try {
 			setConnAndPS(sql);
 			ps.setString(1, loginId);
@@ -249,10 +240,10 @@ public class UserDaoImpl extends BaseDaoImpl implements UserDao {
 		}
 		return n;
 	}
-	
+
 	@Override
 	public User findUser(String loginId, String loginPwd) {
-		User user = null;
+		User user = new User();
 		String sql = "select Job_ID,Department_id,User_Name,User_Status from users where Login_ID=? and Login_Password=?";
 		try {
 			setConnAndPS(sql);
@@ -260,7 +251,6 @@ public class UserDaoImpl extends BaseDaoImpl implements UserDao {
 			ps.setString(2, loginPwd);
 			rs = ps.executeQuery();
 			if (rs.next()) {
-				user = new User();
 				user.setLoginId(loginId);
 				// user.setLoginPwd(loginPwd);
 				user.setJobId(rs.getInt("Job_ID"));
@@ -275,7 +265,7 @@ public class UserDaoImpl extends BaseDaoImpl implements UserDao {
 		}
 		return user;
 	}
-	
+
 	@Override
 	public List<Function> findFunctionsByJobId(int jobId) {
 		List<Function> list = new ArrayList<Function>();
@@ -297,11 +287,11 @@ public class UserDaoImpl extends BaseDaoImpl implements UserDao {
 		}
 		return list;
 	}
-	
+
 	@Override
 	public List<Xtymb> findXtymbList(int jobId, int funcId) {
 		List<Xtymb> list = new ArrayList<Xtymb>();
-		String sql = "select x.ymbh,x.Func_ID,x.ymmc,x.URL,x.IMG from xtymb x join gwym g on x.ymbh=g.ymbh where g.Job_ID=? " + "and x.Func_ID=?";
+		String sql = "select x.ymbh,x.Func_ID,x.ymmc,x.URL,x.IMG from xtymb x join gwym g on x.ymbh=g.ymbh where g.Job_ID=? and x.Func_ID=?";
 		try {
 			setConnAndPS(sql);
 			ps.setInt(1, jobId);

@@ -6,7 +6,6 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.Properties;
 
 import org.apache.logging.log4j.LogManager;
@@ -57,54 +56,6 @@ public class DBUtil {
 	public static Connection getConnection() throws SQLException {
 		Connection conn = DriverManager.getConnection(dbUrl, dbUser, dbPwd);
 		return conn;
-	}
-	
-	/**
-	 * 执行 DML 语句（INSERT, UPDATE 或 DELETE）
-	 * @param ps PreparedStatement 数据库语句
-	 * @return int 影响行数
-	 * @throws SQLException
-	 */
-	@Deprecated
-	public static int closeStatement(PreparedStatement ps) throws SQLException {
-		int num = ps.executeUpdate();
-		ps.close();
-		return num;
-	}
-	
-	/**
-	 * 关闭数据库连接
-	 * @param conn 要关闭的连接
-	 * @param rs 要关闭的数据集
-	 * @throws SQLException
-	 */
-	public static void closeConnection(Connection conn, ResultSet rs) throws SQLException {
-		if (rs != null) {
-			rs.close();
-		}
-		if (conn != null) {
-			conn.close();
-		}
-	}
-	
-	/**
-	 * 关闭数据库连接
-	 * @param conn 要关闭的连接
-	 * @param rs 要关闭的数据集
-	 * @param st 要关闭的 Statement 数据库语句
-	 * @throws SQLException
-	 */
-	@Deprecated
-	public static void closeConnection(Connection conn, ResultSet rs, Statement st) throws SQLException {
-		if (rs != null) {
-			rs.close();
-		}
-		if (st != null) {
-			st.close();
-		}
-		if (conn != null) {
-			conn.close();
-		}
 	}
 	
 	/**

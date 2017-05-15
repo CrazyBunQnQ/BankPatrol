@@ -27,7 +27,7 @@ public class BankEquipment implements Serializable {
 	/**
 	 * 购买价格
 	 */
-	private double value;
+	private Double value;
 	/**
 	 * 购买时间
 	 */
@@ -39,7 +39,7 @@ public class BankEquipment implements Serializable {
 	/**
 	 * 折旧残值
 	 */
-	private double depreciationValue;
+	private Double depreciationValue;
 
 	public BankEquipment() {
 		type = new EquipmentType();
@@ -57,16 +57,15 @@ public class BankEquipment implements Serializable {
 	 * @param status 状态
 	 * @param depreciationValue 设备折旧残值
 	 */
-	public BankEquipment(String eachID, EquipmentType type, Bank bank, double value, Date buyDate, int status,
-			double depreciationValue) {
+	public BankEquipment(String eachID, EquipmentType type, Bank bank, Double value, Date buyDate, int status, Double depreciationValue) {
 		super();
 		this.eachID = eachID;
 		this.type = type;
 		this.bank = bank;
-		this.value = value;
+		this.value = value == null ? 0 : value;
 		this.buyDate = buyDate;
 		this.status = status;
-		this.depreciationValue = depreciationValue;
+		this.depreciationValue = depreciationValue == null ? 0 : depreciationValue;
 	}
 
 	public String getEachID() {
@@ -93,12 +92,12 @@ public class BankEquipment implements Serializable {
 		this.bank = bank;
 	}
 
-	public double getValue() {
+	public Double getValue() {
 		return value;
 	}
 
-	public void setValue(double value) {
-		this.value = value;
+	public void setValue(Double value) {
+		this.value = value == null ? 0 : value;
 	}
 
 	public Date getBuyDate() {
@@ -122,7 +121,7 @@ public class BankEquipment implements Serializable {
 		case 0:
 			return "设备正常";
 		case 1:
-			return "报检正常";
+			return "报检设备";
 		}
 		return "停用设备";
 	}
@@ -142,12 +141,12 @@ public class BankEquipment implements Serializable {
 		this.status = status;
 	}
 
-	public double getDepreciationValue() {
+	public Double getDepreciationValue() {
 		return depreciationValue;
 	}
 
-	public void setDepreciationValue(double depreciationValue) {
-		this.depreciationValue = depreciationValue;
+	public void setDepreciationValue(Double depreciationValue) {
+		this.depreciationValue = depreciationValue == null ? 0 : depreciationValue;
 	}
 	
 	/**
@@ -164,6 +163,22 @@ public class BankEquipment implements Serializable {
 	 */
 	public void setBankId(String bankID) {
 		this.bank.setId(bankID);
+	}
+	
+	/**
+	 * 获取所属银行的名称
+	 * @return
+	 */
+	public String getBankName() {
+		return bank.getName();
+	}
+	
+	/**
+	 * 设置所属银行的名称
+	 * @param bankName
+	 */
+	public void setBankName(String bankName) {
+		this.bank.setName(bankName);
 	}
 	
 	/**
@@ -247,11 +262,11 @@ public class BankEquipment implements Serializable {
 
 	@Override
 	public String toString() {
-		return "BankEquipment [eachID=" + eachID + ", type=" + type + ", bank=" + bank + ", value=" + value
-				+ ", buyDate=" + buyDate + ", status=" + status + ", depreciationValue=" + depreciationValue + "]";
+		return "BankEquipment [eachID=" + eachID + ", type=" + type + ", bank=" + bank + ", value=" + value + ", buyDate=" + buyDate + ", status=" + status + ", depreciationValue=" + depreciationValue + "]";
 	}
 
 	public String toJson() {
 		return new Gson().toJson(this);
 	}
+
 }

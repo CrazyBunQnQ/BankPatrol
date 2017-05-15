@@ -50,7 +50,7 @@ public class PiWorker implements Serializable {
 	 */
 	public PiWorker(Long id, PiGroup piGroup, String tel1, String tel2) {
 		super();
-		this.id = id;
+		this.id = id == null ? 0 : id;
 		this.piGroup = piGroup;
 		this.tel1 = tel1;
 		this.tel2 = tel2;
@@ -61,7 +61,7 @@ public class PiWorker implements Serializable {
 	}
 
 	public void setId(Long id) {
-		this.id = id;
+		this.id = id == null ? 0 : id;
 	}
 
 	public PiGroup getPiGroup() {
