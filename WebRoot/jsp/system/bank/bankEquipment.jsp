@@ -13,7 +13,8 @@
 	<div class="containner">
 		<div id="inner-hd">
 			<div class="crumbs">
-				<a href="javascript:;" class="crumbs-label">系统管理&gt;&gt;银行设备明细列表</a>
+				<a href="${pageContext.request.contextPath }/center.jsp" class="crumbs-label">系统管理&gt;&gt;</a>
+				<a href="${pageContext.request.contextPath }/jsp/bank/EquipmentsList.do?bankId=${bankId }" class="crumbs-label">银行设备明细列表</a>
 			</div>
 		</div>
 		<div id="inner-bd">
@@ -64,15 +65,15 @@
 				<font color="black">共&nbsp;</font><font color="black">${data.totalPage }</font><font color="black">&nbsp;页&nbsp;&nbsp;</font>
 		
 				<c:if test="${data.curPage!=1 }">
-					<a href="../bank/EquipmentsList.do?curpage=${data.curPage-1 }">上一页</a>&nbsp;&nbsp;
-					<a href="../bank/EquipmentsList.do?curpage=1 ">首 页</a>&nbsp;&nbsp;
+					<a href="../bank/EquipmentsList.do?curpage=${data.curPage-1 }&bankId=${bankId }">上一页</a>&nbsp;&nbsp;
+					<a href="../bank/EquipmentsList.do?curpage=1&bankId=${bankId }">首 页</a>&nbsp;&nbsp;
 				</c:if>
 				<c:if test="${data.curPage!=data.totalPage }">
-					<a href="../bank/EquipmentsList.do?curpage=${data.curPage+1 }">下一页</a>&nbsp;&nbsp;
-					<a href="../bank/EquipmentsList.do?curpage=${data.totalPage }">尾 页</a>&nbsp;&nbsp;
+					<a href="../bank/EquipmentsList.do?curpage=${data.curPage+1 }&bankId=${bankId }">下一页</a>&nbsp;&nbsp;
+					<a href="../bank/EquipmentsList.do?curpage=${data.totalPage }&bankId=${bankId }">尾 页</a>&nbsp;&nbsp;
 				</c:if>
 				第&nbsp;<input id="pagebox" type="text" size="4">&nbsp;页&nbsp;
-				<a onclick="jump('../bank/EquipmentsList.do?curpage=','${data.totalPage }');" href="javascript:;">跳转</a>
+				<a onclick="jump('../bank/EquipmentsList.do?bankId=${bankId }&curpage=','${data.totalPage }');" href="javascript:;">跳转</a>
 			</p>
 		</div>
 	</div>
