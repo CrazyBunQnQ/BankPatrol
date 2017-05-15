@@ -1,6 +1,5 @@
 package com.bank.service.impl;
 
-import java.util.Date;
 import java.util.List;
 
 import com.bank.dao.LogDao;
@@ -31,13 +30,14 @@ public class LogServiceImpl implements LogService {
 	}
 
 	@Override
-	public boolean addLoginTime(Date loginTime, String loginId) {
+	public boolean addLoginTime(String loginTime, String loginId) {
+		
 		return ldi.addLoginTime(loginTime, loginId);
 	}
 
 	@Override
-	public boolean addLogoutTime(Date loginTime, String loginId, Date logoutTime) {
-		return ldi.addLogoutTime(logoutTime, loginId, logoutTime);
+	public boolean addLogoutTime(String loginTime, String loginId, String logoutTime) {
+		return ldi.addLogoutTime(loginTime, loginId, logoutTime);
 	}
 
 }

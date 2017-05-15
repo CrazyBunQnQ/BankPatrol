@@ -40,8 +40,8 @@ public class ExportLogUtil {
 			ws.addCell(labelUserId);
 			for(int i = 0, size = logs.size(); i < size; i++){
 				Label labelLogId_i = new Label(0,i+1,logs.get(i).getId()+"");//0列 0行
-				Label labelCheckInTime_i = new Label(1,i+1,DateUtils.dateToStr(logs.get(i).getCheckIn()));
-				Label labelCheckOutTime_i = new Label(2,i+1,DateUtils.dateToStr(logs.get(i).getCheckOut()));
+				Label labelCheckInTime_i = new Label(1,i+1,logs.get(i).getCheckIn());
+				Label labelCheckOutTime_i = new Label(2,i+1,logs.get(i).getCheckOut());
 				Label labelUserId_i = new Label(3,i+1,logs.get(i).getUseername());
 				ws.addCell(labelLogId_i);
 				ws.addCell(labelCheckInTime_i);
@@ -63,7 +63,7 @@ public class ExportLogUtil {
 		}
 		return flag;
 	}
-	/*public static void main(String[] args) {
-		ExportLogUtil.exportLog();
-	}*/
+	public static void main(String[] args) {
+		ExportLogUtil.exportLogs();
+	}
 }

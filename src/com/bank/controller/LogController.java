@@ -15,22 +15,34 @@ import com.bank.service.impl.LogServiceImpl;
 import com.bank.util.ExportLogUtil;
 
 public class LogController {
-	
+
 	LogService logService = new LogServiceImpl();
-	
-	public void queryLogs(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+
+	public void queryLogs(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		int page = Integer.parseInt(request.getParameter("curpage") == null ? "1" : request.getParameter("curpage"));
 		PageInfo<Log> data = logService.queryLogs(page);
 		request.setAttribute("data", data);
 		request.getRequestDispatcher("/jsp/system/log/logList.jsp").forward(request, response);
 	}
-	
-	public boolean clearLogs() {
+
+	public void clearLogs(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		LogDao ld = new LogDaoImpl();
-		return ld.clearLogs();
+		if (ld.clearLogs()) {
+			response.getWriter().write("1");
+		} else {
+			response.getWriter().write("0");
+		}
 	}
-	
-	public boolean exportLogs() {
-		return ExportLogUtil.exportLogs();
+
+	public void exportLogs(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException{
+		if(ExportLogUtil.exportLogs()){
+			response.getWriter().write("1");
+		} else {
+			response.getWriter().write("0");
+		}
+			
 	}
 }

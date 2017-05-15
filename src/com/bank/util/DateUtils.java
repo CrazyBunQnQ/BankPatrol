@@ -125,4 +125,5 @@ public class DateUtils {
 		int year = cal.get(Calendar.YEAR);
 		return year;
 	}
+	
 }

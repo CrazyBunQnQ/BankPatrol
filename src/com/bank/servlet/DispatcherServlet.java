@@ -178,10 +178,13 @@ public class DispatcherServlet extends HttpServlet {
 			if ("logList".equals(ary[1])) {
 				logController.queryLogs(request, response);
 			} else if ("clearLogs".equals(ary[1])) {
-				logController.clearLogs();
+				logController.clearLogs(request, response);
 			}else if ("exportLogs".equals(ary[1])) {
-				logController.exportLogs();
+				logController.exportLogs(request, response);
 			}
+			
+			
+			
 		}else {// 以上多条else if 都不满足时，跳转到404.jsp错误页面
 			request.getRequestDispatcher("/404.jsp").forward(request, response);
 			return;
