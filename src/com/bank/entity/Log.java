@@ -26,7 +26,21 @@ public class Log implements Serializable {
 	/**
 	 * 登录账号
 	 */
+	@Deprecated
 	private User user;
+	
+
+	/**
+	 * 登录账号
+	 */
+	private String useername;
+	public String getUseername() {
+		return useername;
+	}
+
+	public void setUseername(String useername) {
+		this.useername = useername;
+	}
 
 	public Log() {
 //		checkIn = new Date();

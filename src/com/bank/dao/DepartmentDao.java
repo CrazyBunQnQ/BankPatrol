@@ -17,7 +17,7 @@ public interface DepartmentDao {
 	 * @param dept
 	 * @return
 	 */
-	public boolean addDepartment(Department dept);
+	public boolean addDepartment(String deptName);
 	
 	/**
 	 * 根据id删除部门
@@ -33,7 +33,7 @@ public interface DepartmentDao {
 	 * @param depName
 	 * @return
 	 */
-	public List<Department> queryDepartment(int pageSize, int pageNum, String depName);
+	public List<Department> queryDepartment(int pageSize, int pageNum);
 	
 	/**
 	 * 根据id查询部门
@@ -55,4 +55,27 @@ public interface DepartmentDao {
 	 * @return
 	 */
 	public boolean updateDepartment(Department dept);
+	
+	/**
+	 * 获取部门信息条数
+	 * @return
+	 */
+	public int countDepartment();
+
+	/**
+	 * 查询部门是否有要添加的部门名称
+	 * @param deptName
+	 * @return
+	 */
+	public boolean hasDept(String deptName);
+	
+	/**
+	 * 根据条件查询部门
+	 * @param page
+	 * @param condition
+	 * @return
+	 */
+	public List<Department> queryDepartmentByCondition(int page,int pageSize, String condition);
+
+	public int countByCondition(String condition);
 }
