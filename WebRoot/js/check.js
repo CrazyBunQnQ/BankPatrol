@@ -144,11 +144,7 @@ function checkDeptname(name) {
 	var t = document.getElementById(name);
 	if (t.value != "") {
 		if (xmlHttpRequest.readyState == 0 || xmlHttpRequest.readyState == 4) {
-<<<<<<< HEAD
 			xmlHttpRequest.open("POST", "../dept/checkDeptname.do", true); // true异步访问
-=======
-			xmlHttpRequest.open("POST", "./checkDeptname.do", true); // true异步访问
->>>>>>> branch 'master' of https://github.com/CrazyBunQnQ/BankPatrol.git
 			xmlHttpRequest.setRequestHeader("Content-Type",
 					"application/x-www-form-urlencoded;charset=utf-8");
 			xmlHttpRequest.onreadystatechange = function() {
