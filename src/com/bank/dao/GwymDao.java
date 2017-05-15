@@ -16,7 +16,7 @@ public interface GwymDao {
 	List<Gwym> queryGwyms(int jobId, int page, int count);
 	
 	/**
-	 * 查询指定岗位、指定操作模块的可操作页面编号和名称
+	 * 查询指定岗位、指定操作模块的可操作页面编号和名称（分页）
 	 * @param jobId 岗位 id
 	 * @param funId 模块 id
 	 * @param page 当前页
@@ -26,7 +26,14 @@ public interface GwymDao {
 	List<Gwym> queryGwyms(int jobId, int funId, int page, int count);
 	
 	/**
-	 * 按照指定操作模块查询该模块所有的操作页面编号和名称
+	 * 获取指定岗位的权限数量
+	 * @param jobId 岗位 id
+	 * @return
+	 */
+	int queryGwymsCount(int jobId);
+	
+	/**
+	 * 查询指定模块的所有的操作页面编号和名称（分页）
 	 * @param funId 模块 id
 	 * @param page 当前页
 	 * @param count 每页显示数量
@@ -49,4 +56,29 @@ public interface GwymDao {
 	 * @return int 影响行数
 	 */
 	int deleteGwyms(int jobId, int[] ymbh);
+
+	/**
+	 * 查询指定模块的所有 权限（不分页）
+	 * @param funId 模块 id
+	 * @return
+	 */
+	List<Gwym> queryAllGwyms(int funId);
+
+	/**
+	 * 查询指定岗位 id 和模块 id 的所有权限（不分页）
+	 * @param jobId 岗位 id
+	 * @param funId 模块 id
+	 * @return
+	 */
+	List<Gwym> queryGwyms(int jobId, int funId);
+
+	/**
+	 * 更新指定岗位的指定模块的权限
+	 * @param jobId 岗位 id
+	 * @param funcId 模块 id
+	 * @param ymbh 新的权限数组
+	 * @return
+	 */
+	int updateXtyms(int jobId, int funcId, int[] ymbh);
+
 }

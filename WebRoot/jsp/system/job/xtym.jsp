@@ -1,4 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE HTML >
 <html>
 <head>
@@ -11,8 +12,8 @@
 <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 <meta http-equiv="description" content="This is my page">
 
-<link rel="stylesheet" type="text/css" href="../css/main.css">
-<script type="text/javascript" src="../js/check.js">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/css/base.css">
+<script type="text/javascript" src="${pageContext.request.contextPath }/js/check.js">
 	
 </script>
 <style>
@@ -23,59 +24,37 @@
 </head>
 
 <body id="bodeStyle">
-	<table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
-
-		<tr>
-			<td width="2%" align="center"></td>
-			<td width="98%"><span class="sys_list_yh">系统管理&gt;&gt;岗位管理</span></td>
-		</tr>
-	</table>
-	<br />
-	<center>
-		<span class="sys_list_yh">页面列表</span>
-	</center>
-	<form action="" method="post">
-		<table width="50%" border="0" align="center" cellpadding="2" cellspacing="1" bgcolor="#E4E4E4">
-			<div align="top" valign="left">
-				<input type="checkbox" name="allbox" onclick="checkall();"> 全选/撤选
+	<div class="containner">
+		<div id="inner-hd">
+			<div class="crumbs">
+				<td width="98%"><span class="crumbs-label">系统管理&gt;&gt;岗位管理&gt;&gt;系统管理页面列表</span></td>
 			</div>
-			<tr bgcolor="#F2F2F2">
-				<td bgcolor="#F2F2F2" align="center" width="15%">选择</td>
-				<td bgcolor="#F2F2F2" align="center" width="15%">页面名称</td>
-			</tr>
-			<tr bgcolor="#F2F2F2">
-				<td><input type="checkbox" value="7" checked name="ymbhs"></td>
-				<td>网点查看报修信息</td>
-			</tr>
-			<tr bgcolor="#F2F2F2">
-				<td><input type="checkbox" value="8" checked name="ymbhs"></td>
-				<td>巡检中心查看报修信息</td>
-			</tr>
-			<tr bgcolor="#F2F2F2">
-				<td><input type="checkbox" value="13" checked name="ymbhs"></td>
-				<td>网点设备报修</td>
-			</tr>
-			<tr bgcolor="#F2F2F2">
-				<td><input type="checkbox" value="14" checked name="ymbhs"></td>
-				<td>值班员报修</td>
-			</tr>
-			<tr bgcolor="#F2F2F2">
-				<td><input type="checkbox" value="16" checked name="ymbhs"></td>
-				<td>网点对报修确认</td>
-			</tr>
-			<tr bgcolor="#F2F2F2">
-				<td><input type="checkbox" value="17" checked name="ymbhs"></td>
-				<td>巡检中心分配小组</td>
-			</tr>
-			<tr bgcolor="#F2F2F2">
-				<td><input type="checkbox" value="18" checked name="ymbhs"></td>
-				<td>维修工确认维修</td>
-			</tr>
-		</table>
-		<br>
-		<center>
-			<input type="submit" value="新增"> &nbsp;&nbsp; <input type="button" value="返回" onclick="history.back();">
-		</center>
-	</form>
+		</div>
+		<div id="inner-bd">
+			<!-- center>
+				<span class="sys_list_yh">页面列表</span>
+			</center -->
+			<form action="${pageContext.request.contextPath }/job/updateXtym.do?jobId=${jobId }&funcId=${funcId }" method="post">
+				<table  class="kv-table">
+					<thead>
+						<tr>
+							<td><input type="checkbox" name="allbox" onclick="checkall();"> 全选/撤选</td>
+							<td>页面名称</td>
+						</tr>
+					</thead>
+					<tbody>
+						<c:forEach items="${gws }" var="gw">
+							<tr>
+								<td><input type="checkbox" value="${gw.xtymb.id }" ${gw.getOpenStr() } name="ymbhs"></td>
+								<td><font>${gw.xtymb.name }</font></td>
+							</tr>
+						</c:forEach>
+					</tbody>
+				</table>
+				<br>
+				<center>
+					<input type="submit" value="更新"> &nbsp;&nbsp; <input type="button" value="返回" onclick="history.back();">
+				</center>
+			</form>
 </body>
 </html>

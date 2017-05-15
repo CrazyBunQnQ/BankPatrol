@@ -13,7 +13,7 @@ public class Xtymb implements Serializable {
 	/**
 	 * 编号
 	 */
-	private Long id;
+	private Integer id;
 	/**
 	 * 所属模块
 	 */
@@ -43,7 +43,7 @@ public class Xtymb implements Serializable {
 	 * @param url 请求路径
 	 * @param imgPath 图片路径
 	 */
-	public Xtymb(Long id, Function function, String name, String url, String imgPath) {
+	public Xtymb(Integer id, Function function, String name, String url, String imgPath) {
 		super();
 		this.id = id == null ? 0 : id;
 		this.function = function;
@@ -52,11 +52,11 @@ public class Xtymb implements Serializable {
 		this.imgPath = imgPath;
 	}
 
-	public Long getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(Integer id) {
 		this.id = id == null ? 0 : id;
 	}
 
@@ -107,7 +107,7 @@ public class Xtymb implements Serializable {
 	public void setFunId(Integer funId) {
 		this.function.setId(funId == null ? 0 : funId);
 	}
-
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -159,7 +159,8 @@ public class Xtymb implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Xtymb [id=" + id + ", function=" + function + ", name=" + name + ", url=" + url + ", imgPath=" + imgPath + "]";
+		return "Xtymb [id=" + id + ", function=" + function + ", name=" + name + ", url=" + url + ", imgPath=" + imgPath
+				+ "]";
 	}
 
 	public String toJson() {

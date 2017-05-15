@@ -9,8 +9,8 @@
 <meta http-equiv="expires" content="0">
 <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 <meta http-equiv="description" content="This is my page">
-<link rel="stylesheet" type="text/css" href="../css/base.css">
-<script type="text/javascript" src="../js/check.js"></script>
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/css/base.css">
+<script type="text/javascript" src="${pageContext.request.contextPath }/js/check.js"></script>
 </head>
 
 <body>
@@ -21,17 +21,21 @@
 			</div>
 		</div>
 		<div id="inner-bd">
-			<form action="" method="post" onsubmit="return checkData();">
+			<form action="${pageContext.request.contextPath }/job/updateJob.do?id=${job.id }" method="post" onsubmit="return checkData();">
 				<table class="kv-table">
 					<tr bgcolor="#F2F2F2">
-						<td><input name="jobId" value="" type="hidden"></td>
+						<td colspan="2"><input name="jobId" value="${job.id }" type="hidden"></td>
 					</tr>
-					<td align="center">岗位名称：</td>
-					<td><input name="jobName" value="董事长" id="jobName" onblur="checkJobName(this.value);"><span align="left" id="div1"></span></td>
+					<tr>
+						<td align="center">岗位名称：</td>
+						<td>
+							<input name="jobName" value="${job.name }" id="jobName" onblur="checkJobName(this.value);">
+							<span align="left" id="div1"></span>
+						</td>
 					</tr>
 					<tr bgcolor="#F2F2F2">
 						<td align="center">岗位描述：</td>
-						<td><textarea name="description" cols="30" rows="3">最高统治者</textarea></td>
+						<td><textarea name="description" cols="30" rows="3">${job.description }</textarea></td>
 					</tr>
 				</table>
 				<br>

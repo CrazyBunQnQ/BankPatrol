@@ -82,12 +82,28 @@ public class DispatcherServlet extends HttpServlet {
 			}else if (ary[1].equals("deptUpdate")) {
 				deptc.deptUpdate(request, response);
 			}
-		} else if (ary[0].equals("job")) {// 部门模块
+		} else if (ary[0].equals("job")) {// 岗位模块
 			 JobController jobController = new JobController();
 			if ("jobList".equals(ary[1])) {
 				jobController.queryGws(request, response);
 			} else if ("toAdd".equals(ary[1])) {
 				jobController.toAddJob(request, response);
+			} else if ("checkName".equals(ary[1])) {
+				jobController.checkName(request, response);
+			} else if ("addJob".equals(ary[1])) {
+				jobController.addJob(request, response);
+			} else if ("toUpdate".equals(ary[1])) {
+				jobController.toUpdateJob(request, response);
+			} else if ("updateJob".equals(ary[1])) {
+				jobController.updateJob(request, response);
+			} else if ("xtymList".equals(ary[1])) {
+				jobController.queryXtyms(request, response);
+			} else if ("funcList".equals(ary[1])) {
+				jobController.queryfuns(request, response);
+			} else if ("showXtyms".equals(ary[1])) {
+				jobController.showXtyms(request, response);
+			} else if ("updateXtym".equals(ary[1])) {
+				jobController.updateXtyms(request, response);
 			}
 		} else if (ary[0].equals("bank")) {// 银行模块
 			BankController bankController = new BankController();
