@@ -2,7 +2,6 @@ package com.bank.util;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.Date;
 import java.util.List;
 
 import com.bank.dao.LogDao;
@@ -19,7 +18,7 @@ import jxl.write.biff.RowsExceededException;
 public class ExportLogUtil {
 
 	
-	public static boolean exportLog(){
+	public static boolean exportLogs(){
 		LogDao logd = new LogDaoImpl();
 		boolean flag = false;
 		String logId = "日志编号";
