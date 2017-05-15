@@ -26,6 +26,11 @@ public class Job implements Serializable {
 
 	}
 
+	public Job(String name, String description) {
+		super();
+		this.name = name;
+		this.description = description;
+	}
 	/**
 	 * 岗位
 	 * @param id 编号

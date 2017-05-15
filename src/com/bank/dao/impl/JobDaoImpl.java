@@ -51,12 +51,11 @@ public class JobDaoImpl extends BaseDaoImpl implements JobDao {
 	@Override
 	public int insertJob(Job job) {
 		int n = 0;
-		String sql = "INSERT INTO job VALUES (?, ?, ?)";
+		String sql = "INSERT INTO job VALUES (Job_ID, ?, ?)";
 		try {
 			setConnAndPS(sql);
-			ps.setInt(1, job.getId());
-			ps.setString(2, job.getName());
-			ps.setString(3, job.getDescription());
+			ps.setString(1, job.getName());
+			ps.setString(2, job.getDescription());
 			LOGGER.info("增加岗位：" + ps.toString());
 			n = ps.executeUpdate();
 		} catch (SQLException e) {
@@ -101,6 +100,24 @@ public class JobDaoImpl extends BaseDaoImpl implements JobDao {
 			DBUtil.closeConnection(conn, null, ps);
 		}
 		return n;
+	}
+
+	@Override
+	public boolean hasJob(String name) {
+		boolean result = true;
+		String sql = "SELECT Name FROM job WHERE Name=?";
+		try {
+			setConnAndPS(sql);
+			ps.setString(1, name);
+			LOGGER.info("是否存在岗位 " + name + "：" + ps.toString());
+			rs = ps.executeQuery();
+			result = rs.next();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBUtil.closeConnection(conn, rs, ps);
+		}
+		return result;
 	}
 
 }

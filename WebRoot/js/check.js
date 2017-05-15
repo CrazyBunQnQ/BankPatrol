@@ -23,7 +23,7 @@ function checkJobName(name) {
 	var jobName = document.getElementById("jobName");
 	if (jobName.value != "") {
 		if (xmlHttpRequest.readyState == 0 || xmlHttpRequest.readyState == 4) {
-			xmlHttpRequest.open("POST", "../job/checkJobName.do", true); // true异步访问
+			xmlHttpRequest.open("POST", "../job/checkName.do", true); // true异步访问
 			xmlHttpRequest.setRequestHeader("Content-Type",
 					"application/x-www-form-urlencoded;charset=utf-8");// 处理ajax请求乱码
 			xmlHttpRequest.onreadystatechange = function() {
@@ -46,7 +46,7 @@ function checkJobName(name) {
 					newValue += tValue.charAt(i);
 				}
 			}
-			xmlHttpRequest.send("job.name=" + newValue);
+			xmlHttpRequest.send("jobName=" + newValue);
 		}
 	} else {
 		div1.innerHTML = "<font color='red'>岗位名称不能为空</font>";
@@ -144,11 +144,7 @@ function checkDeptname(name) {
 	var t = document.getElementById(name);
 	if (t.value != "") {
 		if (xmlHttpRequest.readyState == 0 || xmlHttpRequest.readyState == 4) {
-<<<<<<< HEAD
 			xmlHttpRequest.open("POST", "../dept/checkDeptname.do", true); // true异步访问
-=======
-			xmlHttpRequest.open("POST", "./checkDeptname.do", true); // true异步访问
->>>>>>> branch 'master' of https://github.com/CrazyBunQnQ/BankPatrol.git
 			xmlHttpRequest.setRequestHeader("Content-Type",
 					"application/x-www-form-urlencoded;charset=utf-8");
 			xmlHttpRequest.onreadystatechange = function() {

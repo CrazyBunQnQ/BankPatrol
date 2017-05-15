@@ -12,4 +12,11 @@ public interface JobService {
 	 */
 	PageInfo<Job> getJobs(int page);
 
+	/**
+	 * 检查岗位名称是否存在
+	 * @param name 岗位名称
+	 * @return
+	 */
+	int hasJob(String name);
+
 }

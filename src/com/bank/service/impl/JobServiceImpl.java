@@ -21,4 +21,18 @@ public class JobServiceImpl implements JobService {
 		return data;
 	}
 
+	@Override
+	public int hasJob(String name) {
+		return jdi.hasJob(name) ? 1 : 0;
+	}
+
+	/**
+	 * 添加岗位
+	 * @param job
+	 * @return 是否成功
+	 */
+	public boolean addJob(Job job) {
+		return jdi.insertJob(job) > 0;
+	}
+
 }

@@ -22,20 +22,23 @@
 		</div>
 
 		<div id="inner-bd">
-			<form action="" method="post" onsubmit="return checkData();">
+			<form action="${pageContext.request.contextPath }/job/addJob.do" method="post" onsubmit="return checkData();">
 				<table class="kv-table">
-					<tr>
+					<!-- tr>
 						<td>岗位性质</td>
 						<td><input type="radio" name="gwxz" value="gl" checked="checked">管理 <input type="radio" name="gwxz" value="xjz">巡检组</td>
-					</tr>
+					</tr -->
 
 					<tr bgcolor="#F2F2F2">
 						<td align="center">岗位名称：</td>
-						<td><input name="job.name" id="jobName" onblur="checkJobName(this.value);"><span align="left" id="div1"></span></td>
+						<td>
+							<input name="jobName" id="jobName" onblur="checkJobName(this.value);" value="${job.name }">
+							<span align="left" id="div1"></span>
+						</td>
 					</tr>
 					<tr bgcolor="#F2F2F2">
 						<td align="center">岗位描述：</td>
-						<td><textarea name="job.description" cols="30" rows="3"></textarea></td>
+						<td><textarea name="description" cols="30" rows="3" value="${job.description }"></textarea></td>
 					</tr>
 				</table>
 				<br>
