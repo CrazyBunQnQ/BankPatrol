@@ -43,7 +43,7 @@
 							<td>${job.description }</td>
 							<td>
 								<div class="handle">
-									<a href="../job/toUpdate.do?jobId=${job.id }"><span class="handle-icon fix"></span></a>
+									<a href="../job/toUpdate.do?jobId=${job.id }&jobName=${job.name }&description=${job.description }"><span class="handle-icon fix"></span></a>
 									<a href="../job/funcList.do"><span class="handle-icon chakan"></span></a>
 								</div>
 							</td>

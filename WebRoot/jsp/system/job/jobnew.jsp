@@ -38,7 +38,7 @@
 					</tr>
 					<tr bgcolor="#F2F2F2">
 						<td align="center">岗位描述：</td>
-						<td><textarea name="description" cols="30" rows="3" value="${job.description }"></textarea></td>
+						<td><textarea name="description" cols="30" rows="3">${job.description }</textarea></td>
 					</tr>
 				</table>
 				<br>

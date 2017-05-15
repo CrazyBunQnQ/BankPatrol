@@ -27,12 +27,21 @@ public class JobServiceImpl implements JobService {
 	}
 
 	/**
-	 * 添加岗位
-	 * @param job
-	 * @return 是否成功
+	 * 判断添加岗位是否成功
+	 * @param job 岗位
+	 * @return
 	 */
 	public boolean addJob(Job job) {
 		return jdi.insertJob(job) > 0;
+	}
+
+	/**
+	 * 判断更新岗位是否成功
+	 * @param job 岗位
+	 * @return
+	 */
+	public boolean updateJob(Job job) {
+		return jdi.updateJob(job) > 0;
 	}
 
 }
