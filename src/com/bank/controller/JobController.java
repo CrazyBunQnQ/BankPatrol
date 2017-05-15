@@ -2,11 +2,13 @@ package com.bank.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.bank.entity.Function;
 import com.bank.entity.Gwym;
 import com.bank.entity.Job;
 import com.bank.entity.PageInfo;
@@ -128,5 +130,40 @@ public class JobController {
 		request.setAttribute("data", data);
 		request.setAttribute("jobId", jobId);
 		request.getRequestDispatcher("/jsp/system/job/xtymlist.jsp").forward(request, response);
+	}
+
+	/**
+	 * 显示模块列表
+	 * @param request
+	 * @param response
+	 * @throws IOException 
+	 * @throws ServletException 
+	 */
+	public void queryfuns(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		int jobId = Integer.parseInt(request.getParameter("jobId")==null?"0":request.getParameter("jobId"));
+		List<Function> data = jobService.getFuns();
+		request.setAttribute("data", data);
+		request.setAttribute("jobId", jobId);
+		request.getRequestDispatcher("/jsp/system/job/funclist.jsp").forward(request, response);
+	}
+
+	/**
+	 * 显示指定模块的所有权限，该岗位拥有的权限默认选中
+	 * @param request
+	 * @param response
+	 * @throws IOException 
+	 * @throws ServletException 
+	 */
+	public void showXtyms(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		int jobId = Integer.parseInt(request.getParameter("jobId")==null?"0":request.getParameter("jobId"));
+		int funcId = Integer.parseInt(request.getParameter("funcId")==null?"0":request.getParameter("funcId"));
+		List<Gwym> gws = jobService.getQXList(jobId, funcId);
+		request.setAttribute("gws", gws);
+		request.setAttribute("jobId", jobId);
+		request.getRequestDispatcher("/jsp/system/job/xtym.jsp").forward(request, response);
+	}
+
+	public void updateXtyms(HttpServletRequest request, HttpServletResponse response) {
+		
 	}
 }

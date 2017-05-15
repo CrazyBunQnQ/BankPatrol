@@ -299,7 +299,7 @@ public class UserDaoImpl extends BaseDaoImpl implements UserDao {
 			rs = ps.executeQuery();
 			while (rs.next()) {
 				Xtymb x = new Xtymb();
-				x.setId(rs.getLong("ymbh"));
+				x.setId(rs.getInt("ymbh"));
 				x.setFunId(funcId);
 				x.setName(rs.getString("ymmc"));
 				x.setUrl(rs.getString("URL"));

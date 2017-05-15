@@ -2,8 +2,10 @@ package com.bank.service.impl;
 
 import java.util.List;
 
+import com.bank.dao.impl.FunctionDaoImpl;
 import com.bank.dao.impl.GwymDaoImpl;
 import com.bank.dao.impl.JobDaoImpl;
+import com.bank.entity.Function;
 import com.bank.entity.Gwym;
 import com.bank.entity.Job;
 import com.bank.entity.PageInfo;
@@ -12,6 +14,7 @@ import com.bank.service.JobService;
 public class JobServiceImpl implements JobService {
 	JobDaoImpl jdi = new JobDaoImpl();
 	GwymDaoImpl gdi = new GwymDaoImpl();
+	FunctionDaoImpl fdi = new FunctionDaoImpl();
 
 	@Override
 	public PageInfo<Job> getJobs(int page) {
@@ -48,6 +51,22 @@ public class JobServiceImpl implements JobService {
 		data.setPagedata(gws);
 		data.setTotalRecord(count);
 		return data;
+	}
+
+	@Override
+	public List<Function> getFuns() {
+		List<Function> list = fdi.queryFunctions();
+		return list;
+	}
+
+	@Override
+	public List<Gwym> getQXList(int jobId, int funcId) {
+		List<Gwym> list = gdi.queryAllGwyms(funcId);
+		List<Gwym> someList = gdi.queryAllGwyms(funcId);
+		for (Gwym qx: list) {
+			qx.setStatus(someList.contains(qx));
+		}
+		return list;
 	}
 
 }

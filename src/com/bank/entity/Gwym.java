@@ -50,12 +50,20 @@ public class Gwym implements Serializable {
 	public void setXtymb(Xtymb xtymb) {
 		this.xtymb = xtymb;
 	}
+	
+	public String getStatus() {
+		return xtymb.isStatus() ? "checked" : "";
+	}
+	
+	public void setStatus(boolean status) {
+		this.xtymb.setStatus(status);
+	}
 
 	/**
 	 * 获取子功能 id
 	 * @return
 	 */
-	public Long getXtymbId() {
+	public Integer getXtymbId() {
 		return xtymb.getId();
 	}
 	
@@ -63,7 +71,7 @@ public class Gwym implements Serializable {
 	 * 设置子功能 id
 	 * @param xtymbId
 	 */
-	public void setXtymbId(long xtymbId) {
+	public void setXtymbId(Integer xtymbId) {
 		this.xtymb.setId(xtymbId);
 	}
 	

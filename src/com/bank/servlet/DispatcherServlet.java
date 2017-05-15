@@ -97,6 +97,12 @@ public class DispatcherServlet extends HttpServlet {
 				jobController.updateJob(request, response);
 			} else if ("xtymList".equals(ary[1])) {
 				jobController.queryXtyms(request, response);
+			} else if ("funcList".equals(ary[1])) {
+				jobController.queryfuns(request, response);
+			} else if ("showXtyms".equals(ary[1])) {
+				jobController.showXtyms(request, response);
+			} else if ("updateXtym".equals(ary[1])) {
+				jobController.updateXtyms(request, response);
 			}
 		} else if (ary[0].equals("bank")) {// 银行模块
 			BankController bankController = new BankController();

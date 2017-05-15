@@ -1,5 +1,8 @@
 package com.bank.service;
 
+import java.util.List;
+
+import com.bank.entity.Function;
 import com.bank.entity.Gwym;
 import com.bank.entity.Job;
 import com.bank.entity.PageInfo;
@@ -41,5 +44,19 @@ public interface JobService {
 	 * @return
 	 */
 	PageInfo<Gwym> getGws(int jobId, int page);
+
+	/**
+	 * 获取所有模块列表
+	 * @return
+	 */
+	List<Function> getFuns();
+
+	/**
+	 * 获取指定岗位 id 和模块 id 的所有权限列表
+	 * @param jobId 岗位 id
+	 * @param funcId 模块 id
+	 * @return
+	 */
+	List<Gwym> getQXList(int jobId, int funcId);
 
 }
