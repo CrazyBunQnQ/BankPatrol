@@ -72,4 +72,13 @@ public interface GwymDao {
 	 */
 	List<Gwym> queryGwyms(int jobId, int funId);
 
+	/**
+	 * 更新指定岗位的指定模块的权限
+	 * @param jobId 岗位 id
+	 * @param funcId 模块 id
+	 * @param ymbh 新的权限数组
+	 * @return
+	 */
+	int updateXtyms(int jobId, int funcId, int[] ymbh);
+
 }

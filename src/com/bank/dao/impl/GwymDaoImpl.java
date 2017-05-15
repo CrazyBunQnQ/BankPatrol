@@ -214,4 +214,44 @@ public class GwymDaoImpl extends BaseDaoImpl implements GwymDao {
 		return result;
 	}
 
+	@Override
+	public int updateXtyms(int jobId, int funcId, int[] ymbh) {
+		int result = 0;
+		StringBuffer sql = new StringBuffer("DELETE FROM gwym WHERE Job_ID=? AND ymbh in (SELECT ymbh FROM xtymb WHERE Func_ID=?);"); 
+		int n = ymbh.length;
+		for (int i = 0; i < n; i++) {
+			sql.append("\r\nINSERT INTO gwym VALUES (?, ?);");
+		}
+		try {
+			conn = DBUtil.getConnection();
+			conn.setAutoCommit(false);
+			ps = conn.prepareStatement("DELETE FROM gwym WHERE Job_ID=? AND ymbh in (SELECT ymbh FROM xtymb WHERE Func_ID=?);");
+			ps.setInt(1, jobId);
+			ps.setInt(2, funcId);
+			result = ps.executeUpdate() == 1 ? result + 1 : 0;
+			for (int i = 0; i < n; i++) {
+				ps = conn.prepareStatement("INSERT INTO gwym VALUES (?, ?);");
+				ps.setInt(1, jobId);
+				ps.setInt(2, ymbh[i]);
+				result = ps.executeUpdate() == 1 ? result + 1 : 0;
+//				ps.setInt(2 * i + 3, jobId);
+//				ps.setInt(2 * i + 4, ymbh[i]);
+			}
+//			LOGGER.info("给岗位 " + jobId + " 添加 " + n + " 个功能：" + ps.toString());
+//			ps.execute();
+			conn.commit();
+		} catch (SQLException e) {
+			result = 0;
+			try {
+				conn.rollback();
+			} catch (SQLException e1) {
+				e1.printStackTrace();
+			}
+			e.printStackTrace();
+		} finally {
+			DBUtil.closeConnection(conn, null, ps);
+		}
+		return result;
+	}
+
 }

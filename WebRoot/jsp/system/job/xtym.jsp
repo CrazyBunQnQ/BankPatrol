@@ -34,7 +34,7 @@
 			<!-- center>
 				<span class="sys_list_yh">页面列表</span>
 			</center -->
-			<form action="" method="post">
+			<form action="${pageContext.request.contextPath }/job/updateXtym.do?jobId=${jobId }&funcId=${funcId }" method="post">
 				<table  class="kv-table">
 					<thead>
 						<tr>
@@ -45,7 +45,7 @@
 					<tbody>
 						<c:forEach items="${gws }" var="gw">
 							<tr>
-								<td><input type="checkbox" value="${gw.xtymb.id }" ${gw.getStatus() } name="ymbhs"></td>
+								<td><input type="checkbox" value="${gw.xtymb.id }" ${gw.getOpenStr() } name="ymbhs"></td>
 								<td><font>${gw.xtymb.name }</font></td>
 							</tr>
 						</c:forEach>

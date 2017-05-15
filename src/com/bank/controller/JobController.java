@@ -125,7 +125,7 @@ public class JobController {
 	 */
 	public void queryXtyms(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int page = Integer.parseInt(request.getParameter("curpage") == null ? "0" : request.getParameter("curpage"));
-		int jobId = Integer.parseInt(request.getParameter("jobId")==null?"0":request.getParameter("jobId"));
+		int jobId = Integer.parseInt(request.getParameter("jobId") == null ? "0" : request.getParameter("jobId"));
 		PageInfo<Gwym> data = jobService.getGws(jobId, page);
 		request.setAttribute("data", data);
 		request.setAttribute("jobId", jobId);
@@ -140,7 +140,7 @@ public class JobController {
 	 * @throws ServletException 
 	 */
 	public void queryfuns(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int jobId = Integer.parseInt(request.getParameter("jobId")==null?"0":request.getParameter("jobId"));
+		int jobId = Integer.parseInt(request.getParameter("jobId") == null ? "0" : request.getParameter("jobId"));
 		List<Function> data = jobService.getFuns();
 		request.setAttribute("data", data);
 		request.setAttribute("jobId", jobId);
@@ -155,15 +155,23 @@ public class JobController {
 	 * @throws ServletException 
 	 */
 	public void showXtyms(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int jobId = Integer.parseInt(request.getParameter("jobId")==null?"0":request.getParameter("jobId"));
-		int funcId = Integer.parseInt(request.getParameter("funcId")==null?"0":request.getParameter("funcId"));
+		int jobId = Integer.parseInt(request.getParameter("jobId") == null ? "0" : request.getParameter("jobId"));
+		int funcId = Integer.parseInt(request.getParameter("funcId") == null ? "0" : request.getParameter("funcId"));
 		List<Gwym> gws = jobService.getQXList(jobId, funcId);
 		request.setAttribute("gws", gws);
 		request.setAttribute("jobId", jobId);
+		request.setAttribute("funcId", funcId);
 		request.getRequestDispatcher("/jsp/system/job/xtym.jsp").forward(request, response);
 	}
 
-	public void updateXtyms(HttpServletRequest request, HttpServletResponse response) {
-		
+	public void updateXtyms(HttpServletRequest request, HttpServletResponse response) throws IOException {
+		int jobId = Integer.parseInt(request.getParameter("jobId") == null ? "0" : request.getParameter("jobId"));
+		int funcId = Integer.parseInt(request.getParameter("funcId") == null ? "0" : request.getParameter("funcId"));
+		String[] ymbhs = request.getParameterValues("ymbhs");
+		if (jobService.updateXtyms(jobId, funcId, ymbhs)) {
+			response.sendRedirect("xtymList.do?jobId=" + jobId);
+		} else {
+			response.sendRedirect("showXtyms.do?jobId=" + jobId + "&funcId=" + funcId);
+		}
 	}
 }

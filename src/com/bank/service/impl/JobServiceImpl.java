@@ -62,11 +62,34 @@ public class JobServiceImpl implements JobService {
 	@Override
 	public List<Gwym> getQXList(int jobId, int funcId) {
 		List<Gwym> list = gdi.queryAllGwyms(funcId);
-		List<Gwym> someList = gdi.queryAllGwyms(funcId);
-		for (Gwym qx: list) {
-			qx.setStatus(someList.contains(qx));
+		List<Gwym> someList = gdi.queryGwyms(jobId, funcId);
+		for (int i = 0; i < list.size(); i ++) {
+			for (int j = 0; j < someList.size(); j ++) {
+				if (list.get(i).getXtymbId()==someList.get(j).getXtymbId()) {
+					list.get(i).setIsOpen(true);
+					break;
+				}
+			}
 		}
 		return list;
 	}
 
+	@Override
+	public boolean updateXtyms(int jobId, int funcId, String[] ymbhs) {
+//		List<Gwym> list = gdi.queryAllGwyms(funcId);
+//		List<Integer> insert = new ArrayList<Integer>();
+//		List<Integer> delete = new ArrayList<Integer>();
+//		for (int i = 0; i < list.size(); i++) {
+//			for (int j = 0; j < ymbhs.length; j++) {
+//				if (list.get(i).getXtymbId() == Integer.parseInt(ymbhs[j])) {
+//					
+//				}
+//			}
+//		}
+		int[] ymbh = new int[ymbhs.length];
+		for (int i = 0; i < ymbhs.length; i++) {
+			ymbh[i] = Integer.parseInt(ymbhs[i]);
+		}
+		return gdi.updateXtyms(jobId, funcId, ymbh) > 0;
+	}
 }

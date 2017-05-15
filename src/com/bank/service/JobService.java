@@ -59,4 +59,13 @@ public interface JobService {
 	 */
 	List<Gwym> getQXList(int jobId, int funcId);
 
+	/**
+	 * 更新指定岗位的权限
+	 * @param jobId 岗位 id
+	 * @param funcId 模块 id
+	 * @param ymbhs 可操作的权限 id
+	 * @return
+	 */
+	boolean updateXtyms(int jobId, int funcId, String[] ymbhs);
+
 }

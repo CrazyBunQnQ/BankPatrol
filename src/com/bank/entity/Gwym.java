@@ -18,10 +18,15 @@ public class Gwym implements Serializable {
 	 * 岗位的权限
 	 */
 	private Xtymb xtymb;
+	/**
+	 * 权限状态
+	 */
+	private boolean isOpen;
 
 	public Gwym() {
 		job = new Job();
 		xtymb = new Xtymb();
+		isOpen = false;
 	}
 
 	/**
@@ -33,6 +38,7 @@ public class Gwym implements Serializable {
 		super();
 		this.job = job;
 		this.xtymb = xtymb;
+		this.isOpen = false;
 	}
 
 	public Job getJob() {
@@ -51,12 +57,16 @@ public class Gwym implements Serializable {
 		this.xtymb = xtymb;
 	}
 	
-	public String getStatus() {
-		return xtymb.isStatus() ? "checked" : "";
+	public boolean isOpen() {
+		return isOpen;
 	}
 	
-	public void setStatus(boolean status) {
-		this.xtymb.setStatus(status);
+	public String getOpenStr() {
+		return this.isOpen ? "checked" : "";
+	}
+
+	public void setIsOpen(boolean status) {
+		this.isOpen = status;
 	}
 
 	/**

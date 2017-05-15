@@ -30,10 +30,6 @@ public class Xtymb implements Serializable {
 	 * 图片路径
 	 */
 	private String imgPath;
-	/**
-	 * 权限状态
-	 */
-	private boolean status;
 
 	public Xtymb() {
 		function = new Function();
@@ -112,14 +108,6 @@ public class Xtymb implements Serializable {
 		this.function.setId(funId == null ? 0 : funId);
 	}
 	
-	public boolean isStatus() {
-		return status;
-	}
-
-	public void setStatus(boolean status) {
-		this.status = status;
-	}
-
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -171,7 +159,8 @@ public class Xtymb implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Xtymb [id=" + id + ", function=" + function + ", name=" + name + ", url=" + url + ", imgPath=" + imgPath + "]";
+		return "Xtymb [id=" + id + ", function=" + function + ", name=" + name + ", url=" + url + ", imgPath=" + imgPath
+				+ "]";
 	}
 
 	public String toJson() {
