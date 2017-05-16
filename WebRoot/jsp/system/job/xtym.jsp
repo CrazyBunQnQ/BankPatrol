@@ -27,7 +27,11 @@
 	<div class="containner">
 		<div id="inner-hd">
 			<div class="crumbs">
-				<td width="98%"><span class="crumbs-label">系统管理&gt;&gt;岗位管理&gt;&gt;系统管理页面列表</span></td>
+				<span class="crumbs-label">
+					<a href="${pageContext.request.contextPath }/center.jsp">系统管理</a>&gt;&gt;
+					<a href="${pageContext.request.contextPath }/job/jobList.do">岗位管理</a>&gt;&gt;
+					系统管理页面列表
+				</span>
 			</div>
 		</div>
 		<div id="inner-bd">
@@ -56,5 +60,7 @@
 					<input type="submit" value="更新"> &nbsp;&nbsp; <input type="button" value="返回" onclick="history.back();">
 				</center>
 			</form>
+		</div>
+	</div>
 </body>
 </html>

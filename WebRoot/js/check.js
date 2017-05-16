@@ -87,7 +87,7 @@ function checkBankId(name) {
 					var res = xmlHttpRequest.responseText;
 					var id = document.getElementById("show");
 					if (res == 0) {
-						id.innerHTML = "<font color='green'>银行IP可以使用</font>";
+						id.innerHTML = "<font color='green'> 银行 ID 可以使用</font>";
 					} else if (res == 1) {
 						id.innerHTML = "<font color='red'>银行 " + newValue
 								+ "</font> 已经存在";

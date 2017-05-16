@@ -17,7 +17,11 @@
 	<div class="containner">
 		<div id="inner-hd">
 			<div class="crumbs">
-				<span class="crumbs-label">系统管理&gt;&gt;岗位管理&gt;&gt;添加岗位信息</span>
+				<span class="crumbs-label">
+					<a href="${pageContext.request.contextPath }/center.jsp">系统管理</a>&gt;&gt;
+					<a href="${pageContext.request.contextPath }/job/jobList.do">岗位管理</a>&gt;&gt;
+					添加岗位信息
+				</span>
 			</div>
 		</div>
 
@@ -31,14 +35,14 @@
 
 					<tr bgcolor="#F2F2F2">
 						<td align="center">岗位名称：</td>
-						<td>
+						<td align="left" style="padding-left: 100px">
 							<input name="jobName" id="jobName" onblur="checkJobName(this.value);" value="${job.name }">
 							<span align="left" id="div1"></span>
 						</td>
 					</tr>
 					<tr bgcolor="#F2F2F2">
 						<td align="center">岗位描述：</td>
-						<td><textarea name="description" cols="30" rows="3">${job.description }</textarea></td>
+						<td align="left" style="padding-left: 100px"><textarea name="description" cols="30" rows="3">${job.description }</textarea></td>
 					</tr>
 				</table>
 				<br>

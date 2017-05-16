@@ -20,7 +20,7 @@
 				<table class="kv-table">
 					<tr>
 						<td bgcolor="#F2F2F2" align="center" width="30%">设备种类ID</td>
-						<td>
+						<td align="left" style="padding-left: 100px">
 							<input type="text" name="eTypeId" onblur="checkEquipmentTypeId('eTypeId');" id="eTypeId" value="${eType.id }" placeholder="(非汉字且长度小于10位)">
 							<span id="show"></span>
 						</td>
@@ -28,7 +28,7 @@
 		
 					<tr>
 						<td bgcolor="#F2F2F2" align="center" width="30%">设备名称</td>
-						<td>
+						<td align="left" style="padding-left: 100px">
 							<input type="text" name="eTypeName" onchange="checkEquipmentName('eTypeName')" id="eTypeName" value="${eType.name }">
 							<span id="show1"></span>
 						</td>
