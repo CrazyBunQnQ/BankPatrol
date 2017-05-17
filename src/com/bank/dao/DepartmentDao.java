@@ -77,5 +77,10 @@ public interface DepartmentDao {
 	 */
 	public List<Department> queryDepartmentByCondition(int page,int pageSize, String condition);
 
+	/**
+	 * 根据条件获取总条数
+	 * @param condition
+	 * @return
+	 */
 	public int countByCondition(String condition);
 }

@@ -1,7 +1,6 @@
 package com.bank.entity;
 
 import java.io.Serializable;
-import java.util.Date;
 
 import com.google.gson.Gson;
 
@@ -18,11 +17,11 @@ public class Log implements Serializable {
 	/**
 	 * 登录时间
 	 */
-	private Date checkIn;
+	private String checkIn;
 	/**
 	 * 退出时间
 	 */
-	private Date checkOut;
+	private String checkOut;
 	/**
 	 * 登录账号
 	 */
@@ -43,8 +42,8 @@ public class Log implements Serializable {
 	}
 
 	public Log() {
-//		checkIn = new Date();
-//		checkOut = new Date();
+//		checkIn = new String();
+//		checkOut = new String();
 	}
 
 	/**
@@ -54,7 +53,7 @@ public class Log implements Serializable {
 	 * @param checkOut 退出时间
 	 * @param user 登录用户
 	 */
-	public Log(Long id, Date checkIn, Date checkOut, User user) {
+	public Log(Long id, String checkIn, String checkOut, User user) {
 		super();
 		this.id = id == null ? 0 : id;
 		this.checkIn = checkIn;
@@ -70,19 +69,19 @@ public class Log implements Serializable {
 		this.id = id == null ? 0 : id;
 	}
 
-	public Date getCheckIn() {
+	public String getCheckIn() {
 		return checkIn;
 	}
 
-	public void setCheckIn(Date checkIn) {
+	public void setCheckIn(String checkIn) {
 		this.checkIn = checkIn;
 	}
 
-	public Date getCheckOut() {
+	public String getCheckOut() {
 		return checkOut;
 	}
 
-	public void setCheckOut(Date checkOut) {
+	public void setCheckOut(String checkOut) {
 		this.checkOut = checkOut;
 	}
 

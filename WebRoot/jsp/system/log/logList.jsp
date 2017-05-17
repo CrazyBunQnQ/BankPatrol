@@ -9,7 +9,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/css/base.css">
 <script type="text/javascript" src="${pageContext.request.contextPath }/js/jump.js"></script>
-
+<script type="text/javascript" src="${pageContext.request.contextPath }/js/check.js"></script>
 </head>
 <body>
 <div class="containner">
@@ -21,10 +21,10 @@
     <div id="inner-bd">
     	<div class="button-log">
 			<div class="button">
-				<input name="button" type="image" src="${pageContext.request.contextPath }/images/exp.png" onclick="location.href='../log/exportLogs.do'" />
+				<input name="button" type="image" src="${pageContext.request.contextPath }/images/exp.png" onclick="exportExcel()" />
 			</div>
 			<div class="button">
-				<input name="button" type="image" src="${pageContext.request.contextPath }/images/clear.png" onclick="location.href='../log/clearLogs.do'" />
+				<input name="button" type="image" src="${pageContext.request.contextPath }/images/clear.png" onclick="clearLog()" />
 			</div>
 		</div>
    

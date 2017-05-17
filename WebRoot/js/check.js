@@ -187,7 +187,7 @@ function checkPiWorkerId(id) {
 						return true;
 					} else if (res == 0) {
 						id.innerHTML =  
-								"巡检工id<font color='red'>" + t.value + "</font>不存在";
+								"巡检工id<font color='red'>" + t.value + "</font>不可用";
 						t.focus();
 						t.value = "";
 						return false;
@@ -333,3 +333,42 @@ function checkdataRepairType() {
 	}
 	return true;
 }
+ function clearLog(){
+	 if (xmlHttpRequest.readyState == 0 || xmlHttpRequest.readyState == 4) {
+			xmlHttpRequest.open("POST", "../log/clearLogs.do", true); // true异步访问
+			xmlHttpRequest.setRequestHeader("Content-Type",
+					"application/x-www-form-urlencoded;charset=utf-8");// 处理ajax请求乱码
+			xmlHttpRequest.onreadystatechange = function() {
+				if (xmlHttpRequest.readyState == 4) {
+					var res = xmlHttpRequest.responseText;
+					if (res == "1") {
+						alert("清除成功！");
+					} else if (res == "0") {
+						alert("清除失败！");
+					}
+					window.location.href="/Bank/log/logList.do";
+				}
+			};
+			xmlHttpRequest.send();
+		}
+ }
+ 
+ function exportExcel(){
+	 if (xmlHttpRequest.readyState == 0 || xmlHttpRequest.readyState == 4) {
+			xmlHttpRequest.open("POST", "../log/exportLogs.do", true); // true异步访问
+			xmlHttpRequest.setRequestHeader("Content-Type",
+					"application/x-www-form-urlencoded;charset=utf-8");// 处理ajax请求乱码
+			xmlHttpRequest.onreadystatechange = function() {
+				if (xmlHttpRequest.readyState == 4) {
+					var res = xmlHttpRequest.responseText;
+					if (res == "1") {
+						alert("导出成功！路径  f:/log.xls");
+					} else if (res == "0") {
+						alert("导出失败！");
+					}
+					window.location.href="/Bank/log/logList.do";
+				}
+			};
+			xmlHttpRequest.send();
+		}
+ }
