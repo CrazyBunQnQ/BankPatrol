@@ -19,6 +19,7 @@ import com.bank.controller.LogController;
 import com.bank.controller.LoginController;
 import com.bank.controller.PiGroupController;
 import com.bank.controller.PiWorkerController;
+import com.bank.controller.RepairTypeController;
 import com.bank.controller.UserController;
 
 public class DispatcherServlet extends HttpServlet {
@@ -163,6 +164,12 @@ public class DispatcherServlet extends HttpServlet {
 				pc.addPiworker(request, response);
 			}else if(ary[1].equals("checkPiWorkerId")) {
 				pc.checkPiWorkerId(request, response);
+			}else if(ary[1].equals("deletePiworker")) {
+				pc.deletePiworker(request, response);
+			}else if(ary[1].equals("update2Piworker")) {
+				pc.update2Piworker(request, response);
+			}else if(ary[1].equals("updatePiwoker")) {
+				pc.updatePiwoker(request, response);
 			}
 				
 			// LogController logController=new LogController();
@@ -182,7 +189,25 @@ public class DispatcherServlet extends HttpServlet {
 			}else if ("exportLogs".equals(ary[1])) {
 				logController.exportLogs(request, response);
 			}
-			
+		}else if (ary[0].equals("frt")) {// 设备问题报修管理
+			RepairTypeController rtc = new RepairTypeController();
+			if ("faultRepairType".equals(ary[1])) {
+				rtc.faultRepairType(request, response);
+			}else if ("queryRepairTypeByPiTypeValue".equals(ary[1])) {
+				rtc.queryRepairTypeByPiTypeValue(request, response);
+			}else if ("toRepairTypeAdd".equals(ary[1])) {
+				rtc.toRepairTypeAdd(request, response);
+			}else if ("checkRepairTypeName".equals(ary[1])) {
+				rtc.checkRepairTypeName(request, response);
+			}else if ("repairTypeAdd".equals(ary[1])) {
+				rtc.repairTypeAdd(request, response);
+			}else if ("repairTypeDelete".equals(ary[1])) {
+				rtc.repairTypeDelete(request, response);
+			}else if ("repairType2Update".equals(ary[1])) {
+				rtc.repairType2Update(request, response);
+			}else if ("repairTypeUpdate".equals(ary[1])) {
+				rtc.repairTypeUpdate(request, response);
+			}	
 			
 			
 		}else {// 以上多条else if 都不满足时，跳转到404.jsp错误页面

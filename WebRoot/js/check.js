@@ -187,7 +187,7 @@ function checkPiWorkerId(id) {
 						return true;
 					} else if (res == 0) {
 						id.innerHTML =  
-								"巡检工id<font color='red'>" + t.value + "</font>不存在";
+								"巡检工id<font color='red'>" + t.value + "</font>不可用";
 						t.focus();
 						t.value = "";
 						return false;

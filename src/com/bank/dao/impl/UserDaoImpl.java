@@ -173,7 +173,7 @@ public class UserDaoImpl extends BaseDaoImpl implements UserDao {
 	@Override
 	public int userAdd(User user) {
 		int n = 0;
-		String sql = "INSERT INTO users(Login_ID,Job_ID,Department_ID,Login_Password,User_Name,User_Status) VALUES(?,?,?,?,?,?)";
+		String sql = "INSERT INTO users(Login_ID,Job_ID,Department_ID,Login_Password,User_Name,User_Status,Worker_id) VALUES(?,?,?,?,?,?,?)";
 		try {
 			setConnAndPS(sql);
 			ps.setString(1, user.getLoginId());
@@ -182,6 +182,7 @@ public class UserDaoImpl extends BaseDaoImpl implements UserDao {
 			ps.setString(4, user.getLoginPwd());
 			ps.setString(5, user.getName());
 			ps.setString(6, user.isStatus() ? "1" : "0");
+			ps.setLong(7, user.getWorkerId());
 			LOGGER.info("添加用户：" + ps.toString());
 			n = ps.executeUpdate();
 		} catch (Exception e) {

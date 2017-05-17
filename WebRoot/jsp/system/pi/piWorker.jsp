@@ -25,12 +25,12 @@
 					<input name="button" type="image" src="${pageContext.request.contextPath }/images/search1.gif" onclick="openfind();" />
 				</div>
 			</div>
-			<div id="find" style="display: none">
-				<form action="../user/userList.do">
+			<div id="find"  ${hiddenFind }>
+				<form action="../piwoker/piwokerList.do" method="post">
 					<table>
 						<tr>
 							<td>巡检工姓名： </td>
-							<td><input name="userName" type="text" value=""></td>
+							<td><input name="searchPiWokerName" type="text" value=""></td>
 							<td>
 								<input type="image" src="${pageContext.request.contextPath }/images/search1.gif" class="input_button9" title="搜索"/>
 							</td>
@@ -62,8 +62,8 @@
 						<td >${piWorker.tel1}</td>
 						<td >${piWorker.tel2}</td>
 						<td ><div class="handle">
-                        	<a href="../piworker/deletePiworker.do?id=${piWorker.id}"><span class="handle-icon del"></span></a>
-                            <a href="../piworker/updatePiworker.do?id=${piWorker.id}"><span class="handle-icon fix"></span></a>
+                        	<a href="../piwoker/deletePiworker.do?id=${piWorker.id}"><span class="handle-icon del"></span></a>
+                            <a href="../piwoker/update2Piworker.do?id=${piWorker.id}"><span class="handle-icon fix"></span></a>
                         </div></td>
 					</tr>
 					</c:forEach>

@@ -12,13 +12,13 @@ public class RepairTypeDaoImpl extends BaseDaoImpl implements RepairTypeDao {
 
 	//添加设备报修问题
 	@Override
-	public boolean addRepairType(RepairType RepairType) {
+	public boolean addRepairType(RepairType repairType) {
 		boolean flag = false;
 		String sql = "INSERT INTO faultrepairtype (Pitype_ID,PITYPE_Value) VALUES (?,?)";
 		try {
 			setConnAndPS(sql);
-			ps.setInt(1, RepairType.getId());
-			ps.setString(2, RepairType.getValue());
+			ps.setInt(1, repairType.getId());
+			ps.setString(2, repairType.getValue());
 			int a =ps.executeUpdate();
 			if(a>0){
 				flag = true;
@@ -53,7 +53,7 @@ public class RepairTypeDaoImpl extends BaseDaoImpl implements RepairTypeDao {
 
 	//分页查询设备报修问题
 	@Override
-	public List<RepairType> queryRepairType(int pageSize, int pageNum, String PITYPE_Value) {
+	public List<RepairType> queryRepairType(int pageSize, int pageNum) {
 		List<RepairType> listRepairType = new ArrayList<RepairType>();
 		String sql = "select Pitype_ID, PITYPE_Value from faultrepairtype limit ?,?";
 		try {
@@ -77,35 +77,39 @@ public class RepairTypeDaoImpl extends BaseDaoImpl implements RepairTypeDao {
 
 	//根据问题类型进行模糊搜索
 	@Override
-	public RepairType queryRepairTypeByPITYPE_Value(String PITYPE_Value) {
-		RepairType RepairType = new RepairType();
-		String sql = "Select Pitype_ID,PITYPE_Value from faultrepairtype where PITYPE_Value=?";
+	public List<RepairType> queryRepairTypeByPiType_Value(int pageSize, int pageNum, String name) {
+		List<RepairType> listRepairType = new ArrayList<RepairType>();
+		String sql = "Select Pitype_ID,PITYPE_Value from faultrepairtype where PITYPE_Value like ? limit ?,?";
 		try {
 			setConnAndPS(sql);
-			ps.setString(1, RepairType.getValue());
+			ps.setString(1, name);
+			ps.setInt(2, (pageNum-1)*pageSize);
+			ps.setInt(3, pageSize);
 			rs = ps.executeQuery();
-			if(rs.next()){
-				RepairType.setId(rs.getInt("Pitype_ID"));
-				RepairType.setValue(rs.getString("PITYPE_Value"));
+			while(rs.next()){
+				RepairType rt = new RepairType();
+				rt.setId(rs.getInt("Pitype_ID"));
+				rt.setValue(rs.getString("PITYPE_Value"));
+				listRepairType.add(rt);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}finally{
 			DBUtil.closeConnection(conn, rs, ps);			
 		}
-		return RepairType;
+		return listRepairType;
 	}
 
 	//修改设备报修问题
 	@Override
-	public boolean updateRepairType(RepairType RepairType) {
+	public boolean updateRepairType(RepairType repairType) {
 		boolean flag = false;
-		String sql = "update faultrepairtype set Pitype_ID=?, PITYPE_Value=? where PITYPE_Value=?";
+		String sql = "update faultrepairtype set Pitype_ID=?, PITYPE_Value=? where Pitype_ID=?";
 		try {
 			setConnAndPS(sql);
-			ps.setInt(1, RepairType.getId());
-			ps.setString(2, RepairType.getValue());
-			ps.setInt(3, RepairType.getId());
+			ps.setInt(1, repairType.getId());
+			ps.setString(2, repairType.getValue());
+			ps.setInt(3, repairType.getId());
 			int a =ps.executeUpdate();
 			if(a>0){
 				flag = true;
@@ -116,6 +120,59 @@ public class RepairTypeDaoImpl extends BaseDaoImpl implements RepairTypeDao {
 			DBUtil.closeConnection(conn, rs, ps);
 		}
 		return flag;
+	}
+
+	@Override
+	public int countRepairType(String PITYPE_Value) {
+		int count = 0;
+		String sql = "select count(PITYPE_Value) from faultrepairtype";
+		try {
+			setConnAndPS(sql);
+			rs = ps.executeQuery();
+			if(rs.next()){
+				count = rs.getInt("count(PITYPE_Value)");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally{
+			DBUtil.closeConnection(conn, rs, ps);
+		}
+		return count;
+	}
+
+	@Override
+	public boolean hasType(String PITYPE_Value) {
+		boolean flag = false;
+		String sql = "select PITYPE_Value from faultrepairtype where PITYPE_Value = ?";
+		try {
+			setConnAndPS(sql);
+			ps.setString(1, PITYPE_Value);
+			rs = ps.executeQuery();
+			if(rs.next()){
+				flag = true;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally{
+			DBUtil.closeConnection(conn, rs, ps);
+		}
+		return flag;
+	}
+
+	@Override
+	public RepairType queryRepairTypeById(int id) {
+		RepairType rp = new RepairType();
+		String sql = "Select Pitype_ID,PITYPE_Value from faultrepairtype where Pitype_ID=?";
+		try {
+			setConnAndPS(sql);
+			ps.setInt(1, id);
+			rs = ps.executeQuery();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally{
+			DBUtil.closeConnection(conn, rs, ps);			
+		}
+		return rp;
 	}
 
 }
