@@ -25,7 +25,7 @@ public interface PIWorkerServiceDao {
 	 * @param id
 	 * @return
 	 */
-	public boolean deletePiWorker(int id);
+	public boolean deletePiWorker(long id);
 	
 	/**
 	 * 更新巡检工信息
@@ -40,4 +40,18 @@ public interface PIWorkerServiceDao {
 	 * @return
 	 */
 	public boolean hasUser(long id);
+
+	/**
+	 * 判断巡检工表中是否存在该用户
+	 * @param workId
+	 * @return
+	 */
+	public boolean hasUserInPiWorker(long workId);
+
+	/**
+	 * 根据id查询巡检工信息
+	 * @param id
+	 * @return
+	 */
+	public PiWorker getPiWorkerById(long id);
 }

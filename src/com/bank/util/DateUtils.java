@@ -16,6 +16,7 @@ public class DateUtils {
 	public static final String YYMMDD_hhmmss = "yyyy-MM-dd hh:mm:ss";
 	public static final String YYMMDD_HHmmss_24 = "yyyy-MM-dd HH:mm:ss";
 	public static final String YYMMDD = "yyyy-MM-dd";
+	public static final String yyyyMMddHHmmss = "yyyyMMddHHmmss";
 
 	/**
 	 * 将日期转化为字符串
@@ -125,4 +126,21 @@ public class DateUtils {
 		int year = cal.get(Calendar.YEAR);
 		return year;
 	}
+	
+	/**
+	 * 将日期转化为字符串
+	 * 
+	 * @param date
+	 *            日期
+	 * @return
+	 */
+	public static String dateToTotalStr(Date date) {
+		try {
+			DateFormat fmt = new SimpleDateFormat(yyyyMMddHHmmss);
+			return fmt.format(date);
+		} catch (Exception e) {
+			return null;
+		}
+	}
+	
 }

@@ -2,7 +2,6 @@ package com.bank.dao;
 
 import java.util.List;
 
-import com.bank.entity.PiGroup;
 import com.bank.entity.PiWorker;
 
 /**
@@ -24,7 +23,7 @@ public interface PiWorkerDao {
 	 * @param id
 	 * @return
 	 */
-	public boolean deletePiWorker(int id);
+	public boolean deletePiWorker(long id);
 	
 	/**
 	 * 分页查询巡检工
@@ -57,4 +56,18 @@ public interface PiWorkerDao {
 	 * @return
 	 */
 	public boolean hasUser(long id);
+	
+	/**
+	 * 判断用户在PiWorker中是否存在
+	 * @param id
+	 * @return
+	 */
+	public boolean hasInPiWorker(long id);
+	
+	/**
+	 * 根据id查询巡检工信息
+	 * @param id
+	 * @return
+	 */
+	public PiWorker getPiWorkerById(long id);
 }

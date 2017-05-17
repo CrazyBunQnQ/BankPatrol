@@ -2,6 +2,7 @@ package com.bank.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -10,10 +11,14 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.bank.entity.Function;
+import com.bank.entity.Log;
 import com.bank.entity.User;
 import com.bank.entity.Xtymb;
+import com.bank.service.LogService;
 import com.bank.service.LoginService;
+import com.bank.service.impl.LogServiceImpl;
 import com.bank.service.impl.LoginServiceImpl;
+import com.bank.util.DateUtils;
 import com.bank.util.MD5Util;
 
 
@@ -23,6 +28,7 @@ import com.bank.util.MD5Util;
 public class LoginController {
 	
 	private LoginService userService = new LoginServiceImpl();
+	private LogService logService = new LogServiceImpl();
 
 	// private LogService logService=new LogServiceImpl();
 	/**
@@ -42,12 +48,12 @@ public class LoginController {
 				request.getSession().setAttribute("flag", "login_success");
 				request.getSession().setAttribute("user", user);
 				// 登录同时记录日志记录（日志模块需要完成的功能）
-				// Log log = new Log();
-				// log.setUserId(loginId);
-				// log.setCheckinTime(new Date());
-				// long logId= logService.saveLog(log);//添加日志
-				// request.getSession().setAttribute("logId",logId);
-
+				Log log = new Log();
+				log.setCheckIn(DateUtils.dateToStr(DateUtils.YYMMDD_HHmmss_24, new Date()));
+				log.setUseername(user.getLoginId());
+				HttpSession session = request.getSession();
+				session.setAttribute("log",log);
+				logService.addLoginTime(((Log)session.getAttribute("log")).getCheckIn(), user.getLoginId());//添加日志
 				response.sendRedirect("../login/initdata.do");// 调用初始化数据
 			} else {
 				request.getSession().setAttribute("flag", "login_error");
@@ -74,11 +80,11 @@ public class LoginController {
 	 */
 	public void logout(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		HttpSession session = request.getSession();
-		Integer logId = (Integer) session.getAttribute("logId");
+		Log log = (Log) session.getAttribute("log");
 
-		if (logId != null) {
+		if (log != null) {
 			// 退出同时更新登出时间（日志模块相关）
-			// logService.updateCheckoutTime(logId);
+			logService.addLogoutTime(log.getCheckIn(), log.getUseername(), DateUtils.dateToStr(DateUtils.YYMMDD_HHmmss_24, new Date()));
 		}
 		session.invalidate();
 		response.sendRedirect(request.getContextPath() + "/login.jsp");
