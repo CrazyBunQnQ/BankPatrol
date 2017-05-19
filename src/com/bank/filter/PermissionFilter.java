@@ -43,9 +43,6 @@ public class PermissionFilter implements Filter {
 				|| (servletPath.length()> 4 && "/css".equals(servletPath.substring(0, 4))) 
 				|| (servletPath.length()> 6 && "/login".equals(servletPath.substring(0, 6))) 
 				|| (servletPath.length()> 7 && "/images".equals(servletPath.substring(0, 7))) 
-//				|| (servletPath.length()> 8 && "/Bank/js".equals(servletPath.substring(0, 8))) 
-//				|| (servletPath.length()> 9 && "/Bank/css".equals(servletPath.substring(0, 9))) 
-//				|| (servletPath.length()> 12 && "/Bank/images".equals(servletPath.substring(0, 12))) 
 				)) {
 			chain.doFilter(request, response);
 		} else {

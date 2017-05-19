@@ -1,9 +1,7 @@
 package com.bank.controller;
 
 import java.io.IOException;
-import java.util.Date;
 import java.util.List;
-import java.util.Random;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -15,7 +13,6 @@ import com.bank.entity.PageInfo;
 import com.bank.entity.User;
 import com.bank.service.UserService;
 import com.bank.service.impl.UserServiceImpl;
-import com.bank.util.DateUtils;
 
 public class UserController {
 	UserService us = new UserServiceImpl();
@@ -104,14 +101,6 @@ public class UserController {
 		String dept = request.getParameter("dept");
 		String job = request.getParameter("job");
 		String userStatus = request.getParameter("userStatus");
-		//生成worker_id/
-		Date date =  new Date();
-		String strDate = DateUtils.dateToTotalStr(date);
-		Random rd = new Random();
-		int random = rd.nextInt(1000);
-		String strWorkId = strDate + random;
-		long workerId = Long.parseLong(strWorkId);
-		
 		// 封装
 		User user = new User();
 		user.setLoginId(loginId);
@@ -120,7 +109,6 @@ public class UserController {
 		user.setLoginPwd(pwd);
 		user.setName(userName);
 		user.setStatus("1".equals(userStatus));
-		user.setWorkerId(workerId);
 		// 调用service
 		if (us.addUser(user)) {
 			// 转

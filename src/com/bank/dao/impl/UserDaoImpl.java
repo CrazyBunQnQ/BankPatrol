@@ -17,7 +17,7 @@ public class UserDaoImpl extends BaseDaoImpl implements UserDao {
 	@Override
 	public List<User> queryUsers(int page, int count) {
 		List<User> list = new ArrayList<User>();
-		String sql = "select Login_ID,User_Name,Department_Name,Name ,User_Status from users u join department d on u.Department_ID = d.Department_id join job j on u.Job_ID = j.Job_ID limit ?,? ";
+		String sql = "select Login_ID,User_Name,Department_Name,Name ,User_Status from users u join department d on u.Department_ID = d.Department_id join job j on u.Job_ID = j.Job_ID ORDER BY Login_ID limit ?,? ";
 		try {
 			setConnAndPS(sql);
 			ps.setInt(1, page);
@@ -173,7 +173,7 @@ public class UserDaoImpl extends BaseDaoImpl implements UserDao {
 	@Override
 	public int userAdd(User user) {
 		int n = 0;
-		String sql = "INSERT INTO users(Login_ID,Job_ID,Department_ID,Login_Password,User_Name,User_Status,Worker_id) VALUES(?,?,?,?,?,?,?)";
+		String sql = "INSERT INTO users(Login_ID,Job_ID,Department_ID,Login_Password,User_Name,User_Status) VALUES(?,?,?,?,?,?)";
 		try {
 			setConnAndPS(sql);
 			ps.setString(1, user.getLoginId());
@@ -182,7 +182,6 @@ public class UserDaoImpl extends BaseDaoImpl implements UserDao {
 			ps.setString(4, user.getLoginPwd());
 			ps.setString(5, user.getName());
 			ps.setString(6, user.isStatus() ? "1" : "0");
-			ps.setLong(7, user.getWorkerId());
 			LOGGER.info("添加用户：" + ps.toString());
 			n = ps.executeUpdate();
 		} catch (Exception e) {

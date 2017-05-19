@@ -39,21 +39,10 @@ public class User implements Serializable {
 	 * false：禁用
 	 */
 	private boolean status;
-	
 	/**
 	 * 巡检工
 	 */
 	private PiWorker worker;
-	
-	long workerId;
-
-	public long getWorkerId() {
-		return workerId;
-	}
-
-	public void setWorkerId(long workerId) {
-		this.workerId = workerId;
-	}
 
 	public User() {
 		job = new Job();

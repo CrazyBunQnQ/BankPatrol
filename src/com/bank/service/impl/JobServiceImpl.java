@@ -76,16 +76,6 @@ public class JobServiceImpl implements JobService {
 
 	@Override
 	public boolean updateXtyms(int jobId, int funcId, String[] ymbhs) {
-//		List<Gwym> list = gdi.queryAllGwyms(funcId);
-//		List<Integer> insert = new ArrayList<Integer>();
-//		List<Integer> delete = new ArrayList<Integer>();
-//		for (int i = 0; i < list.size(); i++) {
-//			for (int j = 0; j < ymbhs.length; j++) {
-//				if (list.get(i).getXtymbId() == Integer.parseInt(ymbhs[j])) {
-//					
-//				}
-//			}
-//		}
 		int[] ymbh = new int[ymbhs.length];
 		for (int i = 0; i < ymbhs.length; i++) {
 			ymbh[i] = Integer.parseInt(ymbhs[i]);
