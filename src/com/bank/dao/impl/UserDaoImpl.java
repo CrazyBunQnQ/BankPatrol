@@ -17,7 +17,7 @@ public class UserDaoImpl extends BaseDaoImpl implements UserDao {
 	@Override
 	public List<User> queryUsers(int page, int count) {
 		List<User> list = new ArrayList<User>();
-		String sql = "select Login_ID,User_Name,Department_Name,Name ,User_Status from users u join department d on u.Department_ID = d.Department_id join job j on u.Job_ID = j.Job_ID limit ?,? ";
+		String sql = "select Login_ID,User_Name,Department_Name,Name ,User_Status from users u join department d on u.Department_ID = d.Department_id join job j on u.Job_ID = j.Job_ID ORDER BY Login_ID limit ?,? ";
 		try {
 			setConnAndPS(sql);
 			ps.setInt(1, page);
@@ -299,7 +299,7 @@ public class UserDaoImpl extends BaseDaoImpl implements UserDao {
 			rs = ps.executeQuery();
 			while (rs.next()) {
 				Xtymb x = new Xtymb();
-				x.setId(rs.getLong("ymbh"));
+				x.setId(rs.getInt("ymbh"));
 				x.setFunId(funcId);
 				x.setName(rs.getString("ymmc"));
 				x.setUrl(rs.getString("URL"));

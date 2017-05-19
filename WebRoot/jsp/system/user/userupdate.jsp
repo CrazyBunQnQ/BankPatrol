@@ -18,7 +18,11 @@
 	<div class="containner">
 		<div id="inner-hd">
 			<div class="crumbs">
-				<span class="crumbs-label">系统管理&gt;&gt;用户管理&gt;&gt;用户新增</span>
+				<span class="crumbs-label">
+					<a href="${pageContext.request.contextPath }/center.jsp">系统管理</a>&gt;&gt;
+					<a href="${pageContext.request.contextPath }/user/userList.do">用户管理</a>&gt;&gt;
+					用户新增
+				</span>
 			</div>
 		</div>
 		<div id="inner-bd">
@@ -27,26 +31,26 @@
 				<table class="kv-table">
 					<tr bgcolor="#F2F2F2">
 						<td width="30%">用户登陆ID</td>
-						<td>
+						<td align="left" style="padding-left: 100px">
 							<input type="text" name="loginId" value="${user.loginId }" class="input" onblur="searchSuggest('users.loginId','title');">(只能是字母和数字长度不能大于10)
 							<span id="title"></span>
 						</td>
 					</tr>
 					<tr bgcolor="#F2F2F2">
 						<td>用户登陆密码</td>
-						<td><input type="password" name="loginPassword" value="${user.loginPwd }" name="loginPassword" class="input"></td>
+						<td align="left" style="padding-left: 100px"><input type="password" name="loginPassword" value="${user.loginPwd }" name="loginPassword" class="input"></td>
 					</tr>
 					<tr bgcolor="#F2F2F2">
 						<td>确认密码</td>
-						<td><input type="password" value="${user.loginPwd }" name="loginPassword" name="checkpwd" class="input"></td>
+						<td align="left" style="padding-left: 100px"><input type="password" value="${user.loginPwd }" name="loginPassword" name="checkpwd" class="input"></td>
 					</tr>
 					<tr bgcolor="#F2F2F2">
 						<td>用户中文名称</td>
-						<td><input type="text" value="${user.name }" name="userName"></td>
+						<td align="left" style="padding-left: 100px"><input type="text" value="${user.name }" name="userName"></td>
 					</tr>
 					<tr bgcolor="#F2F2F2">
 						<td>用户所属部门</td>
-						<td>
+						<td align="left" style="padding-left: 100px">
 							<select name='dept'>
 								<c:forEach items="${d}" var="d1">
 									<option value="${d1.id }"
@@ -58,7 +62,7 @@
 					</tr>
 					<tr bgcolor="#F2F2F2">
 						<td>用户所在岗位</td>
-						<td>
+						<td align="left" style="padding-left: 100px">
 							<select name='job'>
 								<c:forEach items="${j}" var="j1">
 									<option value="${j1.id }"
@@ -70,7 +74,7 @@
 					</tr>
 					<tr bgcolor="#F2F2F2">
 						<td>用户状态</td>
-						<td>
+						<td align="left" style="padding-left: 100px">
 							<input type="radio" name="userStatus" value="1" checked>启用
 							<input type="radio" name="userStatus" value="0">禁用
 						</td>

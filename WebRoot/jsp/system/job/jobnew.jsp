@@ -17,25 +17,32 @@
 	<div class="containner">
 		<div id="inner-hd">
 			<div class="crumbs">
-				<span class="crumbs-label">系统管理&gt;&gt;岗位管理&gt;&gt;添加岗位信息</span>
+				<span class="crumbs-label">
+					<a href="${pageContext.request.contextPath }/center.jsp">系统管理</a>&gt;&gt;
+					<a href="${pageContext.request.contextPath }/job/jobList.do">岗位管理</a>&gt;&gt;
+					添加岗位信息
+				</span>
 			</div>
 		</div>
 
 		<div id="inner-bd">
-			<form action="" method="post" onsubmit="return checkData();">
+			<form action="${pageContext.request.contextPath }/job/addJob.do" method="post" onsubmit="return checkData();">
 				<table class="kv-table">
-					<tr>
+					<!-- tr>
 						<td>岗位性质</td>
 						<td><input type="radio" name="gwxz" value="gl" checked="checked">管理 <input type="radio" name="gwxz" value="xjz">巡检组</td>
-					</tr>
+					</tr -->
 
 					<tr bgcolor="#F2F2F2">
 						<td align="center">岗位名称：</td>
-						<td><input name="job.name" id="jobName" onblur="checkJobName(this.value);"><span align="left" id="div1"></span></td>
+						<td align="left" style="padding-left: 100px">
+							<input name="jobName" id="jobName" onblur="checkJobName(this.value);" value="${job.name }">
+							<span align="left" id="div1"></span>
+						</td>
 					</tr>
 					<tr bgcolor="#F2F2F2">
 						<td align="center">岗位描述：</td>
-						<td><textarea name="job.description" cols="30" rows="3"></textarea></td>
+						<td align="left" style="padding-left: 100px"><textarea name="description" cols="30" rows="3">${job.description }</textarea></td>
 					</tr>
 				</table>
 				<br>

@@ -23,7 +23,7 @@ function checkJobName(name) {
 	var jobName = document.getElementById("jobName");
 	if (jobName.value != "") {
 		if (xmlHttpRequest.readyState == 0 || xmlHttpRequest.readyState == 4) {
-			xmlHttpRequest.open("POST", "../job/checkJobName.do", true); // true异步访问
+			xmlHttpRequest.open("POST", "../job/checkName.do", true); // true异步访问
 			xmlHttpRequest.setRequestHeader("Content-Type",
 					"application/x-www-form-urlencoded;charset=utf-8");// 处理ajax请求乱码
 			xmlHttpRequest.onreadystatechange = function() {
@@ -46,7 +46,7 @@ function checkJobName(name) {
 					newValue += tValue.charAt(i);
 				}
 			}
-			xmlHttpRequest.send("job.name=" + newValue);
+			xmlHttpRequest.send("jobName=" + newValue);
 		}
 	} else {
 		div1.innerHTML = "<font color='red'>岗位名称不能为空</font>";
@@ -87,7 +87,7 @@ function checkBankId(name) {
 					var res = xmlHttpRequest.responseText;
 					var id = document.getElementById("show");
 					if (res == 0) {
-						id.innerHTML = "<font color='green'>银行IP可以使用</font>";
+						id.innerHTML = "<font color='green'> 银行 ID 可以使用</font>";
 					} else if (res == 1) {
 						id.innerHTML = "<font color='red'>银行 " + newValue
 								+ "</font> 已经存在";
@@ -144,18 +144,18 @@ function checkDeptname(name) {
 	var t = document.getElementById(name);
 	if (t.value != "") {
 		if (xmlHttpRequest.readyState == 0 || xmlHttpRequest.readyState == 4) {
-			xmlHttpRequest.open("POST", "./checkDeptname.do", true); // true异步访问
+			xmlHttpRequest.open("POST", "../dept/checkDeptname.do", true); // true异步访问
 			xmlHttpRequest.setRequestHeader("Content-Type",
 					"application/x-www-form-urlencoded;charset=utf-8");
 			xmlHttpRequest.onreadystatechange = function() {
 				if (xmlHttpRequest.readyState == 4) {
 					var res = xmlHttpRequest.responseText;
 					var id = document.getElementById("show");
-					if (res == 0) {
+					if (res == 1) {
 						id.innerHTML = "<font color='green'>部门名称可以使用</font>";
 						return true;
-					} else if (res == 1) {
-						id.innerHTML = "<font color='red'>" + name
+					} else if (res == 0) {
+						id.innerHTML = "<font color='red'>" + t.value
 								+ "</font>已经存在";
 						t.focus();
 						t.value = "";
@@ -164,6 +164,37 @@ function checkDeptname(name) {
 				}
 			};
 			xmlHttpRequest.send('name=' + t.value);
+		}
+	} else {
+		alert("部门名称ID不能为空");
+		return false;
+	}
+}
+//验证巡检工id是否存在
+function checkPiWorkerId(id) {
+	var t = document.getElementById(id);
+	if (t.value != "") {
+		if (xmlHttpRequest.readyState == 0 || xmlHttpRequest.readyState == 4) {
+			xmlHttpRequest.open("POST", "../piwoker/checkPiWorkerId.do", true); // true异步访问
+			xmlHttpRequest.setRequestHeader("Content-Type",
+					"application/x-www-form-urlencoded;charset=utf-8");
+			xmlHttpRequest.onreadystatechange = function() {
+				if (xmlHttpRequest.readyState == 4) {
+					var res = xmlHttpRequest.responseText;
+					var id = document.getElementById("show");
+					if (res == 1) {
+						id.innerHTML = "<font color='green'>巡检工id可以使用</font>";
+						return true;
+					} else if (res == 0) {
+						id.innerHTML =  
+								"巡检工id<font color='red'>" + t.value + "</font>不可用";
+						t.focus();
+						t.value = "";
+						return false;
+					}
+				}
+			};
+			xmlHttpRequest.send('id=' + t.value);
 		}
 	} else {
 		alert("部门名称ID不能为空");
@@ -302,3 +333,42 @@ function checkdataRepairType() {
 	}
 	return true;
 }
+ function clearLog(){
+	 if (xmlHttpRequest.readyState == 0 || xmlHttpRequest.readyState == 4) {
+			xmlHttpRequest.open("POST", "../log/clearLogs.do", true); // true异步访问
+			xmlHttpRequest.setRequestHeader("Content-Type",
+					"application/x-www-form-urlencoded;charset=utf-8");// 处理ajax请求乱码
+			xmlHttpRequest.onreadystatechange = function() {
+				if (xmlHttpRequest.readyState == 4) {
+					var res = xmlHttpRequest.responseText;
+					if (res == "1") {
+						alert("清除成功！");
+					} else if (res == "0") {
+						alert("清除失败！");
+					}
+					window.location.href="/Bank/log/logList.do";
+				}
+			};
+			xmlHttpRequest.send();
+		}
+ }
+ 
+ function exportExcel(){
+	 if (xmlHttpRequest.readyState == 0 || xmlHttpRequest.readyState == 4) {
+			xmlHttpRequest.open("POST", "../log/exportLogs.do", true); // true异步访问
+			xmlHttpRequest.setRequestHeader("Content-Type",
+					"application/x-www-form-urlencoded;charset=utf-8");// 处理ajax请求乱码
+			xmlHttpRequest.onreadystatechange = function() {
+				if (xmlHttpRequest.readyState == 4) {
+					var res = xmlHttpRequest.responseText;
+					if (res == "1") {
+						alert("导出成功！路径  f:/log.xls");
+					} else if (res == "0") {
+						alert("导出失败！");
+					}
+					window.location.href="/Bank/log/logList.do";
+				}
+			};
+			xmlHttpRequest.send();
+		}
+ }

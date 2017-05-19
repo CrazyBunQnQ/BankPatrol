@@ -6,8 +6,58 @@
 
 <title>银行设备种类管理展现</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/css/base.css">
-<script type="text/javascript" src="${pageContext.request.contextPath }/js/jump.js"></script>
+<!-- link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/css/base.css">
+<script type="text/javascript" src="${pageContext.request.contextPath }/js/jump.js"></script -->
+
+<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
+
+    <!--Bootstrap Stylesheet [ REQUIRED ]-->
+    <link href="${pageContext.request.contextPath }/nifty/css/bootstrap.min.css" rel="stylesheet">
+
+    <!--Nifty Stylesheet [ REQUIRED ]-->
+    <link href="${pageContext.request.contextPath }/nifty/css/nifty.min.css" rel="stylesheet">
+
+    <!--Nifty Premium Icon [ DEMONSTRATION ]-->
+    <link href="${pageContext.request.contextPath }/nifty/css/demo/nifty-demo-icons.min.css" rel="stylesheet">
+
+    <!--Demo [ DEMONSTRATION ]-->
+    <link href="${pageContext.request.contextPath }/nifty/css/demo/nifty-demo.min.css" rel="stylesheet">
+
+    <!--DataTables [ OPTIONAL ]-->
+    <link href="${pageContext.request.contextPath }/nifty/plugins/datatables/media/css/dataTables.bootstrap.css" rel="stylesheet">
+	<link href="${pageContext.request.contextPath }/nifty/plugins/datatables/extensions/Responsive/css/dataTables.responsive.css" rel="stylesheet">
+
+    <!--JAVASCRIPT-->
+    <!--=================================================-->
+
+    <!--Pace - Page Load Progress Par [OPTIONAL]-->
+    <link href="${pageContext.request.contextPath }/nifty/plugins/pace/pace.min.css" rel="stylesheet">
+    <script src="${pageContext.request.contextPath }/nifty/plugins/pace/pace.min.js"></script>
+
+
+    <!--jQuery [ REQUIRED ]-->
+    <script src="${pageContext.request.contextPath }/nifty/js/jquery-2.2.4.min.js"></script>
+
+
+    <!--BootstrapJS [ RECOMMENDED ]-->
+    <script src="${pageContext.request.contextPath }/nifty/js/bootstrap.min.js"></script>
+
+    <!--NiftyJS [ RECOMMENDED ]-->
+    <script src="${pageContext.request.contextPath }/nifty/js/nifty.min.js"></script>
+
+    <!--=================================================-->
+    
+    <!--Demo script [ DEMONSTRATION ]-->
+    <script src="${pageContext.request.contextPath }/nifty/js/demo/nifty-demo.min.js"></script>
+    
+    <!--DataTables [ OPTIONAL ]-->
+    <script src="${pageContext.request.contextPath }/nifty/plugins/datatables/media/js/jquery.dataTables.js"></script>
+	<script src="${pageContext.request.contextPath }/nifty/plugins/datatables/media/js/dataTables.bootstrap.js"></script>
+	<script src="${pageContext.request.contextPath }/nifty/plugins/datatables/extensions/Responsive/js/dataTables.responsive.min.js"></script>
+
+    <!--DataTables Sample [ SAMPLE ]-->
+    <script src="${pageContext.request.contextPath }/nifty/js/demo/tables-datatables.js"></script>
+    
 </head>
 
 <body>
@@ -89,6 +139,59 @@
 				<a onclick="jump('../etype/equipmentTypeList.do?eTypeId=${eTypeId }&eTypeName=${eTypeName }&hiddenFind=${hiddenFind }&curpage=','${data.totalPage }');" href="javascript:;">跳转</a>
 			</p>
 		</div>
+	</div>
+	<div class="panel">
+		<div class="panel-heading">
+			<h3 class="panel-title">Hover rows</h3>
+		</div>
+
+		<!--Hover Rows-->
+		<!--===================================================-->
+		<div class="panel-body">
+			<table class="table table-hover table-vcenter">
+				<thead>
+					<tr>
+						<th class="min-width">设备种类ID</th>
+						<th>设备种类ID</th>
+						<th class="text-center">Value</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td class="text-center"><i class="demo-pli-monitor-2 icon-2x"></i></td>
+						<td><span class="text-main text-semibold">${eType.name }</span> <br>
+							<small class="text-muted">Last 7 days : 4,234k</small></td>
+						<td class="text-center"><span
+							class="text-danger text-semibold">- 28.76%</span></td>
+					</tr>
+					<tr>
+						<td class="text-center"><i class="demo-pli-laptop icon-2x"></i></td>
+						<td><span class="text-main text-semibold">Laptop</span> <br>
+							<small class="text-muted">Last 7 days : 3,876k</small></td>
+						<td class="text-center"><span
+							class="text-warning text-semibold">- 8.55%</span></td>
+					</tr>
+					<tr>
+						<td class="text-center"><i class="demo-pli-tablet-2 icon-2x"></i></td>
+						<td><span class="text-main text-semibold">Tablet</span> <br>
+							<small class="text-muted">Last 7 days : 45,678k</small></td>
+						<td class="text-center"><span
+							class="text-success text-semibold">+ 58.56%</span></td>
+					</tr>
+					<tr>
+						<td class="text-center"><i
+							class="demo-pli-smartphone-3 icon-2x"></i></td>
+						<td><span class="text-main text-semibold">Smartphone</span> <br>
+							<small class="text-muted">Last 7 days : 34,553k</small></td>
+						<td class="text-center"><span
+							class="text-success text-semibold">+ 35.76%</span></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<!--===================================================-->
+		<!--End Hover Rows-->
+
 	</div>
 </body>
 </html>

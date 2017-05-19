@@ -41,4 +41,11 @@ public interface JobDao {
 	 */
 	int deleteJob(int jobId);
 
+	/**
+	 * 查询是否存在该岗位
+	 * @param name
+	 * @return
+	 */
+	boolean hasJob(String name);
+
 }

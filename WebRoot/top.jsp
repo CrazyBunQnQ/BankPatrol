@@ -23,47 +23,46 @@
 		<script type="text/javascript" src="${pageContext.request.contextPath }/js/main.js"></script>
     </head>
     <body>
-        <div id="pf-hd">
-            <!-- Log -->
-            <div class="pf-logo">
-                <img src="images/logo.png" alt="logo">
-           </div>
-           <!--  top     -->
-           <ul class="pf-nav">
-              <c:forEach items="${functions }" var="function">
-                  <c:if test="${function.name == '系统管理' }">
-                       <li class="pf-nav-item system current" data-menu="system">
-                         <a href="./login/leftList.do?funcId=${function.id }" target="msghtml" >
-                             <span class="pf-nav-icon system-icon"></span>
-                             <span class="pf-nav-title">系统管理</span>
-                         </a>
-                       </li>
-                  </c:if>
+	<div id="pf-hd">
+		<!-- Log -->
+		<div class="pf-logo">
+			<img src="images/logo.png" alt="logo">
+		</div>
+		<!--  top     -->
+		<ul class="pf-nav">
+			<c:forEach items="${functions }" var="function">
+				<c:if test="${function.name == '系统管理' }">
+					<li class="pf-nav-item system current" data-menu="system"><a
+						href="./login/leftList.do?funcId=${function.id }" target="msghtml">
+							<span class="pf-nav-icon system-icon"></span> <span
+							class="pf-nav-title">系统管理</span>
+					</a></li>
+				</c:if>
 
-                  <c:if test="${function.name == '报修管理' }">
-                       <li class="pf-nav-item repair" data-menu="repair">
-                         <a href="./login/leftList.do?funcId=${function.id }" target="msghtml" >
-                             <span class="pf-nav-icon repair-icon"></span>
-                             <span class="pf-nav-title">报修管理</span>
-                         </a>
-                        </li>
-                  </c:if>
-                  
-                  <c:if test="${function.name == '巡检管理' }">
-                       <li class="pf-nav-item polling" data-menu="polling">
-                          <a href="./login/leftList.do?funcId=${function.id }" target="msghtml" >
-                             <span class="pf-nav-icon polling-icon"></span>
-                             <span class="pf-nav-title">巡检管理</span>
-                          </a>
-                      </li>
-                  </c:if>
-         </c:forEach>
-      </ul>
-      
-      
-      <div class="pf-user" >       	
-            <div class="pf-user-quit" ><a href="${pageContext.request.contextPath }/login/logout.do" target="_top">退出</a></div>
-      </div>
-  </div>
+				<c:if test="${function.name == '报修管理' }">
+					<li class="pf-nav-item repair" data-menu="repair"><a
+						href="./login/leftList.do?funcId=${function.id }" target="msghtml">
+							<span class="pf-nav-icon repair-icon"></span> <span
+							class="pf-nav-title">报修管理</span>
+					</a></li>
+				</c:if>
+
+				<c:if test="${function.name == '巡检管理' }">
+					<li class="pf-nav-item polling" data-menu="polling"><a
+						href="./login/leftList.do?funcId=${function.id }" target="msghtml">
+							<span class="pf-nav-icon polling-icon"></span> <span
+							class="pf-nav-title">巡检管理</span>
+					</a></li>
+				</c:if>
+			</c:forEach>
+		</ul>
+
+		<div class="pf-user">
+			<div class="pf-user-quit">
+				<a href="${pageContext.request.contextPath }/login/logout.do"
+					target="_top">退出</a>
+			</div>
+		</div>
+	</div>
 </body>
 </html>

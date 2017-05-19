@@ -15,7 +15,10 @@
 	<div class="containner">
 		<div id="inner-hd">
 			<div class="crumbs">
-				<a href="javascript:;" class="crumbs-label">系统管理&gt;&gt;银行网点列表</a>
+				<span class="crumbs-label">
+					<a href="${pageContext.request.contextPath }/center.jsp">系统管理</a>&gt;&gt;
+					<a href="${pageContext.request.contextPath }/bank/bankList.do">银行网点列表</a>
+				</span>
 			</div>
 		</div>
 		

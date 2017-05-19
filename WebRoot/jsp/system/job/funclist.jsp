@@ -11,40 +11,47 @@
 <meta http-equiv="expires" content="0">
 <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 <meta http-equiv="description" content="This is my page">
-<link rel="stylesheet" type="text/css" href="./css/main.css">
-
-<link rel="stylesheet" type="text/css" href="../css/main.css">
-
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/css/base.css">
 </head>
 <body>
-	<span class="sys_list_yh">系统管理&gt;&gt;岗位管理&gt;&gt;程序功能列表</span>
-	<table width="40%" border="0" align="center" cellpadding="2" cellspacing="1" bgcolor="#E4E4E4">
-		<tr bgcolor="#F2F2F2">
-			<td>编号</td>
-			<td>名称</td>
-			<td>操作</td>
-		</tr>
-
-		<tr bgcolor="#F2F2F2">
-			<td>001</td>
-			<td>系统管理</td>
-			<td><a href=""><img src="../../images/VIEW.GIF" border="0" title="页面列表"></a></td>
-		</tr>
-		<tr bgcolor="#F2F2F2">
-			<td>001</td>
-			<td>报修管理</td>
-			<td><a href=""><img src="../../images/VIEW.GIF" border="0" title="页面列表"></a></td>
-		</tr>
-		<tr bgcolor="#F2F2F2">
-			<td>001</td>
-			<td>巡检管理</td>
-			<td><a href=""><img src="../../images/VIEW.GIF" border="0" title="页面列表"></a></td>
-		</tr>
-
-	</table>
-	<br>
-	<center>
-		<input type="button" value="返回" onclick="window.location.href='${pageContext.request.contextPath }/job/jobList.do'">
-	</center>
+	<div class="containner">
+		<div id="inner-hd">
+			<div class="crumbs">
+				<span class="crumbs-label">
+					<a href="${pageContext.request.contextPath }/center.jsp">系统管理</a>&gt;&gt;
+					<a href="${pageContext.request.contextPath }/job/jobList.do">岗位管理</a>&gt;&gt;
+					程序功能列表
+				</span>
+			</div>
+		</div>
+		<div id="inner-bd">
+			<table class="kv-table">
+				<thead>
+					<tr>
+						<td>编号</td>
+						<td>名称</td>
+						<td>操作</td>
+					</tr>
+				</thead>
+				<tbody>
+					<c:forEach items="${data }" var="func">
+						<tr>
+							<td>${func.id }</td>
+							<td>${func.name }</td>
+							<td>
+								<div class="handle">
+									<a href="../job/showXtyms.do?jobId=${jobId }&funcId=${func.id }"><span class="handle-icon chakan"></span></a>
+								</div>
+							</td>
+						</tr>
+					</c:forEach>
+				</tbody>
+			</table>
+			
+			<center>
+				<input type="button" value="返回" onclick="window.location.href='${pageContext.request.contextPath }/job/jobList.do'">
+			</center>
+		</div>
+	</div>
 </body>
 </html>
