@@ -1,2 +1,11 @@
 eclipse.preferences.version=1
+encoding//WebRoot/jsp/system/etype/equipmentType.jsp=UTF-8
+encoding//WebRoot/jsp/system/etype/equipmentTypenew.jsp=UTF-8
+encoding//WebRoot/jsp/system/etype/equipmentTypeupdate.jsp=UTF-8
+encoding//WebRoot/jsp/system/job/funclist.jsp=UTF-8
+encoding//WebRoot/jsp/system/job/joblist.jsp=UTF-8
+encoding//WebRoot/jsp/system/job/jobnew.jsp=UTF-8
+encoding//WebRoot/jsp/system/job/jobupdate.jsp=UTF-8
+encoding//WebRoot/jsp/system/job/xtym.jsp=UTF-8
+encoding//WebRoot/jsp/system/job/xtymlist.jsp=UTF-8
 encoding//src/jdbc.properties=UTF-8
