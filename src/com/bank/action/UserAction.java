@@ -15,9 +15,7 @@ import com.bank.entity.Job;
 import com.bank.entity.PageInfo;
 import com.bank.entity.User;
 import com.bank.entity.Xtymb;
-import com.bank.service.LoginService;
 import com.bank.service.UserService;
-import com.bank.service.impl.LoginServiceImpl;
 import com.bank.service.impl.UserServiceImpl;
 import com.opensymphony.xwork2.ActionSupport;
 
@@ -25,7 +23,6 @@ public class UserAction extends ActionSupport {
 
 	private static final long serialVersionUID = -3442882080520300398L;
 	private UserService us = new UserServiceImpl();
-	private LoginService userService = new LoginServiceImpl();
 	private HttpServletRequest request = null;
 
 	private User user;
@@ -58,7 +55,7 @@ public class UserAction extends ActionSupport {
 
 	public String login() {
 		request = ServletActionContext.getRequest();
-		user = userService.findUser(user.getLoginId(), user.getLoginPwd());
+		user = us.findUser(user.getLoginId(), user.getLoginPwd());
 
 		if (user != null) {
 			if (user.isStatus()) {
@@ -88,8 +85,8 @@ public class UserAction extends ActionSupport {
 		request = ServletActionContext.getRequest();
 		User user = (User) request.getSession().getAttribute("user");
 		if (user != null) {
-			List<Function> funList = userService.findFunctionsByJobId(user.getJobId());
-			List<Xtymb> xtymbList = userService.leftList(user, funList.get(0).getId());
+			List<Function> funList = us.findFunctionsByJobId(user.getJobId());
+			List<Xtymb> xtymbList = us.leftList(user, funList.get(0).getId());
 			String funName = funList.get(0).getName();
 			request.getSession().setAttribute("functions", funList);
 			request.getSession().setAttribute("funName", funName);
@@ -104,8 +101,8 @@ public class UserAction extends ActionSupport {
 		request = ServletActionContext.getRequest();
 		int funcId = Integer.parseInt(request.getParameter("funcId"));
 		User user = (User) request.getSession().getAttribute("user");
-		String funName = userService.findFunctionsByJobId(user.getJobId()).get(funcId - 1).getName();
-		List<Xtymb> list = userService.leftList(user, funcId);
+		String funName = us.findFunctionsByJobId(user.getJobId()).get(funcId - 1).getName();
+		List<Xtymb> list = us.leftList(user, funcId);
 		request.getSession().setAttribute("funName", funName);
 		request.getSession().setAttribute("leftList", list);
 		return "SUCCESS";
