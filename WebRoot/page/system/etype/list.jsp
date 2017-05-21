@@ -83,9 +83,9 @@
 					<table>
 						<tr>
 							<td>设备种类 ID：</td>
-							<td><input name="eTypeId" type="text" value="${eTypeId }"></td>
+							<td><input name="eType.id" type="text" value="${eType.id }"></td>
 							<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;设备种类名称：</td>
-							<td><input name="eTypeName" type="text" value="${eTypeName }">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+							<td><input name="eType.name" type="text" value="${eType.name }">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
 							<td>
 								<input type="image" src="${pageContext.request.contextPath }/images/search1.gif" class="input_button9" title="搜索"></input>
 								<input id="hiddenFind" name="hiddenFind" type="text" value="hidden" hidden="true">

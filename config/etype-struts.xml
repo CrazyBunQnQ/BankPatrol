@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+    "struts-2.5.dtd">
+    
+<struts>
+	<package name="com.bank.action" extends="struts-default" namespace="/etype">
+		<action name="list" class="com.bank.action.EquipmentTypeAction" method="list">
+			<result name="SUCCESS">/page/system/etype/list.jsp</result>
+			<result name="FAIL">/error.jsp</result>
+		</action>
+	</package>
+</struts>

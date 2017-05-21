@@ -8,8 +8,11 @@ import com.bank.entity.EquipmentType;
 import com.bank.entity.PageInfo;
 import com.bank.service.EquipmentTypeService;
 import com.bank.service.impl.EquipmentTypeServiceImpl;
+import com.opensymphony.xwork2.ActionSupport;
 
-public class EquipmentTypeAction {
+public class EquipmentTypeAction extends ActionSupport {
+	private static final long serialVersionUID = 1545011556429507177L;
+
 	private EquipmentTypeService eTypeService = new EquipmentTypeServiceImpl();
 	
 	private Integer page;
@@ -40,7 +43,7 @@ public class EquipmentTypeAction {
 		this.eType = eType;
 	}
 
-	String queryETypes() {
+	public String list() {
 		
 		PageInfo<EquipmentType> data = eTypeService.getEtypes(page, eType.getName(), eType.getId());
 		HttpServletRequest request = ServletActionContext.getRequest();
@@ -49,6 +52,6 @@ public class EquipmentTypeAction {
 		request.setAttribute("data", data);
 		request.setAttribute("eType", eType);
 		
-		return "success";
+		return "SUCCESS";
 	}
 }
