@@ -106,8 +106,8 @@ public class UserAction extends ActionSupport {
 		request = ServletActionContext.getRequest();
 		PageInfo<User> data = us.userList(curpage, user);
 		request.setAttribute("hiddenFind", hiddenFind);
-		request.setAttribute("loginId", user.getLoginId());
-		request.setAttribute("userName", user.getName());
+		request.setAttribute("loginId", user == null ? "" : user.getLoginId());
+		request.setAttribute("userName", user == null ? "" : user.getName());
 		request.setAttribute("data", data);
 		return "SUCCESS";
 	}

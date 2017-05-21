@@ -43,10 +43,10 @@ public class UserDaoImpl extends BaseDaoImpl implements UserDao {
 	@Override
 	public List<User> queryUsers(int from, int pageSize, User u) {
 		StringBuilder sql = new StringBuilder("select Login_ID,User_Name,Department_Name,Name ,User_Status from users u join department d on u.Department_ID = d.Department_id join job j on u.Job_ID = j.Job_ID  where 1=1 ");
-		if (u.getLoginId() != null) {
+		if (u != null && u.getLoginId() != null) {
 			sql.append(" and Login_ID like '%" + u.getLoginId() + "%'");
 		}
-		if (u.getName() != null) {
+		if (u != null && u.getName() != null) {
 			sql.append(" and User_Name like '%" + u.getName() + "%'");
 		}
 		sql.append(" limit ?,? ");
@@ -94,10 +94,10 @@ public class UserDaoImpl extends BaseDaoImpl implements UserDao {
 	public int queryUsersCount(User u) {
 		int count = 0;
 		StringBuilder sql = new StringBuilder("select count(*) from users where 1=1 ");
-		if (u.getLoginId() != null) {
+		if (u != null && u.getLoginId() != null) {
 			sql.append(" and Login_ID like '%" + u.getLoginId() + "%'");
 		}
-		if (u.getName() != null) {
+		if (u != null && u.getName() != null) {
 			sql.append(" and User_Name like '%" + u.getName() + "%'");
 		}
 		try {
