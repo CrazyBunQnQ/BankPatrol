@@ -16,11 +16,9 @@ import com.bank.controller.DepartmentController;
 import com.bank.controller.EquipmentTypeController;
 import com.bank.controller.JobController;
 import com.bank.controller.LogController;
-import com.bank.controller.LoginController;
 import com.bank.controller.PiGroupController;
 import com.bank.controller.PiWorkerController;
 import com.bank.controller.RepairTypeController;
-import com.bank.controller.UserController;
 
 public class DispatcherServlet extends HttpServlet {
 
@@ -38,23 +36,7 @@ public class DispatcherServlet extends HttpServlet {
 			return;
 		}
 
-		if (ary[0].equals("login")) {// 登录,登出,用户模块
-			LoginController loginController = new LoginController();
-			if (ary[1].equals("login")) {
-				loginController.login(request, response);
-			} else if (ary[1].equals("logout")) {
-				loginController.logout(request, response);
-			} else if (ary[1].equals("initdata")) {
-				loginController.initdata(request, response);
-			} else if (ary[1].equals("leftList")) {
-				loginController.leftList(request, response);
-			}
-		} else if (ary[0].equals("user")) {// 用户模块
-			UserController uc = new UserController();
-			if (ary[1].equals("checkUserName")) {
-				uc.checkUName(request, response);
-			}
-		} else if (ary[0].equals("dept")) {// 部门模块
+		if (ary[0].equals("dept")) {// 部门模块
 			DepartmentController deptc = new DepartmentController();
 			if (ary[1].equals("deptList")) {
 				deptc.deptList(request, response);
