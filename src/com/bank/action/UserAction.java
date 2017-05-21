@@ -40,6 +40,22 @@ public class UserAction extends ActionSupport {
 		this.user = user;
 	}
 
+	public String getCurpage() {
+		return curpage;
+	}
+
+	public void setCurpage(String curpage) {
+		this.curpage = curpage;
+	}
+
+	public String getHiddenFind() {
+		return hiddenFind;
+	}
+
+	public void setHiddenFind(String hiddenFind) {
+		this.hiddenFind = hiddenFind;
+	}
+
 	public String login() {
 		request = ServletActionContext.getRequest();
 		user = userService.findUser(user.getLoginId(), user.getLoginPwd());
