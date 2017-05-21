@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 2017-05-14 16:52:30
+-- Generation Time: 2017-05-21 13:05:23
 -- 服务器版本： 10.1.16-MariaDB
 -- PHP Version: 5.6.24
 
@@ -495,7 +495,7 @@ CREATE TABLE `xtymb` (
 --
 
 INSERT INTO `xtymb` (`ymbh`, `Func_ID`, `ymmc`, `URL`, `IMG`) VALUES
-(1, 1, '用户管理', 'user/userList.do', NULL),
+(1, 1, '用户管理', 'user/list', NULL),
 (2, 1, '部门管理', 'dept/deptList.do', NULL),
 (3, 1, '日志管理', 'log/logList.do', NULL),
 (4, 1, '银行设备种类管理', 'etype/equipmentTypeList.do', NULL),
