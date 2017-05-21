@@ -9,9 +9,21 @@
 			<result name="SUCCESS" type="redirectAction">initdata</result>
 			<result name="FAIL">/login.jsp</result>
 		</action>
+		<action name="logout" class="com.bank.action.UserAction" method="logout">
+			<result name="SUCCESS" type="redirectAction">/login.jsp</result>
+		</action>
 		<action name="initdata" class="com.bank.action.UserAction" method="initdata">
 			<result name="SUCCESS">/main.jsp</result>
 			<result name="FAIL">/login.jsp</result>
+		</action>
+		<action name="leftList" class="com.bank.action.UserAction" method="leftList">
+			<result name="SUCCESS">/left.jsp</result>
+		</action>
+		<action name="checkId" class="com.bank.action.UserAction" method="checkId"></action>
+		<action name="user*" class="com.bank.action.UserAction" method="{1}">
+			<result name="SUCCESS">/page/system/user/user{1}.jsp</result>
+			<result name="REFRESH" type="redirectAction">userlist</result>
+			<result name="FAIL">/error.jsp</result>
 		</action>
 	</package>
 </struts>
