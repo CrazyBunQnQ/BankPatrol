@@ -45,7 +45,7 @@ function checksbmx()
 	{
 		var str1 = escape(document.getElementById("wdxx").value);
 		var str2 = escape(document.getElementById("sbzl").value);
-		searchReq.open("POST", '../sbbx/sbbx!getsbmx.do?po.bank.bankId='+str1+'&po.equipmenttype.equipmentId='+str2, true);
+		searchReq.open("POST", '../sbbx/sbbx!getsbmx?po.bank.bankId='+str1+'&po.equipmenttype.equipmentId='+str2, true);
 		searchReq.onreadystatechange = handleSearchSuggest; 
 		searchReq.send();
 	}		
@@ -85,7 +85,7 @@ String.prototype.Trim = function() {
         option.value='';
       	sb.options[0]=option;
       	if(searchReq.readyState==4||searchReq.readyState==0){
-      		searchReq.open("POST","../sbxj/getSblsmxes.do?sbxj.equipmenttype.equipmentId="+sbzlId, true)
+      		searchReq.open("POST","../sbxj/getSblsmxes?sbxj.equipmenttype.equipmentId="+sbzlId, true)
       		searchReq.onreadystatechange=function(){
       			if(searchReq.readyState==4){
       				if(searchReq.status==200){

@@ -23,7 +23,7 @@ function checkJobName(name) {
 	var jobName = document.getElementById("jobName");
 	if (jobName.value != "") {
 		if (xmlHttpRequest.readyState == 0 || xmlHttpRequest.readyState == 4) {
-			xmlHttpRequest.open("POST", "../job/checkName.do", true); // true异步访问
+			xmlHttpRequest.open("POST", "../job/checkName", true); // true异步访问
 			xmlHttpRequest.setRequestHeader("Content-Type",
 					"application/x-www-form-urlencoded;charset=utf-8");// 处理ajax请求乱码
 			xmlHttpRequest.onreadystatechange = function() {
@@ -78,7 +78,7 @@ function checkBankId(name) {
 	t.value = newValue;
 	if (t.value != "") {
 		if (xmlHttpRequest.readyState == 0 || xmlHttpRequest.readyState == 4) {
-			xmlHttpRequest.open("POST", "./checkBankId.do", true); // true异步访问
+			xmlHttpRequest.open("POST", "./checkBankId", true); // true异步访问
 			xmlHttpRequest.setRequestHeader("Content-Type",
 					"application/x-www-form-urlencoded;charset=utf-8");
 			xmlHttpRequest.onreadystatechange = function() {
@@ -115,7 +115,7 @@ function checkBankEquId(name) {
 	t.value = newValue;
 	if (t.value != "") {
 		if (xmlHttpRequest.readyState == 0 || xmlHttpRequest.readyState == 4) {
-			xmlHttpRequest.open("POST", "./checkBankEquId.do", true); // true异步访问
+			xmlHttpRequest.open("POST", "./checkBankEquId", true); // true异步访问
 			xmlHttpRequest.setRequestHeader("Content-Type",
 					"application/x-www-form-urlencoded;charset=utf-8");
 			xmlHttpRequest.onreadystatechange = function() {
@@ -144,7 +144,7 @@ function checkDeptname(name) {
 	var t = document.getElementById(name);
 	if (t.value != "") {
 		if (xmlHttpRequest.readyState == 0 || xmlHttpRequest.readyState == 4) {
-			xmlHttpRequest.open("POST", "../dept/checkDeptname.do", true); // true异步访问
+			xmlHttpRequest.open("POST", "../dept/checkDeptname", true); // true异步访问
 			xmlHttpRequest.setRequestHeader("Content-Type",
 					"application/x-www-form-urlencoded;charset=utf-8");
 			xmlHttpRequest.onreadystatechange = function() {
@@ -175,7 +175,7 @@ function checkPiWorkerId(id) {
 	var t = document.getElementById(id);
 	if (t.value != "") {
 		if (xmlHttpRequest.readyState == 0 || xmlHttpRequest.readyState == 4) {
-			xmlHttpRequest.open("POST", "../piwoker/checkPiWorkerId.do", true); // true异步访问
+			xmlHttpRequest.open("POST", "../piwoker/checkPiWorkerId", true); // true异步访问
 			xmlHttpRequest.setRequestHeader("Content-Type",
 					"application/x-www-form-urlencoded;charset=utf-8");
 			xmlHttpRequest.onreadystatechange = function() {
@@ -229,7 +229,7 @@ function checkEquipmentTypeId(name) {
 	t.value = t.value.Trim();
 	if (t.value != "") {
 		if (xmlHttpRequest.readyState == 0 || xmlHttpRequest.readyState == 4) {
-			xmlHttpRequest.open("POST", "./checkETypeId.do", true); // true异步访问
+			xmlHttpRequest.open("POST", "./checkETypeId", true); // true异步访问
 			xmlHttpRequest.setRequestHeader("Content-Type",
 					"application/x-www-form-urlencoded;charset=utf-8");
 			xmlHttpRequest.onreadystatechange = function() {
@@ -258,7 +258,7 @@ function checkEquipmentName(name) {
 	t.value = t.value.Trim();
 	if (t.value != "") {
 		if (xmlHttpRequest.readyState == 0 || xmlHttpRequest.readyState == 4) {
-			xmlHttpRequest.open("POST", "./checkETypeName.do?", true);
+			xmlHttpRequest.open("POST", "./checkETypeName?", true);
 			xmlHttpRequest.setRequestHeader("Content-Type",
 					"application/x-www-form-urlencoded;charset=utf-8");
 			xmlHttpRequest.onreadystatechange = function() {
@@ -286,7 +286,7 @@ function checkFaultRepaitTypeName(name) {
 	t.value = t.value.Trim();
 	if (t.value != "") {
 		if (xmlHttpRequest.readyState == 0 || xmlHttpRequest.readyState == 4) {
-			xmlHttpRequest.open("POST", "./checkFaultRepaitTypeName.do?", true);
+			xmlHttpRequest.open("POST", "./checkFaultRepaitTypeName?", true);
 			xmlHttpRequest.setRequestHeader("Content-Type",
 					"application/x-www-form-urlencoded;charset=utf-8");
 			xmlHttpRequest.onreadystatechange = function() {
@@ -335,7 +335,7 @@ function checkdataRepairType() {
 }
  function clearLog(){
 	 if (xmlHttpRequest.readyState == 0 || xmlHttpRequest.readyState == 4) {
-			xmlHttpRequest.open("POST", "../log/clearLogs.do", true); // true异步访问
+			xmlHttpRequest.open("POST", "../log/clearLogs", true); // true异步访问
 			xmlHttpRequest.setRequestHeader("Content-Type",
 					"application/x-www-form-urlencoded;charset=utf-8");// 处理ajax请求乱码
 			xmlHttpRequest.onreadystatechange = function() {
@@ -346,7 +346,7 @@ function checkdataRepairType() {
 					} else if (res == "0") {
 						alert("清除失败！");
 					}
-					window.location.href="/Bank/log/logList.do";
+					window.location.href="/Bank/log/logList";
 				}
 			};
 			xmlHttpRequest.send();
@@ -355,7 +355,7 @@ function checkdataRepairType() {
  
  function exportExcel(){
 	 if (xmlHttpRequest.readyState == 0 || xmlHttpRequest.readyState == 4) {
-			xmlHttpRequest.open("POST", "../log/exportLogs.do", true); // true异步访问
+			xmlHttpRequest.open("POST", "../log/exportLogs", true); // true异步访问
 			xmlHttpRequest.setRequestHeader("Content-Type",
 					"application/x-www-form-urlencoded;charset=utf-8");// 处理ajax请求乱码
 			xmlHttpRequest.onreadystatechange = function() {
@@ -366,7 +366,7 @@ function checkdataRepairType() {
 					} else if (res == "0") {
 						alert("导出失败！");
 					}
-					window.location.href="/Bank/log/logList.do";
+					window.location.href="/Bank/log/logList";
 				}
 			};
 			xmlHttpRequest.send();

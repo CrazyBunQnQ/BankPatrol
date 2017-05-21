@@ -46,14 +46,14 @@ public class RepairTypeController {
 		String name = request.getParameter("PITYPE_Value");
 		RepairType rt = new RepairType();
 		if(rts.addRepairType(new RepairType(rt.getId(), name))){
-			response.sendRedirect("/Bank/frt/faultRepairType.do");
+			response.sendRedirect("/Bank/frt/faultRepairType");
 		}
 	}
 
 	public void repairTypeDelete(HttpServletRequest request, HttpServletResponse response)  throws ServletException, IOException{
 		int repairTypeId = Integer.parseInt(request.getParameter("Pitype_ID"));
 		if(rts.deleteRepairType(repairTypeId)){
-			response.sendRedirect("/Bank/frt/faultRepairType.do");
+			response.sendRedirect("/Bank/frt/faultRepairType");
 		}
 	}
 
@@ -71,7 +71,7 @@ public class RepairTypeController {
 		repairType.setId(id);
 		repairType.setValue(name);
 		if(rts.updateRepairType(new RepairType())){
-			response.sendRedirect("/Bank/frt/faultRepairType.do");
+			response.sendRedirect("/Bank/frt/faultRepairType");
 		}
 	}
 }

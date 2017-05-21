@@ -9,9 +9,7 @@
 <meta http-equiv="cache-control" content="no-cache">
 <meta http-equiv="expires" content="0">
 <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
-<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/css/base.css">
 <script type="text/javascript" src="${pageContext.request.contextPath }/js/jump.js"></script>
-<!-- script type="text/javascript" src="${pageContext.request.contextPath }/js/jquery-3.2.1.js"></script-->
 
 </head>
 
@@ -21,14 +19,14 @@
 			<div class="crumbs">
 				<span class="crumbs-label">
 					<a href="${pageContext.request.contextPath }/center.jsp">系统管理</a>&gt;&gt;
-					<a href="${pageContext.request.contextPath }/user/userList.do">用户管理</a>
+					<a href="${pageContext.request.contextPath }/user/userList">用户管理</a>
 			</div>
 		</div>
 		
 		<div id="inner-bd">
 			<div class="button-group">
 				<div class="button">
-					<input name="button" type="image" src="${pageContext.request.contextPath }/images/add.gif" onclick="location.href='../user/toAdd.do'" />
+					<input name="button" type="image" src="${pageContext.request.contextPath }/images/add.gif" onclick="location.href='../user/toAdd'" />
 				</div>
 				<div class="button">
 					<input name="button" type="image" src="${pageContext.request.contextPath }/images/search1.gif" onclick="openfind();" />
@@ -36,7 +34,7 @@
 			</div>
 			
 			<div id="find" ${hiddenFind }>
-				<form action="../user/userList.do">
+				<form action="../user/userList">
 					<table>
 						<tr>
 							<td>用户登陆ID：</td>
@@ -73,9 +71,9 @@
 							<td>${user.status?'启用':'禁用' }</td>
 							<td>
 								<div class="handle">
-									<a href="../user/toUserUpte.do?loginId=${user.loginId }"><span class="handle-icon fix"></span></a>
+									<a href="../user/toUserUpte?loginId=${user.loginId }"><span class="handle-icon fix"></span></a>
 									<c:if test="${user.loginId!='admin' }">
-										<a href="../user/userDelete.do?userId=${user.loginId }"><span class="handle-icon del"></span></a>
+										<a href="../user/userDelete?userId=${user.loginId }"><span class="handle-icon del"></span></a>
 									</c:if>
 								</div>
 							</td>
@@ -91,15 +89,15 @@
 				<font color="black">共&nbsp;</font><font color="black">${data.totalPage }</font><font color="black">&nbsp;页&nbsp;&nbsp;</font>
 		
 				<c:if test="${data.curPage!=1 }">
-					<a href="../user/userList.do?loginId=${loginId }&userName=${userName }&hiddenFind=${hiddenFind }&curpage=${data.curPage-1 }">上一页</a>&nbsp;&nbsp;
-					<a href="../user/userList.do?loginId=${loginId }&userName=${userName }&hiddenFind=${hiddenFind }&curpage=1 ">首 页</a>&nbsp;&nbsp;
+					<a href="../user/userList?loginId=${loginId }&userName=${userName }&hiddenFind=${hiddenFind }&curpage=${data.curPage-1 }">上一页</a>&nbsp;&nbsp;
+					<a href="../user/userList?loginId=${loginId }&userName=${userName }&hiddenFind=${hiddenFind }&curpage=1 ">首 页</a>&nbsp;&nbsp;
 				</c:if>
 				<c:if test="${data.curPage!=data.totalPage }">
-					<a href="../user/userList.do?loginId=${loginId }&userName=${userName }&hiddenFind=${hiddenFind }&curpage=${data.curPage+1 }">下一页</a>&nbsp;&nbsp;
-					<a href="../user/userList.do?loginId=${loginId }&userName=${userName }&hiddenFind=${hiddenFind }&curpage=${data.totalPage }">尾 页</a>&nbsp;&nbsp;
+					<a href="../user/userList?loginId=${loginId }&userName=${userName }&hiddenFind=${hiddenFind }&curpage=${data.curPage+1 }">下一页</a>&nbsp;&nbsp;
+					<a href="../user/userList?loginId=${loginId }&userName=${userName }&hiddenFind=${hiddenFind }&curpage=${data.totalPage }">尾 页</a>&nbsp;&nbsp;
 				</c:if>
 				第&nbsp;<input id="pagebox" type="text" size="4">&nbsp;页&nbsp;
-				<a onclick="jump('../user/userList.do?loginId=${loginId }&userName=${userName }&hiddenFind=${hiddenFind }&curpage=','${data.totalPage }');" href="javascript:;">跳转</a>
+				<a onclick="jump('../user/userList?loginId=${loginId }&userName=${userName }&hiddenFind=${hiddenFind }&curpage=','${data.totalPage }');" href="javascript:;">跳转</a>
 			</p>
 		</div>
 	</div>

@@ -57,7 +57,7 @@ function getChild(sel_Val,sel){
 	     	 selEle.length=0;
 			 if(sel_Val!=""){	
 				 if(xmlHttp.readyState==0||xmlHttp.readyState==4){
-				     xmlHttp.open("POST","./findWokers.do?piwoker.piGroup.groupId="+sel_Val,true);
+				     xmlHttp.open("POST","./findWokers?piwoker.piGroup.groupId="+sel_Val,true);
 				     xmlHttp.onreadystatechange=function(){
 				         if(xmlHttp.readyState==4){
 				             var resText=xmlHttp.responseText;

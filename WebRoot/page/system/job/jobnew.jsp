@@ -19,14 +19,14 @@
 			<div class="crumbs">
 				<span class="crumbs-label">
 					<a href="${pageContext.request.contextPath }/center.jsp">系统管理</a>&gt;&gt;
-					<a href="${pageContext.request.contextPath }/job/jobList.do">岗位管理</a>&gt;&gt;
+					<a href="${pageContext.request.contextPath }/job/jobList">岗位管理</a>&gt;&gt;
 					添加岗位信息
 				</span>
 			</div>
 		</div>
 
 		<div id="inner-bd">
-			<form action="${pageContext.request.contextPath }/job/addJob.do" method="post" onsubmit="return checkData();">
+			<form action="${pageContext.request.contextPath }/job/addJob" method="post" onsubmit="return checkData();">
 				<table class="kv-table">
 					<!-- tr>
 						<td>岗位性质</td>

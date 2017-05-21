@@ -74,8 +74,8 @@ public class PiWorkerController {
 			piWorker.setPiGroup(piGroup);
 			//调用方法，添加巡检工
 			pwd.addPiWorker(piWorker);
-			//重定向到/Bank/piwoker/piwokerList.do
-			response.sendRedirect("/Bank/piwoker/piwokerList.do");
+			//重定向到/Bank/piwoker/piwokerList
+			response.sendRedirect("/Bank/piwoker/piwokerList");
 		}
 	}
 	
@@ -95,9 +95,9 @@ public class PiWorkerController {
 	public void deletePiworker(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException  {
 		//从前台请求中获取id
 		long id = Long.parseLong(request.getParameter("id"));
-		//若成功删除则跳转到/Bank/piwoker/piwokerList.do
+		//若成功删除则跳转到/Bank/piwoker/piwokerList
 		if(pwd.deletePiWorker(id)){
-			response.sendRedirect("/Bank/piwoker/piwokerList.do");
+			response.sendRedirect("/Bank/piwoker/piwokerList");
 		}
 	}
 	public void update2Piworker(HttpServletRequest request, HttpServletResponse response)throws IOException, ServletException  {
@@ -129,9 +129,9 @@ public class PiWorkerController {
 		p.setTel1(workerTel1);
 		//给对象设置第二个电话
 		p.setTel2(workerTel2);
-		//若更新成功则跳转到/Bank/piwoker/piwokerList.do
+		//若更新成功则跳转到/Bank/piwoker/piwokerList
 		if(pwd.updatePiWorker(p)){
-			response.sendRedirect("/Bank/piwoker/piwokerList.do");
+			response.sendRedirect("/Bank/piwoker/piwokerList");
 		}
 	}
 }

@@ -496,24 +496,24 @@ CREATE TABLE `xtymb` (
 
 INSERT INTO `xtymb` (`ymbh`, `Func_ID`, `ymmc`, `URL`, `IMG`) VALUES
 (1, 1, '用户管理', 'user/list', NULL),
-(2, 1, '部门管理', 'dept/deptList.do', NULL),
-(3, 1, '日志管理', 'log/logList.do', NULL),
-(4, 1, '银行设备种类管理', 'etype/equipmentTypeList.do', NULL),
-(5, 1, '全局变量管理', '../xtgl/globalsList.do', NULL),
-(6, 1, '银行网点管理', 'bank/bankList.do', NULL),
-(7, 2, '网点查看报修信息', '../sbbx/sbbx!listw.do', NULL),
-(8, 2, '巡检中心查看报修信息', '../sbbx/sbbx!list.do', NULL),
-(9, 1, '岗位管理', 'job/jobList.do?first=1', NULL),
-(10, 1, '巡检工管理', 'piwoker/piwokerList.do', NULL),
-(11, 1, '巡检组管理', 'pigroup/pigrouplist.do', NULL),
-(12, 1, '设备问题报修管理', 'frt/frtlist.do', NULL),
-(13, 2, '网点设备报修', '../sbbx/sbbx!presavew.do', NULL),
-(14, 2, '值班员报修', '../sbbx/sbbx!presavez.do', NULL),
-(15, 3, '网点对巡检确认', 'inspection/wdryList.do', NULL),
-(16, 2, '网点对报修确认', '../sbbx/sbbx!listw.do?rs=1', NULL),
-(17, 2, '巡检中心分配小组', '../sbbx/sbbx!list.do?rs=0&as=0', NULL),
-(18, 2, '维修工确认维修', '../sbbx/sbbx!listg.do', NULL),
-(19, 3, '设备巡检', 'inspection/sbxjList.do?y=n', NULL);
+(2, 1, '部门管理', 'dept/deptList', NULL),
+(3, 1, '日志管理', 'log/logList', NULL),
+(4, 1, '银行设备种类管理', 'etype/equipmentTypeList', NULL),
+(5, 1, '全局变量管理', '../xtgl/globalsList', NULL),
+(6, 1, '银行网点管理', 'bank/bankList', NULL),
+(7, 2, '网点查看报修信息', '../sbbx/sbbx!listw', NULL),
+(8, 2, '巡检中心查看报修信息', '../sbbx/sbbx!list', NULL),
+(9, 1, '岗位管理', 'job/jobList?first=1', NULL),
+(10, 1, '巡检工管理', 'piwoker/piwokerList', NULL),
+(11, 1, '巡检组管理', 'pigroup/pigrouplist', NULL),
+(12, 1, '设备问题报修管理', 'frt/frtlist', NULL),
+(13, 2, '网点设备报修', '../sbbx/sbbx!presavew', NULL),
+(14, 2, '值班员报修', '../sbbx/sbbx!presavez', NULL),
+(15, 3, '网点对巡检确认', 'inspection/wdryList', NULL),
+(16, 2, '网点对报修确认', '../sbbx/sbbx!listw?rs=1', NULL),
+(17, 2, '巡检中心分配小组', '../sbbx/sbbx!list?rs=0&as=0', NULL),
+(18, 2, '维修工确认维修', '../sbbx/sbbx!listg', NULL),
+(19, 3, '设备巡检', 'inspection/sbxjList?y=n', NULL);
 
 --
 -- Indexes for dumped tables

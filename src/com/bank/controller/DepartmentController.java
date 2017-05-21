@@ -56,17 +56,17 @@ public class DepartmentController {
 		String name = request.getParameter("departmentName");
 		//判断添加是否成功
 		if(deptService.addDepartment(name)){
-			//重定向到/Bank/dept/deptList.do
-			response.sendRedirect("/Bank/dept/deptList.do");
+			//重定向到/Bank/dept/deptList
+			response.sendRedirect("/Bank/dept/deptList");
 		}
 	}
 
 	public void deptDelete(HttpServletRequest request, HttpServletResponse response)  throws ServletException, IOException{
 		//拿到查询的搜索条件deptId
 		int depId = Integer.parseInt(request.getParameter("deptId"));
-		//存在则重定向到/Bank/dept/deptList.do
+		//存在则重定向到/Bank/dept/deptList
 		if(deptService.deleteDepartment(depId)){
-			response.sendRedirect("/Bank/dept/deptList.do");
+			response.sendRedirect("/Bank/dept/deptList");
 		}
 	}
 
@@ -91,9 +91,9 @@ public class DepartmentController {
 		//给部门赋值
 		dept.setId(id);
 		dept.setName(name);
-		//判断是否更新成功，成功则重定向到/Bank/dept/deptList.do
+		//判断是否更新成功，成功则重定向到/Bank/dept/deptList
 		if(deptService.updateDepartment(dept)){
-			response.sendRedirect("/Bank/dept/deptList.do");
+			response.sendRedirect("/Bank/dept/deptList");
 		}
 		
 	}

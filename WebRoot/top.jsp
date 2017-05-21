@@ -33,7 +33,7 @@
 			<c:forEach items="${functions }" var="function">
 				<c:if test="${function.name == '系统管理' }">
 					<li class="pf-nav-item system current" data-menu="system"><a
-						href="./login/leftList.do?funcId=${function.id }" target="msghtml">
+						href="./login/leftList?funcId=${function.id }" target="msghtml">
 							<span class="pf-nav-icon system-icon"></span> <span
 							class="pf-nav-title">系统管理</span>
 					</a></li>
@@ -41,7 +41,7 @@
 
 				<c:if test="${function.name == '报修管理' }">
 					<li class="pf-nav-item repair" data-menu="repair"><a
-						href="./login/leftList.do?funcId=${function.id }" target="msghtml">
+						href="./login/leftList?funcId=${function.id }" target="msghtml">
 							<span class="pf-nav-icon repair-icon"></span> <span
 							class="pf-nav-title">报修管理</span>
 					</a></li>
@@ -49,7 +49,7 @@
 
 				<c:if test="${function.name == '巡检管理' }">
 					<li class="pf-nav-item polling" data-menu="polling"><a
-						href="./login/leftList.do?funcId=${function.id }" target="msghtml">
+						href="./login/leftList?funcId=${function.id }" target="msghtml">
 							<span class="pf-nav-icon polling-icon"></span> <span
 							class="pf-nav-title">巡检管理</span>
 					</a></li>
@@ -59,7 +59,7 @@
 
 		<div class="pf-user">
 			<div class="pf-user-quit">
-				<a href="${pageContext.request.contextPath }/login/logout.do"
+				<a href="${pageContext.request.contextPath }/login/logout"
 					target="_top">退出</a>
 			</div>
 		</div>

@@ -24,7 +24,7 @@
 			<div class="button-group">
 				<div class="button">
 					<img src="${pageContext.request.contextPath}/images/add.gif"
-						onclick="location.href='../frt/toRepairTypeAdd.do'">
+						onclick="location.href='../frt/toRepairTypeAdd'">
 				</div>
 				<div class="button">
 					<img src="${pageContext.request.contextPath}/images/search1.gif"
@@ -32,7 +32,7 @@
 				</div>
 			</div>
 			<div id="find" style="display: none">
-				<form action="../frt/faultRepairType.do" method="post">
+				<form action="../frt/faultRepairType" method="post">
 					<table>
 						<tr>
 							<td>设备类型：</td>
@@ -60,7 +60,7 @@
 							<td>
 								<div class="handle">
 									<span class="handle-icon del" onclick="delRepairType(${repairTypeValue.id })"></span>
-									<a href="../frt/repairType2Update.do?repairTypeValue=${repairTypeValue.id}"><span
+									<a href="../frt/repairType2Update?repairTypeValue=${repairTypeValue.id}"><span
 										class="handle-icon fix"></span></a>
 								</div>
 							</td>
@@ -81,16 +81,16 @@
 			</font>
 
 			<c:if test="${data.curPage!=1 }">
-				<a href="../dept/faultRepairType.do?curpage=${data.curPage-1 }">上一页</a>
-				<a href="../dept/faultRepairType.do?curpage=1 ">首 页</a>
+				<a href="../dept/faultRepairType?curpage=${data.curPage-1 }">上一页</a>
+				<a href="../dept/faultRepairType?curpage=1 ">首 页</a>
 			</c:if>
 			<c:if test="${data.curPage!=data.totalPage }">
 				<a
-					href="../frt/faultRepairType.do?curpage=${data.curPage+1 }&loginId=${log}&userName=${un}">下一页</a>
-				<a href="../frt/faultRepairType.do?curpage=${data.totalPage }">尾 页</a>
+					href="../frt/faultRepairType?curpage=${data.curPage+1 }&loginId=${log}&userName=${un}">下一页</a>
+				<a href="../frt/faultRepairType?curpage=${data.totalPage }">尾 页</a>
 			</c:if>
 			第<input id="pagebox" type="text" size="4">页 <a
-				onclick="jump('../frt/faultRepairType.do?curpage=','${data.totalPage }');"
+				onclick="jump('../frt/faultRepairType?curpage=','${data.totalPage }');"
 				href="javascript:;">跳转</a>
 		</p>
 	</div>
@@ -98,7 +98,7 @@
 <script>
 	function delRepairType(id){
 		if(confirm("确定要删除吗？")){
-			window.location.href="${pageContext.request.contextPath}/frt/RepairTypeDelete.do?RepairTypeId="+id;
+			window.location.href="${pageContext.request.contextPath}/frt/RepairTypeDelete?RepairTypeId="+id;
 		}
 	}
 </script>

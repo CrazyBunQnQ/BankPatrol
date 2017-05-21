@@ -24,7 +24,7 @@
 			<div class="button-group">
 				<div class="button">
 					<img src="${pageContext.request.contextPath}/images/add.gif"
-						onclick="location.href='../dept/toAdd.do'">
+						onclick="location.href='../dept/toAdd'">
 				</div>
 				<div class="button">
 					<img src="${pageContext.request.contextPath}/images/search1.gif"
@@ -32,7 +32,7 @@
 				</div>
 			</div>
 			<div id="find" ${hiddenFind }>
-				<form action="../dept/deptList.do" method="post">
+				<form action="../dept/deptList" method="post">
 					<table>
 						<tr>
 							<td>部门名：</td>
@@ -61,7 +61,7 @@
 							<td>
 								<div class="handle">
 									<span class="handle-icon del" onclick="delDepart(${dept.id })"></span>
-									<a href="../dept/dept2Update.do?deptId=${dept.id}"><span
+									<a href="../dept/dept2Update?deptId=${dept.id}"><span
 										class="handle-icon fix"></span></a>
 								</div>
 							</td>
@@ -83,16 +83,16 @@
 			</font>
 
 			<c:if test="${data.curPage!=1 }">
-				<a href="../dept/deptList.do?curpage=${data.curPage-1 }">上一页</a>
-				<a href="../dept/deptList.do?curpage=1 ">首 页</a>
+				<a href="../dept/deptList?curpage=${data.curPage-1 }">上一页</a>
+				<a href="../dept/deptList?curpage=1 ">首 页</a>
 			</c:if>
 			<c:if test="${data.curPage!=data.totalPage }">
 				<a
-					href="../dept/deptList.do?curpage=${data.curPage+1 }&loginId=${log}&userName=${un}">下一页</a>
-				<a href="../dept/deptList.do?curpage=${data.totalPage }">尾 页</a>
+					href="../dept/deptList?curpage=${data.curPage+1 }&loginId=${log}&userName=${un}">下一页</a>
+				<a href="../dept/deptList?curpage=${data.totalPage }">尾 页</a>
 			</c:if>
 			第<input id="pagebox" type="text" size="4">页 <a
-				onclick="jump('../dept/deptList.do?curpage=','${data.totalPage }');"
+				onclick="jump('../dept/deptList?curpage=','${data.totalPage }');"
 				href="javascript:;">跳转</a>
 		</p>
 	</div>
@@ -100,7 +100,7 @@
 <script>
 	function delDepart(id){
 		if(confirm("确定要删除吗？")){
-			window.location.href="${pageContext.request.contextPath}/dept/deptDelete.do?deptId="+id;
+			window.location.href="${pageContext.request.contextPath}/dept/deptDelete?deptId="+id;
 		}
 	}
 </script>

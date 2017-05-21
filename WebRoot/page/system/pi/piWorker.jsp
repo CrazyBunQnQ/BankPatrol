@@ -19,14 +19,14 @@
     <div id="inner-bd">
 			<div class="button-group">
 				<div class="button">
-					<input name="button" type="image" src="${pageContext.request.contextPath }/images/add.gif" onclick="location.href='../piwoker/toAdd.do'" />
+					<input name="button" type="image" src="${pageContext.request.contextPath }/images/add.gif" onclick="location.href='../piwoker/toAdd'" />
 				</div>
 				<div class="button">
 					<input name="button" type="image" src="${pageContext.request.contextPath }/images/search1.gif" onclick="openfind();" />
 				</div>
 			</div>
 			<div id="find"  ${hiddenFind }>
-				<form action="../piwoker/piwokerList.do" method="post">
+				<form action="../piwoker/piwokerList" method="post">
 					<table>
 						<tr>
 							<td>巡检工姓名： </td>
@@ -62,8 +62,8 @@
 						<td >${piWorker.tel1}</td>
 						<td >${piWorker.tel2}</td>
 						<td ><div class="handle">
-                        	<a href="../piwoker/deletePiworker.do?id=${piWorker.id}"><span class="handle-icon del"></span></a>
-                            <a href="../piwoker/update2Piworker.do?id=${piWorker.id}"><span class="handle-icon fix"></span></a>
+                        	<a href="../piwoker/deletePiworker?id=${piWorker.id}"><span class="handle-icon del"></span></a>
+                            <a href="../piwoker/update2Piworker?id=${piWorker.id}"><span class="handle-icon fix"></span></a>
                         </div></td>
 					</tr>
 					</c:forEach>
@@ -82,15 +82,15 @@
 		</font>
 
 		<c:if test="${data.curPage!=1 }">
-			<a href="../piwoker/piwokerList.do?curpage=${data.curPage-1 }">上一页</a>
-			<a href="../piwoker/piwokerList.do?curpage=1 ">首 页</a>
+			<a href="../piwoker/piwokerList?curpage=${data.curPage-1 }">上一页</a>
+			<a href="../piwoker/piwokerList?curpage=1 ">首 页</a>
 		</c:if>
 		<c:if test="${data.curPage!=data.totalPage }">
-			<a href="../piwoker/piwokerList.do?curpage=${data.curPage+1 }&loginId=${log}&userName=${un}">下一页</a>
-			<a href="../piwoker/piwokerList.do?curpage=${data.totalPage }">尾 页</a>
+			<a href="../piwoker/piwokerList?curpage=${data.curPage+1 }&loginId=${log}&userName=${un}">下一页</a>
+			<a href="../piwoker/piwokerList?curpage=${data.totalPage }">尾 页</a>
 		</c:if>
 		第<input id="pagebox" type="text" size="4">页
-		<a onclick="jump('../piwoker/piwokerList.do?curpage=','${data.totalPage }');" href="javascript:;">跳转</a>
+		<a onclick="jump('../piwoker/piwokerList?curpage=','${data.totalPage }');" href="javascript:;">跳转</a>
 		   </p></div>
 </body>
 </html>

@@ -47,7 +47,7 @@ function searchSuggest(v1,v2)
 		var str =document.getElementById(inputid).value;
 	
 		
-		searchReq.open("POST", '../sbbx/sbbx!getwtlx.do', true);
+		searchReq.open("POST", '../sbbx/sbbx!getwtlx', true);
 		searchReq.setRequestHeader("Content-Type","application/x-www-form-urlencoded;charset=utf-8");
 		searchReq.onreadystatechange = handleSearchSuggest; 
 		searchReq.send('wtlx='+str);

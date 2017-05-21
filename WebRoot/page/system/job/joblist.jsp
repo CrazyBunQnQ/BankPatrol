@@ -16,14 +16,14 @@
 			<div class="crumbs">
 				<span class="crumbs-label">
 					<a href="${pageContext.request.contextPath }/center.jsp">系统管理</a>&gt;&gt;
-					<a href="${pageContext.request.contextPath }/job/jobList.do">岗位管理&gt;&gt;岗位列表</a>
+					<a href="${pageContext.request.contextPath }/job/jobList">岗位管理&gt;&gt;岗位列表</a>
 				</span>
 			</div>
 		</div>
 		<div id="inner-bd">
 			<div class="button-group">
 				<div class="button">
-					<img src="${pageContext.request.contextPath }/images/add.gif" onclick="location.href='../job/toAdd.do'">
+					<img src="${pageContext.request.contextPath }/images/add.gif" onclick="location.href='../job/toAdd'">
 				</div>
 			</div>
 			
@@ -41,13 +41,13 @@
 						<tr>
 							<td>${job.id }</td>
 							<td>
-								<a href="../job/xtymList.do?jobId=${job.id }">${job.name }</a>
+								<a href="../job/xtymList?jobId=${job.id }">${job.name }</a>
 							</td>
 							<td>${job.description }</td>
 							<td>
 								<div class="handle">
-									<a href="../job/toUpdate.do?jobId=${job.id }&jobName=${job.name }&description=${job.description }"><span class="handle-icon fix"></span></a>
-									<a href="../job/funcList.do?jobId=${job.id }"><span class="handle-icon chakan"></span></a>
+									<a href="../job/toUpdate?jobId=${job.id }&jobName=${job.name }&description=${job.description }"><span class="handle-icon fix"></span></a>
+									<a href="../job/funcList?jobId=${job.id }"><span class="handle-icon chakan"></span></a>
 								</div>
 							</td>
 						</tr>
@@ -62,15 +62,15 @@
 				<font color="black">共&nbsp;</font><font color="black">${data.totalPage }</font><font color="black">&nbsp;页&nbsp;&nbsp;</font>
 		
 				<c:if test="${data.curPage!=1 }">
-					<a href="../job/jobList.do?curpage=${data.curPage-1 }">上一页</a>&nbsp;&nbsp;
-					<a href="../job/jobList.do?curpage=1 ">首 页</a>&nbsp;&nbsp;
+					<a href="../job/jobList?curpage=${data.curPage-1 }">上一页</a>&nbsp;&nbsp;
+					<a href="../job/jobList?curpage=1 ">首 页</a>&nbsp;&nbsp;
 				</c:if>
 				<c:if test="${data.curPage!=data.totalPage }">
-					<a href="../job/jobList.do?curpage=${data.curPage+1 }">下一页</a>&nbsp;&nbsp;
-					<a href="../job/jobList.do?curpage=${data.totalPage }">尾 页</a>&nbsp;&nbsp;
+					<a href="../job/jobList?curpage=${data.curPage+1 }">下一页</a>&nbsp;&nbsp;
+					<a href="../job/jobList?curpage=${data.totalPage }">尾 页</a>&nbsp;&nbsp;
 				</c:if>
 				第&nbsp;<input id="pagebox" type="text" size="4">&nbsp;页&nbsp;
-				<a onclick="jump('../job/jobList.do?curpage=','${data.totalPage }');" href="javascript:;">跳转</a>
+				<a onclick="jump('../job/jobList?curpage=','${data.totalPage }');" href="javascript:;">跳转</a>
 			</p>
 		</div>
 	</div>

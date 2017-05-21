@@ -14,14 +14,14 @@
 			<div class="crumbs">
 				<span class="class="crumbs-label"">
 					<a href="${pageContext.request.contextPath }/center.jsp">系统管理</a>&gt;&gt;
-					<a href="${pageContext.request.contextPath }/bank/bankList.do">银行网点列表</a>&gt;&gt;
+					<a href="${pageContext.request.contextPath }/bank/bankList">银行网点列表</a>&gt;&gt;
 					修改银行网点
 				</span>
 			</div>
 		</div>
 		<% Bank bank = (Bank)request.getAttribute("bank"); %>
 		<div id="inner-bd">
-			<form action="${pageContext.request.contextPath }/bank/bankUpdate.do" method="post">
+			<form action="${pageContext.request.contextPath }/bank/bankUpdate" method="post">
 				<table class="kv-table">
 					<tr>
 						<td bgcolor="#F2F2F2" align="center" width="30%">银行编号</td>

@@ -61,15 +61,15 @@
 		<font color="black">${data.totalPage }</font> <font color="black">页&nbsp; </font>
          
          <c:if test="${data.curPage!=1 }">
-			<a href="../log/logList.do?curpage=${data.curPage-1 }">上一页</a>
-			<a href="../log/logList.do?curpage=1 ">首 页</a>
+			<a href="../log/logList?curpage=${data.curPage-1 }">上一页</a>
+			<a href="../log/logList?curpage=1 ">首 页</a>
 		</c:if>
 		<c:if test="${data.curPage!=data.totalPage }">
-			<a href="../log/logList.do?curpage=${data.curPage+1 }&loginId=${log}&userName=${un}">下一页</a>
-			<a href="../log/logList.do?curpage=${data.totalPage }">尾 页</a>
+			<a href="../log/logList?curpage=${data.curPage+1 }&loginId=${log}&userName=${un}">下一页</a>
+			<a href="../log/logList?curpage=${data.totalPage }">尾 页</a>
 		</c:if>
 		第<input id="pagebox" type="text" size="4">页
-		<a onclick="jump('../log/logList.do?curpage=','${data.totalPage }');" href="javascript:;">跳转</a>
+		<a onclick="jump('../log/logList?curpage=','${data.totalPage }');" href="javascript:;">跳转</a>
 		   </p></div>
 </body>
 </html>

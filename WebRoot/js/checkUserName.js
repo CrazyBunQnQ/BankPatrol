@@ -46,7 +46,7 @@ function searchSuggest(v1,v2)
 	{
 		var str = document.getElementById(inputid).value;
 		
-		searchReq.open("POST", '../user/checkUserName.do', true);
+		searchReq.open("POST", '../user/checkUserName', true);
 		searchReq.setRequestHeader("Content-Type","application/x-www-form-urlencoded;charset=utf-8");
 		searchReq.onreadystatechange = handleSearchSuggest; 
 		

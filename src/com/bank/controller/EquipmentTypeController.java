@@ -87,7 +87,7 @@ public class EquipmentTypeController {
 		String name = request.getParameter("eTypeName");
 		EquipmentType eType = new EquipmentType(id, name);
 		if (eTypeService.insertEType(eType)) {
-			response.sendRedirect("equipmentTypeList.do");
+			response.sendRedirect("equipmentTypeList");
 		} else {
 			request.setAttribute("msg", "添加设备种类失败");
 			request.setAttribute("eType", eType);
@@ -122,7 +122,7 @@ public class EquipmentTypeController {
 		String name = request.getParameter("eTypeName");
 		EquipmentType eType = new EquipmentType(id, name);
 		if (eTypeService.updateEType(eType)) {
-			response.sendRedirect("equipmentTypeList.do");
+			response.sendRedirect("equipmentTypeList");
 		} else {
 			request.setAttribute("msg", "更新设备种类失败");
 			request.setAttribute("eType", eType);
@@ -140,10 +140,10 @@ public class EquipmentTypeController {
 	public void deleteType(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String id = request.getParameter("eTypeId");
 		if (eTypeService.deleteEType(id)) {
-			response.sendRedirect("equipmentTypeList.do");
+			response.sendRedirect("equipmentTypeList");
 		} else {
 			request.setAttribute("msg", "更新设备种类失败");
-			request.getRequestDispatcher("/jsp/system/etype/equipmentTypeList.do").forward(request, response);
+			request.getRequestDispatcher("/jsp/system/etype/equipmentTypeList").forward(request, response);
 		}
 	}
 }

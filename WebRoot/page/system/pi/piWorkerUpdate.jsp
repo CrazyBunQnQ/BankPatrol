@@ -25,7 +25,7 @@
 						</tr>
 					</table>	
 	    
-		<form action="../piwoker/updatePiwoker.do" method="post">
+		<form action="../piwoker/updatePiwoker" method="post">
 			<table width="60%" border="0" align="center" cellpadding="2"
 				cellspacing="1" bgcolor="#E4E4E4">
 				<tr bgcolor="#F2F2F2">

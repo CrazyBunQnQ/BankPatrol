@@ -21,7 +21,7 @@
 			<div class="crumbs">
 				<span class="crumbs-label">
 					<a href="${pageContext.request.contextPath }/center.jsp">系统管理</a>&gt;&gt;
-					<a href="${pageContext.request.contextPath }/job/jobList.do">岗位管理</a>&gt;&gt;
+					<a href="${pageContext.request.contextPath }/job/jobList">岗位管理</a>&gt;&gt;
 					岗位页面展现
 				</span>
 			</div>
@@ -53,15 +53,15 @@
 				<font color="black">共&nbsp;</font><font color="black">${data.totalPage }</font><font color="black">&nbsp;页&nbsp;&nbsp;</font>
 		
 				<c:if test="${data.curPage!=1 }">
-					<a href="../job/xtymList.do?jobId=${jobId }&curpage=${data.curPage-1 }">上一页</a>&nbsp;&nbsp;
-					<a href="../job/xtymList.do?jobId=${jobId }&curpage=1 ">首 页</a>&nbsp;&nbsp;
+					<a href="../job/xtymList?jobId=${jobId }&curpage=${data.curPage-1 }">上一页</a>&nbsp;&nbsp;
+					<a href="../job/xtymList?jobId=${jobId }&curpage=1 ">首 页</a>&nbsp;&nbsp;
 				</c:if>
 				<c:if test="${data.curPage!=data.totalPage }">
-					<a href="../job/xtymList.do?jobId=${jobId }&curpage=${data.curPage+1 }">下一页</a>&nbsp;&nbsp;
-					<a href="../job/xtymList.do?jobId=${jobId }&curpage=${data.totalPage }">尾 页</a>&nbsp;&nbsp;
+					<a href="../job/xtymList?jobId=${jobId }&curpage=${data.curPage+1 }">下一页</a>&nbsp;&nbsp;
+					<a href="../job/xtymList?jobId=${jobId }&curpage=${data.totalPage }">尾 页</a>&nbsp;&nbsp;
 				</c:if>
 				第&nbsp;<input id="pagebox" type="text" size="4">&nbsp;页&nbsp;
-				<a onclick="jump('../job/xtymList.do?jobId=${jobId }&curpage=','${data.totalPage }');" href="javascript:;">跳转</a>
+				<a onclick="jump('../job/xtymList?jobId=${jobId }&curpage=','${data.totalPage }');" href="javascript:;">跳转</a>
 			</p>
 			
 			<div align="center">

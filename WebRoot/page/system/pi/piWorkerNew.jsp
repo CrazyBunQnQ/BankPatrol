@@ -26,7 +26,7 @@
 			</div>
 		</div>	
 	   
-		<form action="../piwoker/addPiworker.do" method="post" onsubmit="return checkTel();">
+		<form action="../piwoker/addPiworker" method="post" onsubmit="return checkTel();">
 			<table width="60%" border="0" align="center" cellpadding="2" cellspacing="1" bgcolor="#E4E4E4">
 					<tr bgcolor="#F2F2F2">
 					<td  align="center">巡检工id：</td>

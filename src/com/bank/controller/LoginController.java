@@ -54,7 +54,7 @@ public class LoginController {
 				HttpSession session = request.getSession();
 				session.setAttribute("log",log);
 				logService.addLoginTime(((Log)session.getAttribute("log")).getCheckIn(), user.getLoginId());//添加日志
-				response.sendRedirect("../login/initdata.do");// 调用初始化数据
+				response.sendRedirect("../login/initdata");// 调用初始化数据
 			} else {
 				request.getSession().setAttribute("flag", "login_error");
 				request.setAttribute("err", "账号被禁用，请联系管理员");

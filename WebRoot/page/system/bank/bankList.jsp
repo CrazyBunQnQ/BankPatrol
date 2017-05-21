@@ -17,7 +17,7 @@
 			<div class="crumbs">
 				<span class="crumbs-label">
 					<a href="${pageContext.request.contextPath }/center.jsp">系统管理</a>&gt;&gt;
-					<a href="${pageContext.request.contextPath }/bank/bankList.do">银行网点列表</a>
+					<a href="${pageContext.request.contextPath }/bank/bankList">银行网点列表</a>
 				</span>
 			</div>
 		</div>
@@ -25,7 +25,7 @@
 		<div id="inner-bd">
 			<div class="button-group">
 				<div class="button">
-					<img src="${pageContext.request.contextPath }/images/add.gif" onclick="location.href='../bank/toAdd.do'">
+					<img src="${pageContext.request.contextPath }/images/add.gif" onclick="location.href='../bank/toAdd'">
 				</div>
 			</div>
 			<table class="kv-table">
@@ -50,9 +50,9 @@
 							<td>${bank.ip }</td>
 							<td>
 								<div class="handle">
-									<a href="../bank/toUpdate.do?bankId=${bank.id }"><span class="handle-icon fix"></span></a>
-									<a href="../bank/EquipmentsList.do?bankId=${bank.id }"><span class="handle-icon chakan"></span></a>
-									<a href="../bank/toAddEquipment.do?bankId=${bank.id }"><span class="handle-icon add"></span></a>
+									<a href="../bank/toUpdate?bankId=${bank.id }"><span class="handle-icon fix"></span></a>
+									<a href="../bank/EquipmentsList?bankId=${bank.id }"><span class="handle-icon chakan"></span></a>
+									<a href="../bank/toAddEquipment?bankId=${bank.id }"><span class="handle-icon add"></span></a>
 								</div>
 							</td>
 						</tr>
@@ -67,15 +67,15 @@
 				<font color="black">共&nbsp;</font><font color="black">${data.totalPage }</font><font color="black">&nbsp;页&nbsp;&nbsp;</font>
 		
 				<c:if test="${data.curPage!=1 }">
-					<a href="../bank/bankList.do?curpage=${data.curPage-1 }">上一页</a>&nbsp;&nbsp;
-					<a href="../bank/bankList.do?curpage=1 ">首 页</a>&nbsp;&nbsp;
+					<a href="../bank/bankList?curpage=${data.curPage-1 }">上一页</a>&nbsp;&nbsp;
+					<a href="../bank/bankList?curpage=1 ">首 页</a>&nbsp;&nbsp;
 				</c:if>
 				<c:if test="${data.curPage!=data.totalPage }">
-					<a href="../bank/bankList.do?curpage=${data.curPage+1 }">下一页</a>&nbsp;&nbsp;
-					<a href="../bank/bankList.do?curpage=${data.totalPage }">尾 页</a>&nbsp;&nbsp;
+					<a href="../bank/bankList?curpage=${data.curPage+1 }">下一页</a>&nbsp;&nbsp;
+					<a href="../bank/bankList?curpage=${data.totalPage }">尾 页</a>&nbsp;&nbsp;
 				</c:if>
 				第&nbsp;<input id="pagebox" type="text" size="4">&nbsp;页&nbsp;
-				<a onclick="jump('../bank/bankList.do?curpage=','${data.totalPage }');" href="javascript:;">跳转</a>
+				<a onclick="jump('../bank/bankList?curpage=','${data.totalPage }');" href="javascript:;">跳转</a>
 			</p>
 		</div>
 	</div>

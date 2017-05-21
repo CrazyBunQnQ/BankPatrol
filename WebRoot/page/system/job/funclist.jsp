@@ -19,7 +19,7 @@
 			<div class="crumbs">
 				<span class="crumbs-label">
 					<a href="${pageContext.request.contextPath }/center.jsp">系统管理</a>&gt;&gt;
-					<a href="${pageContext.request.contextPath }/job/jobList.do">岗位管理</a>&gt;&gt;
+					<a href="${pageContext.request.contextPath }/job/jobList">岗位管理</a>&gt;&gt;
 					程序功能列表
 				</span>
 			</div>
@@ -40,7 +40,7 @@
 							<td>${func.name }</td>
 							<td>
 								<div class="handle">
-									<a href="../job/showXtyms.do?jobId=${jobId }&funcId=${func.id }"><span class="handle-icon chakan"></span></a>
+									<a href="../job/showXtyms?jobId=${jobId }&funcId=${func.id }"><span class="handle-icon chakan"></span></a>
 								</div>
 							</td>
 						</tr>
@@ -49,7 +49,7 @@
 			</table>
 			
 			<center>
-				<input type="button" value="返回" onclick="window.location.href='${pageContext.request.contextPath }/job/jobList.do'">
+				<input type="button" value="返回" onclick="window.location.href='${pageContext.request.contextPath }/job/jobList'">
 			</center>
 		</div>
 	</div>

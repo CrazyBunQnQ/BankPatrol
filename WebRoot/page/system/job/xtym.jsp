@@ -29,7 +29,7 @@
 			<div class="crumbs">
 				<span class="crumbs-label">
 					<a href="${pageContext.request.contextPath }/center.jsp">系统管理</a>&gt;&gt;
-					<a href="${pageContext.request.contextPath }/job/jobList.do">岗位管理</a>&gt;&gt;
+					<a href="${pageContext.request.contextPath }/job/jobList">岗位管理</a>&gt;&gt;
 					系统管理页面列表
 				</span>
 			</div>
@@ -38,7 +38,7 @@
 			<!-- center>
 				<span class="sys_list_yh">页面列表</span>
 			</center -->
-			<form action="${pageContext.request.contextPath }/job/updateXtym.do?jobId=${jobId }&funcId=${funcId }" method="post">
+			<form action="${pageContext.request.contextPath }/job/updateXtym?jobId=${jobId }&funcId=${funcId }" method="post">
 				<table  class="kv-table">
 					<thead>
 						<tr>

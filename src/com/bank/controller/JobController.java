@@ -71,7 +71,7 @@ public class JobController {
 		String description = request.getParameter("description")==null?"":request.getParameter("description");
 		Job job = new Job(name, description);
 		if (jobService.addJob(job)) {
-			response.sendRedirect("jobList.do");
+			response.sendRedirect("jobList");
 		} else {
 			request.setAttribute("msg", "添加岗位失败");
 			request.setAttribute("job", job);
@@ -108,7 +108,7 @@ public class JobController {
 		String description = request.getParameter("description") == null ? "" : request.getParameter("description");
 		Job job = new Job(id, name, description);
 		if (jobService.updateJob(job)) {
-			response.sendRedirect("jobList.do");
+			response.sendRedirect("jobList");
 		} else {
 			request.setAttribute("msg", "更新岗位失败");
 			request.setAttribute("job", job);
@@ -169,9 +169,9 @@ public class JobController {
 		int funcId = Integer.parseInt(request.getParameter("funcId") == null ? "0" : request.getParameter("funcId"));
 		String[] ymbhs = request.getParameterValues("ymbhs");
 		if (jobService.updateXtyms(jobId, funcId, ymbhs)) {
-			response.sendRedirect("xtymList.do?jobId=" + jobId);
+			response.sendRedirect("xtymList?jobId=" + jobId);
 		} else {
-			response.sendRedirect("showXtyms.do?jobId=" + jobId + "&funcId=" + funcId);
+			response.sendRedirect("showXtyms?jobId=" + jobId + "&funcId=" + funcId);
 		}
 	}
 }

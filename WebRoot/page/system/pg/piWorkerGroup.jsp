@@ -21,7 +21,7 @@
     <div id="inner-bd">
         <div class="button-group">
             <div class="button">
-            <a href="../pigroup/toAdd.do">
+            <a href="../pigroup/toAdd">
               <img src="${pageContext.request.contextPath}/images/add.gif">
             </a>
             </div>
@@ -66,15 +66,15 @@
 		</font>
 
 		<c:if test="${data.curPage!=1 }">
-			<a href="../pigroup/pigrouplist.do?curpage=${data.curPage-1 }">上一页</a>
-			<a href="../pigroup/pigrouplist.do?curpage=1 ">首 页</a>
+			<a href="../pigroup/pigrouplist?curpage=${data.curPage-1 }">上一页</a>
+			<a href="../pigroup/pigrouplist?curpage=1 ">首 页</a>
 		</c:if>
 		<c:if test="${data.curPage!=data.totalPage }">
-			<a href="../pigroup/pigrouplist.do?curpage=${data.curPage+1 }&loginId=${log}&userName=${un}">下一页</a>
-			<a href="../pigroup/pigrouplist.do?curpage=${data.totalPage }">尾 页</a>
+			<a href="../pigroup/pigrouplist?curpage=${data.curPage+1 }&loginId=${log}&userName=${un}">下一页</a>
+			<a href="../pigroup/pigrouplist?curpage=${data.totalPage }">尾 页</a>
 		</c:if>
 		第<input id="pagebox" type="text" size="4">页
-		<a onclick="jump('../pigroup/pigrouplist.do?curpage=','${data.totalPage }');" href="javascript:;">跳转</a>
+		<a onclick="jump('../pigroup/pigrouplist?curpage=','${data.totalPage }');" href="javascript:;">跳转</a>
 		   </p></div>
 </body>
 </html>

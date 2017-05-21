@@ -48,7 +48,7 @@ public class BankController {
 		String ip = request.getParameter("bankIp");
 		Bank bank = new Bank(id, name, longitude, latitude, ip);
 		if (bankService.insertBank(bank)) {
-			response.sendRedirect("bankList.do");
+			response.sendRedirect("bankList");
 		} else {
 			request.setAttribute("msg", "添加银行失败");
 			request.setAttribute("bank", bank);
@@ -85,7 +85,7 @@ public class BankController {
 		String ip = request.getParameter("bankIp");
 		Bank bank = new Bank(id, name, longitude, latitude, ip);
 		if (bankService.updateBank(bank)) {
-			response.sendRedirect("bankList.do");
+			response.sendRedirect("bankList");
 		} else {
 			request.setAttribute("msg", "添加银行失败");
 			request.setAttribute("bank", bank);
@@ -189,7 +189,7 @@ public class BankController {
 		be.setStatus(status);
 		be.setDepreciationValue(depreciationValue);
 		if (bankService.insertEquipment(be)) {
-			response.sendRedirect("EquipmentsList.do?bankId=" + bankId);
+			response.sendRedirect("EquipmentsList?bankId=" + bankId);
 		} else {
 			request.setAttribute("msg", "添加银行设备失败");
 			request.setAttribute("equipment", be);
@@ -238,7 +238,7 @@ public class BankController {
 		be.setStatus(status);
 		be.setDepreciationValue(depreciationValue);
 		if (bankService.updateEquipment(be)) {
-			response.sendRedirect("EquipmentsList.do?bankId=" + bankId);
+			response.sendRedirect("EquipmentsList?bankId=" + bankId);
 		} else {
 			request.setAttribute("msg", "修改银行设备信息失败");
 			request.setAttribute("equipment", be);
@@ -257,7 +257,7 @@ public class BankController {
 		String eqId = request.getParameter("eqId");
 		String bankId = request.getParameter("bankId");
 		if (bankService.deleteEquipment(eqId)) {
-			response.sendRedirect("EquipmentsList.do?bankId=" + bankId);
+			response.sendRedirect("EquipmentsList?bankId=" + bankId);
 		} else {
 			//TODO 删除失败提示
 		}

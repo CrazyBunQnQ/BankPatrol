@@ -19,13 +19,13 @@
 			<div class="crumbs">
 				<span class="crumbs-label">
 					<a href="${pageContext.request.contextPath }/center.jsp">系统管理</a>&gt;&gt;
-					<a href="${pageContext.request.contextPath }/bank/EquipmentsList.do?bankId=${equi.bank.id }">银行设备明细列表</a>&gt;&gt;
+					<a href="${pageContext.request.contextPath }/bank/EquipmentsList?bankId=${equi.bank.id }">银行设备明细列表</a>&gt;&gt;
 					修改银行设备明细
 				</span>
 			</div>
 		</div>
 		<div id="inner-bd">
-			<form action="${pageContext.request.contextPath }/bank/UpdateEquipment.do" method="post">
+			<form action="${pageContext.request.contextPath }/bank/UpdateEquipment" method="post">
 				<table class="kv-table">
 					<tr>
 						<td bgcolor="#F2F2F2" align="center" width="30%">设备流水ID</td>

@@ -71,7 +71,7 @@
 		<div id="inner-bd">
 			<div class="button-group">
 				<div class="button">
-					<img src="${pageContext.request.contextPath }/images/add.gif" onclick="location.href='../etype/toAdd.do'">
+					<img src="${pageContext.request.contextPath }/images/add.gif" onclick="location.href='../etype/toAdd'">
 				</div>
 				<div class="button">
 					<img src="${pageContext.request.contextPath }/images/search1.gif" onclick="openfind();">
@@ -79,7 +79,7 @@
 			</div>
 			
 			<div id="find" ${hiddenFind }>
-				<form action="${pageContext.request.contextPath }/etype/equipmentTypeList.do">
+				<form action="${pageContext.request.contextPath }/etype/equipmentTypeList">
 					<table>
 						<tr>
 							<td>设备种类 ID：</td>
@@ -110,9 +110,9 @@
 							<td>${type.name }</td>
 							<td>
 								<div class="handle">
-									<a href="../etype/toUpdate.do?eTypeId=${type.id }&eTypeName=${type.name }"><span class="handle-icon fix"></span></a>
+									<a href="../etype/toUpdate?eTypeId=${type.id }&eTypeName=${type.name }"><span class="handle-icon fix"></span></a>
 									<c:if test="${!type.hasEq }">
-										<a href="../etype/deleteType.do?eTypeId=${type.id }"><span class="handle-icon del"></span></a>
+										<a href="../etype/deleteType?eTypeId=${type.id }"><span class="handle-icon del"></span></a>
 									</c:if>
 								</div>
 							</td>
@@ -128,15 +128,15 @@
 				<font color="black">共&nbsp;</font><font color="black">${data.totalPage }</font><font color="black">&nbsp;页&nbsp;&nbsp;</font>
 		
 				<c:if test="${data.curPage!=1 }">
-					<a href="../etype/equipmentTypeList.do?eTypeId=${eTypeId }&eTypeName=${eTypeName }&hiddenFind=${hiddenFind }&curpage=${data.curPage-1 }">上一页</a>&nbsp;&nbsp;
-					<a href="../etype/equipmentTypeList.do?eTypeId=${eTypeId }&eTypeName=${eTypeName }&hiddenFind=${hiddenFind }&curpage=1 ">首 页</a>&nbsp;&nbsp;
+					<a href="../etype/equipmentTypeList?eTypeId=${eTypeId }&eTypeName=${eTypeName }&hiddenFind=${hiddenFind }&curpage=${data.curPage-1 }">上一页</a>&nbsp;&nbsp;
+					<a href="../etype/equipmentTypeList?eTypeId=${eTypeId }&eTypeName=${eTypeName }&hiddenFind=${hiddenFind }&curpage=1 ">首 页</a>&nbsp;&nbsp;
 				</c:if>
 				<c:if test="${data.curPage!=data.totalPage }">
-					<a href="../etype/equipmentTypeList.do?eTypeId=${eTypeId }&eTypeName=${eTypeName }&hiddenFind=${hiddenFind }&curpage=${data.curPage+1 }&loginId=${log}&userName=${un}">下一页</a>&nbsp;&nbsp;
-					<a href="../etype/equipmentTypeList.do?eTypeId=${eTypeId }&eTypeName=${eTypeName }&hiddenFind=${hiddenFind }&curpage=${data.totalPage }">尾 页</a>&nbsp;&nbsp;
+					<a href="../etype/equipmentTypeList?eTypeId=${eTypeId }&eTypeName=${eTypeName }&hiddenFind=${hiddenFind }&curpage=${data.curPage+1 }&loginId=${log}&userName=${un}">下一页</a>&nbsp;&nbsp;
+					<a href="../etype/equipmentTypeList?eTypeId=${eTypeId }&eTypeName=${eTypeName }&hiddenFind=${hiddenFind }&curpage=${data.totalPage }">尾 页</a>&nbsp;&nbsp;
 				</c:if>
 				第&nbsp;<input id="pagebox" type="text" size="4">&nbsp;页&nbsp;
-				<a onclick="jump('../etype/equipmentTypeList.do?eTypeId=${eTypeId }&eTypeName=${eTypeName }&hiddenFind=${hiddenFind }&curpage=','${data.totalPage }');" href="javascript:;">跳转</a>
+				<a onclick="jump('../etype/equipmentTypeList?eTypeId=${eTypeId }&eTypeName=${eTypeName }&hiddenFind=${hiddenFind }&curpage=','${data.totalPage }');" href="javascript:;">跳转</a>
 			</p>
 		</div>
 	</div>

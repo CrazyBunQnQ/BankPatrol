@@ -20,13 +20,13 @@
 			<div class="crumbs">
 				<span class="crumbs-label">
 					<a href="${pageContext.request.contextPath }/center.jsp">系统管理</a>&gt;&gt;
-					<a href="${pageContext.request.contextPath }/user/userList.do">用户管理</a>&gt;&gt;
+					<a href="${pageContext.request.contextPath }/user/userList">用户管理</a>&gt;&gt;
 					用户新增
 				</span>
 			</div>
 		</div>
 		<div id="inner-bd">
-			<form action="../user/userUpdate.do" method="post"
+			<form action="../user/userUpdate" method="post"
 				onsubmit="return checkdata();">
 				<table class="kv-table">
 					<tr bgcolor="#F2F2F2">
