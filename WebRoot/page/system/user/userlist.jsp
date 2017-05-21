@@ -37,7 +37,10 @@
 		</div>
 		<div id="demo-custom-toolbar" class="table-toolbar-left">
 			<button id="demo-dt-delete-btn" class="btn btn-danger">
-				<i class="demo-pli-cross"></i> Delete
+				<i class="demo-pli-cross"></i> 删除
+			</button>
+			<button id="demo-dt-addrow-btn" class="btn btn-primary">
+				<i class="demo-pli-add-user"></i> 添加
 			</button>
 		</div>
 		<div class="panel-body">
