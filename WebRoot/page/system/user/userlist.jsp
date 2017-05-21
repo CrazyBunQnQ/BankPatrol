@@ -46,14 +46,18 @@
 					<tr>
 						<th>登录 ID</th>
 						<th>姓名</th>
-						<th class="min-tablet">所在部门</th>
+						<!-- th class="min-tablet">所在部门</th>
 						<th class="min-tablet">岗位</th>
 						<th class="min-desktop">状态</th>
-						<th class="min-desktop">操作</th>
+						<th class="min-desktop">操作</th -->
+						<th>所在部门</th>
+						<th>岗位</th>
+						<th>状态</th>
+						<th>操作</th>
 					</tr>
 				</thead>
 				<tbody>
-					<c:forEach items="${data.pageData}" var="user">
+					<c:forEach items="${list}" var="user">
 						<tr>
 							<td>${user.loginId }</td>
 							<td>${user.name }</td>

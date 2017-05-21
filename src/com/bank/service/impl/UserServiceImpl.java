@@ -14,6 +14,11 @@ import com.bank.service.UserService;
 
 public class UserServiceImpl implements UserService {
 	UserDao userDao = new UserDaoImpl();
+	
+	@Override
+	public List<User> userList() {
+		return userDao.queryUsers();
+	}
 
 	@Override
 	public PageInfo<User> userList(String curpageStr) {

@@ -13,15 +13,25 @@ import com.bank.entity.Xtymb;
 import com.bank.util.DBUtil;
 
 public class UserDaoImpl extends BaseDaoImpl implements UserDao {
+	
+	@Override
+	public List<User> queryUsers() {
+		return queryUsers(0, 0);
+	}
 
 	@Override
 	public List<User> queryUsers(int page, int count) {
 		List<User> list = new ArrayList<User>();
-		String sql = "select Login_ID,User_Name,Department_Name,Name ,User_Status from users u join department d on u.Department_ID = d.Department_id join job j on u.Job_ID = j.Job_ID ORDER BY Login_ID limit ?,? ";
+		StringBuffer sql = new StringBuffer("select Login_ID,User_Name,Department_Name,Name ,User_Status from users u join department d on u.Department_ID = d.Department_id join job j on u.Job_ID = j.Job_ID ORDER BY Login_ID");
+		if (page != 0) {
+			sql.append(" limit ?,? ");
+		}
 		try {
-			setConnAndPS(sql);
-			ps.setInt(1, page);
-			ps.setInt(2, count);
+			setConnAndPS(sql.toString());
+			if (page != 0) {
+				ps.setInt(1, page);
+				ps.setInt(2, count);
+			}
 			rs = ps.executeQuery();
 			while (rs.next()) {
 				User u = new User();
@@ -331,4 +341,5 @@ public class UserDaoImpl extends BaseDaoImpl implements UserDao {
 		}
 		return result;
 	}
+
 }

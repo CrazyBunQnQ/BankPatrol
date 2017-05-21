@@ -10,6 +10,12 @@ import com.bank.entity.User;
 import com.bank.entity.Xtymb;
 
 public interface UserService {
+	
+	/**
+	 * 查询所有用户数据
+	 * @return
+	 */
+	List<User> userList();
 
 	/**
 	 * 根据指定的页码查询用户数据

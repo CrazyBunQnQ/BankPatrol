@@ -9,6 +9,12 @@ import com.bank.entity.User;
 import com.bank.entity.Xtymb;
 
 public interface UserDao {
+	
+	/**
+	 * 查询所有用户（不分页）
+	 * @return
+	 */
+	List<User> queryUsers();
 
 	/**
 	 * 查询所有用户

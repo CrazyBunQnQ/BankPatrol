@@ -12,7 +12,6 @@ import org.apache.struts2.ServletActionContext;
 import com.bank.entity.Department;
 import com.bank.entity.Function;
 import com.bank.entity.Job;
-import com.bank.entity.PageInfo;
 import com.bank.entity.User;
 import com.bank.entity.Xtymb;
 import com.bank.service.UserService;
@@ -117,11 +116,8 @@ public class UserAction extends ActionSupport {
 
 	public String list() {
 		request = ServletActionContext.getRequest();
-		PageInfo<User> data = us.userList(curpage, user);
-		request.setAttribute("hiddenFind", hiddenFind);
-		request.setAttribute("loginId", user == null ? "" : user.getLoginId());
-		request.setAttribute("userName", user == null ? "" : user.getName());
-		request.setAttribute("data", data);
+		List<User> list = us.userList();
+		request.setAttribute("list", list);
 		return "SUCCESS";
 	}
 
