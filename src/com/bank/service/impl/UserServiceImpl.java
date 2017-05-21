@@ -5,9 +5,11 @@ import java.util.List;
 import com.bank.dao.UserDao;
 import com.bank.dao.impl.UserDaoImpl;
 import com.bank.entity.Department;
+import com.bank.entity.Function;
 import com.bank.entity.Job;
 import com.bank.entity.PageInfo;
 import com.bank.entity.User;
+import com.bank.entity.Xtymb;
 import com.bank.service.UserService;
 
 public class UserServiceImpl implements UserService {
@@ -80,5 +82,20 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public boolean hasUser(String uname) {
 		return userDao.hasUser(uname);
+	}
+	
+	@Override
+	public User findUser(String loginId, String loginPassword) {
+		return userDao.findUser(loginId, loginPassword);
+	}
+
+	@Override
+	public List<Function> findFunctionsByJobId(int jobId) {
+		return userDao.findFunctionsByJobId(jobId);
+	}
+
+	@Override
+	public List<Xtymb> leftList(User user, int funcId) {
+		return userDao.findXtymbList(user.getJobId(), funcId);
 	}
 }
