@@ -11,23 +11,23 @@
 <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 <script type="text/javascript" src="${pageContext.request.contextPath }/js/jump.js"></script>
 <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
-<link href="${pageContext.request.contextPath }/nifty/css/bootstrap.min.css" rel="stylesheet">
-<link href="${pageContext.request.contextPath }/nifty/css/nifty.min.css" rel="stylesheet">
-<link href="${pageContext.request.contextPath }/nifty/css/demo/nifty-demo-icons.min.css" rel="stylesheet">
-<link href="${pageContext.request.contextPath }/nifty/css/demo/nifty-demo.min.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath }/nifty/css/bootstrap.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath }/nifty/css/nifty.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath }/nifty/css/demo/nifty-demo-icons.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath }/nifty/css/demo/nifty-demo.css" rel="stylesheet">
 <link href="${pageContext.request.contextPath }/nifty/plugins/datatables/media/css/dataTables.bootstrap.css" rel="stylesheet">
 <link href="${pageContext.request.contextPath }/nifty/plugins/datatables/extensions/Responsive/css/dataTables.responsive.css" rel="stylesheet">
-<link href="${pageContext.request.contextPath }/nifty/plugins/pace/pace.min.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath }/nifty/plugins/pace/pace.css" rel="stylesheet">
 
-<script src="${pageContext.request.contextPath }/nifty/plugins/pace/pace.min.js"></script>
+<script src="${pageContext.request.contextPath }/nifty/plugins/pace/pace.js"></script>
 <script src="${pageContext.request.contextPath }/nifty/js/jquery-2.2.4.min.js"></script>
-<script src="${pageContext.request.contextPath }/nifty/js/bootstrap.min.js"></script>
-<script src="${pageContext.request.contextPath }/nifty/js/nifty.min.js"></script>
-<script src="${pageContext.request.contextPath }/nifty/js/demo/nifty-demo.min.js"></script>
+<script src="${pageContext.request.contextPath }/nifty/js/bootstrap.js"></script>
+<script src="${pageContext.request.contextPath }/nifty/js/nifty.js"></script>
+<script src="${pageContext.request.contextPath }/nifty/js/demo/nifty-demo.js"></script>
 <script src="${pageContext.request.contextPath }/nifty/plugins/datatables/media/js/jquery.dataTables.js"></script>
 <script src="${pageContext.request.contextPath }/nifty/plugins/datatables/media/js/dataTables.bootstrap.js"></script>
-<script src="${pageContext.request.contextPath }/nifty/plugins/datatables/extensions/Responsive/js/dataTables.responsive.min.js"></script>
-<script src="${pageContext.request.contextPath }/nifty/js/demo/tables-datatables.js"></script>
+<script src="${pageContext.request.contextPath }/nifty/plugins/datatables/extensions/Responsive/js/dataTables.responsive.js"></script>
+<script src="${pageContext.request.contextPath }/js/datatables.js"></script>
 </head>
 
 <body>
@@ -62,7 +62,7 @@
 				<tbody>
 					<c:forEach items="${list}" var="user">
 						<tr>
-							<td>${user.loginId }</td>
+							<td valign="${user.loginId }">${user.loginId }</td>
 							<td>${user.name }</td>
 							<td>${user.departmentName }</td>
 							<td>${user.jobName }</td>
