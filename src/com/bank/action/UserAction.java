@@ -3,9 +3,7 @@ package com.bank.action;
 import java.io.IOException;
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import org.apache.struts2.ServletActionContext;
 
@@ -16,17 +14,13 @@ import com.bank.entity.User;
 import com.bank.entity.Xtymb;
 import com.bank.service.UserService;
 import com.bank.service.impl.UserServiceImpl;
-import com.opensymphony.xwork2.ActionSupport;
 
-public class UserAction extends ActionSupport {
+public class UserAction extends BaseAction {
 
 	private static final long serialVersionUID = -3442882080520300398L;
 	private UserService us = new UserServiceImpl();
-	private HttpServletRequest request = null;
 
 	private User user;
-	private String curpage;
-	private String hiddenFind;
 
 	public User getUser() {
 		return user;
@@ -36,101 +30,69 @@ public class UserAction extends ActionSupport {
 		this.user = user;
 	}
 
-	public String getCurpage() {
-		return curpage;
-	}
-
-	public void setCurpage(String curpage) {
-		this.curpage = curpage;
-	}
-
-	public String getHiddenFind() {
-		return hiddenFind;
-	}
-
-	public void setHiddenFind(String hiddenFind) {
-		this.hiddenFind = hiddenFind;
-	}
-
 	public String login() {
-		request = ServletActionContext.getRequest();
 		user = us.findUser(user.getLoginId(), user.getLoginPwd());
 
 		if (user != null) {
 			if (user.isStatus()) {
-				request.getSession().setAttribute("flag", "login_success");
-				request.getSession().setAttribute("user", user);
-				return "SUCCESS";
+				session.put("flag", "login_success");
+				session.put("user", user);
+				return SUCCESS;
 			} else {
-				request.getSession().setAttribute("flag", "login_error");
-				request.setAttribute("err", "账号被禁用，请联系管理员");
+				session.put("flag", "login_error");
+				request.put("err", "账号被禁用，请联系管理员");
 				return "FAIL";
 			}
 		} else {
-			request.getSession().setAttribute("flag", "pwd_error");
-			request.setAttribute("err", "用户名或密码错误");
+			session.put("flag", "pwd_error");
+			request.put("err", "用户名或密码错误");
 			return "FAIL";
 		}
 	}
 
 	public String logout() {
-		request = ServletActionContext.getRequest();
-		HttpSession session = request.getSession();
-		session.invalidate();
-		return "SUCCESS";
+		session.clear();
+		return SUCCESS;
 	}
 
 	public String initdata() {
-		request = ServletActionContext.getRequest();
-		User user = (User) request.getSession().getAttribute("user");
+		User user = (User) session.get("user");
 		if (user != null) {
 			List<Function> funList = us.findFunctionsByJobId(user.getJobId());
 			List<Xtymb> xtymbList = us.leftList(user, funList.get(0).getId());
 			String funName = funList.get(0).getName();
-			request.getSession().setAttribute("functions", funList);
-			request.getSession().setAttribute("funName", funName);
-			request.getSession().setAttribute("leftList", xtymbList);
-			return "SUCCESS";
+			session.put("functions", funList);
+			session.put("funName", funName);
+			session.put("leftList", xtymbList);
+			return SUCCESS;
 		} else {
 			return "FAIL";
 		}
 	}
 
 	public String leftList() {
-		request = ServletActionContext.getRequest();
-		int funcId = Integer.parseInt(request.getParameter("funcId"));
-		User user = (User) request.getSession().getAttribute("user");
+		int funcId = Integer.parseInt((String)request.get("funcId"));
+		User user = (User) session.get("user");
 		String funName = us.findFunctionsByJobId(user.getJobId()).get(funcId - 1).getName();
 		List<Xtymb> list = us.leftList(user, funcId);
-		request.getSession().setAttribute("funName", funName);
-		request.getSession().setAttribute("leftList", list);
-		return "SUCCESS";
+		session.put("funName", funName);
+		session.put("leftList", list);
+		return SUCCESS;
 	}
 
 	public String delete() {
-		request = ServletActionContext.getRequest();
-		String userId = request.getParameter("userId");
+		String userId = (String)request.get("userId");
 		us.deleteUser(userId);
 		return "REFRESH";
 	}
 
 	public String list() {
-		request = ServletActionContext.getRequest();
 		List<User> list = us.userList();
-		request.setAttribute("list", list);
-		return "SUCCESS";
+		request.put("list", list);
+		return SUCCESS;
 	}
 
-	public String toAdd() {
-		request = ServletActionContext.getRequest();
-		List<Department> list1 = us.findAllDeprtments();
-		List<Job> list2 = us.findAllJobs();
-		request.setAttribute("d", list1);
-		request.setAttribute("j", list2);
-		return "SUCCESS";
-	}
-
-	public String add() {
+	public String insert() {
 		if (us.addUser(user)) {
 			return "REFRESH";
 		} else {
@@ -138,15 +100,22 @@ public class UserAction extends ActionSupport {
 		}
 	}
 
+	public String add() {
+		List<Department> list1 = us.findAllDeprtments();
+		List<Job> list2 = us.findAllJobs();
+		request.put("d", list1);
+		request.put("j", list2);
+		return SUCCESS;
+	}
+
 	public String toUpdate() {
-		request = ServletActionContext.getRequest();
 		user = us.toUpdateUser(user.getLoginId());
-		request.setAttribute("user", user);
+		request.put("user", user);
 		List<Department> d = us.findAllDeprtments();
 		List<Job> j = us.findAllJobs();
-		request.setAttribute("d", d);
-		request.setAttribute("j", j);
-		return "SUCCESS";
+		request.put("d", d);
+		request.put("j", j);
+		return SUCCESS;
 	}
 
 	public String update() {
@@ -155,7 +124,6 @@ public class UserAction extends ActionSupport {
 	}
 
 	public void checkId() throws IOException {
-		request = ServletActionContext.getRequest();
 		HttpServletResponse response = ServletActionContext.getResponse();
 		if (us.hasUser(user.getLoginId())) {
 			response.getWriter().write("1");
