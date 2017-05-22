@@ -59,7 +59,7 @@
 
 		<div class="pf-user">
 			<div class="pf-user-quit">
-				<a href="${pageContext.request.contextPath }/login/logout"
+				<a href="${pageContext.request.contextPath }/user/logout"
 					target="_top">退出</a>
 			</div>
 		</div>
