@@ -22,8 +22,11 @@
 		<action name="checkId" class="com.bank.action.UserAction" method="checkId"></action>
 		<action name="user*" class="com.bank.action.UserAction" method="{1}">
 			<result name="success">/page/system/user/user{1}.jsp</result>
-			<result name="REFRESH" type="redirectAction">userlist</result>
-			<result name="FAIL">/error.jsp</result>
+			<result name="none" type="redirectAction">userlist</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="useradd" class="com.bank.action.UserAction" method="add">
+			<result name="success">/page/system/user/useradd.jsp</result>
 		</action>
 	</package>
 </struts>

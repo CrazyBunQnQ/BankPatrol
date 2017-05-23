@@ -41,12 +41,12 @@ public class UserAction extends BaseAction {
 			} else {
 				session.put("flag", "login_error");
 				request.put("err", "账号被禁用，请联系管理员");
-				return "FAIL";
+				return ERROR;
 			}
 		} else {
 			session.put("flag", "pwd_error");
 			request.put("err", "用户名或密码错误");
-			return "FAIL";
+			return ERROR;
 		}
 	}
 
@@ -66,7 +66,7 @@ public class UserAction extends BaseAction {
 			session.put("leftList", xtymbList);
 			return SUCCESS;
 		} else {
-			return "FAIL";
+			return ERROR;
 		}
 	}
 
@@ -83,7 +83,7 @@ public class UserAction extends BaseAction {
 	public String delete() {
 		String userId = (String)request.get("userId");
 		us.deleteUser(userId);
-		return "REFRESH";
+		return NONE;
 	}
 
 	public String list() {
@@ -94,9 +94,9 @@ public class UserAction extends BaseAction {
 
 	public String insert() {
 		if (us.addUser(user)) {
-			return "REFRESH";
+			return NONE;
 		} else {
-			return "FAIL";
+			return ERROR;
 		}
 	}
 
@@ -120,7 +120,7 @@ public class UserAction extends BaseAction {
 
 	public String update() {
 		us.updateUser(user);
-		return "REFRESH";
+		return NONE;
 	}
 
 	public void checkId() throws IOException {
