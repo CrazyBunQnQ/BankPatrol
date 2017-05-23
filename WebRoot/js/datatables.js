@@ -83,6 +83,7 @@ $(window).on('load', function() {
 //            '2015/10/15',
 //            '$' + nifty.randomInt(1,100) +',000'
 //        ] ).draw();
-    	$.post("useradd");
+//    	$.post("useradd");
+    	window.location.href="/Bank/user/useradd";
     } );
 });
