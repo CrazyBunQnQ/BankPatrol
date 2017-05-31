@@ -11,47 +11,47 @@ import com.bank.service.impl.EquipmentTypeServiceImpl;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class EquipmentTypeAction extends ActionSupport {
-	private static final long serialVersionUID = 1545011556429507177L;
+    private static final long serialVersionUID = 1545011556429507177L;
 
-	private EquipmentTypeService eTypeService = new EquipmentTypeServiceImpl();
-	
-	private Integer page;
-	private String hiddenFind;
-	private EquipmentType eType;
+    private EquipmentTypeService eTypeService = new EquipmentTypeServiceImpl();
 
-	public Integer getPage() {
-		return page;
-	}
+    private Integer page;
+    private String hiddenFind;
+    private EquipmentType eType;
 
-	public void setPage(Integer page) {
-		this.page = page;
-	}
+    public Integer getPage() {
+        return page;
+    }
 
-	public String getHiddenFind() {
-		return hiddenFind;
-	}
+    public void setPage(Integer page) {
+        this.page = page;
+    }
 
-	public void setHiddenFind(String hiddenFind) {
-		this.hiddenFind = hiddenFind;
-	}
+    public String getHiddenFind() {
+        return hiddenFind;
+    }
 
-	public EquipmentType geteType() {
-		return eType;
-	}
+    public void setHiddenFind(String hiddenFind) {
+        this.hiddenFind = hiddenFind;
+    }
 
-	public void seteType(EquipmentType eType) {
-		this.eType = eType;
-	}
+    public EquipmentType geteType() {
+        return eType;
+    }
 
-	public String list() {
-		
-		PageInfo<EquipmentType> data = eTypeService.getEtypes(page, eType.getName(), eType.getId());
-		HttpServletRequest request = ServletActionContext.getRequest();
-		
-		request.setAttribute("hiddenFind", hiddenFind);
-		request.setAttribute("data", data);
-		request.setAttribute("eType", eType);
-		
-		return "SUCCESS";
-	}
+    public void seteType(EquipmentType eType) {
+        this.eType = eType;
+    }
+
+    public String list() {
+
+        PageInfo<EquipmentType> data = eTypeService.getEtypes(page, eType.getName(), eType.getId());
+        HttpServletRequest request = ServletActionContext.getRequest();
+
+        request.setAttribute("hiddenFind", hiddenFind);
+        request.setAttribute("data", data);
+        request.setAttribute("eType", eType);
+
+        return "SUCCESS";
+    }
 }
